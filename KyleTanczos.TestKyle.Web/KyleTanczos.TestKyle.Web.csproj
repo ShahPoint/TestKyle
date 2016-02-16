@@ -1702,7 +1702,6 @@
     <Content Include="libs\bootstrap-hover-dropdown\README.md" />
     <Content Include="libs\jquery-slimscroll\README.md" />
     <Content Include="libs\jquery-slimscroll\slimScroll.jquery.json" />
-    <Content Include="metronic\assets\global\img\social\Thumbs.db" />
     <Content Include="libs\angular-ui-grid\ui-grid.eot" />
     <Content Include="libs\angular-ui-grid\ui-grid.ttf" />
     <Content Include="libs\angular-ui-grid\ui-grid.woff" />
