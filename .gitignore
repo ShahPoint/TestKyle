@@ -236,7 +236,7 @@ _Pvt_Extensions
 # OSX
 # =========================
 
-.DS_Store
+#.DS_Store
 .AppleDouble
 .LSOverride
 
