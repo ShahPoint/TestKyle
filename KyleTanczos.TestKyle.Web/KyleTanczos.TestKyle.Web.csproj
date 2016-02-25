@@ -2558,6 +2558,7 @@
     <Compile Include="Areas\Mpa\Controllers\Common.cs" />
     <Compile Include="Areas\Mpa\Controllers\EditionsController.cs" />
     <Compile Include="Areas\Mpa\Controllers\OrganizationUnitsController.cs" />
+    <Compile Include="Areas\Mpa\Controllers\UploadReportsController.cs" />
     <Compile Include="Areas\Mpa\Models\Languages\EditTextModalViewModel.cs" />
     <Compile Include="Areas\Mpa\Controllers\LanguagesController.cs" />
     <Compile Include="Areas\Mpa\Controllers\ProfileController.cs" />
@@ -2797,6 +2798,7 @@
     <Content Include="Abp\Framework\styles\abp.mixings.less" />
     <Content Include="Abp\Framework\styles\abp.less" />
     <Content Include="Abp\Framework\styles\abp.css.map" />
+    <Content Include="Areas\Mpa\Views\UploadReports\Index.cshtml" />
     <None Include="Properties\PublishProfiles\FileSystem_Release.pubxml" />
     <Content Include="Views\Account\TenantSelection.cshtml" />
     <Content Include="Scripts\version.json" />

@@ -28,7 +28,17 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Startup
                     icon: "icon-grid",
                     requiredPermissionName: AppPermissions.Pages_Editions
                     )
-                ).AddItem(new MenuItemDefinition(
+                )
+                .AddItem(new MenuItemDefinition(
+                    "Editions2",
+                    L("Editions2"),
+                    url: "Mpa/UploadReports",
+                    icon: "icon-grid",
+                    requiredPermissionName: AppPermissions.Pages_Editions
+                    )
+                )
+
+                .AddItem(new MenuItemDefinition(
                     PageNames.App.Tenant.Dashboard,
                     L("Dashboard"),
                     url: "Mpa/Dashboard",
