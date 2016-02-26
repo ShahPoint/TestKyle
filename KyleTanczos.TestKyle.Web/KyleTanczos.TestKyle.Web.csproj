@@ -496,6 +496,8 @@
     <Content Include="libs\angular-ui-grid\ui-grid.min.css" />
     <Content Include="libs\angular-ui-grid\ui-grid.min.js" />
     <Content Include="libs\angular-ui-grid\ui-grid.svg" />
+    <Content Include="libs\bootbox\bootbox.js" />
+    <Content Include="libs\bootbox\bootbox.min.js" />
     <Content Include="libs\bootstrap-daterangepicker\daterangepicker.css" />
     <Content Include="libs\bootstrap-daterangepicker\daterangepicker.js" />
     <Content Include="libs\bootstrap-hover-dropdown\bootstrap-hover-dropdown.js" />
