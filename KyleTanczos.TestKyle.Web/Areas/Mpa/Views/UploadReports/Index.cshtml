@@ -76,13 +76,13 @@
                 <span class="preview"><img data-dz-thumbnail /></span>
             </div>
             <div>
-                <p class="name" data-dz-name></p> <div target="fileInfo" style="font-weight:bold"></div>
-                <strong class="error text-danger" data-dz-errormessage></strong>
+                <p class="name" data-dz-name></p> <div class="fileInfo" style="font-weight:bold"></div>
+                <strong style="display:none" class="error text-danger" data-dz-errormessage></strong>
             </div>
             <div>
                 <p class="size" data-dz-size></p>
                 <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                    <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
+                    <div class="progress-bar progress-bar-info" style="width:0%;" data-dz-uploadprogress><span class="progressBarText">0%</span></div>
                 </div>
             </div>
             <div>
@@ -126,7 +126,7 @@
                     thumbnailHeight: 80,
                     parallelUploads: 20,
                     previewTemplate: previewTemplate,
-                    autoQueue: false, // Make sure the files aren't queued until manually added
+                    autoQueue: true, // Make sure the files aren't queued until manually added
                     previewsContainer: "#previews", // Define the container to display the previews
                     clickable: ".fileinput-button"  // Define the element that should be used as click trigger to select files.
 
@@ -139,32 +139,59 @@
                     var max = responseText.result.message.max;
 
                     var min = responseText.result.message.min;
+                    
+                    //set info for display
 
-                    $("p:contains('" + file.name + "')").parent().find("div").html("trips: " + count + " ( " + min + " - " + max + " ) ");
+                    $("p:contains('" + file.name + "')").parent().find(".fileInfo").html("trips: " + count + " ( " + min + " - " + max + " ) ");
+
+                    // change color to green
+                    $("p:contains('" + file.name + "')").parent().parent().find("[data-dz-uploadprogress]").removeClass("progress-bar-info");
+                    $("p:contains('" + file.name + "')").parent().parent().find("[data-dz-uploadprogress]").addClass("progress-bar-success");
                     //alert(JSON.stringify(responseText));
+
+                    $("p:contains('" + file.name + "')").parent().parent().find(".progressBarText").html("100%");
+
                 });
 
+                myDropzone.on("error", function (file) {
+
+                    $("p:contains('" + file.name + "')").parent().find("div").html("ERROR in upload!");
+
+                    $("p:contains('" + file.name + "')").parent().parent().find("[data-dz-uploadprogress]").removeClass("progress-bar-info");
+                    $("p:contains('" + file.name + "')").parent().parent().find("[data-dz-uploadprogress]").addClass("progress-bar-danger");
+
+
+                });
+
+
                 myDropzone.on("addedfile", function (file) {
+
+                    $("p:contains('" + file.name + "')").parent().find("div").html("Uploading PCR Data ...");
+
                     // Hookup the start button
                     file.previewElement.querySelector(".start").onclick = function () { myDropzone.enqueueFile(file); };
                 });
 
-                // Update the total progress bar
-                myDropzone.on("totaluploadprogress", function (progress) {
-                    document.querySelector("#total-progress .progress-bar").style.width = progress + "%";
-                });
 
-                myDropzone.on("sending", function (file) {
-                    // Show the total progress bar when upload starts
-                    document.querySelector("#total-progress").style.opacity = "1";
-                    // And disable the start button
-                    file.previewElement.querySelector(".start").setAttribute("disabled", "disabled");
+                myDropzone.on("uploadprogress", function (file, progress) {
+                    $("p:contains('" + file.name + "')").parent().parent().find(".progressBarText").html("" + progress + "%");
                 });
+                //// Update the total progress bar
+                //myDropzone.on("totaluploadprogress", function (progress) {
+                //    document.querySelector("#total-progress .progress-bar").style.width = progress + "%";
+                //});
 
-                // Hide the total progress bar when nothing's uploading anymore
-                myDropzone.on("queuecomplete", function (progress) {
-                    document.querySelector("#total-progress").style.opacity = "0";
-                });
+                //myDropzone.on("sending", function (file) {
+                //    // Show the total progress bar when upload starts
+                //    document.querySelector("#total-progress").style.opacity = "1";
+                //    // And disable the start button
+                //    file.previewElement.querySelector(".start").setAttribute("disabled", "disabled");
+                //});
+
+                //// Hide the total progress bar when nothing's uploading anymore
+                //myDropzone.on("queuecomplete", function (progress) {
+                //    document.querySelector("#total-progress").style.opacity = "0";
+                //});
 
                 // Setup the buttons for all transfers
                 // The "add files" button doesn't need to be setup because the config
