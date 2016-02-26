@@ -11,53 +11,39 @@
 <link type="text/css" href="~/libs/dropzone/dist/dropzone.css" rel="stylesheet" />
 <script type="text/javascript" src="~/libs/dropzone/dist/dropzone.js"></script>
 
+<div class="page-bar">
+    <h3>
+        <span>Upload Pcr</span> <small>Use this panel to upload your PCRs</small>
+    </h3>
+  
+</div>
 
-<div class="row margin-bottom-5">
-    <div>
-        <div class="page-head">
-            <div class="page-title">
-                <h1>
-                    <span>Upload Pcr</span> <small>Use this panel to upload your PCRs</small>
-                </h1>
-            </div>
-        </div>
-    </div>
+<div class="row">
 
+    <div id="actions" class="col-md-12">
 
 
-
-
-
-
-
-
-
-    <div id="actions" class="row">
-
-        <div class="col-lg-12">
             <!-- The fileinput-button span is used to style the file input field as button -->
-            <span class="btn btn-success fileinput-button">
+            <span class="btn btn-primary fileinput-button">
                 <i class="glyphicon glyphicon-plus"></i>
                 <span>Add files...</span>
             </span>
-            <button type="submit" class="btn btn-primary start">
-                <i class="glyphicon glyphicon-upload"></i>
-                <span>Start upload</span>
-            </button>
+            @*<button type="submit" class="btn btn-primary start">
+                    <i class="glyphicon glyphicon-upload"></i>
+                    <span>Start upload</span>
+                </button>*@
             <button type="reset" class="btn btn-warning cancel">
                 <i class="glyphicon glyphicon-ban-circle"></i>
-                <span>Cancel upload</span>
+                <span>Cancel Uploads</span>
             </button>
-        </div>
-        <div></div>
-        <div class="col-lg-12" style="display:none" >
-            <!-- The global file processing state -->
-            <span class="fileupload-process">
-                <div id="total-progress" class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                    <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
-                </div>
-            </span>
-        </div>
+
+            <span id="spacer" style="width:100px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+
+            <button id="confirmAllUploadsBtn" style="display:none" type="submit" class="btn btn-success start">
+                <i class="glyphicon glyphicon-upload"></i>
+                <span> Confirm / Finish </span>
+            </button>
+
 
     </div>
 
@@ -65,11 +51,7 @@
 
 
 
-
-
-
-    <div class="table table-striped files" id="previews">
-
+    <div id="hideTemplateOnLoad" style="display:none">
         <div id="template" class="file-row">
             <!-- This is used as the file preview template -->
             <div>
@@ -86,32 +68,39 @@
                 </div>
             </div>
             <div>
-                <button class="btn btn-primary start">
-                    <i class="glyphicon glyphicon-upload"></i>
-                    <span>Start</span>
-                </button>
+                @*<button class="btn btn-primary start">
+                        <i class="glyphicon glyphicon-upload"></i>
+                        <span>Start</span>
+                    </button>*@
                 @*<button data-dz-remove class="btn btn-warning cancel">
-                    <i class="glyphicon glyphicon-ban-circle"></i>
-                    <span>Cancel</span>
-                </button>*@
+                        <i class="glyphicon glyphicon-ban-circle"></i>
+                        <span>Cancel</span>
+                    </button>*@
                 <button data-dz-remove class="btn btn-danger delete">
                     <i class="glyphicon glyphicon-trash"></i>
-                    <span>Delete</span>
+                    <span>Remove</span>
                 </button>
             </div>
         </div>
+    </div>
+
+
+
+
+    <div class="col-md-12 table table-striped files"  id="previews">
+
 
     </div>
 
 
 
- 
 
 
-        @section scripts {
-            <script type="text/javascript">
 
-                $(document).ready(function () {
+    @section scripts {
+        <script type="text/javascript">
+
+            $(document).ready(function () {
 
 
 
@@ -139,7 +128,7 @@
                     var max = responseText.result.message.max;
 
                     var min = responseText.result.message.min;
-                    
+
                     //set info for display
 
                     $("p:contains('" + file.name + "')").parent().find(".fileInfo").html("trips: " + count + " ( " + min + " - " + max + " ) ");
@@ -160,21 +149,29 @@
                     $("p:contains('" + file.name + "')").parent().parent().find("[data-dz-uploadprogress]").removeClass("progress-bar-info");
                     $("p:contains('" + file.name + "')").parent().parent().find("[data-dz-uploadprogress]").addClass("progress-bar-danger");
 
-
                 });
 
+         
+                myDropzone.on("removedfile", function (file) {
+
+                    ShowHideFinishBtn();
+
+                    // Hookup the start button
+                    //file.previewElement.querySelector(".start").onclick = function () { myDropzone.enqueueFile(file); };
+                });
 
                 myDropzone.on("addedfile", function (file) {
 
                     $("p:contains('" + file.name + "')").parent().find("div").html("Uploading PCR Data ...");
 
                     // Hookup the start button
-                    file.previewElement.querySelector(".start").onclick = function () { myDropzone.enqueueFile(file); };
+                    //file.previewElement.querySelector(".start").onclick = function () { myDropzone.enqueueFile(file); };
                 });
 
 
-                myDropzone.on("uploadprogress", function (file, progress) {
-                    $("p:contains('" + file.name + "')").parent().parent().find(".progressBarText").html("" + progress + "%");
+                myDropzone.on("uploadprogress", function (file, progress)
+                {
+                    $("p:contains('" + file.name + "')").parent().parent().find(".progressBarText").html("" + parseInt(progress, 10) + "%");
                 });
                 //// Update the total progress bar
                 //myDropzone.on("totaluploadprogress", function (progress) {
@@ -188,25 +185,51 @@
                 //    file.previewElement.querySelector(".start").setAttribute("disabled", "disabled");
                 //});
 
+                function AllFilesValid()
+                {
+                    for (i = 0 ; i < myDropzone.files.length; i++)
+                    {
+                        if (myDropzone.files[i].status != "success")
+                            return false;
+                    }
+                    return true;
+                }
+                function ShowHideFinishBtn()
+                {
+                    if (AllFilesValid() && myDropzone.files.length > 0)
+                        $('#confirmAllUploadsBtn').show();
+                    else
+                        $('#confirmAllUploadsBtn').hide();
+                }
+
                 //// Hide the total progress bar when nothing's uploading anymore
-                //myDropzone.on("queuecomplete", function (progress) {
-                //    document.querySelector("#total-progress").style.opacity = "0";
-                //});
+                myDropzone.on("queuecomplete", function (progress)
+                {
+                    ShowHideFinishBtn();
+                });
 
                 // Setup the buttons for all transfers
                 // The "add files" button doesn't need to be setup because the config
                 // `clickable` has already been specified.
-                document.querySelector("#actions .start").onclick = function () {
-                    myDropzone.enqueueFiles(myDropzone.getFilesWithStatus(Dropzone.ADDED));
+
+
+                document.querySelector("#confirmAllUploadsBtn").onclick = function () {
+                    bootbox.alert('Files are submitted, you are now being redirected to upload history...');
+
                 };
+
                 document.querySelector("#actions .cancel").onclick = function () {
+                    
+                    if (myDropzone.files.length == 0)
+                        bootbox.alert('Would you like to return back to upload history page?');
+
                     myDropzone.removeAllFiles(true);
                 };
 
 
-                });
-            </script>
-        }
+            });
+        </script>
+    }
 
 
 
