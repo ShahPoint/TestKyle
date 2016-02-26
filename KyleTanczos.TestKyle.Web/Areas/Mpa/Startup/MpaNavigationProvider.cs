@@ -31,7 +31,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Startup
                 )
                 .AddItem(new MenuItemDefinition(
                     "Editions2",
-                    L("Editions2"),
+                    L("UploadReports"),
                     url: "Mpa/UploadReports",
                     icon: "icon-grid",
                     requiredPermissionName: AppPermissions.Pages_Editions
