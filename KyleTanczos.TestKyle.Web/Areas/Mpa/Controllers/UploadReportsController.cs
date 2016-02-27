@@ -86,20 +86,24 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 
                     var str = document.OuterXml;
 
-                    var len = str.Length;
+                    var byteArray = GetBytes(str);
 
-                    var fileCount = db.UploadedFiles.Count();
+                    var len = byteArray.Length;
 
-                    var largeFiles = db.UploadedFiles.Where(x => x.Count > 1000).ToList();
+                    //var fileCount = db.UploadedFiles.Count();
 
-                    var countBlob = db.UploadedFiles.Where(x => x.Count > 1000 && x.file != null).ToList();
+                    //var largeFiles = db.UploadedFiles.Where(x => x.Count > 1000).ToList();
+
+                    //var countBlob = db.UploadedFiles.Where(x => x.Count > 1000 && x.file != null).ToList();
 
                     db.blobFiles.Add(
                             new blobFile()
                             {
-                                fileContents = str
-                                
+                                fileContents2 = byteArray,
+                                byteCount = len
                             });
+
+                    var largeBlobs = db.blobFiles.Where(x => x.byteCount > 3000000).Count();
 
                     db.SaveChanges();
 
@@ -120,6 +124,13 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
             return new HttpNotFoundResult("file not valid");
         }
 
+
+        private byte[] GetBytes(string str)
+        {
+            byte[] bytes = new byte[str.Length * sizeof(char)];
+            System.Buffer.BlockCopy(str.ToCharArray(), 0, bytes, 0, bytes.Length);
+            return bytes;
+        }
         public class dropZoneDTO
         {
             public string min { get; set; }

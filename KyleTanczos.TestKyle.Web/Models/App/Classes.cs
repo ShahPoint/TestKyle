@@ -24,10 +24,9 @@ namespace KyleTanczos.TestKyle.Web.Models.App
     public class blobFile
     {
         public int Id { get; set; }
-        [Column(TypeName = "text")]
-        public string fileContents { get; set; }
-
-}
+        public byte[] fileContents2 { get; set; }
+        public int byteCount { get; set; }
+    }
 
     public class UploadedPcr
     {
