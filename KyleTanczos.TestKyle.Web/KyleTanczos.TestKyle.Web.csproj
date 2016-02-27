@@ -2614,8 +2614,15 @@
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Migrations\201602270016466_Initial.cs" />
+    <Compile Include="Migrations\201602270016466_Initial.Designer.cs">
+      <DependentUpon>201602270016466_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account\ImpersonateModel.cs" />
     <Compile Include="Models\Account\TenantSelectionViewModel.cs" />
+    <Compile Include="Models\App\AppContextDb.cs" />
+    <Compile Include="Models\App\Classes.cs" />
     <Compile Include="MultiTenancy\ITenancyNameFinder.cs" />
     <Compile Include="Controllers\LayoutController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
@@ -2853,7 +2860,11 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201602270016466_Initial.resx">
+      <DependentUpon>201602270016466_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KyleTanczos.TestKyle.Application\KyleTanczos.TestKyle.Application.csproj">
       <Project>{edf5d964-4c0f-4f19-b674-58a38a5e5401}</Project>
