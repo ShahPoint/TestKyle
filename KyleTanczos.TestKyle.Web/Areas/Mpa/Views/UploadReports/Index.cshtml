@@ -1,6 +1,9 @@
-﻿@using Abp.Web.Mvc.Extensions
+﻿@model List<KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers.UploadReportsController.filesDTO>
+
+@using Abp.Web.Mvc.Extensions
 @using KyleTanczos.TestKyle.Authorization
 @using KyleTanczos.TestKyle.Web.Navigation
+@using KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 
 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 
@@ -15,7 +18,7 @@
     <h3>
         <span>Upload Pcr</span> <small>Use this panel to upload your PCRs</small>
     </h3>
-  
+
 </div>
 
 <div class="row">
@@ -23,26 +26,26 @@
     <div id="actions" class="col-md-12">
 
 
-            <!-- The fileinput-button span is used to style the file input field as button -->
-            <span class="btn btn-primary fileinput-button">
-                <i class="glyphicon glyphicon-plus"></i>
-                <span>Add files...</span>
-            </span>
-            @*<button type="submit" class="btn btn-primary start">
-                    <i class="glyphicon glyphicon-upload"></i>
-                    <span>Start upload</span>
-                </button>*@
-            <button type="reset" class="btn btn-warning cancel">
-                <i class="glyphicon glyphicon-ban-circle"></i>
-                <span>Cancel Uploads</span>
-            </button>
-
-            <span id="spacer" style="width:100px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-
-            <button id="confirmAllUploadsBtn" style="display:none" type="submit" class="btn btn-success start">
+        <!-- The fileinput-button span is used to style the file input field as button -->
+        <span class="btn btn-primary fileinput-button">
+            <i class="glyphicon glyphicon-plus"></i>
+            <span>Add files...</span>
+        </span>
+        @*<button type="submit" class="btn btn-primary start">
                 <i class="glyphicon glyphicon-upload"></i>
-                <span> Confirm / Finish </span>
-            </button>
+                <span>Start upload</span>
+            </button>*@
+        <button type="reset" class="btn btn-warning cancel">
+            <i class="glyphicon glyphicon-ban-circle"></i>
+            <span>Cancel Uploads</span>
+        </button>
+
+        <span id="spacer" style="width:100px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+
+        <button id="confirmAllUploadsBtn" style="display:none" type="submit" class="btn btn-success start">
+            <i class="glyphicon glyphicon-upload"></i>
+            <span> Confirm / Finish </span>
+        </button>
 
 
     </div>
@@ -87,11 +90,28 @@
 
 
 
-    <div class="col-md-12 table table-striped files"  id="previews">
+    <div class="col-md-12 table table-striped files" id="previews">
 
 
     </div>
 
+
+    <table>
+        <tr>
+            <td>FileName</td>
+
+            <td>ByteCount</td>
+        </tr>
+
+        @foreach (UploadReportsController.filesDTO file in Model)
+        {
+            <tr>
+                <td>@file.fileName</td>
+               
+                <td>@file.byteCount</td>
+            </tr>
+        }
+    </table>
 
 
 
@@ -113,12 +133,12 @@
                     url: "/mpa/UploadReports/SaveDropzoneJsUploadedFiles", // Set the url
                     thumbnailWidth: 80,
                     thumbnailHeight: 80,
-                    parallelUploads: 20,
                     previewTemplate: previewTemplate,
                     autoQueue: true, // Make sure the files aren't queued until manually added
                     previewsContainer: "#previews", // Define the container to display the previews
-                    clickable: ".fileinput-button"  // Define the element that should be used as click trigger to select files.
-
+                    clickable: ".fileinput-button",  // Define the element that should be used as click trigger to select files.
+                    parallelUploads: 1,
+                    uploadMultiple: false
                 });
 
                 myDropzone.on("success", function (file, responseText) {
@@ -142,8 +162,11 @@
 
                 });
 
-                myDropzone.on("error", function (file) {
+                myDropzone.on("error", function (file, responseText) {
 
+                    alert(JSON.stringify(file.JSON));
+                    alert(JSON.stringify(file.responseText));
+                    alert(JSON.stringify(file.result));
                     $("p:contains('" + file.name + "')").parent().find("div").html("ERROR in upload!");
 
                     $("p:contains('" + file.name + "')").parent().parent().find("[data-dz-uploadprogress]").removeClass("progress-bar-info");
@@ -151,7 +174,7 @@
 
                 });
 
-         
+
                 myDropzone.on("removedfile", function (file) {
 
                     ShowHideFinishBtn();
@@ -169,8 +192,7 @@
                 });
 
 
-                myDropzone.on("uploadprogress", function (file, progress)
-                {
+                myDropzone.on("uploadprogress", function (file, progress) {
                     $("p:contains('" + file.name + "')").parent().parent().find(".progressBarText").html("" + parseInt(progress, 10) + "%");
                 });
                 //// Update the total progress bar
@@ -185,17 +207,14 @@
                 //    file.previewElement.querySelector(".start").setAttribute("disabled", "disabled");
                 //});
 
-                function AllFilesValid()
-                {
-                    for (i = 0 ; i < myDropzone.files.length; i++)
-                    {
+                function AllFilesValid() {
+                    for (i = 0 ; i < myDropzone.files.length; i++) {
                         if (myDropzone.files[i].status != "success")
                             return false;
                     }
                     return true;
                 }
-                function ShowHideFinishBtn()
-                {
+                function ShowHideFinishBtn() {
                     if (AllFilesValid() && myDropzone.files.length > 0)
                         $('#confirmAllUploadsBtn').show();
                     else
@@ -203,8 +222,7 @@
                 }
 
                 //// Hide the total progress bar when nothing's uploading anymore
-                myDropzone.on("queuecomplete", function (progress)
-                {
+                myDropzone.on("queuecomplete", function (progress) {
                     ShowHideFinishBtn();
                 });
 
@@ -219,7 +237,7 @@
                 };
 
                 document.querySelector("#actions .cancel").onclick = function () {
-                    
+
                     if (myDropzone.files.length == 0)
                         bootbox.alert('Would you like to return back to upload history page?');
 

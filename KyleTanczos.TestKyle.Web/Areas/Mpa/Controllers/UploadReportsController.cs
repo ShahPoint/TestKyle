@@ -141,7 +141,15 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
         // GET: Mpa/UploadReports
         public ActionResult Index()
         {
-            return View();
+            var fileInfoList = db.blobFiles.Select(x => new filesDTO() { byteCount = x.byteCount, fileName = x.Id.ToString() }).ToList();
+
+            return View(fileInfoList);
         }
+
+        public class filesDTO
+        {
+            public string fileName { get; set; }
+            public int byteCount { get; set; }
+        } 
     }
 }
