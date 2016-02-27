@@ -14,6 +14,10 @@
 <link type="text/css" href="~/libs/dropzone/dist/dropzone.css" rel="stylesheet" />
 <script type="text/javascript" src="~/libs/dropzone/dist/dropzone.js"></script>
 
+
+
+
+
 <div class="page-bar">
     <h3>
         <span>Upload Pcr</span> <small>Use this panel to upload your PCRs</small>
@@ -96,18 +100,26 @@
     </div>
 
 
-    <table>
+    <table id="fileInfoTable" class="display">
         <tr>
-            <td>FileName</td>
+            <td>fileName</td>
 
-            <td>ByteCount</td>
+            <td>created</td>
+
+            <td>id</td>
+
+            <td>byteCount</td>
         </tr>
 
         @foreach (UploadReportsController.filesDTO file in Model)
         {
             <tr>
                 <td>@file.fileName</td>
-               
+
+                <td>@file.created</td>
+
+                <td>@file.id</td>
+
                 <td>@file.byteCount</td>
             </tr>
         }
@@ -118,7 +130,13 @@
 
 
     @section scripts {
+    <link type="text/css" href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+
+        
         <script type="text/javascript">
+
 
             $(document).ready(function () {
 
@@ -245,6 +263,12 @@
                 };
 
 
+            });
+        </script>
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+                $('#fileInfoTable').DataTable();
             });
         </script>
     }

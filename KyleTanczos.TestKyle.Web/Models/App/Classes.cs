@@ -26,6 +26,8 @@ namespace KyleTanczos.TestKyle.Web.Models.App
         public int Id { get; set; }
         public byte[] fileContents2 { get; set; }
         public int byteCount { get; set; }
+        public DateTime created { get; set; }
+        public string fileName { get; set; }
     }
 
     public class UploadedPcr

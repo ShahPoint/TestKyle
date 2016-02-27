@@ -17,7 +17,7 @@ namespace KyleTanczos.TestKyle.Web.Models.App
         public AppContextDb()
             : base("KyleIsABoss")
         {
-            ((IObjectContextAdapter)this).ObjectContext.CommandTimeout = 300;
+            ((IObjectContextAdapter)this).ObjectContext.CommandTimeout = 1200; //20 minutes
         }
 
     }
