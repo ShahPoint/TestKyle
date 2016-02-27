@@ -1,4 +1,5 @@
 ﻿using KyleTanczos.TestKyle.Web.Controllers;
+using KyleTanczos.TestKyle.Web.Models.App;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -13,17 +14,21 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 {
     public class UploadReportsController : TestKyleControllerBase
     {
+        AppContextDb db = new AppContextDb();
 
-        [HttpPost]
-        public ActionResult Index(IEnumerable<HttpPostedFileBase> files)
-        {
-            foreach (var file in files)
-            {
-                var filename = Path.Combine(Server.MapPath("~/App_Data"), file.FileName);
-                file.SaveAs(filename);
-            }
-            return Json(files.Select(x => new { name = x.FileName }));
-        }
+        
+       
+
+        //[HttpPost]
+        //public ActionResult Index(IEnumerable<HttpPostedFileBase> files)
+        //{
+        //    foreach (var file in files)
+        //    {
+        //        var filename = Path.Combine(Server.MapPath("~/App_Data"), file.FileName);
+        //        file.SaveAs(filename);
+        //    }
+        //    return Json(files.Select(x => new { name = x.FileName }));
+        //}
 
 
         /// <summary>
@@ -33,9 +38,14 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
         {
             bool isSavedSuccessfully = false;
 
+
+
+
             foreach (string fileName in Request.Files)
             {
                 HttpPostedFileBase file = Request.Files[fileName];
+
+
 
                 if (file != null && file.ContentLength > 0 && file.ContentType == "text/xml")
                 {
@@ -64,11 +74,34 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 
                     }
 
+                    var records = document.GetElementsByTagName("Record");
+
+
+
                     var maxVar = dateTimeList.Max();
 
                     var minVar = dateTimeList.Min();
 
                     var countVar = dateTimeList.Count();
+
+                    var str = document.OuterXml;
+
+                    var len = str.Length;
+
+                    var fileCount = db.UploadedFiles.Count();
+
+                    var largeFiles = db.UploadedFiles.Where(x => x.Count > 1000).ToList();
+
+                    var countBlob = db.UploadedFiles.Where(x => x.Count > 1000 && x.file != null).ToList();
+
+                    db.blobFiles.Add(
+                            new blobFile()
+                            {
+                                fileContents = str
+                                
+                            });
+
+                    db.SaveChanges();
 
                     var dropZoneDto = new dropZoneDTO()
                     {

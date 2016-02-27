@@ -9,8 +9,9 @@ namespace KyleTanczos.TestKyle.Web.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             ContextKey = "AppJayMigration";
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(KyleTanczos.TestKyle.Web.Models.App.AppContextDb context)

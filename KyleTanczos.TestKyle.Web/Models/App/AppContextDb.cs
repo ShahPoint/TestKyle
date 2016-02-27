@@ -11,7 +11,7 @@ namespace KyleTanczos.TestKyle.Web.Models.App
         public DbSet<UploadedFile> UploadedFiles { get; set; }
         public DbSet<UploadedPcr> UploadedPcrs { get; set; }
         public DbSet<OutComeType> OutcomeTypes { get; set; }
-
+        public DbSet<blobFile> blobFiles { get; set; }
         public AppContextDb()
             : base("KyleIsABoss")
         {
