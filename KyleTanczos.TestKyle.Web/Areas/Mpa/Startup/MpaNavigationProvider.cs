@@ -37,6 +37,13 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Startup
                     requiredPermissionName: AppPermissions.Pages_Editions
                     )
                 )
+                .AddItem(new MenuItemDefinition(
+                    "PcrForm",
+                    L("PcrForm"),
+                    url: "Mpa/PcrForm",
+                    icon: "icon-grid"
+                    )
+                )
 
                 .AddItem(new MenuItemDefinition(
                     PageNames.App.Tenant.Dashboard,

@@ -233,6 +233,7 @@
     <text name="SeeDemo" value="See demo" />
     <text name="Edition" value="Edition" />
     <text name="Editions" value="Editions" />
+    <text name="PcrForm" value="PCR Form" />
     <text name="UploadReports" value="Upload Reports" />
     <text name="EditionsHeaderInfo" value="Manage editions and features of the application" />
     <text name="CreateNewEdition" value="Create new edition" />

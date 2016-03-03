@@ -2590,6 +2590,7 @@
     <Compile Include="Areas\Mpa\Controllers\Common.cs" />
     <Compile Include="Areas\Mpa\Controllers\EditionsController.cs" />
     <Compile Include="Areas\Mpa\Controllers\OrganizationUnitsController.cs" />
+    <Compile Include="Areas\Mpa\Controllers\PcrFormController.cs" />
     <Compile Include="Areas\Mpa\Controllers\UploadReportsController.cs" />
     <Compile Include="Areas\Mpa\Models\Languages\EditTextModalViewModel.cs" />
     <Compile Include="Areas\Mpa\Controllers\LanguagesController.cs" />
@@ -2858,6 +2859,8 @@
     <Content Include="libs\dropzone\test.sh" />
     <Content Include="libs\dropzone\test\test.coffee" />
     <Content Include="libs\datatables\images\Sorting icons.psd" />
+    <Content Include="Areas\Mpa\Views\PcrForm\Index.cshtml" />
+    <Content Include="Areas\Mpa\Views\PcrForm\_Control_Textbox.cshtml" />
     <None Include="Properties\PublishProfiles\FileSystem_Release.pubxml" />
     <Content Include="Views\Account\TenantSelection.cshtml" />
     <Content Include="Scripts\version.json" />
