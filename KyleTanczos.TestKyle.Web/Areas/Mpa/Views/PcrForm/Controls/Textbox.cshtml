@@ -1,4 +1,13 @@
-﻿@model int
+﻿@using KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 
-Patient First Name: @Model
-<input type="text" />
+@model KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers.Ctrl
+
+<div class="col-xs-@Model.NgWidth">
+    <div class="form-group">
+        <label class="control-label">@Model.DisplayName </label>
+        <input type="text" id="@Model.ClientId" class="form-control" placeholder="@Model.PlaceHolder">
+
+    </div>
+</div>
+
+

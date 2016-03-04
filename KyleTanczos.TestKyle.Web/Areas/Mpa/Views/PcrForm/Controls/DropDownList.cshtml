@@ -1,0 +1,24 @@
+﻿@using KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
+
+
+@model KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers.Ctrl
+
+
+<div class="col-xs-6">
+    <div class="form-group">
+        <label class="control-label">@Model.DisplayName </label>
+
+        <select  id="@Model.ClientId" class="form-control" >
+            <option value="">@Model.PlaceHolder</option>
+
+            @foreach (var option in Model.DropDownOptions)
+            {
+                <option value="@option.id">@option.text</option>
+            }
+
+        </select>
+
+    </div>
+</div>
+
+

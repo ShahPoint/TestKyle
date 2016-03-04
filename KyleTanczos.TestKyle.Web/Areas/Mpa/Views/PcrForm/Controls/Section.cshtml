@@ -1,0 +1,33 @@
+﻿@using KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
+
+@model Section
+
+<div class="col-md-@Model.NgWidth">
+    <div class="portlet box blue-hoki">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-gift"></i>@Model.SectionName
+            </div>
+            <div class="tools">
+                <a href="javascript:;" class="collapse"> </a>
+            </div>
+        </div>
+        <div class="portlet-body form">
+            <!-- BEGIN FORM-->
+            <form action="#" class="horizontal-form">
+                <div class="form-body">
+
+                    <div class="row">
+
+                        @foreach (Ctrl control in Model.Controls)
+                        {
+                            @Html.Partial("Controls/" + control.ControlType, control);
+                        }
+
+                    </div>
+                </div>
+            </form>
+            <!-- END FORM-->
+        </div>
+    </div>
+</div>

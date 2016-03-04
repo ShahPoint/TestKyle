@@ -1,0 +1,25 @@
+﻿@using KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
+
+
+@model KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers.Ctrl
+
+
+
+
+<div class="col-md-6">
+    <div class="form-group">
+        <label for="span_small" class="control-label">@Model.DisplayName </label>
+
+        <select id="span_small" class="select2Defualt form-control select2">
+
+            <option value="">@Model.PlaceHolder</option>
+
+            @foreach (var option in Model.DropDownOptions)
+            {
+                <option value="@option.id">@option.text</option>
+            }
+        </select>
+
+    </div>
+
+</div>

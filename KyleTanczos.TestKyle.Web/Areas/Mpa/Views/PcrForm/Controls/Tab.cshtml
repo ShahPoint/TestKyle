@@ -1,0 +1,13 @@
+﻿@using KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
+
+@model Tab
+
+<div TabTarget="">
+    @foreach (Section section in Model.Sections)
+    {
+        @Html.Partial("Controls/Section", section);
+    }
+</div>
+
+
+    
