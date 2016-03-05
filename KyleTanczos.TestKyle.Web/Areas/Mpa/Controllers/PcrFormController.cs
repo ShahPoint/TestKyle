@@ -5,6 +5,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Newtonsoft.Json;
+using Microsoft.VisualBasic.FileIO;
+using System.IO;
+
 
 namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 {
@@ -17,6 +21,8 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 
         public List<Tab> Tabs { get; set; }
     }
+
+
 
     public class Tab
     {
@@ -33,13 +39,18 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
         public Section()
         {
             Controls = new List<Ctrl>();
-            NgWidth = 6;
+            NgWidth = 12;
+            side = SectionSideEnum.left;
         }
         public string SectionName { get; set; }
         public int NgWidth { get; set; }
         public List<Ctrl> Controls { get; set; }
+        public SectionSideEnum side { get; set; }
     }
 
+    public enum SectionSideEnum {left, right}
+
+    
     public class Ctrl
     {
         public Ctrl()
@@ -76,70 +87,856 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
     }
 
 
-    public enum ControlTypeEnum { TextBox, DropDownList, Select2, Select2Single, Select2Many, Select2TagsSingle, Select2TagsMany }
+    public enum ControlTypeEnum { MileageBox, TextBox, DropDownList, Select2, Select2Single, Select2Many, Select2TagsSingle, Select2TagsMany, TimePicker }
 
    // public enum NgWidthEnum {ng1, ng2, ng3, ng4, ng5, ng6, ng7, ng8, ng9, ng10, ng11, ng12 }
     public class PcrFormController : Controller
     {
+
+        //public void ReadCsvIntoDatabase()
+        //{
+        //    using (TextFieldParser csvReader = new TextFieldParser(@"C:\GitHubLocal\TestKyle\KyleTanczos.TestKyle.Web\App_Data\NEMSIS_Data_Dictionary_V2_2.csv"))
+        //    {
+        //        AppContextDb db = new AppContextDb();
+
+        //        csvReader.SetDelimiters(new string[] { "," });
+        //        csvReader.HasFieldsEnclosedInQuotes = true;
+        //        string[] colFields = csvReader.ReadFields();
+
+        //        while (!csvReader.EndOfData)
+        //        {
+        //            string[] fieldData = csvReader.ReadFields();
+        //            db.NemsisDataElements.Add(new NemsisDataElement()
+        //            {
+        //                FieldName = fieldData[1],
+        //                FieldNumber = fieldData[0],
+        //                OptionCode = fieldData[2],
+        //                OptionText = fieldData[3],
+        //                State = "Default"
+        //            });
+        //        }
+
+        //        //db.SaveChanges();
+        //    }
+        //}
+
+        AppContextDb db = new AppContextDb();
+        
+        string agencyToken = "Superior";
+
+        string state = "PA";
+
         // GET: Mpa/PcrForm
         public ActionResult Index()
         {
-            PcrForm pcrForm = new PcrForm();
+            
 
-            Tab tab = new Tab();
 
-            Section section = new Section() { SectionName = "Test 1", NgWidth = 9 };
+            var select2OptionsLists =  db.Select2OptionsList.Where(x => x.Association == "Default" || x.Association == state || x.Association == agencyToken).ToList();
 
-            Ctrl control = new Ctrl() { DisplayName = "FirstName", ControlType = ControlTypeEnum.Select2,
-                DropDownOptions = CtrlHelpers.GetSelect2Options(new string[] { "one", "two", "three" })
+
+
+            PcrForm pcrForm = new PcrForm()
+            {
+                Tabs = new List<Tab>()
+                {
+                    new Tab()
+                    {
+                        Sections = new List<Section>()
+                        {
+                            new Section()
+                            {
+                                 SectionName = "Disposition",
+                                Controls = new List<Ctrl>()
+                                {
+                                    new Ctrl() { DisplayName = "Disposition/Outcome", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2ListFromDb("E20_10"), NgWidth = 12
+                                        }
+
+                                }
+                            },
+                            new Section()
+                            {   side = SectionSideEnum.right,
+                                SectionName = "Times",
+                                NgWidth = 6,
+                                Controls = new List<Ctrl>()
+                                {
+                                   new Ctrl() { DisplayName = "Onset", ControlType = ControlTypeEnum.TimePicker, NgWidth = 12
+                                        },
+                                    new Ctrl() { DisplayName = "Recieved", ControlType = ControlTypeEnum.TimePicker,  NgWidth = 12
+                                        },
+                                   new Ctrl() { DisplayName = "Notified", ControlType = ControlTypeEnum.TimePicker, NgWidth = 12
+                                        },
+                                    new Ctrl() { DisplayName = "Dispatched", ControlType = ControlTypeEnum.TimePicker,NgWidth = 12
+                                        },
+                                     new Ctrl() { DisplayName = "Enroute", ControlType = ControlTypeEnum.TimePicker, NgWidth = 12
+                                        },
+                                    new Ctrl() { DisplayName = "Arrival", ControlType = ControlTypeEnum.TimePicker,NgWidth = 12
+                                        },
+                                    new Ctrl() { DisplayName = "Contacted", ControlType = ControlTypeEnum.TimePicker,NgWidth = 12
+                                        },
+                                    new Ctrl() { DisplayName = "Departed", ControlType = ControlTypeEnum.TimePicker,NgWidth = 12
+                                        },
+                                    new Ctrl() { DisplayName = "Arrival", ControlType = ControlTypeEnum.TimePicker,NgWidth = 12
+                                        },
+                                    new Ctrl() { DisplayName = "Available", ControlType = ControlTypeEnum.TimePicker,NgWidth = 12
+                                        },
+                                    new Ctrl() { DisplayName = "At Base", ControlType = ControlTypeEnum.TimePicker,NgWidth = 12
+                                        },
+                                }
+                            },
+                            new Section()
+                            {
+                                SectionName = "Crew",
+                                side = SectionSideEnum.right,
+                                NgWidth = 6,
+                                Controls = new List<Ctrl>()
+                                {
+                                   new Ctrl() { DisplayName = "Primary", ControlType = ControlTypeEnum.DropDownList, NgWidth = 12,
+                                        DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Secondary", ControlType = ControlTypeEnum.DropDownList, NgWidth = 12,
+                                        DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Third", ControlType = ControlTypeEnum.DropDownList, NgWidth = 12,
+                                        DropDownOptions = GetSelect2Options("E1_03", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Other", ControlType = ControlTypeEnum.DropDownList, NgWidth = 12,
+                                        DropDownOptions = GetSelect2Options("E1_01", agencyToken, state, select2OptionsLists)
+                                        }
+                                }
+                            },                           
+                            new Section()
+                            {
+                                SectionName = "Mileage",
+                                side = SectionSideEnum.right,
+                                NgWidth = 6,
+                                Controls = new List<Ctrl>()
+                                {
+                                   new Ctrl() { DisplayName = "Start", ControlType = ControlTypeEnum.MileageBox, NgWidth = 12,
+                                        DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Scene", ControlType = ControlTypeEnum.MileageBox, NgWidth = 12,
+                                        DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Dest.", ControlType = ControlTypeEnum.MileageBox, NgWidth = 12,
+                                        DropDownOptions = GetSelect2Options("E1_03", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Service", ControlType = ControlTypeEnum.MileageBox, NgWidth = 12,
+                                        DropDownOptions = GetSelect2Options("E1_01", agencyToken, state, select2OptionsLists)
+                                        }
+                                }
+                            },
+                            new Section()
+                            {    SectionName = "Incident",
+                                Controls = new List<Ctrl>()
+                                {
+                                   new Ctrl() { DisplayName = "Incident Number", ControlType = ControlTypeEnum.TextBox
+                                        },
+                                    new Ctrl() { DisplayName = "Response Urgency", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
+                                        },
+
+                                    new Ctrl() { DisplayName = "CMS Level", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_03", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Type Of Location", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_01", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Nature Of Incident", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_02", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Scene Address", ControlType = ControlTypeEnum.TextBox
+
+                                        }
+
+                                }
+                            },
+                            new Section()
+                            {    SectionName = "Dispatch",
+                                Controls = new List<Ctrl>()
+                                {
+                                   new Ctrl() { DisplayName = "Call Sign", ControlType = ControlTypeEnum.TextBox
+                                        },
+                                    new Ctrl() { DisplayName = "Vehicle Number", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
+                                        },
+
+                                    new Ctrl() { DisplayName = "Other Agencies", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_03", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Mode To Scene", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_01", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Responder Time", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_02", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Service Requested", ControlType = ControlTypeEnum.TextBox
+                                        },
+                                    new Ctrl() { DisplayName = "Responder Time", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_02", agencyToken, state, select2OptionsLists)
+                                        }
+
+                                }
+                            }
+
+
+                        }
+                    },
+                     new Tab()
+                    {
+                        Sections = new List<Section>()
+                        {
+                            new Section()
+                            {
+                                 SectionName = "Disposition",
+                                Controls = new List<Ctrl>()
+                                {
+                                    new Ctrl() { DisplayName = "Disposition/Outcome", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2ListFromDb("E20_10"), NgWidth = 12
+                                        }
+
+                                }
+                            },
+                            new Section()
+                            {   side = SectionSideEnum.right,
+                                SectionName = "Times",
+                                NgWidth = 6,
+                                Controls = new List<Ctrl>()
+                                {
+                                   new Ctrl() { DisplayName = "Onset", ControlType = ControlTypeEnum.TimePicker, NgWidth = 12
+                                        },
+                                    new Ctrl() { DisplayName = "Recieved", ControlType = ControlTypeEnum.TimePicker,  NgWidth = 12
+                                        },
+                                   new Ctrl() { DisplayName = "Notified", ControlType = ControlTypeEnum.TimePicker, NgWidth = 12
+                                        },
+                                    new Ctrl() { DisplayName = "Dispatched", ControlType = ControlTypeEnum.TimePicker,NgWidth = 12
+                                        },
+                                     new Ctrl() { DisplayName = "Enroute", ControlType = ControlTypeEnum.TimePicker, NgWidth = 12
+                                        },
+                                    new Ctrl() { DisplayName = "Arrival", ControlType = ControlTypeEnum.TimePicker,NgWidth = 12
+                                        },
+                                    new Ctrl() { DisplayName = "Contacted", ControlType = ControlTypeEnum.TimePicker,NgWidth = 12
+                                        },
+                                    new Ctrl() { DisplayName = "Departed", ControlType = ControlTypeEnum.TimePicker,NgWidth = 12
+                                        },
+                                    new Ctrl() { DisplayName = "Arrival", ControlType = ControlTypeEnum.TimePicker,NgWidth = 12
+                                        },
+                                    new Ctrl() { DisplayName = "Available", ControlType = ControlTypeEnum.TimePicker,NgWidth = 12
+                                        },
+                                    new Ctrl() { DisplayName = "At Base", ControlType = ControlTypeEnum.TimePicker,NgWidth = 12
+                                        },
+                                }
+                            },
+                            new Section()
+                            {
+                                SectionName = "Crew",
+                                side = SectionSideEnum.right,
+                                NgWidth = 6,
+                                Controls = new List<Ctrl>()
+                                {
+                                   new Ctrl() { DisplayName = "Primary", ControlType = ControlTypeEnum.DropDownList, NgWidth = 12,
+                                        DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Secondary", ControlType = ControlTypeEnum.DropDownList, NgWidth = 12,
+                                        DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Third", ControlType = ControlTypeEnum.DropDownList, NgWidth = 12,
+                                        DropDownOptions = GetSelect2Options("E1_03", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Other", ControlType = ControlTypeEnum.DropDownList, NgWidth = 12,
+                                        DropDownOptions = GetSelect2Options("E1_01", agencyToken, state, select2OptionsLists)
+                                        }
+                                }
+                            },
+                            new Section()
+                            {
+                                SectionName = "Mileage",
+                                side = SectionSideEnum.right,
+                                NgWidth = 6,
+                                Controls = new List<Ctrl>()
+                                {
+                                   new Ctrl() { DisplayName = "Start", ControlType = ControlTypeEnum.MileageBox, NgWidth = 12,
+                                        DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Scene", ControlType = ControlTypeEnum.MileageBox, NgWidth = 12,
+                                        DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Dest.", ControlType = ControlTypeEnum.MileageBox, NgWidth = 12,
+                                        DropDownOptions = GetSelect2Options("E1_03", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Service", ControlType = ControlTypeEnum.MileageBox, NgWidth = 12,
+                                        DropDownOptions = GetSelect2Options("E1_01", agencyToken, state, select2OptionsLists)
+                                        }
+                                }
+                            },
+                            new Section()
+                            {    SectionName = "Incident",
+                                Controls = new List<Ctrl>()
+                                {
+                                   new Ctrl() { DisplayName = "Incident Number", ControlType = ControlTypeEnum.TextBox
+                                        },
+                                    new Ctrl() { DisplayName = "Response Urgency", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
+                                        },
+
+                                    new Ctrl() { DisplayName = "CMS Level", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_03", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Type Of Location", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_01", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Nature Of Incident", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_02", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Scene Address", ControlType = ControlTypeEnum.TextBox
+
+                                        }
+
+                                }
+                            },
+                            new Section()
+                            {    SectionName = "Dispatch",
+                                Controls = new List<Ctrl>()
+                                {
+                                   new Ctrl() { DisplayName = "Call Sign", ControlType = ControlTypeEnum.TextBox
+                                        },
+                                    new Ctrl() { DisplayName = "Vehicle Number", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
+                                        },
+
+                                    new Ctrl() { DisplayName = "Other Agencies", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_03", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Mode To Scene", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_01", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Responder Time", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_02", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Service Requested", ControlType = ControlTypeEnum.TextBox
+                                        },
+                                    new Ctrl() { DisplayName = "Responder Time", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_02", agencyToken, state, select2OptionsLists)
+                                        }
+
+                                }
+                            }
+
+
+                        }
+                    },
+                      new Tab()
+                    {
+                        Sections = new List<Section>()
+                        {
+                            new Section()
+                            {
+                                 SectionName = "Disposition",
+                                Controls = new List<Ctrl>()
+                                {
+                                    new Ctrl() { DisplayName = "Disposition/Outcome", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2ListFromDb("E20_10"), NgWidth = 12
+                                        }
+
+                                }
+                            },
+                            new Section()
+                            {   side = SectionSideEnum.right,
+                                SectionName = "Times",
+                                NgWidth = 6,
+                                Controls = new List<Ctrl>()
+                                {
+                                   new Ctrl() { DisplayName = "Onset", ControlType = ControlTypeEnum.TimePicker, NgWidth = 12
+                                        },
+                                    new Ctrl() { DisplayName = "Recieved", ControlType = ControlTypeEnum.TimePicker,  NgWidth = 12
+                                        },
+                                   new Ctrl() { DisplayName = "Notified", ControlType = ControlTypeEnum.TimePicker, NgWidth = 12
+                                        },
+                                    new Ctrl() { DisplayName = "Dispatched", ControlType = ControlTypeEnum.TimePicker,NgWidth = 12
+                                        },
+                                     new Ctrl() { DisplayName = "Enroute", ControlType = ControlTypeEnum.TimePicker, NgWidth = 12
+                                        },
+                                    new Ctrl() { DisplayName = "Arrival", ControlType = ControlTypeEnum.TimePicker,NgWidth = 12
+                                        },
+                                    new Ctrl() { DisplayName = "Contacted", ControlType = ControlTypeEnum.TimePicker,NgWidth = 12
+                                        },
+                                    new Ctrl() { DisplayName = "Departed", ControlType = ControlTypeEnum.TimePicker,NgWidth = 12
+                                        },
+                                    new Ctrl() { DisplayName = "Arrival", ControlType = ControlTypeEnum.TimePicker,NgWidth = 12
+                                        },
+                                    new Ctrl() { DisplayName = "Available", ControlType = ControlTypeEnum.TimePicker,NgWidth = 12
+                                        },
+                                    new Ctrl() { DisplayName = "At Base", ControlType = ControlTypeEnum.TimePicker,NgWidth = 12
+                                        },
+                                }
+                            },
+                            new Section()
+                            {
+                                SectionName = "Crew",
+                                side = SectionSideEnum.right,
+                                NgWidth = 6,
+                                Controls = new List<Ctrl>()
+                                {
+                                   new Ctrl() { DisplayName = "Primary", ControlType = ControlTypeEnum.DropDownList, NgWidth = 12,
+                                        DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Secondary", ControlType = ControlTypeEnum.DropDownList, NgWidth = 12,
+                                        DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Third", ControlType = ControlTypeEnum.DropDownList, NgWidth = 12,
+                                        DropDownOptions = GetSelect2Options("E1_03", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Other", ControlType = ControlTypeEnum.DropDownList, NgWidth = 12,
+                                        DropDownOptions = GetSelect2Options("E1_01", agencyToken, state, select2OptionsLists)
+                                        }
+                                }
+                            },
+                            new Section()
+                            {
+                                SectionName = "Mileage",
+                                side = SectionSideEnum.right,
+                                NgWidth = 6,
+                                Controls = new List<Ctrl>()
+                                {
+                                   new Ctrl() { DisplayName = "Start", ControlType = ControlTypeEnum.MileageBox, NgWidth = 12,
+                                        DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Scene", ControlType = ControlTypeEnum.MileageBox, NgWidth = 12,
+                                        DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Dest.", ControlType = ControlTypeEnum.MileageBox, NgWidth = 12,
+                                        DropDownOptions = GetSelect2Options("E1_03", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Service", ControlType = ControlTypeEnum.MileageBox, NgWidth = 12,
+                                        DropDownOptions = GetSelect2Options("E1_01", agencyToken, state, select2OptionsLists)
+                                        }
+                                }
+                            },
+                            new Section()
+                            {    SectionName = "Incident",
+                                Controls = new List<Ctrl>()
+                                {
+                                   new Ctrl() { DisplayName = "Incident Number", ControlType = ControlTypeEnum.TextBox
+                                        },
+                                    new Ctrl() { DisplayName = "Response Urgency", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
+                                        },
+
+                                    new Ctrl() { DisplayName = "CMS Level", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_03", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Type Of Location", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_01", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Nature Of Incident", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_02", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Scene Address", ControlType = ControlTypeEnum.TextBox
+
+                                        }
+
+                                }
+                            },
+                            new Section()
+                            {    SectionName = "Dispatch",
+                                Controls = new List<Ctrl>()
+                                {
+                                   new Ctrl() { DisplayName = "Call Sign", ControlType = ControlTypeEnum.TextBox
+                                        },
+                                    new Ctrl() { DisplayName = "Vehicle Number", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
+                                        },
+
+                                    new Ctrl() { DisplayName = "Other Agencies", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_03", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Mode To Scene", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_01", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Responder Time", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_02", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Service Requested", ControlType = ControlTypeEnum.TextBox
+                                        },
+                                    new Ctrl() { DisplayName = "Responder Time", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_02", agencyToken, state, select2OptionsLists)
+                                        }
+
+                                }
+                            }
+
+
+                        }
+                    },
+                       new Tab()
+                    {
+                        Sections = new List<Section>()
+                        {
+                            new Section()
+                            {
+                                 SectionName = "Disposition",
+                                Controls = new List<Ctrl>()
+                                {
+                                    new Ctrl() { DisplayName = "Disposition/Outcome", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2ListFromDb("E20_10"), NgWidth = 12
+                                        }
+
+                                }
+                            },
+                            new Section()
+                            {   side = SectionSideEnum.right,
+                                SectionName = "Times",
+                                NgWidth = 6,
+                                Controls = new List<Ctrl>()
+                                {
+                                   new Ctrl() { DisplayName = "Onset", ControlType = ControlTypeEnum.TimePicker, NgWidth = 12
+                                        },
+                                    new Ctrl() { DisplayName = "Recieved", ControlType = ControlTypeEnum.TimePicker,  NgWidth = 12
+                                        },
+                                   new Ctrl() { DisplayName = "Notified", ControlType = ControlTypeEnum.TimePicker, NgWidth = 12
+                                        },
+                                    new Ctrl() { DisplayName = "Dispatched", ControlType = ControlTypeEnum.TimePicker,NgWidth = 12
+                                        },
+                                     new Ctrl() { DisplayName = "Enroute", ControlType = ControlTypeEnum.TimePicker, NgWidth = 12
+                                        },
+                                    new Ctrl() { DisplayName = "Arrival", ControlType = ControlTypeEnum.TimePicker,NgWidth = 12
+                                        },
+                                    new Ctrl() { DisplayName = "Contacted", ControlType = ControlTypeEnum.TimePicker,NgWidth = 12
+                                        },
+                                    new Ctrl() { DisplayName = "Departed", ControlType = ControlTypeEnum.TimePicker,NgWidth = 12
+                                        },
+                                    new Ctrl() { DisplayName = "Arrival", ControlType = ControlTypeEnum.TimePicker,NgWidth = 12
+                                        },
+                                    new Ctrl() { DisplayName = "Available", ControlType = ControlTypeEnum.TimePicker,NgWidth = 12
+                                        },
+                                    new Ctrl() { DisplayName = "At Base", ControlType = ControlTypeEnum.TimePicker,NgWidth = 12
+                                        },
+                                }
+                            },
+                            new Section()
+                            {
+                                SectionName = "Crew",
+                                side = SectionSideEnum.right,
+                                NgWidth = 6,
+                                Controls = new List<Ctrl>()
+                                {
+                                   new Ctrl() { DisplayName = "Primary", ControlType = ControlTypeEnum.DropDownList, NgWidth = 12,
+                                        DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Secondary", ControlType = ControlTypeEnum.DropDownList, NgWidth = 12,
+                                        DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Third", ControlType = ControlTypeEnum.DropDownList, NgWidth = 12,
+                                        DropDownOptions = GetSelect2Options("E1_03", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Other", ControlType = ControlTypeEnum.DropDownList, NgWidth = 12,
+                                        DropDownOptions = GetSelect2Options("E1_01", agencyToken, state, select2OptionsLists)
+                                        }
+                                }
+                            },
+                            new Section()
+                            {
+                                SectionName = "Mileage",
+                                side = SectionSideEnum.right,
+                                NgWidth = 6,
+                                Controls = new List<Ctrl>()
+                                {
+                                   new Ctrl() { DisplayName = "Start", ControlType = ControlTypeEnum.MileageBox, NgWidth = 12,
+                                        DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Scene", ControlType = ControlTypeEnum.MileageBox, NgWidth = 12,
+                                        DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Dest.", ControlType = ControlTypeEnum.MileageBox, NgWidth = 12,
+                                        DropDownOptions = GetSelect2Options("E1_03", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Service", ControlType = ControlTypeEnum.MileageBox, NgWidth = 12,
+                                        DropDownOptions = GetSelect2Options("E1_01", agencyToken, state, select2OptionsLists)
+                                        }
+                                }
+                            },
+                            new Section()
+                            {    SectionName = "Incident",
+                                Controls = new List<Ctrl>()
+                                {
+                                   new Ctrl() { DisplayName = "Incident Number", ControlType = ControlTypeEnum.TextBox
+                                        },
+                                    new Ctrl() { DisplayName = "Response Urgency", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
+                                        },
+
+                                    new Ctrl() { DisplayName = "CMS Level", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_03", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Type Of Location", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_01", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Nature Of Incident", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_02", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Scene Address", ControlType = ControlTypeEnum.TextBox
+
+                                        }
+
+                                }
+                            },
+                            new Section()
+                            {    SectionName = "Dispatch",
+                                Controls = new List<Ctrl>()
+                                {
+                                   new Ctrl() { DisplayName = "Call Sign", ControlType = ControlTypeEnum.TextBox
+                                        },
+                                    new Ctrl() { DisplayName = "Vehicle Number", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
+                                        },
+
+                                    new Ctrl() { DisplayName = "Other Agencies", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_03", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Mode To Scene", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_01", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Responder Time", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_02", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Service Requested", ControlType = ControlTypeEnum.TextBox
+                                        },
+                                    new Ctrl() { DisplayName = "Responder Time", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_02", agencyToken, state, select2OptionsLists)
+                                        }
+
+                                }
+                            }
+
+
+                        }
+                    },
+                        new Tab()
+                    {
+                        Sections = new List<Section>()
+                        {
+                            new Section()
+                            {
+                                 SectionName = "Disposition",
+                                Controls = new List<Ctrl>()
+                                {
+                                    new Ctrl() { DisplayName = "Disposition/Outcome", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2ListFromDb("E20_10"), NgWidth = 12
+                                        }
+
+                                }
+                            },
+                            new Section()
+                            {   side = SectionSideEnum.right,
+                                SectionName = "Times",
+                                NgWidth = 6,
+                                Controls = new List<Ctrl>()
+                                {
+                                   new Ctrl() { DisplayName = "Onset", ControlType = ControlTypeEnum.TimePicker, NgWidth = 12
+                                        },
+                                    new Ctrl() { DisplayName = "Recieved", ControlType = ControlTypeEnum.TimePicker,  NgWidth = 12
+                                        },
+                                   new Ctrl() { DisplayName = "Notified", ControlType = ControlTypeEnum.TimePicker, NgWidth = 12
+                                        },
+                                    new Ctrl() { DisplayName = "Dispatched", ControlType = ControlTypeEnum.TimePicker,NgWidth = 12
+                                        },
+                                     new Ctrl() { DisplayName = "Enroute", ControlType = ControlTypeEnum.TimePicker, NgWidth = 12
+                                        },
+                                    new Ctrl() { DisplayName = "Arrival", ControlType = ControlTypeEnum.TimePicker,NgWidth = 12
+                                        },
+                                    new Ctrl() { DisplayName = "Contacted", ControlType = ControlTypeEnum.TimePicker,NgWidth = 12
+                                        },
+                                    new Ctrl() { DisplayName = "Departed", ControlType = ControlTypeEnum.TimePicker,NgWidth = 12
+                                        },
+                                    new Ctrl() { DisplayName = "Arrival", ControlType = ControlTypeEnum.TimePicker,NgWidth = 12
+                                        },
+                                    new Ctrl() { DisplayName = "Available", ControlType = ControlTypeEnum.TimePicker,NgWidth = 12
+                                        },
+                                    new Ctrl() { DisplayName = "At Base", ControlType = ControlTypeEnum.TimePicker,NgWidth = 12
+                                        },
+                                }
+                            },
+                            new Section()
+                            {
+                                SectionName = "Crew",
+                                side = SectionSideEnum.right,
+                                NgWidth = 6,
+                                Controls = new List<Ctrl>()
+                                {
+                                   new Ctrl() { DisplayName = "Primary", ControlType = ControlTypeEnum.DropDownList, NgWidth = 12,
+                                        DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Secondary", ControlType = ControlTypeEnum.DropDownList, NgWidth = 12,
+                                        DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Third", ControlType = ControlTypeEnum.DropDownList, NgWidth = 12,
+                                        DropDownOptions = GetSelect2Options("E1_03", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Other", ControlType = ControlTypeEnum.DropDownList, NgWidth = 12,
+                                        DropDownOptions = GetSelect2Options("E1_01", agencyToken, state, select2OptionsLists)
+                                        }
+                                }
+                            },
+                            new Section()
+                            {
+                                SectionName = "Mileage",
+                                side = SectionSideEnum.right,
+                                NgWidth = 6,
+                                Controls = new List<Ctrl>()
+                                {
+                                   new Ctrl() { DisplayName = "Start", ControlType = ControlTypeEnum.MileageBox, NgWidth = 12,
+                                        DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Scene", ControlType = ControlTypeEnum.MileageBox, NgWidth = 12,
+                                        DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Dest.", ControlType = ControlTypeEnum.MileageBox, NgWidth = 12,
+                                        DropDownOptions = GetSelect2Options("E1_03", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Service", ControlType = ControlTypeEnum.MileageBox, NgWidth = 12,
+                                        DropDownOptions = GetSelect2Options("E1_01", agencyToken, state, select2OptionsLists)
+                                        }
+                                }
+                            },
+                            new Section()
+                            {    SectionName = "Incident",
+                                Controls = new List<Ctrl>()
+                                {
+                                   new Ctrl() { DisplayName = "Incident Number", ControlType = ControlTypeEnum.TextBox
+                                        },
+                                    new Ctrl() { DisplayName = "Response Urgency", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
+                                        },
+
+                                    new Ctrl() { DisplayName = "CMS Level", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_03", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Type Of Location", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_01", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Nature Of Incident", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_02", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Scene Address", ControlType = ControlTypeEnum.TextBox
+
+                                        }
+
+                                }
+                            },
+                            new Section()
+                            {    SectionName = "Dispatch",
+                                Controls = new List<Ctrl>()
+                                {
+                                   new Ctrl() { DisplayName = "Call Sign", ControlType = ControlTypeEnum.TextBox
+                                        },
+                                    new Ctrl() { DisplayName = "Vehicle Number", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
+                                        },
+
+                                    new Ctrl() { DisplayName = "Other Agencies", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_03", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Mode To Scene", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_01", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Responder Time", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_02", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Service Requested", ControlType = ControlTypeEnum.TextBox
+                                        },
+                                    new Ctrl() { DisplayName = "Responder Time", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_02", agencyToken, state, select2OptionsLists)
+                                        }
+
+                                }
+                            }
+
+
+                        }
+                    }
+                }
             };
 
+            //Tab tab = new Tab();
+
+            //Section section = new Section() { SectionName = "Test 1", NgWidth = 9 };
+
+            //Ctrl control = new Ctrl() { DisplayName = "FirstName", ControlType = ControlTypeEnum.Select2,
+            //    DropDownOptions = GetSelect2Options("E1_01", agencyToken, state, select2OptionsLists)
+            //};
 
 
-            section.Controls.Add(control);
 
-            section.Controls.Add(control);
-            section.Controls.Add(control);
-            section.Controls.Add(control);
-            section.Controls.Add(control);
-            section.Controls.Add(control);
-            section.Controls.Add(control);
-            section.Controls.Add(control);
+            //section.Controls.Add(control);
 
-            tab.Sections.Add(section);
+            //section.Controls.Add(control);
+            //section.Controls.Add(control);
+            //section.Controls.Add(control);
+            //section.Controls.Add(control);
+            //section.Controls.Add(control);
+            //section.Controls.Add(control);
+            //section.Controls.Add(control);
+
+            //tab.Sections.Add(section);
 
 
-            tab.Sections.Add(section);
-            tab.Sections.Add(section);
+            //tab.Sections.Add(section);
+            //tab.Sections.Add(section);
 
-            pcrForm.Tabs.Add(tab);
+            //pcrForm.Tabs.Add(tab);
 
-            tab = new Tab();
+            //tab = new Tab();
 
-            section = new Section() { SectionName = "Raggedy Ann" }; ;
+            //section = new Section() { SectionName = "Raggedy Ann" }; ;
 
-            control = new Ctrl() { DisplayName = "DropDown", ControlType = ControlTypeEnum.DropDownList,
-            DropDownOptions = CtrlHelpers.GetSelect2Options(new string[] { "one", "two", "three" })
-            };
+            //control = new Ctrl() { DisplayName = "DropDown", ControlType = ControlTypeEnum.DropDownList,
+            //DropDownOptions = CtrlHelpers.GetSelect2Options(new string[] { "one", "two", "three" })
+            //};
 
-            section.Controls.Add(control);
-            section.Controls.Add(control);
-            section.Controls.Add(control);
-            section.Controls.Add(control);
-            section.Controls.Add(control);
-            section.Controls.Add(control);
-            section.Controls.Add(control);
-            section.Controls.Add(control);
+            //section.Controls.Add(control);
+            //section.Controls.Add(control);
+            //section.Controls.Add(control);
+            //section.Controls.Add(control);
+            //section.Controls.Add(control);
+            //section.Controls.Add(control);
+            //section.Controls.Add(control);
+            //section.Controls.Add(control);
 
-            tab.Sections.Add(section);
-            tab.Sections.Add(section);
-            tab.Sections.Add(section);
+            //tab.Sections.Add(section);
+            //tab.Sections.Add(section);
+            //tab.Sections.Add(section);
 
-            pcrForm.Tabs.Add(tab);
+            //pcrForm.Tabs.Add(tab);
 
 
 
             return View(pcrForm);
+        }
+
+        private List<Select2Option> GetSelect2ListFromDb(string nemsisCode)
+        {
+            return db.NemsisDataElements.Where(x => x.FieldNumber == nemsisCode).Select(x => new Select2Option() { id = x.OptionText, text = x.OptionText }).ToList();
+        }
+
+        private List<Select2Option> GetSelect2Options(string controlName, string agencyToken, string state, List<Select2OptionsList> select2OptionsLists)
+        {
+            var controlMatchedList = select2OptionsLists.Where(x => x.ControlName == controlName);
+
+            if (controlMatchedList.FirstOrDefault(x => x.Association == agencyToken) != null)
+            {
+                var optionsAsJson = controlMatchedList.FirstOrDefault(x => x.Association == agencyToken).OptionsAsJson;
+                return JsonConvert.DeserializeObject<List<Select2Option>>(optionsAsJson); 
+             }
+
+            if (controlMatchedList.FirstOrDefault(x => x.Association == state) != null)
+            {
+                var optionsAsJson = controlMatchedList.FirstOrDefault(x => x.Association == state).OptionsAsJson;
+                return JsonConvert.DeserializeObject<List<Select2Option>>(optionsAsJson);
+            }
+
+            var optionsAsJson2 = controlMatchedList.FirstOrDefault(x => x.Association == "Default").OptionsAsJson;
+            return JsonConvert.DeserializeObject<List<Select2Option>>(optionsAsJson2);
         }
 
         // GET: Mpa/PcrForm/Details/5
