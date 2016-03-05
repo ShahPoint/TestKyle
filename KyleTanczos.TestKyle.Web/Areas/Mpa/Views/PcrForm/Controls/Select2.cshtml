@@ -4,13 +4,11 @@
 @model KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers.Ctrl
 
 
-
-
-<div class="col-md-@Model.NgWidth">
+<div class="col-xs-@Model.NgWidth minimalPaddingImportant">
     <div class="form-group">
         <label for="span_small" class="control-label">@Model.DisplayName </label>
 
-        <select id="span_small" class="select2Defualt form-control select2-selection select2-selection--single time-control input-lg">
+        <select id="span_small" class="select2Defualt form-control">
 
             <option value="">@Model.PlaceHolder</option>
 

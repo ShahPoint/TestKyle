@@ -8,16 +8,23 @@
         <a href="@Url.Action("Index", "Home", new { area = string.Empty })" target="_blank">
             <img src="~/Common/Images/app-logo-on-light.png" alt="logo" class="logo-default" width="168" height="33" />
         </a>
+
+
+
+
         <div class="menu-toggler sidebar-toggler">
             <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
         </div>
     </div>
+    
+
+
     <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
     </a>
-    <div class="page-top">
+    <div class="pull-right"> @*class="page-top">*@
         <div class="top-menu">
             <ul class="nav navbar-nav pull-right">
-                @if (Model.Languages.Count > 1)
+                @if (Model.Languages.Count > 1 && false)
                 {
                     <li class="dropdown dropdown-language">
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
@@ -40,7 +47,7 @@
                     </li>
                 }
                 <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-                <li class="dropdown dropdown-user dropdown-dark">
+                <li class="dropdown dropdown-user ">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" title="@(Model.IsImpersonatedLogin ? L("YouCanBackToYourAccount") : "")">
                         <span class="username username-hide-on-mobile">
                             @if (Model.IsImpersonatedLogin)
