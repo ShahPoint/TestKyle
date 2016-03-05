@@ -1739,7 +1739,6 @@
     <Content Include="log4net.config" />
     <Content Include="metronic\assets\layouts\global\scripts\quick-sidebar.js" />
     <Content Include="metronic\assets\layouts\global\scripts\quick-sidebar.min.js" />
-    <Content Include="Models\App\JavaScript.js" />
     <Content Include="RecaptchaNet.Readme.txt" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
