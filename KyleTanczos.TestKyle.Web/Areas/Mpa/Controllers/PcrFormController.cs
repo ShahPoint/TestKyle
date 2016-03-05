@@ -87,7 +87,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
     }
 
 
-    public enum ControlTypeEnum { MileageBox, TextBox, DropDownList, Select2, Select2Single, Select2Many, Select2TagsSingle, Select2TagsMany, TimePicker }
+    public enum ControlTypeEnum { PatientMeds, MileageBox, TextBox, DropDownList, Select2, Select2Single, Select2Many, Select2TagsSingle, Select2TagsMany, TimePicker }
 
    // public enum NgWidthEnum {ng1, ng2, ng3, ng4, ng5, ng6, ng7, ng8, ng9, ng10, ng11, ng12 }
     public class PcrFormController : Controller
@@ -153,6 +153,57 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                         DropDownOptions = GetSelect2ListFromDb("E20_10"), NgWidth = 12
                                         }
 
+                                }
+                            },
+                            new Section()
+                            {    SectionName = "Incident",
+                                Controls = new List<Ctrl>()
+                                {
+                                   new Ctrl() { DisplayName = "Incident Number", ControlType = ControlTypeEnum.TextBox
+                                        },
+                                    new Ctrl() { DisplayName = "Response Urgency", ControlType = ControlTypeEnum.Select2,
+                                        DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
+                                        },
+
+                                    new Ctrl() { DisplayName = "CMS Level", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_03", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Type Of Location", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_01", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Nature Of Incident", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_02", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Scene Address", ControlType = ControlTypeEnum.TextBox
+
+                                        }
+
+                                }
+                            },
+                            new Section()
+                            {    SectionName = "Dispatch",
+                                Controls = new List<Ctrl>()
+                                {
+                                   new Ctrl() { DisplayName = "Call Sign", ControlType = ControlTypeEnum.TextBox
+                                        },
+                                    new Ctrl() { DisplayName = "Vehicle Number", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
+                                        },
+
+                                    new Ctrl() { DisplayName = "Other Agencies", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_03", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Mode To Scene", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_01", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Responder Time", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_02", agencyToken, state, select2OptionsLists)
+                                        },
+                                    new Ctrl() { DisplayName = "Service Requested", ControlType = ControlTypeEnum.TextBox
+                                        },
+                                    new Ctrl() { DisplayName = "Responder Time", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = GetSelect2Options("E1_02", agencyToken, state, select2OptionsLists)
+                                        }
                                 }
                             },
                             new Section()
@@ -226,62 +277,94 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                         DropDownOptions = GetSelect2Options("E1_01", agencyToken, state, select2OptionsLists)
                                         }
                                 }
-                            },
-                            new Section()
-                            {    SectionName = "Incident",
-                                Controls = new List<Ctrl>()
-                                {
-                                   new Ctrl() { DisplayName = "Incident Number", ControlType = ControlTypeEnum.TextBox
-                                        },
-                                    new Ctrl() { DisplayName = "Response Urgency", ControlType = ControlTypeEnum.Select2,
-                                        DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
-                                        },
-
-                                    new Ctrl() { DisplayName = "CMS Level", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = GetSelect2Options("E1_03", agencyToken, state, select2OptionsLists)
-                                        },
-                                    new Ctrl() { DisplayName = "Type Of Location", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = GetSelect2Options("E1_01", agencyToken, state, select2OptionsLists)
-                                        },
-                                    new Ctrl() { DisplayName = "Nature Of Incident", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = GetSelect2Options("E1_02", agencyToken, state, select2OptionsLists)
-                                        },
-                                    new Ctrl() { DisplayName = "Scene Address", ControlType = ControlTypeEnum.TextBox
-
-                                        }
-
-                                }
-                            },
-                            new Section()
-                            {    SectionName = "Dispatch",
-                                Controls = new List<Ctrl>()
-                                {
-                                   new Ctrl() { DisplayName = "Call Sign", ControlType = ControlTypeEnum.TextBox
-                                        },
-                                    new Ctrl() { DisplayName = "Vehicle Number", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
-                                        },
-
-                                    new Ctrl() { DisplayName = "Other Agencies", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = GetSelect2Options("E1_03", agencyToken, state, select2OptionsLists)
-                                        },
-                                    new Ctrl() { DisplayName = "Mode To Scene", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = GetSelect2Options("E1_01", agencyToken, state, select2OptionsLists)
-                                        },
-                                    new Ctrl() { DisplayName = "Responder Time", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = GetSelect2Options("E1_02", agencyToken, state, select2OptionsLists)
-                                        },
-                                    new Ctrl() { DisplayName = "Service Requested", ControlType = ControlTypeEnum.TextBox
-                                        },
-                                    new Ctrl() { DisplayName = "Responder Time", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = GetSelect2Options("E1_02", agencyToken, state, select2OptionsLists)
-                                        }
-
-                                }
                             }
 
 
                         }
+                    },
+                    new Tab()
+                    {
+                         Sections = new List<Section>()
+                         {
+                             new Section()
+                             {
+                                 SectionName = "Patient Info",
+                                 Controls = new List<Ctrl>()
+                                 {
+                                    new Ctrl() { DisplayName = "First Name", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Last Name", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "M.I.", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "DOB", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Phone", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Weight", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Gender", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "SSN", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Pattient Address", ControlType = ControlTypeEnum.TextBox
+                                       }
+                                    }
+                             },
+                             new Section()
+                             {
+                                 SectionName = "Personal",
+                                 Controls = new List<Ctrl>()
+                                 {
+                                                                            
+                                    new Ctrl() { DisplayName = "DL Number", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "DL State", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Pt Practitioner Name", ControlType = ControlTypeEnum.TextBox
+                                       }
+                                 }
+                             },
+                             new Section()
+                             {
+                                 SectionName = "Medical Info",
+                                 side = SectionSideEnum.right,
+                                 Controls = new List<Ctrl>()
+                                 {
+                                     new Ctrl() { DisplayName = "History", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "History Obtained", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Allergies", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Emergency Form", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Enviromental/Food Allergies", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Advanced Directives", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Triage Color", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Triage Category", ControlType = ControlTypeEnum.TextBox
+                                       }                             
+                                 }
+
+                             },
+                             new Section()
+                             {
+                                 SectionName = "Medications",
+                                 side = SectionSideEnum.right,
+                                 Controls = new List<Ctrl>()
+                                 {
+                                     new Ctrl()
+                                     {
+                                        ControlType = ControlTypeEnum.PatientMeds
+                                     }
+                                 }
+
+                             }
+                         }
+
                     }
                 }
             };

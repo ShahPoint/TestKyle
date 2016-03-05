@@ -2920,6 +2920,7 @@
     <Content Include="App_Data\NEMSIS_Data_Dictionary_V2_2.csv" />
     <Content Include="Areas\Mpa\Views\PcrForm\Controls\TimePicker.cshtml" />
     <Content Include="Areas\Mpa\Views\PcrForm\Controls\MileageBox.cshtml" />
+    <Content Include="Areas\Mpa\Views\PcrForm\Controls\PatientMeds.cshtml" />
     <None Include="Properties\PublishProfiles\FileSystem_Release.pubxml" />
     <Content Include="Views\Account\TenantSelection.cshtml" />
     <Content Include="Scripts\version.json" />
