@@ -192,16 +192,16 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 NgWidth = 6,
                                 Controls = new List<Ctrl>()
                                 {
-                                   new Ctrl() { DisplayName = "Primary", ControlType = ControlTypeEnum.DropDownList, NgWidth = 12,
+                                   new Ctrl() { DisplayName = "Primary", ControlType = ControlTypeEnum.Select2, NgWidth = 12,
                                         DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
                                         },
-                                    new Ctrl() { DisplayName = "Secondary", ControlType = ControlTypeEnum.DropDownList, NgWidth = 12,
+                                    new Ctrl() { DisplayName = "Secondary", ControlType = ControlTypeEnum.Select2, NgWidth = 12,
                                         DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
                                         },
-                                    new Ctrl() { DisplayName = "Third", ControlType = ControlTypeEnum.DropDownList, NgWidth = 12,
+                                    new Ctrl() { DisplayName = "Third", ControlType = ControlTypeEnum.Select2, NgWidth = 12,
                                         DropDownOptions = GetSelect2Options("E1_03", agencyToken, state, select2OptionsLists)
                                         },
-                                    new Ctrl() { DisplayName = "Other", ControlType = ControlTypeEnum.DropDownList, NgWidth = 12,
+                                    new Ctrl() { DisplayName = "Other", ControlType = ControlTypeEnum.Select2, NgWidth = 12,
                                         DropDownOptions = GetSelect2Options("E1_01", agencyToken, state, select2OptionsLists)
                                         }
                                 }
