@@ -1,11 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
 namespace KyleTanczos.TestKyle.Web.Models.App
 {
+    public class NemsisDataElement
+    {
+        public NemsisDataElement()
+        {
+            Active = true;
+        }
+
+        public int Id { get; set; }
+        //Change to NemsisCode
+        public string FieldNumber { get; set; } // Example E01_01
+        public string FieldName { get; set; } // Incident Number
+        public string OptionCode { get; set; }
+        public string OptionText { get; set; }
+        public string State { get; set; }
+        bool Active { get; set; }
+    }
+
+    public class Select2OptionsList
+    {
+        public int Id { get; set; }
+        public string ControlName { get; set; }
+        public string oldJsListName { get; set; }
+        public string Association { get; set; } // Default, 2 digit state, or orgToken
+        public string OptionsAsJson { get; set; }
+        [DefaultValue(true)]
+        public bool Active { get; set; }
+    }
+
+
     public class UploadedFile
     {
         public int Id { get; set; }
@@ -43,4 +73,10 @@ namespace KyleTanczos.TestKyle.Web.Models.App
         public string OutcomeName { get; set; }
     }
     
+
+
+
+
+
+
 }

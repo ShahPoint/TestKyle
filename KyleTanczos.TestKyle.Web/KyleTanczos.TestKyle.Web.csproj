@@ -151,6 +151,7 @@
       <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.8.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -1738,6 +1739,7 @@
     <Content Include="log4net.config" />
     <Content Include="metronic\assets\layouts\global\scripts\quick-sidebar.js" />
     <Content Include="metronic\assets\layouts\global\scripts\quick-sidebar.min.js" />
+    <Content Include="Models\App\JavaScript.js" />
     <Content Include="RecaptchaNet.Readme.txt" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
@@ -2916,6 +2918,9 @@
     <Content Include="libs\select2\LICENSE.md" />
     <Content Include="libs\select2\README.md" />
     <Content Include="libs\select2\sass\select2-bootstrap.min.scss" />
+    <Content Include="App_Data\NEMSIS_Data_Dictionary_V2_2.csv" />
+    <Content Include="Areas\Mpa\Views\PcrForm\Controls\TimePicker.cshtml" />
+    <Content Include="Areas\Mpa\Views\PcrForm\Controls\MileageBox.cshtml" />
     <None Include="Properties\PublishProfiles\FileSystem_Release.pubxml" />
     <Content Include="Views\Account\TenantSelection.cshtml" />
     <Content Include="Scripts\version.json" />

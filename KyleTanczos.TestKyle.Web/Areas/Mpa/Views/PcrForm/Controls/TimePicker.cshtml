@@ -1,0 +1,33 @@
+﻿@using KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
+
+@model KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers.Ctrl
+
+@*<div class="col-xs-@Model.NgWidth">
+        <div class="form-group">
+            <label class="control-label col-xs-4">@Model.DisplayName</label>
+            <div class="col-xs-8">
+                <div class="input-group">
+                    <input type="text" id="@Model.ClientId" placeholder="@Model.PlaceHolder" class="form-control">
+                    <span class="input-group-btn">
+                        <button class="btn default" type="button">
+                            <i class="fa fa-clock-o"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+<div class="col-xs-@Model.NgWidth" style="margin-bottom:5px">
+    <div class="form-group">
+        <label class="control-label col-xs-6">@Model.DisplayName </label>
+        <div class="col-xs-6">
+            <input type="tel" id="@Model.ClientId" class="form-control time-control" style="min-width:50px" placeholder="@Model.PlaceHolder">
+        </div>
+        
+
+    </div>
+</div>
+
+
+
