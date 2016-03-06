@@ -488,6 +488,7 @@
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="libs\aaaCustom\JavaScript.js" />
     <Content Include="libs\angular-daterangepicker\angular-daterangepicker.js" />
     <Content Include="libs\angular-daterangepicker\angular-daterangepicker.min.js" />
     <Content Include="libs\angular-file-upload\angular-file-upload.min.js" />
@@ -2635,6 +2636,7 @@
     <Compile Include="App_Start\Navigation\PageNames.cs" />
     <Compile Include="App_Start\Routing\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
+    <Compile Include="Areas\Mpa\Controllers\AppController.cs" />
     <Compile Include="Areas\Mpa\Controllers\AuditLogsController.cs" />
     <Compile Include="Areas\Mpa\Controllers\Common.cs" />
     <Compile Include="Areas\Mpa\Controllers\EditionsController.cs" />
@@ -2921,6 +2923,7 @@
     <Content Include="Areas\Mpa\Views\PcrForm\Controls\TimePicker.cshtml" />
     <Content Include="Areas\Mpa\Views\PcrForm\Controls\MileageBox.cshtml" />
     <Content Include="Areas\Mpa\Views\PcrForm\Controls\PatientMeds.cshtml" />
+    <Content Include="Areas\Mpa\Views\App\Install.cshtml" />
     <None Include="Properties\PublishProfiles\FileSystem_Release.pubxml" />
     <Content Include="Views\Account\TenantSelection.cshtml" />
     <Content Include="Scripts\version.json" />

@@ -11,55 +11,58 @@
     .form-group {
         margin-bottom: 0 !important;
     }
-    
+
     .portlet {
         margin-bottom: 15px !important;
     }
-    
-    .portlet-form .form-body, .form .form-body 
-    {
+
+    .portlet-form .form-body, .form .form-body {
         padding: 20px;
     }
     /* fix right side margins */
     .page-container {
         padding-right: 30px !important;
     }
-/*get read of padding at top of page*/
-    .page-content-wrapper .page-content
-    {
+    /*get read of padding at top of page*/
+    .page-content-wrapper .page-content {
         padding-top: 0 !important;
     }
 
-    .time-control
-    {
-        padding : 6px !important;
-    }
-    .form
-    {
-        padding-left : 10px;
-    }
-    .noPaddingImportant
-    {
-        padding : 0 !important;
+    .time-control {
+        padding: 6px !important;
     }
 
-    .minimalPaddingImportant
-    {
-        padding : 3px !important;
+    .form {
+        padding-left: 10px;
     }
 
-    .onlyLeftPaddingImportant
-    {
-        padding-bottom : 0 !important;
-        padding-left : 10px !important;
-        padding-right:  0 !important;
+    .noPaddingImportant {
+        padding: 0 !important;
+    }
+
+    .minimalPaddingImportant {
+        padding: 3px !important;
+    }
+
+    .onlyLeftPaddingImportant {
+        padding-bottom: 0 !important;
+        padding-left: 10px !important;
+        padding-right: 0 !important;
         padding-top: 0 !important;
     }
-
 </style>
 
+<script type="text/javascript" src="~/libs/aaaCustom/JavaScript.js"></script>
 
-<div>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+
+<div data-ng-app="myApp" data-ng-controller="myCtrl" >
+
+    <input type="text" ng-model="greg"/> {{greg}}
+
+    <input type="button" ng-click="SendAlert()" />
+
     @foreach (Tab tab in Model.Tabs)
     {
         @Html.Partial("Controls/Tab", tab);
@@ -68,3 +71,15 @@
 
 
 
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.firstName= "John";
+    $scope.lastName = "Doe";
+
+    $scope.SendAlert = function () {
+        alert('here');
+
+    }
+});
+</script>
