@@ -57,7 +57,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
 
-<div data-ng-app="myApp" data-ng-controller="myCtrl" >
+<div id="mainApp" data-ng-app="myApp" data-ng-controller="myCtrl" style="display:none" >
 
     <input type="text" ng-model="greg"/> {{greg}}
 
@@ -72,14 +72,29 @@
 
 
 <script>
+
+    SetStorageObject = function (key, value) {
+        localStorage.setItem(key, JSON.stringify(value))
+    }
+
+    GetStorageObject = function (key) {
+        return JSON.parse(localStorage.getItem(key));
+    }
+
+
 var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope) {
     $scope.firstName= "John";
     $scope.lastName = "Doe";
 
+
+
+    //var medications = GetStorageObject("PatientMedicationList");
+    
+    //alert(JSON.stringify( GetStorageObject("PatientMedicationList1") ) ) ;
+
     $scope.SendAlert = function () {
         alert('here');
-
     }
 });
 </script>

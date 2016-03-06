@@ -7,6 +7,23 @@ using System.Web;
 
 namespace KyleTanczos.TestKyle.Web.Models.App
 {
+
+    // this table would be per agency and strings would be 
+    //updated (triggering a install of that resource) at our own choosing which
+    // would allow us to granular control when different states, agencies, etc are updated
+    // and/or things like pcr
+    public class InstallTimeStamps
+    {
+        public int Id { get; set; } 
+        public string OfflineAppFiles{ get; set; }
+        public string Medications { get; set; }
+        public string FipsEntriesForCounties { get; set; }
+        public string AutoFipsForCounties { get; set; }
+        public string HospitalListForCounties { get; set; }
+        public string PcrDropDownOptions { get; set; } // this might be updated every time they install
+        public string AgencyDemographic { get; set; }
+    }
+
     public class NemsisDataElement
     {
         public NemsisDataElement()

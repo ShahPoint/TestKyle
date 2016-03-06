@@ -2678,9 +2678,11 @@
     <Compile Include="Areas\Mpa\MpaAreaRegistration.cs" />
     <Compile Include="Areas\Mpa\Startup\MpaBundleConfig.cs" />
     <Compile Include="Areas\Mpa\Startup\MpaNavigationProvider.cs" />
+    <Compile Include="Classes\PatientMedicationList.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApplicationController.cs" />
     <Compile Include="Auth\ApplicationSignInManager.cs" />
+    <Compile Include="Controllers\GetJsListsController.cs" />
     <Compile Include="Controllers\Results\ChallengeResult.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\FileController.cs" />

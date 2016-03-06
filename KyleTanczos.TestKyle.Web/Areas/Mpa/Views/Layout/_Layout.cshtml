@@ -116,6 +116,8 @@
 
 
     <script type="text/javascript">
+        $("#mainApp").show();
+
         var data = [{ id: 0, text: '' }, { id: 1, text: 'bug' }, { id: 2, text: 'duplicate' }, { id: 3, text: 'invalid' }, { id: 4, text: 'wontfix' }];
 
         $(".select2Data").select2({
@@ -123,6 +125,16 @@
         });
 
         $(".select2Defualt").select2({ theme: "bootstrap" });
+        $(".select2Medications").select2({
+            theme: "bootstrap", 
+            data: JSON.parse(localStorage.getItem("PatientMedicationList")),
+            placeholder: "Start typing medication (Quick Add)",
+            allowClear: true,
+            tags: true
+            ,
+            minimumInputLength: 3
+        });
+
 
     </script>
 

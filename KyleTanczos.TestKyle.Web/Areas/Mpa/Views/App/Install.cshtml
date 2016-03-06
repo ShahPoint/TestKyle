@@ -9,10 +9,39 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Install</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        SetStorageObject = function (key, value) {
+            localStorage.setItem(key, JSON.stringify(value))
+        }
+
+        GetStorageObject = function (key) {            
+            return JSON.parse(localStorage.getItem(key));
+        }
+
+
+    $.ajax({
+        type: "GET",
+        url: "/api/GetJsLists/PatientMedicationList"
+    }
+
+    ).done(function (PatientMedicationList) {
+
+        //alert("set meds");
+        SetStorageObject("PatientMedicationList1", PatientMedicationList);
+        //alert(GetStorageObject("PatientMedicationList1"));
+    });
+    </script>
+
+
 </head>
+
+
+
 <body>
     <div>
-        Hello World 
+       Install page  
     </div>
 </body>
 </html>
