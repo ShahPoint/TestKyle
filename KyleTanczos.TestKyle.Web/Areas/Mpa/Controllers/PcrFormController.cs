@@ -30,7 +30,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
         {
             Sections = new List<Section>();
         }
-
+        public string TabTargetName { get; set; }
         public List<Section> Sections { get; set; }
     }
 
@@ -142,6 +142,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                 {
                     new Tab()
                     {
+                        TabTargetName = "IncidentTab",
                         Sections = new List<Section>()
                         {
                             new Section()
@@ -284,6 +285,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                     },
                     new Tab()
                     {
+                         TabTargetName = "PatientTab",
                          Sections = new List<Section>()
                          {
                              new Section()

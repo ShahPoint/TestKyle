@@ -2,8 +2,10 @@
 
 @model Tab
 
-<div class="row no-padding" TabTarget="">
-    <div class="col-md-6 no-padding noPaddingImportant">
+
+
+<div id="@Model.TabTargetName"  class="row no-padding custom-tabs" style="display:none" >
+    <div class="col-md-6 no-padding noPaddingImportant" >
         @foreach (Section section in Model.Sections)
         {
             if (section.side == SectionSideEnum.left)

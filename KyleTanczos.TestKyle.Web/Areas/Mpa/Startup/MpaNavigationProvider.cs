@@ -29,7 +29,79 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Startup
                     url: "Mpa/PcrForm",
                     icon: "icon-grid"
                     )
-                );
+                )
+                .AddItem(new MenuItemDefinition(
+                    "IncidentTab",
+                    L("IncidentTab"),
+                    url: "#IncidentTab",
+                    icon: "icon-grid"
+                    )
+                )
+                .AddItem(new MenuItemDefinition(
+                    "PatientTab",
+                    L("PatientTab"),
+                    url: "#PatientTab",
+                    icon: "icon-grid"
+                    )
+                )
+                .AddItem(new MenuItemDefinition(
+                    "AssessmentTab",
+                    L("AssessmentTab"),
+                    url: "#AssessmentTab",
+                    icon: "icon-grid"
+                    )
+                )
+                .AddItem(new MenuItemDefinition(
+                    "BillingTab",
+                    L("BillingTab"),
+                    url: "#BillingTab",
+                    icon: "icon-grid"
+                    )
+                )
+                .AddItem(new MenuItemDefinition(
+                    "TreatmentTab",
+                    L("TreatmentTab"),
+                    url: "#TreatmentTab",
+                    icon: "icon-grid"
+                    )
+                )
+                .AddItem(new MenuItemDefinition(
+                    "OutcomeTab",
+                    L("OutcomeTab"),
+                    url: "#OutcomeTab",
+                    icon: "icon-grid"
+                    )
+                )
+                .AddItem(new MenuItemDefinition(
+                    "NarrativeTab",
+                    L("NarrativeTab"),
+                    url: "#NarrativeTab",
+                    icon: "icon-grid"
+                    )
+                )
+                .AddItem(new MenuItemDefinition(
+                    "DocumentsTab",
+                    L("DocumentsTab"),
+                    url: "#DocumentsTab",
+                    icon: "icon-grid"
+                    )
+                )
+                .AddItem(new MenuItemDefinition(
+                    "SignaturesTab",
+                    L("SignaturesTab"),
+                    url: "#SignaturesTab",
+                    icon: "icon-grid"
+                    )
+                )
+                .AddItem(new MenuItemDefinition(
+                    "NotesTab",
+                    L("NotesTab"),
+                    url: "#NotesTab",
+                    icon: "icon-grid"
+                    )
+                )
+               
+                ;
 
 
         }

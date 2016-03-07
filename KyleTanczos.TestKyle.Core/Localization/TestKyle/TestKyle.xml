@@ -234,6 +234,16 @@
     <text name="Edition" value="Edition" />
     <text name="Editions" value="Editions" />
     <text name="PcrForm" value="PCR Form" />
+    <text name="IncidentTab" value="Incident" />
+    <text name="PatientTab" value="Patient" />
+    <text name="AssessmentTab" value="Assessment" />
+    <text name="BillingTab" value="Billing" />
+    <text name="TreatmentTab" value="Treatment" />
+    <text name="OutcomeTab" value="Outcome" />
+    <text name="NarrativeTab" value="Narrative" />
+    <text name="DocumentsTab" value="Documents" />
+    <text name="SignaturesTab" value="Signatures" />
+    <text name="NotesTab" value="Notes" />
     <text name="UploadReports" value="Upload Reports" />
     <text name="EditionsHeaderInfo" value="Manage editions and features of the application" />
     <text name="CreateNewEdition" value="Create new edition" />

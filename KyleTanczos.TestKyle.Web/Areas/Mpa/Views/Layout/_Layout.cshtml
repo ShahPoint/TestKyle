@@ -120,18 +120,25 @@
     <script type="text/javascript">
         $("#mainApp").show();
 
+        $("#IncidentTab").show();
         var data = [{ id: 0, text: '' }, { id: 1, text: 'bug' }, { id: 2, text: 'duplicate' }, { id: 3, text: 'invalid' }, { id: 4, text: 'wontfix' }];
 
-        $(".select2Data").select2({
-            data: data
+        //$(".select2Data").select2({
+        //    data: data
+        //});
+
+        $(".select2Defualt").select2({
+            //allowClear: true,
+            width: 'element',
+            theme: "bootstrap"
         });
 
-        $(".select2Defualt").select2({ theme: "bootstrap" });
         $(".select2Medications").select2({
-            theme: "bootstrap", 
+            theme: "bootstrap",
+            width: '100%',
             data: JSON.parse(localStorage.getItem("PatientMedicationList")),
             placeholder: "Start typing medication (Quick Add)",
-            allowClear: true,
+            //allowClear: true,
             tags: true
             ,
             minimumInputLength: 3
@@ -148,6 +155,29 @@
 
                 var href = $(this).attr('href');
                 var titleText = $(this).find('span').html();
+
+                if (href.indexOf("#") > -1)
+                {
+                    tabTarget = href.substring(2);
+
+                    $(this).attr('href', '#');
+
+                    //alert(tabTarget);
+
+                    $(this).attr('tabTargetId', tabTarget);
+
+                    $(this).click(function () {
+
+                        $(".custom-tabs").hide();
+
+                        $("#" + $(this).attr('tabTargetId')).show();
+
+                        //alert($(this).attr('tabTargetId'));
+
+                        //alert("" + $(this).attr('tabTargetId'));
+                    });
+                }
+
 
                 $('.custom-menu-nav').append(
                     "<li role='presentation' class='divider'> </li>" +
