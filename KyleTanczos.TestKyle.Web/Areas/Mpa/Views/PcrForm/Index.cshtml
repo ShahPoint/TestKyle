@@ -75,7 +75,6 @@
 
 
 <script>
-
     SetStorageObject = function (key, value) {
         localStorage.setItem(key, JSON.stringify(value))
     }
@@ -83,22 +82,7 @@
     GetStorageObject = function (key) {
         return JSON.parse(localStorage.getItem(key));
     }
-
-    
-
-var app = angular.module('myApp', []);
-app.controller('myCtrl', function($scope) {
-    $scope.firstName= "John";
-    $scope.lastName = "Doe";
-
-
-
-    //var medications = GetStorageObject("PatientMedicationList");
-    
-    //alert(JSON.stringify( GetStorageObject("PatientMedicationList1") ) ) ;
-
-    $scope.SendAlert = function () {
-        alert('here');
-    }
-});
 </script>
+
+
+<script type="text/javascript" src="~/Areas/Mpa/Angular/Controllers/PcrFormController.js"></script>

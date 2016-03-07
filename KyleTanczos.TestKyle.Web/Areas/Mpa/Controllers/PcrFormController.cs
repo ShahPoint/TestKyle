@@ -39,11 +39,11 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
         public Section()
         {
             Controls = new List<Ctrl>();
-            NgWidth = 12;
+            ResponsiveWidth = 12;
             side = SectionSideEnum.left;
         }
         public string SectionName { get; set; }
-        public int NgWidth { get; set; }
+        public int ResponsiveWidth { get; set; }
         public List<Ctrl> Controls { get; set; }
         public SectionSideEnum side { get; set; }
     }
@@ -55,15 +55,16 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
     {
         public Ctrl()
         {
-            NgWidth = 6;
+            ResponsiveWidth = 6;
             DropDownOptions = new List<Select2Option>();
         }
         public string DisplayName { get; set; }
         public ControlTypeEnum ControlType { get; set; }
         public List<Select2Option> DropDownOptions { get; set; }
-        public int NgWidth { get; set; }
+        public int ResponsiveWidth { get; set; }
         public string PlaceHolder { get; set; }
         public string ClientId { get; set; }
+        public string NgModel { get; set; }
 
 
 
@@ -89,7 +90,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 
     public enum ControlTypeEnum { PatientMeds, MileageBox, TextBox, DropDownList, Select2, Select2Single, Select2Many, Select2TagsSingle, Select2TagsMany, TimePicker }
 
-   // public enum NgWidthEnum {ng1, ng2, ng3, ng4, ng5, ng6, ng7, ng8, ng9, ng10, ng11, ng12 }
+   // public enum ResponsiveWidthEnum {ng1, ng2, ng3, ng4, ng5, ng6, ng7, ng8, ng9, ng10, ng11, ng12 }
     public class PcrFormController : Controller
     {
 
@@ -151,7 +152,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 Controls = new List<Ctrl>()
                                 {
                                     new Ctrl() { DisplayName = "Disposition/Outcome", ControlType = ControlTypeEnum.Select2,
-                                        DropDownOptions = GetSelect2ListFromDb("E20_10"), NgWidth = 12
+                                        DropDownOptions = GetSelect2ListFromDb("E20_10"), ResponsiveWidth = 12
                                         }
 
                                 }
@@ -210,30 +211,30 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                             new Section()
                             {   side = SectionSideEnum.right,
                                 SectionName = "Times",
-                                NgWidth = 6,
+                                ResponsiveWidth = 6,
                                 Controls = new List<Ctrl>()
                                 {
-                                   new Ctrl() { DisplayName = "Onset", ControlType = ControlTypeEnum.TimePicker, NgWidth = 12
+                                   new Ctrl() { DisplayName = "Onset", ControlType = ControlTypeEnum.TimePicker, ResponsiveWidth = 12
                                         },
-                                    new Ctrl() { DisplayName = "Recieved", ControlType = ControlTypeEnum.TimePicker,  NgWidth = 12
+                                    new Ctrl() { DisplayName = "Recieved", ControlType = ControlTypeEnum.TimePicker,  ResponsiveWidth = 12
                                         },
-                                   new Ctrl() { DisplayName = "Notified", ControlType = ControlTypeEnum.TimePicker, NgWidth = 12
+                                   new Ctrl() { DisplayName = "Notified", ControlType = ControlTypeEnum.TimePicker, ResponsiveWidth = 12
                                         },
-                                    new Ctrl() { DisplayName = "Dispatched", ControlType = ControlTypeEnum.TimePicker,NgWidth = 12
+                                    new Ctrl() { DisplayName = "Dispatched", ControlType = ControlTypeEnum.TimePicker,ResponsiveWidth = 12
                                         },
-                                     new Ctrl() { DisplayName = "Enroute", ControlType = ControlTypeEnum.TimePicker, NgWidth = 12
+                                     new Ctrl() { DisplayName = "Enroute", ControlType = ControlTypeEnum.TimePicker, ResponsiveWidth = 12
                                         },
-                                    new Ctrl() { DisplayName = "Arrival", ControlType = ControlTypeEnum.TimePicker,NgWidth = 12
+                                    new Ctrl() { DisplayName = "Arrival", ControlType = ControlTypeEnum.TimePicker,ResponsiveWidth = 12
                                         },
-                                    new Ctrl() { DisplayName = "Contacted", ControlType = ControlTypeEnum.TimePicker,NgWidth = 12
+                                    new Ctrl() { DisplayName = "Contacted", ControlType = ControlTypeEnum.TimePicker,ResponsiveWidth = 12
                                         },
-                                    new Ctrl() { DisplayName = "Departed", ControlType = ControlTypeEnum.TimePicker,NgWidth = 12
+                                    new Ctrl() { DisplayName = "Departed", ControlType = ControlTypeEnum.TimePicker,ResponsiveWidth = 12
                                         },
-                                    new Ctrl() { DisplayName = "Arrival", ControlType = ControlTypeEnum.TimePicker,NgWidth = 12
+                                    new Ctrl() { DisplayName = "Arrival", ControlType = ControlTypeEnum.TimePicker,ResponsiveWidth = 12
                                         },
-                                    new Ctrl() { DisplayName = "Available", ControlType = ControlTypeEnum.TimePicker,NgWidth = 12
+                                    new Ctrl() { DisplayName = "Available", ControlType = ControlTypeEnum.TimePicker,ResponsiveWidth = 12
                                         },
-                                    new Ctrl() { DisplayName = "At Base", ControlType = ControlTypeEnum.TimePicker,NgWidth = 12
+                                    new Ctrl() { DisplayName = "At Base", ControlType = ControlTypeEnum.TimePicker,ResponsiveWidth = 12
                                         },
                                 }
                             },
@@ -241,19 +242,19 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                             {
                                 SectionName = "Crew",
                                 side = SectionSideEnum.right,
-                                NgWidth = 6,
+                                ResponsiveWidth = 6,
                                 Controls = new List<Ctrl>()
                                 {
-                                   new Ctrl() { DisplayName = "Primary", ControlType = ControlTypeEnum.Select2, NgWidth = 12,
+                                   new Ctrl() { DisplayName = "Primary", ControlType = ControlTypeEnum.Select2, ResponsiveWidth = 12,
                                         DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
                                         },
-                                    new Ctrl() { DisplayName = "Secondary", ControlType = ControlTypeEnum.Select2, NgWidth = 12,
+                                    new Ctrl() { DisplayName = "Secondary", ControlType = ControlTypeEnum.Select2, ResponsiveWidth = 12,
                                         DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
                                         },
-                                    new Ctrl() { DisplayName = "Third", ControlType = ControlTypeEnum.Select2, NgWidth = 12,
+                                    new Ctrl() { DisplayName = "Third", ControlType = ControlTypeEnum.Select2, ResponsiveWidth = 12,
                                         DropDownOptions = GetSelect2Options("E1_03", agencyToken, state, select2OptionsLists)
                                         },
-                                    new Ctrl() { DisplayName = "Other", ControlType = ControlTypeEnum.Select2, NgWidth = 12,
+                                    new Ctrl() { DisplayName = "Other", ControlType = ControlTypeEnum.Select2, ResponsiveWidth = 12,
                                         DropDownOptions = GetSelect2Options("E1_01", agencyToken, state, select2OptionsLists)
                                         }
                                 }
@@ -262,19 +263,19 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                             {
                                 SectionName = "Mileage",
                                 side = SectionSideEnum.right,
-                                NgWidth = 6,
+                                ResponsiveWidth = 6,
                                 Controls = new List<Ctrl>()
                                 {
-                                   new Ctrl() { DisplayName = "Start", ControlType = ControlTypeEnum.MileageBox, NgWidth = 12,
+                                   new Ctrl() { DisplayName = "Start", ControlType = ControlTypeEnum.MileageBox, ResponsiveWidth = 12,
                                         DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
                                         },
-                                    new Ctrl() { DisplayName = "Scene", ControlType = ControlTypeEnum.MileageBox, NgWidth = 12,
+                                    new Ctrl() { DisplayName = "Scene", ControlType = ControlTypeEnum.MileageBox, ResponsiveWidth = 12,
                                         DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
                                         },
-                                    new Ctrl() { DisplayName = "Dest.", ControlType = ControlTypeEnum.MileageBox, NgWidth = 12,
+                                    new Ctrl() { DisplayName = "Dest.", ControlType = ControlTypeEnum.MileageBox, ResponsiveWidth = 12,
                                         DropDownOptions = GetSelect2Options("E1_03", agencyToken, state, select2OptionsLists)
                                         },
-                                    new Ctrl() { DisplayName = "Service", ControlType = ControlTypeEnum.MileageBox, NgWidth = 12,
+                                    new Ctrl() { DisplayName = "Service", ControlType = ControlTypeEnum.MileageBox, ResponsiveWidth = 12,
                                         DropDownOptions = GetSelect2Options("E1_01", agencyToken, state, select2OptionsLists)
                                         }
                                 }
@@ -373,7 +374,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 
             //Tab tab = new Tab();
 
-            //Section section = new Section() { SectionName = "Test 1", NgWidth = 9 };
+            //Section section = new Section() { SectionName = "Test 1", ResponsiveWidth = 9 };
 
             //Ctrl control = new Ctrl() { DisplayName = "FirstName", ControlType = ControlTypeEnum.Select2,
             //    DropDownOptions = GetSelect2Options("E1_01", agencyToken, state, select2OptionsLists)
