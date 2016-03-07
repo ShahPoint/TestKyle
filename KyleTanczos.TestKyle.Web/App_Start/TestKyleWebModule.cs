@@ -38,6 +38,7 @@ namespace KyleTanczos.TestKyle.Web
             Configuration.Navigation.Providers.Add<AppNavigationProvider>();
             Configuration.Navigation.Providers.Add<FrontEndNavigationProvider>();
             Configuration.Navigation.Providers.Add<MpaNavigationProvider>();
+            Configuration.Navigation.Providers.Add<Mpa2NavigationProvider>();
         }
 
         public override void Initialize()

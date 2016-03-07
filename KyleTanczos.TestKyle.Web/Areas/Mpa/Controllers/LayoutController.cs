@@ -17,6 +17,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
         private readonly IUserNavigationManager _userNavigationManager;
         private readonly IMultiTenancyConfig _multiTenancyConfig;
 
+
         public LayoutController(
             ISessionAppService sessionAppService, 
             IUserNavigationManager userNavigationManager, 
@@ -45,11 +46,20 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
         [ChildActionOnly]
         public PartialViewResult Sidebar(string currentPageName = "")
         {
+            string url = this.Request.Url.AbsolutePath;
+
             var sidebarModel = new SidebarViewModel
             {
-                Menu = AsyncHelper.RunSync(() => _userNavigationManager.GetMenuAsync(MpaNavigationProvider.MenuName, AbpSession.UserId)),
+           
+            
+                Menu = (url.Contains("PcrForm") ?
+                 AsyncHelper.RunSync(() => _userNavigationManager.GetMenuAsync(Mpa2NavigationProvider.MenuName, AbpSession.UserId))           
+                : AsyncHelper.RunSync(() => _userNavigationManager.GetMenuAsync(MpaNavigationProvider.MenuName, AbpSession.UserId))                
+                ),
+                
                 CurrentPageName = currentPageName
             };
+
 
             return PartialView("_Sidebar", sidebarModel);
         }

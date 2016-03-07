@@ -9,12 +9,14 @@
 <!--[if IE 8]> <html lang="en" class="ie8 no-js" data-ng-app="app"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9 no-js" data-ng-app="app"> <![endif]-->
 <!--[if !IE]><!-->
-<html lang="en" @(CultureHelper.IsRtl ? "dir=\"rtl\"" : "")>
+
+@*manifest="/libs/aaaCustom/manifest.appcache"*@
+<html  lang="en" @(CultureHelper.IsRtl ? "dir=\"rtl\"" : "")>
 <!--<![endif]-->
 <head>
     <title>TestKyle</title>
     <meta charset="utf-8" />
-
+   
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta content="" name="description" />
@@ -135,6 +137,27 @@
             minimumInputLength: 3
         });
 
+        function SideNav() {
+            var $sideNav = $('.page-sidebar').clone();
+
+            //alert("" +  $sideNav);
+
+            //$('.custom-menu-nav').html($sideNav);
+
+            $(".page-sidebar-menu").find('a').each(function (index) {
+
+                var href = $(this).attr('href');
+                var titleText = $(this).find('span').html();
+
+                $('.custom-menu-nav').append(
+                    "<li role='presentation' class='divider'> </li>" +
+                    "<li role='presentation'><a role='menuitem' tabindex='-1' href='" + href + "'>" + titleText + "</a></li>"
+                    );
+
+            });
+        };
+       
+        SideNav();
 
     </script>
 

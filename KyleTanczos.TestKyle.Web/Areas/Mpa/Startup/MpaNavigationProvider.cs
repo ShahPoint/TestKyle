@@ -5,6 +5,40 @@ using KyleTanczos.TestKyle.Web.Navigation;
 
 namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Startup
 {
+    public class Mpa2NavigationProvider : NavigationProvider
+    {
+        public const string MenuName = "Mpa2";
+
+        public override void SetNavigation(INavigationProviderContext context)
+        {
+            var menu = context.Manager.Menus[MenuName] = new MenuDefinition(MenuName, new FixedLocalizableString("Main Menu"));
+
+            menu
+                 .AddItem(new MenuItemDefinition(
+                    PageNames.App.Tenant.Dashboard,
+                    L("Dashboard"),
+                    url: "Mpa/Dashboard",
+                    icon: "icon-home",
+                    requiredPermissionName: AppPermissions.Pages_Tenant_Dashboard
+                    )
+
+                )
+                .AddItem(new MenuItemDefinition(
+                    "PcrForm",
+                    L("PcrForm"),
+                    url: "Mpa/PcrForm",
+                    icon: "icon-grid"
+                    )
+                );
+
+
+        }
+
+        private static ILocalizableString L(string name)
+        {
+            return new LocalizableString(name, TestKyleConsts.LocalizationSourceName);
+        }
+    }
     public class MpaNavigationProvider : NavigationProvider
     {
         public const string MenuName = "Mpa";

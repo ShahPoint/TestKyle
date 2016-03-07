@@ -63,6 +63,9 @@
 
     <input type="button" ng-click="SendAlert()" />
 
+    <div id="thisSpan"></div>
+
+
     @foreach (Tab tab in Model.Tabs)
     {
         @Html.Partial("Controls/Tab", tab);
@@ -81,6 +84,7 @@
         return JSON.parse(localStorage.getItem(key));
     }
 
+    
 
 var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope) {
