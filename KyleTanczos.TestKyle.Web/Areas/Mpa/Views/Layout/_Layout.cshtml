@@ -145,7 +145,7 @@
         });
 
         function SideNav() {
-            var $sideNav = $('.page-sidebar').clone();
+            //var $sideNav = $('.page-sidebar').clone();
 
             //alert("" +  $sideNav);
 
@@ -158,36 +158,43 @@
 
                 if (href.indexOf("#") > -1)
                 {
+                    
                     tabTarget = href.substring(2);
-
-                    $(this).attr('href', '#');
-
-                    //alert(tabTarget);
 
                     $(this).attr('tabTargetId', tabTarget);
 
+                    $(this).attr('href', "#");
+
                     $(this).click(function () {
-
-                        $(".custom-tabs").hide();
-
-                        $("#" + $(this).attr('tabTargetId')).show();
-
-                        //alert($(this).attr('tabTargetId'));
-
-                        //alert("" + $(this).attr('tabTargetId'));
+                        ShowPcrTab(this);
                     });
+
+                    $('.custom-menu-nav').append(
+                        "<li role='presentation' class='divider'> </li>" +
+                        "<li role='presentation'><a role='menuitem' tabTargetId='" + tabTarget
+                        + "' onclick='ShowPcrTab(this)' tabindex='-1' href='#'>" + titleText + "</a></li>"
+                        );
                 }
-
-
-                $('.custom-menu-nav').append(
-                    "<li role='presentation' class='divider'> </li>" +
-                    "<li role='presentation'><a role='menuitem' tabindex='-1' href='" + href + "'>" + titleText + "</a></li>"
-                    );
+                else // no #
+                {
+                    $('.custom-menu-nav').append(
+                        "<li role='presentation' class='divider'> </li>" +
+                        "<li role='presentation'><a role='menuitem' tabindex='-1' href='" + href + "'>" + titleText + "</a></li>"
+                        );
+                }
 
             });
         };
        
         SideNav();
+
+        // tabTargetId of the calling element must be filled with div id to be shown
+        function ShowPcrTab(thisControl)
+        {
+            $(".custom-tabs").hide();
+
+            $("#" + $(thisControl).attr('tabTargetId')).show();
+        }
 
     </script>
 

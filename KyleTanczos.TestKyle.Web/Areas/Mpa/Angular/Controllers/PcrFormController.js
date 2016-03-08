@@ -17,13 +17,16 @@ app.controller('myCtrl', function ($scope) {
 
 
 
-    
+
     $scope.currentUser = currentUser;
     DataService.pcr.LastSync = null;
     var allowAutofips = false;
 
-    $("#contentWrapper").hide();
-    LoadingGifService.ShowLoading();
+    ////Jay: this looks like a culprit of cost, i will use 4 comments for pieces
+    //// I dont think we will reuse, or just things we are not going to support
+    //// The new project is not going to have services like LoadingGif
+    ////$("#contentWrapper").hide();
+    ////LoadingGifService.ShowLoading();
 
     var attemptingSync = false;
     var loadedPcrDocs = false;
@@ -31,67 +34,8 @@ app.controller('myCtrl', function ($scope) {
 
     $scope.cache = {};
 
-    //$scope.$watch('pcr.FipsSelect2',
-    //function (newValue, oldValue) {
-
-    //	alert(JSON.stringify(newValue));
-
-    //	//$scope.updateAutoComplete(newValue);
-
-
-    //});
-
-
-    //$scope.$watch('pcr.DestinationAddress.zip',
-    //function (newValue, oldValue) {
-    //	//alert(JSON.stringify( newValue ));
-    //	//$scope.updateAutoComplete(newValue);
-    //	$scope.ZipChanged(newValue);
-
-
-    //});
-
-
-    //$scope.$watch('pcr.GuardianAddress.zip',
-    //function (newValue, oldValue) {
-    //	//alert(JSON.stringify( newValue ));
-    //	//$scope.updateAutoComplete(newValue);
-    //	$scope.ZipChanged(newValue);
-
-
-    //});
-
-
-    //$scope.$watch('pcr.PatientAddress.zip',
-    //function (newValue, oldValue) {
-    //	//alert(JSON.stringify( newValue ));
-    //	//$scope.updateAutoComplete(newValue);
-    //	$scope.ZipChanged(newValue);
-
-
-    //});
-
-    //$scope.$watch('pcr.EmployerAddress.zip',
-    //function (newValue, oldValue) {
-    //	//alert(JSON.stringify( newValue ));
-    //	//$scope.updateAutoComplete(newValue);
-    //	$scope.ZipChanged(newValue);
-
-
-    //});
-
-    //$scope.$watch('pcr.SceneAddress.zip',
-    //function (newValue, oldValue) {
-    //	//alert(JSON.stringify( newValue ));
-    //	//$scope.updateAutoComplete(newValue);
-    //	$scope.ZipChanged(newValue);
-
-
-    //});
-
+    //// Review are we using this?
     $scope.ZipChanged = function (zipToSearch) {
-        //alert("zip changed" + zipToSearch);
-        //zipToSearch = $("#postal_code").val();
 
         var targetAddress = $scope.cache.targetAddress;
 
@@ -101,27 +45,22 @@ app.controller('myCtrl', function ($scope) {
                 url: "/api/FIPS/?zip=" + zipToSearch + "&fipslist=" + $scope.demo2["ConfigFIPSList"]
             })
                     .done(function (msg) {
-                        //alert("json: " + JSON.stringify( msg ) );
-
 
                         $scope.pcr[targetAddress].fipsOptions = msg;
 
                         $scope.$apply();
                     });
-
         }
-
-        //alert("Zip to Query= " + $("#postal_code").val());
     };
 
+    ////What does this watcher do? I wrote this, i can look back.... culprit
     $scope.$watch('details',
 	function (newValue, oldValue) {
-	    //alert(JSON.stringify( newValue ));
+	    alert(JSON.stringify( newValue ));
 	    $scope.updateAutoComplete(newValue);
 
 	});
 
-    //$("[modaltarget$='AddressModal']").on("hide", lookupFips);
     function lookupFips() {
         var targetAddress = $scope.cache.targetAddress;
         if ($scope.pcr[targetAddress] && !$scope.pcr[targetAddress].fips && !$scope.pcr[targetAddress].fipsCounty) {
@@ -129,6 +68,8 @@ app.controller('myCtrl', function ($scope) {
         }
     }
 
+
+    ////This can be deleted, we no longer get this from the server, I believe
     function fipsLookupRequest(address, deferred) {
         return $.ajax({
             type: "POST",
@@ -153,6 +94,7 @@ app.controller('myCtrl', function ($scope) {
         });
     }
 
+    //// I believe this also can be deleted
     function tryAllFipsLookup() {
         var addresses = ["SceneAddress", "PatientAddress", "DestinationAddress", "GuardianAddress", "InsuranceAddress", "EmployerAddress"];
         var deferreds = [];
@@ -168,6 +110,7 @@ app.controller('myCtrl', function ($scope) {
         return $.when.apply($, deferreds);
     }
 
+    //// Maybe change name to updateInfoOnAutoCompleteChange
     $scope.updateAutoComplete = function (details) {
         if (details == null) // happens on page load
             return;
@@ -178,10 +121,6 @@ app.controller('myCtrl', function ($scope) {
         var advanced = $scope.pcr[targetAddress].advancedFips;
 
         $scope.pcr[targetAddress] = {};
-
-
-
-        //alert("address token: " + $scope.cache.targetAddress);
 
         for (i = 0; i < details.address_components.length; i++) {
             if (info[i].types[0] == "street_number")
@@ -252,17 +191,17 @@ app.controller('myCtrl', function ($scope) {
     });
 
 
+    ////This is not being used as we are now a spa, but might be able to be used if go back to a standalone spa
+    ////window.onbeforeunload = function () {
+    ////    if ($scope.oldPcrReport != angular.toJson($scope.pcr)) {
+    ////        return 'Your data is not saved!';
+    ////    }
+    ////    else {
 
-    window.onbeforeunload = function () {
-        if ($scope.oldPcrReport != angular.toJson($scope.pcr)) {
-            return 'Your data is not saved!';
-        }
-        else {
-
-            //nothing happens if already saved
-            return null;
-        }
-    };
+    ////        //nothing happens if already saved
+    ////        return null;
+    ////    }
+    ////};
 
     //even though it is suggested to use an event listener for beforeunload handling
     //this is currently not being fired
@@ -270,31 +209,25 @@ app.controller('myCtrl', function ($scope) {
     //window.removeEventListener('beforeunload');
     //window.addEventListener('beforeunload', function (e) {
     //    if ($scope.oldPcrReport != angular.toJson($scope.pcr)) {
-
     //        return 'Your data is not saved!';
-
     //    }
     //    else {
-
     //        //nothing happens if already saved
-
     //    }
-
     //});
 
+
+    ////All the next 50 lines and similar lines could be moved to a generic object, 
+    //// maybe that initiates it else where just for code cleanliness
+    //// example a getInitPcr and getInitDemo 
     $scope.pcrid = getParameterByName("id");
-    //$scope.PageOnline = false;
+
     $scope.ShowAllVitals = false;
     $scope.ShowAllProcedures = false;
     $scope.form = {};
     $scope.pcr = {};
 
 
-    //$scope.pcr.patientMedication = [];
-    // $scope.pcr.assessExams = [];
-    // $scope.pcr.treatmentVitals = [];
-    // $scope.pcr.treatmentMedications = [];
-    // $scope.pcr.treatmentProcedures = [];
     $scope.pcr.devices = [];
     $scope.pcr.notes = [];
     $scope.showAllMedications = false;
@@ -329,7 +262,8 @@ app.controller('myCtrl', function ($scope) {
     $scope.dispositionsObject = dynamicDispositionsObject;
 
 
-    //// org custom required fields
+    //// this was already not used by the app, but the snippet might be the lightest way of dynamically applying required fields if need be
+    // org custom required fields
     //success(DataService.demographics.GetDemo());
     //function success(msg) {
     //    $scope.demo = JSON.parse(msg.DataAsJson);
@@ -345,18 +279,8 @@ app.controller('myCtrl', function ($scope) {
     //}
 
 
-    //$scope.currentDisposition = $scope.dispositionsObject[0];
-    //$scope.difference = $scope.pcr.odometerDest - $scope.pcr.odometerScene;
-    //$scope.pcr.odometerTotal = $filter('number')($scope.difference, 1);
-
-
-
-    $scope.LoadDisplayPageForSubmitModal = function () {
-        //$("#SubmitPcrSelectModal").load("", function () {
-        //    alert("/eCloud/DisplayForm?id=" + $scope.pcrid + " .pcrtabs");
-        //});
-    }
-
+    //// make this a local function, not a public $scope function
+    //// maybe put these in a helper JS file 
     $scope.GetTimeStampString = function () {
         var now = new Date();
         var year = now.getFullYear();
@@ -386,6 +310,7 @@ app.controller('myCtrl', function ($scope) {
 
     }
 
+    // helper function
     function getDate() {
         var today = new Date();
         var dd = today.getDate();
@@ -404,6 +329,7 @@ app.controller('myCtrl', function ($scope) {
         return today;
     }
 
+    // Is this still used?
     $scope.EditNote = function (index) {
 
         $scope.note = $scope.pcr.notes[index].body;
@@ -413,8 +339,7 @@ app.controller('myCtrl', function ($scope) {
     };
 
     $scope.CalculateFullName = function () {
-    	$scope.pcr.patientFullName = ($scope.pcr.patientFirstName || "").trim() + " " + ($scope.pcr.patientLastName || "").trim();
-    	//alert($scope.pcr.patientFullName);
+        $scope.pcr.patientFullName = ($scope.pcr.patientFirstName || "").trim() + " " + ($scope.pcr.patientLastName || "").trim();
     };
 
     $scope.DeleteNote = function (index) {
@@ -439,19 +364,21 @@ app.controller('myCtrl', function ($scope) {
         }
     };
 
+    //// this manually triggers changes to nhtsa widget, since we do not have it, does this matter?
     $scope.FillNhtsaExam = function (value) {
         $("#wid-id-nhtsa input").each(function (index) {
             $(this).val(value).trigger("change");
         });
     };
 
+
+    //// used for filling the normal on button click?
     $scope.FillExamSelect2s = function (tabId, value) {
         $("#" + tabId + " input").each(function (index) {
             var select2_list = $(this).attr("data-select2_list");
             var oldVal = $(this).val();
-           
-            if(select2_list && oldVal.length == 0)
-            {
+
+            if (select2_list && oldVal.length == 0) {
                 var listName = select2_list.split('|')[1];
                 var normalOption = $.grep(window[listName], function (element, index) {
                     return (element.text == "Normal");
@@ -463,31 +390,28 @@ app.controller('myCtrl', function ($scope) {
                     return (element.text == "***Not Applicable");
                 })[0];
 
-                if (normalOption && normalOption.text)
-                {
+                if (normalOption && normalOption.text) {
                     $(this).val("Normal").trigger("change");
                 }
-                else if (reactiveOption && reactiveOption.text)
-                {
+                else if (reactiveOption && reactiveOption.text) {
                     $(this).val("Reactive").trigger("change");
                 }
-                else if (notApplicableOption && notApplicableOption.text)
-                {
+                else if (notApplicableOption && notApplicableOption.text) {
                     $(this).val("***Not Applicable").trigger("change");
                 }
             }
             else {
                 $(this).val(oldVal).trigger("change");
             }
-               
+
         });
 
         if (tabId == 'tabs-head') {
-           // $("[data-ng-model='ExamForm.examRightEye'],[data-ng-model='ExamForm.examLeftEye']").val("Reactive").trigger("change");
+            // $("[data-ng-model='ExamForm.examRightEye'],[data-ng-model='ExamForm.examLeftEye']").val("Reactive").trigger("change");
             //$("[data-ng-model='ExamForm.examHead']").val("***Not Applicable").trigger("change");
         }
         if (tabId == 'tabs-back') {
-           // $("[data-ng-model='ExamForm.examUnspecified']").val("***Not Applicable").trigger("change");
+            // $("[data-ng-model='ExamForm.examUnspecified']").val("***Not Applicable").trigger("change");
         }
     };
 
@@ -512,7 +436,7 @@ app.controller('myCtrl', function ($scope) {
     $scope.pcr.PatientAddress.currentfipsOption;
     $scope.pcr.PatientAddress.fipsOptions = [];
 
-    $('#tabs222').tabs();
+   // $('#tabs222').tabs();
 
     $scope.UpdateCurrentCrewDropdowns = function () {
         var newOptions = [];
@@ -560,12 +484,14 @@ app.controller('myCtrl', function ($scope) {
 
 
 
-
+    
     $scope.SetCreatorToPrimary = function () {
         $scope.pcr.whoGeneratedThisReport = $scope.pcr.crewPrimary;
         $("[data-ng-model='pcr.whoGeneratedThisReport']").select2("val", $scope.pcr.crewPrimary);
     };
 
+
+    //// This is being called but I think can be killed?
     $scope.FormActionSetAgencyDefaultValues = function (str) {
 
         //$scope.pcr['incidentReportNumber'] = 'q';
@@ -591,56 +517,56 @@ app.controller('myCtrl', function ($scope) {
         }
 
         toastr.success('Note: ' + strArray.length + " fields modified.", '');
-
-
-
     };
 
-    // google  address code
-    $scope.SetAddress = function () {
 
-        $("#street_number").trigger('change');
-        $("#route").trigger('change');
-        $("#locality").trigger('change');
-        $("#administrative_area_level_1").trigger('change');
-        $("#postal_code").trigger('change');
-        $("#country").trigger('change');
+    //// This was not being called from anywhere
+    //// This i believe was our pattern for when we shared a dialog for all addresses
+    //// google  address code
+    ////$scope.SetAddress = function () {
 
-        var tempAddressObject = {
+    ////    $("#street_number").trigger('change');
+    ////    $("#route").trigger('change');
+    ////    $("#locality").trigger('change');
+    ////    $("#administrative_area_level_1").trigger('change');
+    ////    $("#postal_code").trigger('change');
+    ////    $("#country").trigger('change');
 
-            street_number: "" + $scope.pcr.googleAddress.street_number,
-            street_name: "" + "" + $scope.pcr.googleAddress.street_name,
-            city: "" + $scope.pcr.googleAddress.city,
-            state: "" + $scope.pcr.googleAddress.state,
-            postal_code: "" + $scope.pcr.googleAddress.postal_code,
-            country: "" + $scope.pcr.googleAddress.country,
-            fips: "" + $scope.pcr.googleAddress.fips,
-            fipsCounty: "" + $scope.pcr.googleAddress.fipsCounty,
-            notes: "" + $scope.pcr.googleAddress.notes,
-            valid: true
+    ////    var tempAddressObject = {
 
-        };
+    ////        street_number: "" + $scope.pcr.googleAddress.street_number,
+    ////        street_name: "" + "" + $scope.pcr.googleAddress.street_name,
+    ////        city: "" + $scope.pcr.googleAddress.city,
+    ////        state: "" + $scope.pcr.googleAddress.state,
+    ////        postal_code: "" + $scope.pcr.googleAddress.postal_code,
+    ////        country: "" + $scope.pcr.googleAddress.country,
+    ////        fips: "" + $scope.pcr.googleAddress.fips,
+    ////        fipsCounty: "" + $scope.pcr.googleAddress.fipsCounty,
+    ////        notes: "" + $scope.pcr.googleAddress.notes,
+    ////        valid: true
 
-        var addressName = "" + $scope.pcr.googleAddress.targetAddress;
-        if (addressName == "SceneAddress") {
-            $scope.pcr.SceneAddress = tempAddressObject;
-        }
-        else if (addressName == "PatientAddress") {
-            $scope.pcr.PatientAddress = tempAddressObject;
-        }
-        else if (addressName == "DestinationAddress") {
-            $scope.pcr.DestinationAddress = tempAddressObject;
-        }
-        else if (addressName == "GuardianAddress") {
-            $scope.pcr.GuardianAddress = tempAddressObject;
-        }
-        else if (addressName == "InsuranceAddress") {
-            $scope.pcr.InsuranceAddress = tempAddressObject;
-        }
-        else if (addressName == "EmployerAddress") {
-            $scope.pcr.EmployerAddress = tempAddressObject;
-        }
-    };
+    ////    };
+
+    ////    var addressName = "" + $scope.pcr.googleAddress.targetAddress;
+    ////    if (addressName == "SceneAddress") {
+    ////        $scope.pcr.SceneAddress = tempAddressObject;
+    ////    }
+    ////    else if (addressName == "PatientAddress") {
+    ////        $scope.pcr.PatientAddress = tempAddressObject;
+    ////    }
+    ////    else if (addressName == "DestinationAddress") {
+    ////        $scope.pcr.DestinationAddress = tempAddressObject;
+    ////    }
+    ////    else if (addressName == "GuardianAddress") {
+    ////        $scope.pcr.GuardianAddress = tempAddressObject;
+    ////    }
+    ////    else if (addressName == "InsuranceAddress") {
+    ////        $scope.pcr.InsuranceAddress = tempAddressObject;
+    ////    }
+    ////    else if (addressName == "EmployerAddress") {
+    ////        $scope.pcr.EmployerAddress = tempAddressObject;
+    ////    }
+    ////};
 
 
     $scope.UpdateTimelineDates = function () {
@@ -668,6 +594,8 @@ app.controller('myCtrl', function ($scope) {
         }
     }
 
+
+    //// helper class or moved close to where it is used with the id
     function getParameterByName(name) {
         var item = $location.search();
         return (item != null ? item[name] : "");
@@ -683,79 +611,86 @@ app.controller('myCtrl', function ($scope) {
         $scope.pcr.patientAgeMonths = ageMonths;
     }
 
-    $scope.updatePcrOffline = function () {
-        var PcrOfflineArray = JSON.parse(localStorage.getItem("PcrOfflineArray"));
-        if (PcrOfflineArray == null) {
-            PcrOfflineArray = [];
-        }
 
-        var x2js = new X2JS();
-        var tempXml = x2js.json2xml_str($.parseJSON(angular.toJson($scope.pcr)));
-        var id = parseInt($scope.pcrid);
-        var offlinePcr = {
-            Version: $scope.Version + 1,
-            ID: id,//$scope.GetGuid(),
-            Name: "No Name",
-            DataAsJson: JSON.stringify($scope.pcr),
-            DataAsXml: tempXml,
-            Offline: $scope.OfflinePcr,
-            Status: "0"
-        };
+    //// this needs rewritten, as one 
+    ////$scope.updatePcrOffline = function () {
+    ////    var PcrOfflineArray = JSON.parse(localStorage.getItem("PcrOfflineArray"));
+    ////    if (PcrOfflineArray == null) {
+    ////        PcrOfflineArray = [];
+    ////    }
 
-        var index;
-        var splice = false;
-        for (var i = 0; i < PcrOfflineArray.length; i++) {
-            if (PcrOfflineArray[i].ID == id) {
-                //alert("match: " + i);
-                index = i;
-                splice = true;
-                offlinePcr["Created"] = PcrOfflineArray[i].Created;
-                offlinePcr["CreatedBy"] = PcrOfflineArray[i].CreatedBy;
-                offlinePcr["PrettyCreated"] = PcrOfflineArray[i].PrettyCreated;
-                break;
-            }
-        }
+    ////    var x2js = new X2JS();
+    ////    var tempXml = x2js.json2xml_str($.parseJSON(angular.toJson($scope.pcr)));
+    ////    var id = parseInt($scope.pcrid);
+    ////    var offlinePcr = {
+    ////        Version: $scope.Version + 1,
+    ////        ID: id,//$scope.GetGuid(),
+    ////        Name: "No Name",
+    ////        DataAsJson: JSON.stringify($scope.pcr),
+    ////        DataAsXml: tempXml,
+    ////        Offline: $scope.OfflinePcr,
+    ////        Status: "0"
+    ////    };
 
-        if (splice) {
-            PcrOfflineArray.splice(index, 1, offlinePcr);
-        }
-        else {
-            PcrOfflineArray.push(offlinePcr);
-        }
+    ////    var index;
+    ////    var splice = false;
+    ////    for (var i = 0; i < PcrOfflineArray.length; i++) {
+    ////        if (PcrOfflineArray[i].ID == id) {
+    ////            //alert("match: " + i);
+    ////            index = i;
+    ////            splice = true;
+    ////            offlinePcr["Created"] = PcrOfflineArray[i].Created;
+    ////            offlinePcr["CreatedBy"] = PcrOfflineArray[i].CreatedBy;
+    ////            offlinePcr["PrettyCreated"] = PcrOfflineArray[i].PrettyCreated;
+    ////            break;
+    ////        }
+    ////    }
+
+    ////    if (splice) {
+    ////        PcrOfflineArray.splice(index, 1, offlinePcr);
+    ////    }
+    ////    else {
+    ////        PcrOfflineArray.push(offlinePcr);
+    ////    }
 
 
-        localStorage.setItem("PcrOfflineArray", JSON.stringify(PcrOfflineArray));
-    }
+    ////    localStorage.setItem("PcrOfflineArray", JSON.stringify(PcrOfflineArray));
+    ////}
 
+    //// What is this used for?
     $scope.appendQueryValue = function (id, value) {
         $location.search(id, value);
     }
 
-    $scope.updatePcrToList = function () {
+    //// This needs rethought and rewritten
+    ////$scope.updatePcrToList = function () {
 
-        var x2js = new X2JS();
-        var tempXml = x2js.json2xml_str($.parseJSON(angular.toJson($scope.pcr)));
-        $scope.extraPcrData.DataAsXml = tempXml;
-        DataService.pcr.SetPcr($scope.pcr, $scope.pcrid, $scope.extraPcrData);
+    ////    var x2js = new X2JS();
+    ////    var tempXml = x2js.json2xml_str($.parseJSON(angular.toJson($scope.pcr)));
+    ////    $scope.extraPcrData.DataAsXml = tempXml;
+    ////    DataService.pcr.SetPcr($scope.pcr, $scope.pcrid, $scope.extraPcrData);
 
-    };
+    ////};
 
-    var submitHandler = $scope.$on('HandleSubmitPcr', function (event, args) {
-        $scope.validateAndSubmit(args.url);
-    });
+    //// this can be rewritten to just call teh validateAndSubmit from teh client
+    ////var submitHandler = $scope.$on('HandleSubmitPcr', function (event, args) {
+    ////    $scope.validateAndSubmit(args.url);
+    ////});
 
+    //// This looks fine, not sure why we overloaded the submit url, where else do we submit and go to?
+    //// Except teh set nullable values, i would like to rethink this for 2.1
     $scope.validateAndSubmit = function (url) {
-       // tryAllFipsLookup().done(function () {
-            if (!url)
-                url = "/App/Index/#/Submit?id=";
-            if (isPcrFormValid()) {
-                $scope.SetNullableValues();
-                $scope.SavePcrThenSubmit(url);
-            }
-            else {
-                ShowValidationPanel();
-            }
-      //  });
+        // tryAllFipsLookup().done(function () {
+        if (!url)
+            url = "/App/Index/#/Submit?id=";
+        if (isPcrFormValid()) {
+            $scope.SetNullableValues();
+            $scope.SavePcrThenSubmit(url);
+        }
+        else {
+            ShowValidationPanel();
+        }
+        //  });
     }
 
 
@@ -787,15 +722,18 @@ app.controller('myCtrl', function ($scope) {
 
 
 
+    //// I dont think this is being used
+    ////$scope.UpdatePatientAddress = function (addr) {
+    ////    $scope.pcr.PatientAddress = angular.copy(addr);
+    ////};
 
-    $scope.UpdatePatientAddress = function (addr) {
-        $scope.pcr.PatientAddress = angular.copy(addr);
-    };
+    //// I do not think this being used
+    ////$scope.UpdateGuardianAddress = function (addr) {
+    ////    $scope.pcr.GuardianAddress = angular.copy(addr);
+    ////};
 
-    $scope.UpdateGuardianAddress = function (addr) {
-        $scope.pcr.GuardianAddress = angular.copy(addr);
-    };
 
+    //// Is this the submit, or the submit above, we should only need one?
     $scope.SubmitPcr = function () {
 
         if ($scope.PageOnline) {
@@ -846,16 +784,12 @@ app.controller('myCtrl', function ($scope) {
                     totalTimeMinutes = "0" + totalTimeMinutes;
                 }
 
-
-
-
                 $scope.pcr.totalTime = totalTimeHours + ":" + totalTimeMinutes
             }
         }
         catch (ex) {
 
         }
-
     };
 
     $scope.CalculateOdometerTotal = function () {
@@ -864,10 +798,12 @@ app.controller('myCtrl', function ($scope) {
         }
     };
 
+    //// what is this used for?
     $scope.TrustThisHTML = function (str) {
         return $sce.trustAsHtml(str);
     }
 
+    //// Is this working?
     $scope.CalculateTotalGcs = function () {
 
         $scope.VitalForm.vitalGcsTotal =
@@ -877,330 +813,346 @@ app.controller('myCtrl', function ($scope) {
 
     }
 
-    $scope.RemovePcrsFromLocalStorage = function (results) {
-        var PcrOfflineArray = JSON.parse(localStorage.getItem("PcrOfflineArray"));
+    //// We have to code revew and rethink the offline story
+    ////
+    ////$scope.RemovePcrsFromLocalStorage = function (results) {
+    ////    var PcrOfflineArray = JSON.parse(localStorage.getItem("PcrOfflineArray"));
 
-        if (PcrOfflineArray && PcrOfflineArray.length > 0 && results && results.length > 0) {
-            for (var j = 0; j < results.length; j++) {
-                for (var i = 0; i < PcrOfflineArray.length; i++) {
-                    if (PcrOfflineArray[i].ID == results[j]) {
-                        //alert("Removing " + i);
-                        PcrOfflineArray.splice(i, 1);
-                        //alert(angular.toJson(PcrOfflineArray));
-                        break;
-                    }
-                }
-            }
+    ////    if (PcrOfflineArray && PcrOfflineArray.length > 0 && results && results.length > 0) {
+    ////        for (var j = 0; j < results.length; j++) {
+    ////            for (var i = 0; i < PcrOfflineArray.length; i++) {
+    ////                if (PcrOfflineArray[i].ID == results[j]) {
+    ////                    //alert("Removing " + i);
+    ////                    PcrOfflineArray.splice(i, 1);
+    ////                    //alert(angular.toJson(PcrOfflineArray));
+    ////                    break;
+    ////                }
+    ////            }
+    ////        }
 
-            localStorage.setItem("PcrOfflineArray", JSON.stringify(PcrOfflineArray));
-        }
-    }
+    ////        localStorage.setItem("PcrOfflineArray", JSON.stringify(PcrOfflineArray));
+    ////    }
+    ////}
 
-    var saveThenOpenDisplayPageHandler = $scope.$on('HandleSaveThenOpenDisplayPage', function (event, args) {
-        $scope.SaveOrUpdateHandler();
-        window.location = args.url + $scope.pcrid;
-    });
+    //// What do these do, culprit
+    ////var saveThenOpenDisplayPageHandler = $scope.$on('HandleSaveThenOpenDisplayPage', function (event, args) {
+    ////    $scope.SaveOrUpdateHandler();
+    ////    window.location = args.url + $scope.pcrid;
+    ////});
 
-
-    var saveOrUpdateHandler = $scope.$on('HandleSaveOrUpdateHandler', function (event, args) {
-        $scope.SaveOrUpdateHandler();
-    });
-
-    $scope.SaveOrUpdateHandler = function () {
-        if ($scope.extraPcrData.Status == "0") {
-            if ($scope.oldPcrReport != JSON.stringify($scope.pcr)) {
+    //// What do these do, culprit
+    ////var saveOrUpdateHandler = $scope.$on('HandleSaveOrUpdateHandler', function (event, args) {
+    ////    $scope.SaveOrUpdateHandler();
+    ////});
 
 
-                $scope.oldPcrReport = JSON.stringify($scope.pcr);
 
-                $scope.updatePcrToList();
-            }
-            else {
+    //// Rewrite offline saving and submitting logic
+    ////$scope.SaveOrUpdateHandler = function () {
+    ////    if ($scope.extraPcrData.Status == "0") {
+    ////        if ($scope.oldPcrReport != JSON.stringify($scope.pcr)) {
 
-                //toastr.info('No updates to save.', "");
-            }
 
-            if (!attemptingSync)
-                sync();
-        } else {
-            toastr.warning("You are viewing a submitted PCR. Edits will not be saved.")
-        }
-    };
+    ////            $scope.oldPcrReport = JSON.stringify($scope.pcr);
+
+    ////            $scope.updatePcrToList();
+    ////        }
+    ////        else {
+
+    ////            //toastr.info('No updates to save.', "");
+    ////        }
+
+    ////        if (!attemptingSync)
+    ////            sync();
+    ////    } else {
+    ////        toastr.warning("You are viewing a submitted PCR. Edits will not be saved.")
+    ////    }
+    ////};
 
     $scope.calculateWeightInKg = function () {
         $scope.pcr.patientWeightLbs = $scope.pcr.patientWeightLbs.replace(/[^\0-9]/ig, "");
         $scope.pcr.patientWeightKg = ($scope.pcr.patientWeightLbs == "" ? 0 : (parseInt(parseInt($scope.pcr.patientWeightLbs) / 2.2)));
     }
 
-    $scope.CreateSelect2ArrayFromDelimitedString = function (demographics, property) {
-        var data = demographics[property];
-        if (!data) {
-            var empty = [];
-            return empty;
-        }
-        var dataArray = data.split(',');
-        var select2Array = [];
-        var i;
-        for (i = 0; i < dataArray.length; ++i) {
-            var select2Object = { id: dataArray[i], text: dataArray[i] };
-            select2Array.push(select2Object);
-        }
-        return select2Array;
-    };
 
-    $scope.CreateSelect2ArrayFromObjectArray = function (demographics, objectName, property) {
-        var objectArray = demographics[objectName];
-        if (!objectArray) {
-            var empty = [];
-            return empty;
-        }
-        var select2Array = [];
-        var i;
-        for (i = 0; i < objectArray.length; ++i) {
-            var medicationName = "" + objectArray[i][property];
-            var select2Object = { id: medicationName, text: medicationName };
-            select2Array.push(select2Object);
-        }
-        return select2Array;
-    };
+    //// I would like to move demo based dropdowns to the server side, 
+    //// update the cache-manifest for that agency and re-install resources
+    ////$scope.CreateSelect2ArrayFromDelimitedString = function (demographics, property) {
+    ////    var data = demographics[property];
+    ////    if (!data) {
+    ////        var empty = [];
+    ////        return empty;
+    ////    }
+    ////    var dataArray = data.split(',');
+    ////    var select2Array = [];
+    ////    var i;
+    ////    for (i = 0; i < dataArray.length; ++i) {
+    ////        var select2Object = { id: dataArray[i], text: dataArray[i] };
+    ////        select2Array.push(select2Object);
+    ////    }
+    ////    return select2Array;
+    ////};
 
-    $scope.CreateArrayFromObjectArray = function (demographics, objectName, property) {
-        var objectArray = [];
-        objectArray = demographics[objectName];
+    //// I dont think we will need this either
+    ////$scope.CreateSelect2ArrayFromObjectArray = function (demographics, objectName, property) {
+    ////    var objectArray = demographics[objectName];
+    ////    if (!objectArray) {
+    ////        var empty = [];
+    ////        return empty;
+    ////    }
+    ////    var select2Array = [];
+    ////    var i;
+    ////    for (i = 0; i < objectArray.length; ++i) {
+    ////        var medicationName = "" + objectArray[i][property];
+    ////        var select2Object = { id: medicationName, text: medicationName };
+    ////        select2Array.push(select2Object);
+    ////    }
+    ////    return select2Array;
+    ////};
 
-        var array = [];
-        var i;
-        for (i = 0; i < objectArray.length; ++i) {
-            array.push("" + objectArray[i][property]);
-        }
-        return array;
-    };
+    //// This will all get moved to a new pattern for offline resources
+    ////$scope.CreateArrayFromObjectArray = function (demographics, objectName, property) {
+    ////    var objectArray = [];
+    ////    objectArray = demographics[objectName];
 
-    $scope.CreateSelect2ArrayForPersonnels = function (demographics) {
-        var objectArray = [];
-        objectArray = demographics["Personnels"];
+    ////    var array = [];
+    ////    var i;
+    ////    for (i = 0; i < objectArray.length; ++i) {
+    ////        array.push("" + objectArray[i][property]);
+    ////    }
+    ////    return array;
+    ////};
 
-        var select2Array = [];
-        var i;
-        for (i = 0; i < objectArray.length; ++i) {
-            if (!objectArray[i].activeEmt)
-                continue;
-            var PersonnelFirstName = "" + objectArray[i]["PersonnelFirstName"];
-            var PersonnelLastName = "" + objectArray[i]["PersonnelLastName"];
-            var PersonnelStateLicensureID = "" + objectArray[i]["PersonnelStateLicensureID"];
-            var PersonnelServiceLevel;
-            if (typeof objectArray[i].PersonnelAgencyCertifications === "undefined") {
-                PersonnelServiceLevel = "Nothing Found";
-            }
-            else {
-                PersonnelServiceLevel = $scope.GetMostRecentPersonnelCertification(objectArray[i].PersonnelAgencyCertifications);
-            }
+    //// Move to server side, either deliver as ready to use resources or deliver in mvc partial controller
+    ////$scope.CreateSelect2ArrayForPersonnels = function (demographics) {
+    ////    var objectArray = [];
+    ////    objectArray = demographics["Personnels"];
 
-            var FormattedText = PersonnelFirstName + " " + PersonnelLastName + " (" + PersonnelStateLicensureID + "/" + PersonnelServiceLevel + ")";
-            var select2Object = { id: FormattedText, text: FormattedText };
-            select2Array.push(select2Object);
-        }
-        return select2Array;
-    }
+    ////    var select2Array = [];
+    ////    var i;
+    ////    for (i = 0; i < objectArray.length; ++i) {
+    ////        if (!objectArray[i].activeEmt)
+    ////            continue;
+    ////        var PersonnelFirstName = "" + objectArray[i]["PersonnelFirstName"];
+    ////        var PersonnelLastName = "" + objectArray[i]["PersonnelLastName"];
+    ////        var PersonnelStateLicensureID = "" + objectArray[i]["PersonnelStateLicensureID"];
+    ////        var PersonnelServiceLevel;
+    ////        if (typeof objectArray[i].PersonnelAgencyCertifications === "undefined") {
+    ////            PersonnelServiceLevel = "Nothing Found";
+    ////        }
+    ////        else {
+    ////            PersonnelServiceLevel = $scope.GetMostRecentPersonnelCertification(objectArray[i].PersonnelAgencyCertifications);
+    ////        }
+
+    ////        var FormattedText = PersonnelFirstName + " " + PersonnelLastName + " (" + PersonnelStateLicensureID + "/" + PersonnelServiceLevel + ")";
+    ////        var select2Object = { id: FormattedText, text: FormattedText };
+    ////        select2Array.push(select2Object);
+    ////    }
+    ////    return select2Array;
+    ////}
+
     var emptyarr = [];
 
+    // what is this?  Guessing this will not be needed if we rethink COnley
     try {
         $scope.dispositions = JSON.parse(AgencyDispositions);
         $scope.oldDisposition = $scope.dispositions[0];
-    } catch (e) {} // in case the parse fails
+    } catch (e) { } // in case the parse fails
 
-    
-    $scope.ApplyDisposition = function () {
-        // disposition_config pattern
-        //alert(JSON.stringify($scope.pcr.currentDisposition));
-        if ($scope.dispositions == undefined) return; // happens before dispositions request completes, on load of form
-        var currentDisposition = $.grep($scope.dispositions, function (element, index) {
-            return (element.outcome == $scope.pcr.currentDisposition.name)
-        })[0];
+    //// This really needs rethough and simplified (Jay Shah)
+    ////$scope.ApplyDisposition = function () {
+    ////    // disposition_config pattern
+    ////    //alert(JSON.stringify($scope.pcr.currentDisposition));
+    ////    if ($scope.dispositions == undefined) return; // happens before dispositions request completes, on load of form
+    ////    var currentDisposition = $.grep($scope.dispositions, function (element, index) {
+    ////        return (element.outcome == $scope.pcr.currentDisposition.name)
+    ////    })[0];
 
-        // defaults
-        try {
-            $scope.oldDisposition.defaults.forEach(function (element, index, array) {
-                try {
-                    if ($("[data-ng-model='" + element.ngModel + "']").hasClass("select2-offscreen")) {
-                        var currVals = jQuery.makeArray($("[data-ng-model='" + element.ngModel + "']").select2('val'));
-                        if ($(element.value).not(currVals).length == 0 && $(currVals).not(element.value).length == 0) {
-                            $("[data-ng-model='" + element.ngModel + "']").select2("val", []);
-                            $("[data-ng-model='" + element.ngModel + "']").trigger("change");
-                        }
-                    } else {
-                        if ($("[data-ng-model='" + element.ngModel + "']").val() == element.value[0]) {
-                            $("[data-ng-model='" + element.ngModel + "']").val("");
-                        }
-                    }
-                } catch (ex) {
-                    logError(ex);
-                    //logError({ message: "Clearing of old disposition defaults failed: " + element.ngModel + "\n\nApplyDisposition(...), PcrFormController.js", timestamp: new Date().toDateTime() });
-                }
-            });
-        } catch (ex) {
-            logError(ex);
-        }
+    ////    // defaults
+    ////    try {
+    ////        $scope.oldDisposition.defaults.forEach(function (element, index, array) {
+    ////            try {
+    ////                if ($("[data-ng-model='" + element.ngModel + "']").hasClass("select2-offscreen")) {
+    ////                    var currVals = jQuery.makeArray($("[data-ng-model='" + element.ngModel + "']").select2('val'));
+    ////                    if ($(element.value).not(currVals).length == 0 && $(currVals).not(element.value).length == 0) {
+    ////                        $("[data-ng-model='" + element.ngModel + "']").select2("val", []);
+    ////                        $("[data-ng-model='" + element.ngModel + "']").trigger("change");
+    ////                    }
+    ////                } else {
+    ////                    if ($("[data-ng-model='" + element.ngModel + "']").val() == element.value[0]) {
+    ////                        $("[data-ng-model='" + element.ngModel + "']").val("");
+    ////                    }
+    ////                }
+    ////            } catch (ex) {
+    ////                logError(ex);
+    ////                //logError({ message: "Clearing of old disposition defaults failed: " + element.ngModel + "\n\nApplyDisposition(...), PcrFormController.js", timestamp: new Date().toDateTime() });
+    ////            }
+    ////        });
+    ////    } catch (ex) {
+    ////        logError(ex);
+    ////    }
 
-        try {
-            currentDisposition.defaults.forEach(function (element, index, array) {
-                try {
-                    if ($("[data-ng-model='" + element.ngModel + "']").hasClass("select2-offscreen")) {
-                        $("[data-ng-model='" + element.ngModel + "']").select2("val", element.value);
-                        $("[data-ng-model='" + element.ngModel + "']").trigger("change");
+    ////    try {
+    ////        currentDisposition.defaults.forEach(function (element, index, array) {
+    ////            try {
+    ////                if ($("[data-ng-model='" + element.ngModel + "']").hasClass("select2-offscreen")) {
+    ////                    $("[data-ng-model='" + element.ngModel + "']").select2("val", element.value);
+    ////                    $("[data-ng-model='" + element.ngModel + "']").trigger("change");
 
-                    } else {
-                       
-                        $("[data-ng-model='" + element.ngModel + "']").val(element.value[0]);
-                    }
-                } catch (ex) {
-                    logError(ex);
-                }
-            });
-        } catch (ex) {
-            logError(ex);
-        }
+    ////                } else {
 
-        // hidden
-        try {
-            $scope.oldDisposition.hidden.forEach(function (element, index, array) {
-                try {
-                    if (element.hasOwnProperty("id")) {
-                        $("#" + element.id).show();
-                    }
-                    else {
-                        $("[data-ng-model='" + element.ngModel + "']").closest("section").slideDown();
-                    }
-                } catch (ex) {
-                    logError(ex);
-                }
-            });
-        } catch (ex) {
-            logError(ex);
-        }
-        try {
-            currentDisposition.hidden.forEach(function (element, index, array) {
-                try {
-                    if (element.hasOwnProperty("id")) {
-                        $("#" + element.id).hide();
-                    }
-                    else {
-                        $("[data-ng-model='" + element.ngModel + "']").closest("section").slideUp();
-                    }
-                } catch (ex) {
-                    logError(ex);
-                }
-            });
-        } catch (ex) {
-            logError(ex);
-        }
+    ////                    $("[data-ng-model='" + element.ngModel + "']").val(element.value[0]);
+    ////                }
+    ////            } catch (ex) {
+    ////                logError(ex);
+    ////            }
+    ////        });
+    ////    } catch (ex) {
+    ////        logError(ex);
+    ////    }
 
-        // required
-        try {
-            $scope.oldDisposition.required.forEach(function (element, index, array) {
-                try {
-                    $("[data-ng-model='" + element + "']").rules("add", {
-                        required: false
-                    });
-                    $("[data-ng-model='" + element + "']").removeClass("RequiredRedBorder");
-                } catch (ex) {
-                    logError(ex);
-                }
-            });
-        } catch (ex) {
-            logError(ex);
-        }
-        try {
-            currentDisposition.required.forEach(function (element, index, array) {
-                try {
-                    $("[data-ng-model='" + element + "']").rules("add", {
-                        required: true
-                    });
-                    $("[data-ng-model='" + element + "']").addClass("RequiredRedBorder");
-                } catch (ex) {
-                    logError(ex);
-                }
-            });
-        } catch (ex) {
-            logError(ex);
-        }
+    ////    // hidden
+    ////    try {
+    ////        $scope.oldDisposition.hidden.forEach(function (element, index, array) {
+    ////            try {
+    ////                if (element.hasOwnProperty("id")) {
+    ////                    $("#" + element.id).show();
+    ////                }
+    ////                else {
+    ////                    $("[data-ng-model='" + element.ngModel + "']").closest("section").slideDown();
+    ////                }
+    ////            } catch (ex) {
+    ////                logError(ex);
+    ////            }
+    ////        });
+    ////    } catch (ex) {
+    ////        logError(ex);
+    ////    }
+    ////    try {
+    ////        currentDisposition.hidden.forEach(function (element, index, array) {
+    ////            try {
+    ////                if (element.hasOwnProperty("id")) {
+    ////                    $("#" + element.id).hide();
+    ////                }
+    ////                else {
+    ////                    $("[data-ng-model='" + element.ngModel + "']").closest("section").slideUp();
+    ////                }
+    ////            } catch (ex) {
+    ////                logError(ex);
+    ////            }
+    ////        });
+    ////    } catch (ex) {
+    ////        logError(ex);
+    ////    }
 
-        // deep copy setting oldDisposition to currentDisposition
-        $scope.oldDisposition = jQuery.extend(true, {}, currentDisposition);
-        // END: disposition_config pattern
+    ////    // required
+    ////    try {
+    ////        $scope.oldDisposition.required.forEach(function (element, index, array) {
+    ////            try {
+    ////                $("[data-ng-model='" + element + "']").rules("add", {
+    ////                    required: false
+    ////                });
+    ////                $("[data-ng-model='" + element + "']").removeClass("RequiredRedBorder");
+    ////            } catch (ex) {
+    ////                logError(ex);
+    ////            }
+    ////        });
+    ////    } catch (ex) {
+    ////        logError(ex);
+    ////    }
+    ////    try {
+    ////        currentDisposition.required.forEach(function (element, index, array) {
+    ////            try {
+    ////                $("[data-ng-model='" + element + "']").rules("add", {
+    ////                    required: true
+    ////                });
+    ////                $("[data-ng-model='" + element + "']").addClass("RequiredRedBorder");
+    ////            } catch (ex) {
+    ////                logError(ex);
+    ////            }
+    ////        });
+    ////    } catch (ex) {
+    ////        logError(ex);
+    ////    }
 
-        $scope.pcr.assessmentOutcome = $scope.pcr.currentDisposition["results"].outcome;
-        
-        //$scope.SaveOrUpdateHandler();
+    ////    // deep copy setting oldDisposition to currentDisposition
+    ////    $scope.oldDisposition = jQuery.extend(true, {}, currentDisposition);
+    ////    // END: disposition_config pattern
 
-        //$('section').show();
-        //$('.jarviswidget').show();
-        //$('nav > ul > li > a').show();
+    ////    $scope.pcr.assessmentOutcome = $scope.pcr.currentDisposition["results"].outcome;
 
+    ////    //$scope.SaveOrUpdateHandler();
 
-        //$("[data-ng-model]").each(function (index) {
-        //    var ngModel = $(this).attr("data-ng-model");
-        //    var indexOf = $.inArray(ngModel, $scope.pcr.currentDisposition["results"].sections);
-        //    if (indexOf != -1) {
-        //        $(this).parent().parent().slideUp();
-        //    }
-        //});
-
-        //$("[data-addressTable]").each(function (index) {
-        //    var ngModel = $(this).attr("data-addressTable");
-        //    var indexOf = $.inArray(ngModel, $scope.pcr.currentDisposition["results"].addressTables);
-        //    if (indexOf != -1) {
-        //        $(this).parent().parent().slideUp();
-        //    }
-        //});
-
-        //$('.jarviswidget > header > h2').each(function (index) {
-        //    var jarvisTitle = $(this).html();
-        //    var indexOf = $.inArray(jarvisTitle, $scope.pcr.currentDisposition["results"].tables);
-        //    if (indexOf != -1) {
-        //        $(this).parent().parent().slideUp();
-        //    }
-        //});
+    ////    //$('section').show();
+    ////    //$('.jarviswidget').show();
+    ////    //$('nav > ul > li > a').show();
 
 
+    ////    //$("[data-ng-model]").each(function (index) {
+    ////    //    var ngModel = $(this).attr("data-ng-model");
+    ////    //    var indexOf = $.inArray(ngModel, $scope.pcr.currentDisposition["results"].sections);
+    ////    //    if (indexOf != -1) {
+    ////    //        $(this).parent().parent().slideUp();
+    ////    //    }
+    ////    //});
 
-        //$('nav > ul > li > a').each(function (index) {
+    ////    //$("[data-addressTable]").each(function (index) {
+    ////    //    var ngModel = $(this).attr("data-addressTable");
+    ////    //    var indexOf = $.inArray(ngModel, $scope.pcr.currentDisposition["results"].addressTables);
+    ////    //    if (indexOf != -1) {
+    ////    //        $(this).parent().parent().slideUp();
+    ////    //    }
+    ////    //});
 
-        //    var tabName = $(this).attr('name');
-
-        //    var indexOf = $.inArray(tabName, $scope.pcr.currentDisposition["results"].tabs);
-        //    if (indexOf != -1) {
-        //        //alert(tabId);
-        //        $(this).hide();
-        //    }
-        //});
-
-        ////$scope.FormActionSetAgencyDefaultValues($scope.pcr.currentDisposition.fieldValuePairs)
-
-        //$scope.pcr.assessmentOutcome = $scope.pcr.currentDisposition["results"].outcome;
-        //$("[data-ng-model='pcr.assessmentOutcome']").select2("val", $scope.pcr.currentDisposition["results"].outcome);
+    ////    //$('.jarviswidget > header > h2').each(function (index) {
+    ////    //    var jarvisTitle = $(this).html();
+    ////    //    var indexOf = $.inArray(jarvisTitle, $scope.pcr.currentDisposition["results"].tables);
+    ////    //    if (indexOf != -1) {
+    ////    //        $(this).parent().parent().slideUp();
+    ////    //    }
+    ////    //});
 
 
-        //rerender select / show selection
-        for (i = 0; i < $scope.dispositionsObject.length; i++) {
-            if ($scope.pcr.currentDisposition.name == $scope.dispositionsObject[i].name) {
-                $scope.pcr.currentDisposition = $scope.dispositionsObject[i];
-            }
-        }
-        //end rerender select (by jay shah), not sure why this made it work 
-       
 
-        changeTab();
-    };
+    ////    //$('nav > ul > li > a').each(function (index) {
 
-    $scope.ApplyDispositionChange = function () {
-            //any code in here will automatically have an apply run afterwards
-        $scope.ApplyDisposition();
-        //$scope.$apply();
-        $scope.SaveOrUpdateHandler();
-        //$scope.$apply();
-    };
+    ////    //    var tabName = $(this).attr('name');
 
+    ////    //    var indexOf = $.inArray(tabName, $scope.pcr.currentDisposition["results"].tabs);
+    ////    //    if (indexOf != -1) {
+    ////    //        //alert(tabId);
+    ////    //        $(this).hide();
+    ////    //    }
+    ////    //});
+
+    ////    ////$scope.FormActionSetAgencyDefaultValues($scope.pcr.currentDisposition.fieldValuePairs)
+
+    ////    //$scope.pcr.assessmentOutcome = $scope.pcr.currentDisposition["results"].outcome;
+    ////    //$("[data-ng-model='pcr.assessmentOutcome']").select2("val", $scope.pcr.currentDisposition["results"].outcome);
+
+
+    ////    //rerender select / show selection
+    ////    for (i = 0; i < $scope.dispositionsObject.length; i++) {
+    ////        if ($scope.pcr.currentDisposition.name == $scope.dispositionsObject[i].name) {
+    ////            $scope.pcr.currentDisposition = $scope.dispositionsObject[i];
+    ////        }
+    ////    }
+    ////    //end rerender select (by jay shah), not sure why this made it work 
+
+
+    ////    changeTab();
+    ////};
+
+    //// Part of the stuff that just needs rethought
+    ////$scope.ApplyDispositionChange = function () {
+    ////    //any code in here will automatically have an apply run afterwards
+    ////    $scope.ApplyDisposition();
+    ////    //$scope.$apply();
+    ////    $scope.SaveOrUpdateHandler();
+    ////    //$scope.$apply();
+    ////};
+
+    //// I want these attachments of options moved to the serverside for the most part
     $scope.AttachSelect2ToControl = function (select2Function, title, optionsArray) {
         var $control = $("input[title='" + title + "']").first();
         $control.attr("data-select2_list", "|" + title);
@@ -1208,6 +1160,7 @@ app.controller('myCtrl', function ($scope) {
         return optionsArray;
     };
 
+    //// I see this is being used, when does this trigger, we will maybe need to do this on the server
     function removeNullAndUndefinedFromList(list) {
         for (var i = 0; i < list.length; i++) {
             if (list[i].id == "null" || list[i].id == "undefined")
@@ -1216,58 +1169,60 @@ app.controller('myCtrl', function ($scope) {
         return list;
     }
 
-    $scope.AttachDemographicSelect2s = function () {
-        if ($scope.demo) {
-            $scope.AttachSelect2ToControl(Select2Single, "LocationZone", $scope.demo.ConfigZoneNumbers);
-            $scope.AttachSelect2ToControl(Select2Single, "VehicleDispatchZone", $scope.demo.ConfigZoneNumbers);
-            $scope.AttachSelect2ToControl(Select2Single, "DestinationZone", $scope.demo.ConfigZoneNumbers);
+    //// Move this all to the serverside, except meds, procs, and protocols, and move to a deffered select2 pattern
+    ////$scope.AttachDemographicSelect2s = function () {
+    ////    if ($scope.demo) {
+    ////        $scope.AttachSelect2ToControl(Select2Single, "LocationZone", $scope.demo.ConfigZoneNumbers);
+    ////        $scope.AttachSelect2ToControl(Select2Single, "VehicleDispatchZone", $scope.demo.ConfigZoneNumbers);
+    ////        $scope.AttachSelect2ToControl(Select2Single, "DestinationZone", $scope.demo.ConfigZoneNumbers);
 
-            $scope.AttachSelect2ToControl(Select2Single, "LocationState", $scope.demo.AgencyStates);
+    ////        $scope.AttachSelect2ToControl(Select2Single, "LocationState", $scope.demo.AgencyStates);
 
-            $scope.AttachSelect2ToControl(Select2Single, "LocationCounty", $scope.demo.AgencyCountys);
+    ////        $scope.AttachSelect2ToControl(Select2Single, "LocationCounty", $scope.demo.AgencyCountys);
 
-            $scope.AttachSelect2ToControl(Select2Single, "PAMedicationList", $scope.demo.ConfigMedications.concat(NullValuesList));
-            $scope.AttachSelect2ToControl(Select2Single, "ConfigProceduresList", $scope.demo.ConfigProcedures);
+    ////        $scope.AttachSelect2ToControl(Select2Single, "PAMedicationList", $scope.demo.ConfigMedications.concat(NullValuesList));
+    ////        $scope.AttachSelect2ToControl(Select2Single, "ConfigProceduresList", $scope.demo.ConfigProcedures);
 
-            // $scope.AttachSelect2ToControl(Select2_TagsMultiple, "Scene-Prior AID", $scope.demo.ConfigProcedures.concat($scope.demo.ConfigMedications).concat(NullValuesList));
+    ////        // $scope.AttachSelect2ToControl(Select2_TagsMultiple, "Scene-Prior AID", $scope.demo.ConfigProcedures.concat($scope.demo.ConfigMedications).concat(NullValuesList));
 
-            $scope.AttachSelect2ToControl(Select2Multiple, "Protocols", $scope.demo.ConfigProtocols);
+    ////        $scope.AttachSelect2ToControl(Select2Multiple, "Protocols", $scope.demo.ConfigProtocols);
 
-            $scope.AttachSelect2ToControl(Select2Single, "incidentUnitVehicleNumber", $scope.demo.VehicleNumbers);
+    ////        $scope.AttachSelect2ToControl(Select2Single, "incidentUnitVehicleNumber", $scope.demo.VehicleNumbers);
 
-            $scope.AttachSelect2ToControl(Select2Single, "Unit-Call Sign", $scope.demo.VehicleCallSigns);
+    ////        $scope.AttachSelect2ToControl(Select2Single, "Unit-Call Sign", $scope.demo.VehicleCallSigns);
 
-            $scope.AttachSelect2ToControl(Select2_TagsSingle, "VehicleDispatchLocation", $scope.demo.StationNames.concat($scope.demo.ConfigOtherFacilityNames).concat($scope.demo.ConfigHospitalNames));
-            $scope.AttachSelect2ToControl(Select2_TagsSingle, "Incident-Destination", $scope.demo.ConfigOtherFacilityNames.concat($scope.demo.ConfigHospitalNames).concat(NullValuesList));
+    ////        $scope.AttachSelect2ToControl(Select2_TagsSingle, "VehicleDispatchLocation", $scope.demo.StationNames.concat($scope.demo.ConfigOtherFacilityNames).concat($scope.demo.ConfigHospitalNames));
+    ////        $scope.AttachSelect2ToControl(Select2_TagsSingle, "Incident-Destination", $scope.demo.ConfigOtherFacilityNames.concat($scope.demo.ConfigHospitalNames).concat(NullValuesList));
 
-            $scope.AttachSelect2ToControl(Select2_TagsMultiple, "AgenciesOnScene", $scope.demo.AgencyOtherAgenciesInArea.concat(NullValuesList));
+    ////        $scope.AttachSelect2ToControl(Select2_TagsMultiple, "AgenciesOnScene", $scope.demo.AgencyOtherAgenciesInArea.concat(NullValuesList));
 
-            $scope.AttachSelect2ToControl(Select2_TagsSingle, "LocationFacilityCode", removeNullAndUndefinedFromList($scope.demo.ConfigHospitalNumbers.concat($scope.demo.ConfigOtherFacilityNumbers).concat(NullValuesList)));
-            $scope.AttachSelect2ToControl(Select2_TagsSingle, "DestinationCode", removeNullAndUndefinedFromList($scope.demo.ConfigHospitalNumbers.concat($scope.demo.ConfigOtherFacilityNumbers).concat(NullValuesList)));
+    ////        $scope.AttachSelect2ToControl(Select2_TagsSingle, "LocationFacilityCode", removeNullAndUndefinedFromList($scope.demo.ConfigHospitalNumbers.concat($scope.demo.ConfigOtherFacilityNumbers).concat(NullValuesList)));
+    ////        $scope.AttachSelect2ToControl(Select2_TagsSingle, "DestinationCode", removeNullAndUndefinedFromList($scope.demo.ConfigHospitalNumbers.concat($scope.demo.ConfigOtherFacilityNumbers).concat(NullValuesList)));
 
-            $scope.AttachSelect2ToControl(Select2Single, "Crew - Primary", $scope.demo.Personnels/*.concat(NullValuesList)*/);
-            $scope.AttachSelect2ToControl(Select2Multiple, "Crew - Secondary", $scope.demo.Personnels/*.concat(NullValuesList)*/);
-            $scope.AttachSelect2ToControl(Select2Multiple, "Crew - Third", $scope.demo.Personnels/*.concat(NullValuesList)*/);
-            $scope.AttachSelect2ToControl(Select2Multiple, "Crew - Other", $scope.demo.Personnels/*.concat(NullValuesList)*/);
-            $scope.AttachSelect2ToControl(Select2Single, "Crew - Driver", $scope.demo.Personnels/*.concat(NullValuesList)*/);
-            $scope.AttachSelect2ToControl(Select2Single, "whoGeneratedThisReport", $scope.demo.Personnels);
-            $scope.AttachSelect2ToControl(Select2Single, "medCrewMemberId", $scope.demo.Personnels);
-            $scope.AttachSelect2ToControl(Select2Single, "procCrewMemberId", $scope.demo.Personnels);
-        } //title="vitals-procedure"
-        else {
-            //alert("no demo object");
-            if ($scope.pcr && $scope.pcr.demo) {
-                //alert(false);
-                $scope.readDemographicsFromList(false);
-            }
-            else {
-                //alert(true);
-                $scope.readDemographicsFromList(true);
-            }
-        }
+    ////        $scope.AttachSelect2ToControl(Select2Single, "Crew - Primary", $scope.demo.Personnels/*.concat(NullValuesList)*/);
+    ////        $scope.AttachSelect2ToControl(Select2Multiple, "Crew - Secondary", $scope.demo.Personnels/*.concat(NullValuesList)*/);
+    ////        $scope.AttachSelect2ToControl(Select2Multiple, "Crew - Third", $scope.demo.Personnels/*.concat(NullValuesList)*/);
+    ////        $scope.AttachSelect2ToControl(Select2Multiple, "Crew - Other", $scope.demo.Personnels/*.concat(NullValuesList)*/);
+    ////        $scope.AttachSelect2ToControl(Select2Single, "Crew - Driver", $scope.demo.Personnels/*.concat(NullValuesList)*/);
+    ////        $scope.AttachSelect2ToControl(Select2Single, "whoGeneratedThisReport", $scope.demo.Personnels);
+    ////        $scope.AttachSelect2ToControl(Select2Single, "medCrewMemberId", $scope.demo.Personnels);
+    ////        $scope.AttachSelect2ToControl(Select2Single, "procCrewMemberId", $scope.demo.Personnels);
+    ////    } //title="vitals-procedure"
+    ////    else {
+    ////        //alert("no demo object");
+    ////        if ($scope.pcr && $scope.pcr.demo) {
+    ////            //alert(false);
+    ////            $scope.readDemographicsFromList(false);
+    ////        }
+    ////        else {
+    ////            //alert(true);
+    ////            $scope.readDemographicsFromList(true);
+    ////        }
+    ////    }
 
-    };
+    ////};
 
+    ////Move this all to the serverside, except meds, procs, and protocols, and move to a deffered select2 pattern
     $scope.autoFips = false;
     $scope.readDemographicsFromList = function (isNew) {
         success(DataService.demographics.GetDemo());
@@ -1406,10 +1361,10 @@ app.controller('myCtrl', function ($scope) {
                     nodeTitle: "Patient_RMA",
                     title: "Patient, Refused Medical Assistance (RMA)",
                     required: false,
-                    disclaimer: "I hereby refuse (treatment/transport to a hospital) and I acknowledge that such treatment/transportation was advised by the ambulance crew or physician. I hereby release such persons from liability for respecting and following my express wishes." 
-						+"\n\n" 
+                    disclaimer: "I hereby refuse (treatment/transport to a hospital) and I acknowledge that such treatment/transportation was advised by the ambulance crew or physician. I hereby release such persons from liability for respecting and following my express wishes."
+						+ "\n\n"
 						+ "Mediante la presente declaro que me niego a aceptar el tratamiento/traslado a un hospital y reconozco asimismo que el medical o el personal de la ambulancia recomendaron ese tratamiento/traslado. Consiguientemente, eximo a dichas personas de toda responsibilidad por haber respetado y cumplido mis deseos expresos.",
-					//	"I understand that the EMS personnel are not physicians and are not qualified or authorized to make a diagnosis and that their care is not a substitute for that of a physician. I recognize that I may have a serious injury or illness which could get worse without medical attention even though I (or the patient on whose behalf I legally sign this document) may feel fine at the present time.\n\nI understand that I may change my mind and call 9-1-1 if treatment or assistance is needed later. I also understand that treatment is available at an emergency department 24 hours a day or from my physician. If I have insisted on being transported to a destination other than that recommended by the EMS personnel, I understand and have been informed that there may be a significant delay in receiving care at the emergency room, that the emergency room may lack the staff, equipment, beds or resources to care for me promptly, and/or that I might not be able to be admitted to that hospital.\n\nI acknowledge that this advice has been explained to me by the ambulance crew and that I have read this form completely and understand its provisions. I agree, on my own behalf (and on behalf of the patient for whom I legally sign this document), to release, indemnify and hold harmless the ambulance service and its officers, members, employees or other agents, and the medical command physician and medical command facility, from any and all claims, actions, causes of action, damages, or legal liabilities of any kind arising out of my decision, or from any act or omission of the ambulance service or its crew, or the medical command physician or medical command facility.\n\nI also acknowledge receipt of the ambulance service's Notice of Privacy Practices.",
+                    //	"I understand that the EMS personnel are not physicians and are not qualified or authorized to make a diagnosis and that their care is not a substitute for that of a physician. I recognize that I may have a serious injury or illness which could get worse without medical attention even though I (or the patient on whose behalf I legally sign this document) may feel fine at the present time.\n\nI understand that I may change my mind and call 9-1-1 if treatment or assistance is needed later. I also understand that treatment is available at an emergency department 24 hours a day or from my physician. If I have insisted on being transported to a destination other than that recommended by the EMS personnel, I understand and have been informed that there may be a significant delay in receiving care at the emergency room, that the emergency room may lack the staff, equipment, beds or resources to care for me promptly, and/or that I might not be able to be admitted to that hospital.\n\nI acknowledge that this advice has been explained to me by the ambulance crew and that I have read this form completely and understand its provisions. I agree, on my own behalf (and on behalf of the patient for whom I legally sign this document), to release, indemnify and hold harmless the ambulance service and its officers, members, employees or other agents, and the medical command physician and medical command facility, from any and all claims, actions, causes of action, damages, or legal liabilities of any kind arising out of my decision, or from any act or omission of the ambulance service or its crew, or the medical command physician or medical command facility.\n\nI also acknowledge receipt of the ambulance service's Notice of Privacy Practices.",
                     defaultValue: function () {
                         return ($scope.pcr.patientFirstName || "") + " " + ($scope.pcr.patientLastName || "").trim();
                     }
@@ -1518,7 +1473,7 @@ app.controller('myCtrl', function ($scope) {
                      //}
                  });
 
-           
+
             $scope.pcr.demo = {};
             $scope.pcr.demo.agencyNumber = "" + demographics["AgencyNumber"];
             $scope.pcr.demo.agencyLevelOfService = "" + demographics["AgencyLevelOfService"];
@@ -1553,15 +1508,15 @@ app.controller('myCtrl', function ($scope) {
                 // Select2Single($LocationZoneNumber, $scope.demo.ConfigZoneNumbers);
             }
 
-           
+
 
             $scope.$apply();
             //}
-            
-//$scope.ApplyDisposition();
+
+            //$scope.ApplyDisposition();
         }
     }
-    
+
     $scope.sign = function (sigData) {
         var src = $scope.pcr.signatures[sigData.nodeTitle] ? $scope.pcr.signatures[sigData.nodeTitle].src : "";
         var name = $scope.pcr.signatures[sigData.nodeTitle] ? $scope.pcr.signatures[sigData.nodeTitle].name : sigData.defaultValue();
@@ -3210,7 +3165,7 @@ app.controller('myCtrl', function ($scope) {
     };
 
     //FORMS
-    
+
     /*
         General stuff
     */
@@ -6843,9 +6798,9 @@ app.controller('myCtrl', function ($scope) {
         })
         .done(function (msg) {
             $scope.$evalAsync(function () {
-               loadedPcrDocs = true;
-               $scope.PcrDocuments = msg;
-            });      
+                loadedPcrDocs = true;
+                $scope.PcrDocuments = msg;
+            });
         });
     }
 
@@ -6936,7 +6891,7 @@ app.controller('myCtrl', function ($scope) {
             url: "/api/Utility/IncidentNumber",
             data: {
                 "": $scope.pcrid
-             }
+            }
         })
         .done(function (data) {
             $scope.$evalAsync(function () {
@@ -6945,7 +6900,7 @@ app.controller('myCtrl', function ($scope) {
         })
         .fail(function (msg) {
             toastr.error("Failed To Calculate Incident Number");
-        });     
+        });
     };
 
     $scope.CreateNote = function () {
