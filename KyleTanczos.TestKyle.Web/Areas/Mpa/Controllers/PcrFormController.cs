@@ -131,7 +131,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 
         string state;
 
-        List<Select2OptionsList> select2OptionsLists = null;
+        List<Select2OptionsList> agencySelect2OptionsLists = null;
 
         // GET: Mpa/PcrForm
         public ActionResult Index()
@@ -140,7 +140,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 
             state = "PA"; // set from user info
             agencyToken = "Superior"; // set from user info
-            select2OptionsLists =  db.Select2OptionsList.Where(x => x.Association == "Default" || x.Association == state || x.Association == agencyToken).ToList();
+            agencySelect2OptionsLists =  db.Select2OptionsList.Where(x =>  x.Association == agencyToken).ToList();
 
             PcrForm pcrForm = new PcrForm()
             {
@@ -157,7 +157,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 Controls = new List<Ctrl>()
                                 {
                                     new Ctrl() { DisplayName = "Disposition/Outcome", ControlType = ControlTypeEnum.Select2,
-                                        DropDownOptions = GetSelect2ListFromDb("E20_10"), ResponsiveWidth = 12
+                                        DropDownOptions = NemsisSelectOptions("E20_10"), ResponsiveWidth = 12
                                         }
 
                                 }
@@ -168,21 +168,15 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 {
                                    new Ctrl() { DisplayName = "Incident Number", ControlType = ControlTypeEnum.TextBox
                                         },
-                                    new Ctrl() { DisplayName = "Response Urgency", ControlType = ControlTypeEnum.Select2,
-                                        DropDownOptions = NemsisSelectOptions("E1_04")
+                                    new Ctrl() { DisplayName = "Response Urgency", ControlType = ControlTypeEnum.TextBox
                                         },
-
-                                    new Ctrl() { DisplayName = "CMS Level", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = NemsisSelectOptions("E1_03")
+                                    new Ctrl() { DisplayName = "CMS Level", ControlType = ControlTypeEnum.TextBox
                                         },
-                                    new Ctrl() { DisplayName = "Type Of Location", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = NemsisSelectOptions("E1_01")
+                                    new Ctrl() { DisplayName = "Type Of Location", ControlType = ControlTypeEnum.TextBox
                                         },
-                                    new Ctrl() { DisplayName = "Nature Of Incident", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = NemsisSelectOptions("E1_02")
+                                    new Ctrl() { DisplayName = "Nature Of Incident", ControlType = ControlTypeEnum.TextBox
                                         },
                                     new Ctrl() { DisplayName = "Scene Address", ControlType = ControlTypeEnum.TextBox
-
                                         }
 
                                 }
@@ -193,24 +187,20 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 {
                                    new Ctrl() { DisplayName = "Call Sign", ControlType = ControlTypeEnum.TextBox
                                         },
-                                    new Ctrl() { DisplayName = "Vehicle Number", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = NemsisSelectOptions("E1_04")
+                                        new Ctrl() { DisplayName = "Vehicle Number", ControlType = ControlTypeEnum.TextBox
                                         },
 
-                                    new Ctrl() { DisplayName = "Other Agencies", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = NemsisSelectOptions("E1_03")
+                                    new Ctrl() { DisplayName = "Other Agencies", ControlType = ControlTypeEnum.TextBox
                                         },
-                                    new Ctrl() { DisplayName = "Mode To Scene", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = NemsisSelectOptions("E1_01")
+                                    new Ctrl() { DisplayName = "Mode To Scene", ControlType = ControlTypeEnum.TextBox
                                         },
-                                    new Ctrl() { DisplayName = "Responder Time", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = NemsisSelectOptions("E1_02")
+                                    new Ctrl() { DisplayName = "Responder Time", ControlType = ControlTypeEnum.TextBox
                                         },
-                                    new Ctrl() { DisplayName = "Service Requested", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Service Requested", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("E1_05")
                                         },
-                                    new Ctrl() { DisplayName = "Responder Time", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = NemsisSelectOptions("E1_02")
-                                        }
+                                    new Ctrl() { DisplayName = "Responder Time", ControlType = ControlTypeEnum.TextBox
+                                    }
                                 }
                             },
                             new Section()
@@ -250,17 +240,13 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 ResponsiveWidth = 6,
                                 Controls = new List<Ctrl>()
                                 {
-                                   new Ctrl() { DisplayName = "Primary", ControlType = ControlTypeEnum.Select2, ResponsiveWidth = 12,
-                                        DropDownOptions = NemsisSelectOptions("E1_04")
+                                   new Ctrl() { DisplayName = "Primary", ControlType = ControlTypeEnum.TextBox, ResponsiveWidth = 12
                                         },
-                                    new Ctrl() { DisplayName = "Secondary", ControlType = ControlTypeEnum.Select2, ResponsiveWidth = 12,
-                                        DropDownOptions = NemsisSelectOptions("E1_04")
+                                    new Ctrl() { DisplayName = "Secondary", ControlType = ControlTypeEnum.TextBox, ResponsiveWidth = 12
                                         },
-                                    new Ctrl() { DisplayName = "Third", ControlType = ControlTypeEnum.Select2, ResponsiveWidth = 12,
-                                        DropDownOptions = NemsisSelectOptions("E1_03")
+                                    new Ctrl() { DisplayName = "Third", ControlType = ControlTypeEnum.TextBox, ResponsiveWidth = 12
                                         },
-                                    new Ctrl() { DisplayName = "Other", ControlType = ControlTypeEnum.Select2, ResponsiveWidth = 12,
-                                        DropDownOptions = NemsisSelectOptions("E1_01")
+                                    new Ctrl() { DisplayName = "Other", ControlType = ControlTypeEnum.TextBox, ResponsiveWidth = 12
                                         }
                                 }
                             },
@@ -271,17 +257,13 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 ResponsiveWidth = 6,
                                 Controls = new List<Ctrl>()
                                 {
-                                   new Ctrl() { DisplayName = "Start", ControlType = ControlTypeEnum.MileageBox, ResponsiveWidth = 12,
-                                        DropDownOptions = NemsisSelectOptions("E1_04")
+                                   new Ctrl() { DisplayName = "Start", ControlType = ControlTypeEnum.TextBox, ResponsiveWidth = 12
                                         },
-                                    new Ctrl() { DisplayName = "Scene", ControlType = ControlTypeEnum.MileageBox, ResponsiveWidth = 12,
-                                        DropDownOptions = NemsisSelectOptions("E1_04")
+                                    new Ctrl() { DisplayName = "Scene", ControlType = ControlTypeEnum.TextBox, ResponsiveWidth = 12
                                         },
-                                    new Ctrl() { DisplayName = "Dest.", ControlType = ControlTypeEnum.MileageBox, ResponsiveWidth = 12,
-                                        DropDownOptions = NemsisSelectOptions("E1_03")
+                                    new Ctrl() { DisplayName = "Dest.", ControlType = ControlTypeEnum.TextBox, ResponsiveWidth = 12
                                         },
-                                    new Ctrl() { DisplayName = "Service", ControlType = ControlTypeEnum.MileageBox, ResponsiveWidth = 12,
-                                        DropDownOptions = NemsisSelectOptions("E1_01")
+                                    new Ctrl() { DisplayName = "Service", ControlType = ControlTypeEnum.TextBox, ResponsiveWidth = 12
                                         }
                                 }
                             }
@@ -851,9 +833,9 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
             return View(pcrForm);
         }
 
-        private List<Select2Option> GetSelect2ListFromDb(string nemsisCode)
+        private List<Select2Option> GetSelect2ListFromDb(string nemsisCode, string state)
         {
-            return db.NemsisDataElements.Where(x => x.FieldNumber == nemsisCode).Select(x => new Select2Option() { id = x.OptionText, text = x.OptionText }).ToList();
+            return db.NemsisDataElements.Where(x => x.State == state && x.FieldNumber == nemsisCode).Select(x => new Select2Option() { id = x.OptionText, text = x.OptionText }).ToList();
         }
 
         /// <summary>
@@ -863,22 +845,23 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
         /// <returns></returns>
         private List<Select2Option> NemsisSelectOptions(string NemsisId)
         {
-            var controlMatchedList = select2OptionsLists.Where(x => x.ControlName == NemsisId);
+            var agencySelect2Options = agencySelect2OptionsLists.FirstOrDefault(x => x.ControlName == NemsisId);
 
-            if (controlMatchedList.FirstOrDefault(x => x.Association == agencyToken) != null)
+            if (agencySelect2Options != null)
             {
-                var optionsAsJson = controlMatchedList.FirstOrDefault(x => x.Association == agencyToken).OptionsAsJson;
+                var optionsAsJson = agencySelect2Options.OptionsAsJson;
                 return JsonConvert.DeserializeObject<List<Select2Option>>(optionsAsJson); 
              }
 
-            if (controlMatchedList.FirstOrDefault(x => x.Association == state) != null)
+            var stateSelect2Options = GetSelect2ListFromDb( NemsisId, "PA");
+
+            if (stateSelect2Options.Count > 0)
             {
-                var optionsAsJson = controlMatchedList.FirstOrDefault(x => x.Association == state).OptionsAsJson;
-                return JsonConvert.DeserializeObject<List<Select2Option>>(optionsAsJson);
+                return stateSelect2Options;
             }
 
-            var optionsAsJson2 = controlMatchedList.FirstOrDefault(x => x.Association == "Default").OptionsAsJson;
-            return JsonConvert.DeserializeObject<List<Select2Option>>(optionsAsJson2);
+            var defaultSelect2Options = GetSelect2ListFromDb( NemsisId, "Default");
+            return defaultSelect2Options;
         }
 
         // GET: Mpa/PcrForm/Details/5
