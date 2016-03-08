@@ -168,13 +168,17 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 {
                                    new Ctrl() { DisplayName = "Incident Number", ControlType = ControlTypeEnum.TextBox
                                         },
-                                    new Ctrl() { DisplayName = "Response Urgency", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Response Urgency", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("E07_33")
                                         },
-                                    new Ctrl() { DisplayName = "CMS Level", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "CMS Level", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("D01_06")
                                         },
-                                    new Ctrl() { DisplayName = "Type Of Location", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Type Of Location", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("E08_07")
                                         },
-                                    new Ctrl() { DisplayName = "Nature Of Incident", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Nature Of Incident", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("E03_01")
                                         },
                                     new Ctrl() { DisplayName = "Scene Address", ControlType = ControlTypeEnum.TextBox
                                         }
@@ -185,24 +189,42 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                             {    SectionName = "Dispatch",
                                 Controls = new List<Ctrl>()
                                 {
-                                   new Ctrl() { DisplayName = "Call Sign", ControlType = ControlTypeEnum.TextBox
+                                   new Ctrl() { DisplayName = "Call Sign", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("E02_12")
                                         },
-                                        new Ctrl() { DisplayName = "Vehicle Number", ControlType = ControlTypeEnum.TextBox
+                                        new Ctrl() { DisplayName = "Vehicle Number", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("E02_11")
                                         },
-
-                                    new Ctrl() { DisplayName = "Other Agencies", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Mode To Scene", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("E02_20")
                                         },
-                                    new Ctrl() { DisplayName = "Mode To Scene", ControlType = ControlTypeEnum.TextBox
-                                        },
-                                    new Ctrl() { DisplayName = "Responder Time", ControlType = ControlTypeEnum.TextBox
+                                        new Ctrl() { DisplayName = "Veh. Incident #", ControlType = ControlTypeEnum.TextBox
                                         },
                                     new Ctrl() { DisplayName = "Service Requested", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = NemsisSelectOptions("E1_05")
+                                        DropDownOptions = NemsisSelectOptions("E02_04")
                                         },
-                                    new Ctrl() { DisplayName = "Responder Time", ControlType = ControlTypeEnum.TextBox
-                                    }
+                                    new Ctrl() { DisplayName = "Role", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("E02_05")
+                                        }
                                 }
                             },
+                            new Section()
+                            {    SectionName = "Others On Scene",
+                                Controls = new List<Ctrl>()
+                                {
+                                    new Ctrl() { DisplayName = "Services On Scene", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("E08_02")
+                                        },
+                                    new Ctrl() { DisplayName = "Other EMS Agencies", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("E08_01")
+                                        },
+                                    new Ctrl() { DisplayName = "EMS System", ControlType = ControlTypeEnum.TextBox
+                                        },
+                                    new Ctrl() { DisplayName = "Response Differential", ControlType = ControlTypeEnum.TextBox
+                                    }
+                                }
+                            }
+                            ,
                             new Section()
                             {   Side = SectionSideEnum.right,
                                 SectionName = "Times",
@@ -240,13 +262,17 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 ResponsiveWidth = 6,
                                 Controls = new List<Ctrl>()
                                 {
-                                   new Ctrl() { DisplayName = "Primary", ControlType = ControlTypeEnum.TextBox, ResponsiveWidth = 12
+                                   new Ctrl() { DisplayName = "Primary", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions(""), ResponsiveWidth = 12
                                         },
-                                    new Ctrl() { DisplayName = "Secondary", ControlType = ControlTypeEnum.TextBox, ResponsiveWidth = 12
+                                    new Ctrl() { DisplayName = "Secondary", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions(""), ResponsiveWidth = 12
                                         },
-                                    new Ctrl() { DisplayName = "Third", ControlType = ControlTypeEnum.TextBox, ResponsiveWidth = 12
+                                    new Ctrl() { DisplayName = "Third", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions(""), ResponsiveWidth = 12
                                         },
-                                    new Ctrl() { DisplayName = "Other", ControlType = ControlTypeEnum.TextBox, ResponsiveWidth = 12
+                                    new Ctrl() { DisplayName = "Other", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions(""), ResponsiveWidth = 12
                                         }
                                 }
                             },
@@ -283,17 +309,24 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                  {
                                     new Ctrl() { DisplayName = "First Name", ControlType = ControlTypeEnum.TextBox
                                        },
-                                    new Ctrl() { DisplayName = "Last Name", ControlType = ControlTypeEnum.TextBox
-                                       },
-                                    new Ctrl() { DisplayName = "M.I.", ControlType = ControlTypeEnum.TextBox
-                                       },
-                                    new Ctrl() { DisplayName = "DOB", ControlType = ControlTypeEnum.TextBox
-                                       },
                                     new Ctrl() { DisplayName = "Phone", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Last Name", ControlType = ControlTypeEnum.TextBox
                                        },
                                     new Ctrl() { DisplayName = "Weight", ControlType = ControlTypeEnum.TextBox
                                        },
-                                    new Ctrl() { DisplayName = "Gender", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "M.I.", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Race", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
+                                       },
+                                    new Ctrl() { DisplayName = "DOB", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Ethnicity", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
+                                       },
+                                    new Ctrl() { DisplayName = "Gender", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
                                     new Ctrl() { DisplayName = "SSN", ControlType = ControlTypeEnum.TextBox
                                        },
@@ -309,7 +342,8 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 
                                     new Ctrl() { DisplayName = "DL Number", ControlType = ControlTypeEnum.TextBox
                                        },
-                                    new Ctrl() { DisplayName = "DL State", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "DL State", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
                                     new Ctrl() { DisplayName = "Pt Practitioner Name", ControlType = ControlTypeEnum.TextBox
                                        }
@@ -321,21 +355,35 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                  Side = SectionSideEnum.right,
                                  Controls = new List<Ctrl>()
                                  {
-                                     new Ctrl() { DisplayName = "History", ControlType = ControlTypeEnum.TextBox
+                                     new Ctrl() { DisplayName = "History", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "History Obtained", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "History Obtained", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "Allergies", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Allergies", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "Emergency Form", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Emergency Form", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "Enviromental/Food Allergies", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Enviromental/Food Allergies", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "Advanced Directives", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Advanced Directives", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "Triage Color", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Triage Color", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "Triage Category", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Triage Category", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
+                                       },
+                                    new Ctrl() { DisplayName = "Pregnant", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
+                                       },
+                                    new Ctrl() { DisplayName = "# Past Pregnancies", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        }
                                  }
 
@@ -370,15 +418,18 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                        },
                                     new Ctrl() { DisplayName = "Duration", ControlType = ControlTypeEnum.TextBox, ResponsiveWidth = 3
                                        },
-                                    new Ctrl() { DisplayName = "Units", ControlType = ControlTypeEnum.TextBox, ResponsiveWidth = 3
+                                    new Ctrl() { DisplayName = "Units", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions(""), ResponsiveWidth = 3
                                        },
                                     new Ctrl() { DisplayName = "Secondary Complaint", ControlType = ControlTypeEnum.TextBox
                                        },
                                     new Ctrl() { DisplayName = "Duration", ControlType = ControlTypeEnum.TextBox, ResponsiveWidth = 3
                                        },
-                                    new Ctrl() { DisplayName = "Units", ControlType = ControlTypeEnum.TextBox, ResponsiveWidth = 3
+                                    new Ctrl() { DisplayName = "Units", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions(""), ResponsiveWidth = 3
                                        },
-                                    new Ctrl() { DisplayName = "Barriers To Patient Care", ControlType = ControlTypeEnum.TextBox, ResponsiveWidth = 12
+                                    new Ctrl() { DisplayName = "Barriers To Patient Care", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions(""), ResponsiveWidth = 12
                                        }
                                 }
                             },
@@ -396,19 +447,25 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 SectionName = "Vehicle Collision",
                                 Controls = new List<Ctrl>()
                                 {
-                                    new Ctrl() { DisplayName = "Vehicle Collision Impact", ControlType = ControlTypeEnum.TextBox, ResponsiveWidth = 12
+                                    new Ctrl() { DisplayName = "Vehicle Collision Impact", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions(""), ResponsiveWidth = 12
                                        },
                                     new Ctrl() { DisplayName = "Report Number", ControlType = ControlTypeEnum.TextBox
                                        },
-                                    new Ctrl() { DisplayName = "Pt Location", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Pt Location", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "Row", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Row", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "Safety Equipment", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Safety Equipment", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "Airbags", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Airbags", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "Injury Indicators", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Injury Indicators", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        }
                                 }
                             },
@@ -419,11 +476,14 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 {
                                     new Ctrl() { DisplayName = "Height of Fall(ft.)", ControlType = ControlTypeEnum.TextBox
                                        },
-                                    new Ctrl() { DisplayName = "Cause of Injury", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Cause of Injury", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "Intent of Injury", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Intent of Injury", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "Trauma Type", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Trauma Type", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        }
                                 }
                             },
@@ -435,19 +495,26 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 {
                                     new Ctrl() { DisplayName = "Pre-Arrival", ControlType = ControlTypeEnum.TextBox
                                        },
-                                    new Ctrl() { DisplayName = "Cardiac Arest Time", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Cardiac Arest Time", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "Etiology", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Etiology", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "Witnessed By", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Witnessed By", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "First Rhythm", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "First Rhythm", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "Circulation Return", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Circulation Return", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "Resusitations", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Resusitations", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "Discontinue Reason", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Discontinue Reason", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
                                     new Ctrl() { DisplayName = "Discontinue Time", ControlType = ControlTypeEnum.TextBox
                                        },
@@ -461,19 +528,26 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 SectionName = "Impression",
                                 Controls = new List<Ctrl>()
                                 {
-                                    new Ctrl() { DisplayName = "Complaint Location", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Complaint Location", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "Organ System", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Organ System", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "Primary Symptoms", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Primary Symptoms", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "Other Symptoms", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Other Symptoms", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "Impression", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Impression", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "Secondary Impression", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Secondary Impression", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "Drugs/Alcohol", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Drugs/Alcohol", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        }
                                 }
                             },
@@ -484,11 +558,14 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 SectionName = "Prior Aid Given",
                                 Controls = new List<Ctrl>()
                                 {
-                                    new Ctrl() { DisplayName = "Prior Aid", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Prior Aid", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "Treated By", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Treated By", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "Aid Outcome", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Aid Outcome", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        }
                                 }
                             }
@@ -505,11 +582,14 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 SectionName = "Billing",
                                 Controls = new List<Ctrl>()
                                 {
-                                    new Ctrl() { DisplayName = "Condition Codes", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Condition Codes", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "Payment Method", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Payment Method", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "Necessity Certificate", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Necessity Certificate", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
                                     new Ctrl() { DisplayName = "Patient Email", ControlType = ControlTypeEnum.TextBox
                                        }
@@ -520,9 +600,11 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 SectionName = "Employer",
                                 Controls = new List<Ctrl>()
                                 {
-                                    new Ctrl() { DisplayName = "Work Related", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Work Related", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "Employer", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Employer", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
                                     new Ctrl() { DisplayName = "Employer Address", ControlType = ControlTypeEnum.TextBox
                                        },
@@ -530,7 +612,8 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                        },
                                     new Ctrl() { DisplayName = "Patient Occupation", ControlType = ControlTypeEnum.TextBox
                                        },
-                                    new Ctrl() { DisplayName = "Occupation Industry", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Occupation Industry", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        }
                                 }
                             }
@@ -548,7 +631,8 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                        },
                                     new Ctrl() { DisplayName = "Phone #", ControlType = ControlTypeEnum.TextBox
                                        },
-                                    new Ctrl() { DisplayName = "Relationship", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Relationship", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
                                     new Ctrl() { DisplayName = "Guardian Address", ControlType = ControlTypeEnum.TextBox
                                        }
@@ -593,17 +677,22 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 SectionName = "Destination/Transfer To",
                                 Controls = new List<Ctrl>()
                                 {
-                                    new Ctrl() { DisplayName = "Destination", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Destination", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "Destination Reason", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Destination Reason", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
                                     new Ctrl() { DisplayName = "Destination Address", ControlType = ControlTypeEnum.TextBox, ResponsiveWidth = 12
                                        },
-                                    new Ctrl() { DisplayName = "Transfer Condition", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Transfer Condition", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "Destination Type", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Destination Type", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "Destination Code", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Destination Code", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        }
                                 }
                             },
@@ -612,23 +701,32 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 SectionName = "Transport Information",
                                 Controls = new List<Ctrl>()
                                 {
-                                    new Ctrl() { DisplayName = "MCI", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "MCI", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "Rythm at Destination", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Rythm at Destination", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "Number of Patients", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Number of Patients", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "ER Disposition", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "ER Disposition", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "To Ambulance Via", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "To Ambulance Via", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "Hospital Disposition", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Hospital Disposition", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "Transport Position", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Transport Position", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "From Ambulance Via", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "From Ambulance Via", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "Mode From Scene", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Mode From Scene", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        }
                                 }
                             },
@@ -639,7 +737,8 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 SectionName = "Other Reporting Information",
                                 Controls = new List<Ctrl>()
                                 {
-                                    new Ctrl() { DisplayName = "Discharge Neuro", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Discharge Neuro", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
                                     new Ctrl() { DisplayName = "Transfer-To Record #", ControlType = ControlTypeEnum.TextBox
                                        },
@@ -649,7 +748,8 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                        },
                                     new Ctrl() { DisplayName = "Fire Report #", ControlType = ControlTypeEnum.TextBox
                                        },
-                                    new Ctrl() { DisplayName = "Destination Zone", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Destination Zone", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
                                     new Ctrl() { DisplayName = "Patient ID Tag #", ControlType = ControlTypeEnum.TextBox
                                        },
@@ -687,27 +787,38 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 SectionName = "Other Fields",
                                 Controls = new List<Ctrl>()
                                 {
-                                    new Ctrl() { DisplayName = "Review Requested", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Review Requested", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "EMS Injury", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "EMS Injury", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "Injury Type", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Injury Type", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "Contact Blood/Fluids", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Contact Blood/Fluids", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "Fluid Exposure Type", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Fluid Exposure Type", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "Personnel Exposed", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Personnel Exposed", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "Req. Reportable Cond.", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Req. Reportable Cond.", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "Registry Candidate", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Registry Candidate", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "Protective Equipment", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Protective Equipment", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "Disasters", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Disasters", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        },
-                                    new Ctrl() { DisplayName = "Precautions", ControlType = ControlTypeEnum.TextBox
+                                    new Ctrl() { DisplayName = "Precautions", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = NemsisSelectOptions("")
                                        }
                                 }
                             }
