@@ -118,31 +118,36 @@
 
 
     <script type="text/javascript">
-        $("#mainApp").show();
 
-        $("#IncidentTab").show();
+
+       
         var data = [{ id: 0, text: '' }, { id: 1, text: 'bug' }, { id: 2, text: 'duplicate' }, { id: 3, text: 'invalid' }, { id: 4, text: 'wontfix' }];
 
         //$(".select2Data").select2({
         //    data: data
         //});
 
-        $(".select2Defualt").select2({
-            //allowClear: true,
-            width: 'element',
-            theme: "bootstrap"
-        });
 
-        $(".select2Medications").select2({
-            theme: "bootstrap",
-            width: '100%',
-            data: JSON.parse(localStorage.getItem("PatientMedicationList")),
-            placeholder: "Start typing medication (Quick Add)",
-            //allowClear: true,
-            tags: true
-            ,
-            minimumInputLength: 3
-        });
+        function InstantiateSelect2s(jqueryTargetDiv)
+        {
+
+            $(".select2Defualt").select2({
+                //allowClear: true,
+                width: 'element',
+                theme: "bootstrap"
+            });
+
+            $(jqueryTargetDiv + " .select2Medications").select2({
+                theme: "bootstrap",
+                width: '100%',
+                data: JSON.parse(localStorage.getItem("PatientMedicationList")),
+                placeholder: "Start typing medication (Quick Add)",
+                //allowClear: true,
+                tags: true
+                ,
+                minimumInputLength: 3
+            });
+        }
 
         function SideNav() {
             //var $sideNav = $('.page-sidebar').clone();
@@ -166,13 +171,13 @@
                     $(this).attr('href', "#");
 
                     $(this).click(function () {
-                        ShowPcrTab(this);
+                        ShowPcrTabByControl(this);
                     });
 
                     $('.custom-menu-nav').append(
                         "<li role='presentation' class='divider'> </li>" +
                         "<li role='presentation'><a role='menuitem' tabTargetId='" + tabTarget
-                        + "' onclick='ShowPcrTab(this)' tabindex='-1' href='#'>" + titleText + "</a></li>"
+                        + "' onclick='ShowPcrTabByControl(this)' tabindex='-1' href='#'>" + titleText + "</a></li>"
                         );
                 }
                 else // no #
@@ -189,13 +194,23 @@
         SideNav();
 
         // tabTargetId of the calling element must be filled with div id to be shown
-        function ShowPcrTab(thisControl)
+        function ShowPcrTabByControl(thisControl)
+        {
+            var tabTargetQuery = "#" + $(thisControl).attr('tabTargetId');
+
+            ShowPcrTab(tabTargetQuery);
+        }
+
+        function ShowPcrTab(tabTargetQuery)
         {
             $(".custom-tabs").hide();
 
-            $("#" + $(thisControl).attr('tabTargetId')).show();
+            $(tabTargetQuery).show();
+
+            InstantiateSelect2s();
         }
 
+        ShowPcrTab("#IncidentTab"); // this will be the first tab shown
     </script>
 
 

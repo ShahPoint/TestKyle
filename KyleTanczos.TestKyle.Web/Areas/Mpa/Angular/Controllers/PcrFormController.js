@@ -1224,298 +1224,298 @@ app.controller('myCtrl', function ($scope) {
 
     ////Move this all to the serverside, except meds, procs, and protocols, and move to a deffered select2 pattern
     $scope.autoFips = false;
-    $scope.readDemographicsFromList = function (isNew) {
-        success(DataService.demographics.GetDemo());
-        function success(msg) {
-            //alert("Data Saved: " + JSON.stringify(msg));
+    //$scope.readDemographicsFromList = function (isNew) {
+    //    success(DataService.demographics.GetDemo());
+    //    function success(msg) {
+    //        //alert("Data Saved: " + JSON.stringify(msg));
 
-            var demographics = JSON.parse(msg.DataAsJson);
-            //alert(JSON.stringify(demographics["Stations"]));
-            $scope.demo2 = demographics;
-            $scope.demo = {};
-            $scope.hospital = {};
+    //        var demographics = JSON.parse(msg.DataAsJson);
+    //        //alert(JSON.stringify(demographics["Stations"]));
+    //        $scope.demo2 = demographics;
+    //        $scope.demo = {};
+    //        $scope.hospital = {};
 
-            $scope.demo.ConfigZoneNumbers = $scope.CreateSelect2ArrayFromDelimitedString(demographics, "ConfigZoneNumber");
+    //        $scope.demo.ConfigZoneNumbers = $scope.CreateSelect2ArrayFromDelimitedString(demographics, "ConfigZoneNumber");
 
-            window["LocationZone"] = $scope.AttachSelect2ToControl(Select2Single, "LocationZone", $scope.demo.ConfigZoneNumbers);
+    //        window["LocationZone"] = $scope.AttachSelect2ToControl(Select2Single, "LocationZone", $scope.demo.ConfigZoneNumbers);
 
-            window["VehicleDispatchZone"] = $scope.AttachSelect2ToControl(Select2Single, "VehicleDispatchZone", $scope.demo.ConfigZoneNumbers);
+    //        window["VehicleDispatchZone"] = $scope.AttachSelect2ToControl(Select2Single, "VehicleDispatchZone", $scope.demo.ConfigZoneNumbers);
 
-            window["DestinationZone"] = $scope.AttachSelect2ToControl(Select2Single, "DestinationZone", $scope.demo.ConfigZoneNumbers);
+    //        window["DestinationZone"] = $scope.AttachSelect2ToControl(Select2Single, "DestinationZone", $scope.demo.ConfigZoneNumbers);
 
-            $scope.demo.AgencyStates = $scope.CreateSelect2ArrayFromDelimitedString(demographics, "AgencyState"); //
+    //        $scope.demo.AgencyStates = $scope.CreateSelect2ArrayFromDelimitedString(demographics, "AgencyState"); //
 
-            window["LocationState"] = $scope.AttachSelect2ToControl(Select2Single, "LocationState", $scope.demo.AgencyStates);
+    //        window["LocationState"] = $scope.AttachSelect2ToControl(Select2Single, "LocationState", $scope.demo.AgencyStates);
 
-            $scope.demo.AgencyCountys = $scope.CreateSelect2ArrayFromDelimitedString(demographics, "AgencyCounty");
+    //        $scope.demo.AgencyCountys = $scope.CreateSelect2ArrayFromDelimitedString(demographics, "AgencyCounty");
 
-            window["LocationCounty"] = $scope.AttachSelect2ToControl(Select2Single, "LocationCounty", $scope.demo.AgencyCountys);
-
-
-            $scope.demo.ConfigProcedures = $scope.CreateSelect2ArrayFromObjectArray(demographics, "ConfigProcedures", "ConfigProcedure");
-
-            $scope.demo.ConfigMedications = $scope.CreateSelect2ArrayFromObjectArray(demographics, "ConfigMedications", "ConfigMedicationsGiven");
-
-            window["PAMedicationList"] = $scope.AttachSelect2ToControl(Select2Single, "PAMedicationList", $scope.demo.ConfigMedications.concat(NullValuesList));
-
-            window["ConfigProceduresList"] = $scope.AttachSelect2ToControl(Select2Single, "ConfigProceduresList", $scope.demo.ConfigProcedures);
+    //        window["LocationCounty"] = $scope.AttachSelect2ToControl(Select2Single, "LocationCounty", $scope.demo.AgencyCountys);
 
 
+    //        $scope.demo.ConfigProcedures = $scope.CreateSelect2ArrayFromObjectArray(demographics, "ConfigProcedures", "ConfigProcedure");
 
-            //window["Scene-Prior AID"] = $scope.AttachSelect2ToControl(Select2_TagsMultiple, "Scene-Prior AID", $scope.demo.ConfigProcedures.concat($scope.demo.ConfigMedications).concat(NullValuesList));
+    //        $scope.demo.ConfigMedications = $scope.CreateSelect2ArrayFromObjectArray(demographics, "ConfigMedications", "ConfigMedicationsGiven");
 
-            $scope.demo.ConfigProtocols = $scope.CreateSelect2ArrayFromObjectArray(demographics, "ConfigProtocols", "ConfigProtocols");
+    //        window["PAMedicationList"] = $scope.AttachSelect2ToControl(Select2Single, "PAMedicationList", $scope.demo.ConfigMedications.concat(NullValuesList));
 
-            window["Protocols"] = $scope.AttachSelect2ToControl(Select2Multiple, "Protocols", $scope.demo.ConfigProtocols.concat(NullValuesList));
-
-
-            $scope.demo.VehicleNumbers = $scope.CreateSelect2ArrayFromObjectArray(demographics, "Vehicles", "VehicleNumber");
-
-            window["incidentUnitVehicleNumber"] = $scope.AttachSelect2ToControl(Select2Single, "incidentUnitVehicleNumber", $scope.demo.VehicleNumbers);
-
-            //$scope.demo.ConfigEMSUnitNumber = $scope.CreateSelect2ArrayFromDelimitedString(demographics, "ConfigEMSUnitNumber");
-            $scope.demo.VehicleCallSigns = $scope.CreateSelect2ArrayFromObjectArray(demographics, "Vehicles", "VehicleCallSign");
-
-            window["Unit-Call Sign"] = $scope.AttachSelect2ToControl(Select2Single, "Unit-Call Sign", $scope.demo.VehicleCallSigns);
-
-            $scope.demo.StationNames = $scope.CreateSelect2ArrayFromObjectArray(demographics, "Stations", "StationName");
-            $scope.demo.ConfigOtherFacilityNames = $scope.CreateSelect2ArrayFromObjectArray(demographics, "ConfigOtherFacilitys", "ConfigOtherFacilityName");
-            $scope.demo.ConfigSceneNames = $scope.CreateSelect2ArrayFromObjectArray(demographics, "ConfigScenes", "ConfigSceneName");
-            $scope.demo.ConfigHospitalNames = $scope.CreateSelect2ArrayFromObjectArray(demographics, "ConfigHospitals", "ConfigHospitalName");
-            window["VehicleDispatchLocation"] = $scope.AttachSelect2ToControl(Select2_TagsSingle, "VehicleDispatchLocation", $scope.demo.StationNames.concat($scope.demo.ConfigOtherFacilityNames).concat($scope.demo.ConfigHospitalNames));
-            window["Incident-Destination"] = $scope.AttachSelect2ToControl(Select2_TagsSingle, "Incident-Destination", $scope.demo.ConfigOtherFacilityNames.concat($scope.demo.ConfigHospitalNames).concat(NullValuesList));
-            window["quick-scene"] = $scope.AttachSelect2ToControl(Select2Single, "quick-scene", $scope.demo.ConfigSceneNames.concat($scope.demo.ConfigOtherFacilityNames.concat($scope.demo.ConfigHospitalNames)));
-
-            $scope.demo.AgencyOtherAgenciesInArea = $scope.CreateSelect2ArrayFromDelimitedString(demographics, "AgencyOtherAgenciesInArea");
-            window["AgenciesOnScene"] = $scope.AttachSelect2ToControl(Select2_TagsMultiple, "AgenciesOnScene", $scope.demo.AgencyOtherAgenciesInArea.concat(NullValuesList));
-
-            $scope.demo.ConfigHospitalNumbers = $scope.CreateSelect2ArrayFromObjectArray(demographics, "ConfigHospitals", "ConfigHospitalNumber");
-            $scope.demo.ConfigOtherFacilityNumbers = $scope.CreateSelect2ArrayFromObjectArray(demographics, "ConfigOtherFacilitys", "ConfigOtherFacilityNumber");
-            window["LocationFacilityCode"] = $scope.AttachSelect2ToControl(Select2_TagsSingle, "LocationFacilityCode", $scope.demo.ConfigHospitalNumbers.concat($scope.demo.ConfigOtherFacilityNumbers).concat(NullValuesList));
-            window["DestinationCode"] = $scope.AttachSelect2ToControl(Select2_TagsSingle, "DestinationCode", removeNullAndUndefinedFromList($scope.demo.ConfigHospitalNumbers.concat($scope.demo.ConfigOtherFacilityNumbers).concat(NullValuesList)));
-
-
-            $scope.hospital.PersonnelFirstNames = $scope.CreateArrayFromObjectArray(demographics, "Personnels", "PersonnelFirstName");
-            $scope.hospital.PersonnelLastNames = $scope.CreateArrayFromObjectArray(demographics, "Personnels", "PersonnelLastName");
-            $scope.hospital.ConfigProcedures = $scope.CreateArrayFromObjectArray(demographics, "ConfigProcedures", "ConfigProcedure");
-            $scope.hospital.ConfigMedications = $scope.CreateArrayFromObjectArray(demographics, "ConfigMedications", "ConfigMedicationsGiven");
-
-
-            $scope.demo.Personnels = $scope.CreateSelect2ArrayForPersonnels(demographics);
-
-            window["Crew - Primary"] = $scope.AttachSelect2ToControl(Select2Single, "Crew - Primary", $scope.demo.Personnels/*.concat(NullValuesList)*/);
-            window["Crew - Secondary"] = $scope.AttachSelect2ToControl(Select2Multiple, "Crew - Secondary", $scope.demo.Personnels/*.concat(NullValuesList)*/);
-            window["Crew - Third"] = $scope.AttachSelect2ToControl(Select2Multiple, "Crew - Third", $scope.demo.Personnels/*.concat(NullValuesList)*/);
-            window["Crew - Other"] = $scope.AttachSelect2ToControl(Select2Multiple, "Crew - Other", $scope.demo.Personnels/*.concat(NullValuesList)*/);
-            window["Crew - Driver"] = $scope.AttachSelect2ToControl(Select2Single, "Crew - Driver", $scope.demo.Personnels/*.concat(NullValuesList)*/);
-            window["whoGeneratedThisReport"] = $scope.AttachSelect2ToControl(Select2Single, "whoGeneratedThisReport", $scope.demo.Personnels);
-            window["medCrewMemberId"] = $scope.AttachSelect2ToControl(Select2Single, "medCrewMemberId", $scope.demo.Personnels);
-            window["procCrewMemberId"] = $scope.AttachSelect2ToControl(Select2Single, "procCrewMemberId", $scope.demo.Personnels);
-
-            $scope.autoFips = allowAutofips = defaultedValue(demographics.AutoFips, true);
-            $scope.allowCustomOptions = defaultedValue(demographics.allowCustomOptions, true);
-
-            var disabledDispositions = demographics.AgencyDisabledDispositions;
-            if (disabledDispositions) {
-                var disabledDispoList = disabledDispositions.split(";");
-                for (var i = 0; i < $scope.dispositionsObject.length; i++) {
-                    for (var j = 0; j < disabledDispoList.length; j++) {
-                        if (disabledDispoList[j].trim() == $scope.dispositionsObject[i].name) {
-                            $scope.dispositionsObject.splice(i--, 1);
-                            break;
-                        }
-                    }
-                }
-            }
-
-            // replace this with a demographics list?
-            $scope.signatures = [
-                {
-                    nodeTitle: "Crew_Primary",
-                    title: "Crew Primary",
-                    required: true,
-                    disclaimer: "",
-                    defaultValue: function () {
-                        return $scope.pcr.crewPrimary ? $scope.pcr.crewPrimary.substr(0, $scope.pcr.crewPrimary.indexOf('(')).trim() : "";
-                    }
-                },
-                {
-                    nodeTitle: "Crew_Secondary",
-                    title: "Crew Secondary",
-                    required: false,
-                    disclaimer: "",
-                    defaultValue: function () {
-                        return $scope.pcr.crewSecondary ? $scope.pcr.crewSecondary.substr(0, $scope.pcr.crewSecondary.indexOf('(')).trim() : "";
-                    }
-                },
-                {
-                    nodeTitle: "ETT_Confirmation",
-                    title: "ETT Confirmation",
-                    required: false,
-                    disclaimer: "My signature acknowledges that I have assessed the placement of the endotracheal tube upon the arrival to my facility.",
-                    defaultValue: function () {
-                        return "";
-                    }
-                },
-                {
-                    nodeTitle: "Patient_RMA",
-                    title: "Patient, Refused Medical Assistance (RMA)",
-                    required: false,
-                    disclaimer: "I hereby refuse (treatment/transport to a hospital) and I acknowledge that such treatment/transportation was advised by the ambulance crew or physician. I hereby release such persons from liability for respecting and following my express wishes."
-						+ "\n\n"
-						+ "Mediante la presente declaro que me niego a aceptar el tratamiento/traslado a un hospital y reconozco asimismo que el medical o el personal de la ambulancia recomendaron ese tratamiento/traslado. Consiguientemente, eximo a dichas personas de toda responsibilidad por haber respetado y cumplido mis deseos expresos.",
-                    //	"I understand that the EMS personnel are not physicians and are not qualified or authorized to make a diagnosis and that their care is not a substitute for that of a physician. I recognize that I may have a serious injury or illness which could get worse without medical attention even though I (or the patient on whose behalf I legally sign this document) may feel fine at the present time.\n\nI understand that I may change my mind and call 9-1-1 if treatment or assistance is needed later. I also understand that treatment is available at an emergency department 24 hours a day or from my physician. If I have insisted on being transported to a destination other than that recommended by the EMS personnel, I understand and have been informed that there may be a significant delay in receiving care at the emergency room, that the emergency room may lack the staff, equipment, beds or resources to care for me promptly, and/or that I might not be able to be admitted to that hospital.\n\nI acknowledge that this advice has been explained to me by the ambulance crew and that I have read this form completely and understand its provisions. I agree, on my own behalf (and on behalf of the patient for whom I legally sign this document), to release, indemnify and hold harmless the ambulance service and its officers, members, employees or other agents, and the medical command physician and medical command facility, from any and all claims, actions, causes of action, damages, or legal liabilities of any kind arising out of my decision, or from any act or omission of the ambulance service or its crew, or the medical command physician or medical command facility.\n\nI also acknowledge receipt of the ambulance service's Notice of Privacy Practices.",
-                    defaultValue: function () {
-                        return ($scope.pcr.patientFirstName || "") + " " + ($scope.pcr.patientLastName || "").trim();
-                    }
-                },
-                {
-                    nodeTitle: "Patient",
-                    title: "Patient",
-                    required: false,
-                    disclaimer: "I authorize the submission of a claim to Medicare, Medicaid, or any other payer for any services provided to me by EMS now, in the past, or in the future, until such time as I revoke this authorization in writing. I understand that I am financially responsible for the services and supplies provided to me by EMS, regardless of my insurance coverage, and in some cases, may be responsible for an amount in addition to that which was paid by my insurance. I agree to immediately remit to EMS any payments that I receive directly from insurance or any source whatsoever for the services provided to me and I assign all rights to such payments to EMS. I authorize EMS to appeal payment denials or other adverse decisions on my behalf. I authorize and direct any holder of medical, insurance, billing or other relevant information about me to release such information to EMS and its billing agents, the Centers for Medicare and Medicaid Services, and/or any other payers or insurers, and their respective agents or contractors, as may be necessary to determine these or other benefits payable for any services provided to me by EMS, now, in the past, or in the future.  I also authorize EMS to obtain medical, insurance, billing and other relevant information about me from any party, database or other source that maintains such information. . Privacy Practices Acknowledgement, by signing below, I acknowledge that I have received a copy of EMS' Notice of Privacy Practices.",
-                    defaultValue: function () {
-                        return ($scope.pcr.patientFirstName || "") + " " + ($scope.pcr.patientLastName || "").trim();
-                    }
-                },
-                {
-                    nodeTitle: "Student_Author",
-                    title: "Student Author",
-                    required: false,
-                    disclaimer: "Signature of the student that completed the documentation. I have written the patient care report and can attest that the content is true and accurate to the best of my knowledge.",
-                    defaultValue: function () {
-                        return "";
-                    }
-                },
-                {
-                    nodeTitle: "Peer_Review",
-                    title: "Peer Review",
-                    required: false,
-                    disclaimer: "I have reviewed the patient care report and can attest that the content is true and accurate to the best of my knowledge.",
-                    defaultValue: function () {
-                        return "";
-                    }
-                },
-                {
-                    nodeTitle: "AuthRep",
-                    title: "Patient Representative",
-                    required: false,
-                    disclaimer: "I am signing on behalf of the patient. I recognize that signing on behalf of the patient is not an acceptance of financial responsibility for the services rendered. Notice of Privacy Practices applicable only to the following: Patient's Legal Guardian or Patient's Durable Power of Attorney who arranges treatments or handles the patient's affairs. Privacy Practices Acknowledgement, by signing below, I acknowledge that I have received a copy of EMS' Notice of Privacy Practices.",
-                    defaultValue: function () {
-                        return "";
-                    }
-                },
-                {
-                    nodeTitle: "Witness",
-                    title: "Witness",
-                    required: false,
-                    disclaimer: "I acknowledge that my signature is in witness to the above person(s) signing patient care report or refusal.",
-                    defaultValue: function () {
-                        return "";
-                    }
-                },
-                {
-                    nodeTitle: "Received_By",
-                    title: "Received By",
-                    required: false,
-                    disclaimer: "I acknowledge that I have received report and patient care for the above listed patient. I understand that my signature is only that I have received the transfer of care from EMS. My signature is not acceptance of financial responsibility for the services rendered.",
-                    defaultValue: function () {
-                        return "";
-                    }
-                },
-                {
-                    nodeTitle: "Guardian",
-                    title: "Parent/Guardian",
-                    required: false,
-                    disclaimer: "",
-                    defaultValue: function () {
-                        return "";
-                    }
-                }
-            ];
-
-
-            if (demographics.AgencyRequiredFieldsArr) {
-                //alert(JSON.stringify($scope.demo.AgencyRequiredFieldsArr));
-                demographics.AgencyRequiredFieldsArr.forEach(function (element, index, array) {
-                    $("[data-ng-model=" + "'" + element + "'" + "]").rules("add", {
-                        required: true
-                    });
-                    $("[data-ng-model=" + "'" + element + "'" + "]").addClass("RequiredRedBorder");
-                });
-            }
-
-            //add the fips list based on configured fips
-            var fipsUrl9 = "/api/FIPSQuery?fipslist=" + $scope.demo2["ConfigFIPSList"] + "&";
-            $('.aaCustomFips').select2(
-                 {
-                     placeholder: 'Enter City or County',
-                     //Does the user have to enter any data before sending the ajax request
-                     minimumInputLength: 3,
-                     width: "100%",
-                     allowClear: true,
-                     data: offlineFipsList
-                     //ajax: {
-                     //    How long the user has to pause their typing before sending the next request
-                     //    quietMillis: 150,
-                     //    The url of the json service
-                     //    type: "GET",
-                     //    url: fipsUrl9,
-                     //    Our search term and what page we are on
-                     //    data: function (term, page) {
-                     //        return {
-                     //            q: term,
-                     //        };
-                     //    },
-                     //    results: function (data, page) {
-                     //        return { results: data };
-                     //    }
-                     //}
-                 });
-
-
-            $scope.pcr.demo = {};
-            $scope.pcr.demo.agencyNumber = "" + demographics["AgencyNumber"];
-            $scope.pcr.demo.agencyLevelOfService = "" + demographics["AgencyLevelOfService"];
-            $scope.pcr.demo.agencyOrganizationalType = "" + demographics["AgencyOrganizationalType"];
-            $scope.pcr.demo.agencyOrganizationStatus = "" + demographics["AgencyOrganizationStatus"];
-            $scope.pcr.demo.agencyNationalProviderIdentifier = "" + demographics["AgencyNationalProviderIdentifier"];
-            $scope.pcr.demo.agencyStates = "" + demographics["AgencyState"];
-            $scope.pcr.demo.agencyCountys = "" + demographics["AgencyCounty"];
-            $scope.pcr.demo.AgencyName = demographics["AgencyName"];
-            $scope.pcr.demo.AutoGenNarOpt = demographics["AutoGenNarOpt"];
-            //   alert("New");
-
-            if (demographics["AgencyContactAddresss"] && demographics["AgencyContactAddresss"][0]) {
-                $scope.pcr.demo.agencyContactDemographicZip = "" + demographics["AgencyContactAddresss"][0]["AgencyContactDemographicZip"];
-            }
-
-            if (isNew) {
-                //if (!($scope.pcr)) {
-                //    $scope.InitializePcr();
-                //}
-                $scope.pcr.googleAddress = {};
-                $scope.pcr.whoGeneratedThisReportCheckbox = true;
-                if (!($scope.pcr.incidentDate) || $scope.pcr.incidentDate == "") {
-                    $scope.pcr.incidentDate = getDate();
-                    $scope.UpdateTimelineDates();
-                }
-                //  alert(JSON.stringify(demographics));
-                $scope.FormActionSetAgencyDefaultValues("" + demographics["AgencyDefaultValues"]);
-                $scope.pcr.currentDisposition = $scope.dispositionsObject[0];
-
-                // var $LocationZoneNumber = $("input[title='']").first();
-                // Select2Single($LocationZoneNumber, $scope.demo.ConfigZoneNumbers);
-            }
+    //        window["ConfigProceduresList"] = $scope.AttachSelect2ToControl(Select2Single, "ConfigProceduresList", $scope.demo.ConfigProcedures);
 
 
 
-            $scope.$apply();
-            //}
+    //        //window["Scene-Prior AID"] = $scope.AttachSelect2ToControl(Select2_TagsMultiple, "Scene-Prior AID", $scope.demo.ConfigProcedures.concat($scope.demo.ConfigMedications).concat(NullValuesList));
 
-            //$scope.ApplyDisposition();
-        }
-    }
+    //        $scope.demo.ConfigProtocols = $scope.CreateSelect2ArrayFromObjectArray(demographics, "ConfigProtocols", "ConfigProtocols");
+
+    //        window["Protocols"] = $scope.AttachSelect2ToControl(Select2Multiple, "Protocols", $scope.demo.ConfigProtocols.concat(NullValuesList));
+
+
+    //        $scope.demo.VehicleNumbers = $scope.CreateSelect2ArrayFromObjectArray(demographics, "Vehicles", "VehicleNumber");
+
+    //        window["incidentUnitVehicleNumber"] = $scope.AttachSelect2ToControl(Select2Single, "incidentUnitVehicleNumber", $scope.demo.VehicleNumbers);
+
+    //        //$scope.demo.ConfigEMSUnitNumber = $scope.CreateSelect2ArrayFromDelimitedString(demographics, "ConfigEMSUnitNumber");
+    //        $scope.demo.VehicleCallSigns = $scope.CreateSelect2ArrayFromObjectArray(demographics, "Vehicles", "VehicleCallSign");
+
+    //        window["Unit-Call Sign"] = $scope.AttachSelect2ToControl(Select2Single, "Unit-Call Sign", $scope.demo.VehicleCallSigns);
+
+    //        $scope.demo.StationNames = $scope.CreateSelect2ArrayFromObjectArray(demographics, "Stations", "StationName");
+    //        $scope.demo.ConfigOtherFacilityNames = $scope.CreateSelect2ArrayFromObjectArray(demographics, "ConfigOtherFacilitys", "ConfigOtherFacilityName");
+    //        $scope.demo.ConfigSceneNames = $scope.CreateSelect2ArrayFromObjectArray(demographics, "ConfigScenes", "ConfigSceneName");
+    //        $scope.demo.ConfigHospitalNames = $scope.CreateSelect2ArrayFromObjectArray(demographics, "ConfigHospitals", "ConfigHospitalName");
+    //        window["VehicleDispatchLocation"] = $scope.AttachSelect2ToControl(Select2_TagsSingle, "VehicleDispatchLocation", $scope.demo.StationNames.concat($scope.demo.ConfigOtherFacilityNames).concat($scope.demo.ConfigHospitalNames));
+    //        window["Incident-Destination"] = $scope.AttachSelect2ToControl(Select2_TagsSingle, "Incident-Destination", $scope.demo.ConfigOtherFacilityNames.concat($scope.demo.ConfigHospitalNames).concat(NullValuesList));
+    //        window["quick-scene"] = $scope.AttachSelect2ToControl(Select2Single, "quick-scene", $scope.demo.ConfigSceneNames.concat($scope.demo.ConfigOtherFacilityNames.concat($scope.demo.ConfigHospitalNames)));
+
+    //        $scope.demo.AgencyOtherAgenciesInArea = $scope.CreateSelect2ArrayFromDelimitedString(demographics, "AgencyOtherAgenciesInArea");
+    //        window["AgenciesOnScene"] = $scope.AttachSelect2ToControl(Select2_TagsMultiple, "AgenciesOnScene", $scope.demo.AgencyOtherAgenciesInArea.concat(NullValuesList));
+
+    //        $scope.demo.ConfigHospitalNumbers = $scope.CreateSelect2ArrayFromObjectArray(demographics, "ConfigHospitals", "ConfigHospitalNumber");
+    //        $scope.demo.ConfigOtherFacilityNumbers = $scope.CreateSelect2ArrayFromObjectArray(demographics, "ConfigOtherFacilitys", "ConfigOtherFacilityNumber");
+    //        window["LocationFacilityCode"] = $scope.AttachSelect2ToControl(Select2_TagsSingle, "LocationFacilityCode", $scope.demo.ConfigHospitalNumbers.concat($scope.demo.ConfigOtherFacilityNumbers).concat(NullValuesList));
+    //        window["DestinationCode"] = $scope.AttachSelect2ToControl(Select2_TagsSingle, "DestinationCode", removeNullAndUndefinedFromList($scope.demo.ConfigHospitalNumbers.concat($scope.demo.ConfigOtherFacilityNumbers).concat(NullValuesList)));
+
+
+    //        $scope.hospital.PersonnelFirstNames = $scope.CreateArrayFromObjectArray(demographics, "Personnels", "PersonnelFirstName");
+    //        $scope.hospital.PersonnelLastNames = $scope.CreateArrayFromObjectArray(demographics, "Personnels", "PersonnelLastName");
+    //        $scope.hospital.ConfigProcedures = $scope.CreateArrayFromObjectArray(demographics, "ConfigProcedures", "ConfigProcedure");
+    //        $scope.hospital.ConfigMedications = $scope.CreateArrayFromObjectArray(demographics, "ConfigMedications", "ConfigMedicationsGiven");
+
+
+    //        $scope.demo.Personnels = $scope.CreateSelect2ArrayForPersonnels(demographics);
+
+    //        window["Crew - Primary"] = $scope.AttachSelect2ToControl(Select2Single, "Crew - Primary", $scope.demo.Personnels/*.concat(NullValuesList)*/);
+    //        window["Crew - Secondary"] = $scope.AttachSelect2ToControl(Select2Multiple, "Crew - Secondary", $scope.demo.Personnels/*.concat(NullValuesList)*/);
+    //        window["Crew - Third"] = $scope.AttachSelect2ToControl(Select2Multiple, "Crew - Third", $scope.demo.Personnels/*.concat(NullValuesList)*/);
+    //        window["Crew - Other"] = $scope.AttachSelect2ToControl(Select2Multiple, "Crew - Other", $scope.demo.Personnels/*.concat(NullValuesList)*/);
+    //        window["Crew - Driver"] = $scope.AttachSelect2ToControl(Select2Single, "Crew - Driver", $scope.demo.Personnels/*.concat(NullValuesList)*/);
+    //        window["whoGeneratedThisReport"] = $scope.AttachSelect2ToControl(Select2Single, "whoGeneratedThisReport", $scope.demo.Personnels);
+    //        window["medCrewMemberId"] = $scope.AttachSelect2ToControl(Select2Single, "medCrewMemberId", $scope.demo.Personnels);
+    //        window["procCrewMemberId"] = $scope.AttachSelect2ToControl(Select2Single, "procCrewMemberId", $scope.demo.Personnels);
+
+    //        $scope.autoFips = allowAutofips = defaultedValue(demographics.AutoFips, true);
+    //        $scope.allowCustomOptions = defaultedValue(demographics.allowCustomOptions, true);
+
+    //        var disabledDispositions = demographics.AgencyDisabledDispositions;
+    //        if (disabledDispositions) {
+    //            var disabledDispoList = disabledDispositions.split(";");
+    //            for (var i = 0; i < $scope.dispositionsObject.length; i++) {
+    //                for (var j = 0; j < disabledDispoList.length; j++) {
+    //                    if (disabledDispoList[j].trim() == $scope.dispositionsObject[i].name) {
+    //                        $scope.dispositionsObject.splice(i--, 1);
+    //                        break;
+    //                    }
+    //                }
+    //            }
+    //        }
+
+    //        // replace this with a demographics list?
+    //        $scope.signatures = [
+    //            {
+    //                nodeTitle: "Crew_Primary",
+    //                title: "Crew Primary",
+    //                required: true,
+    //                disclaimer: "",
+    //                defaultValue: function () {
+    //                    return $scope.pcr.crewPrimary ? $scope.pcr.crewPrimary.substr(0, $scope.pcr.crewPrimary.indexOf('(')).trim() : "";
+    //                }
+    //            },
+    //            {
+    //                nodeTitle: "Crew_Secondary",
+    //                title: "Crew Secondary",
+    //                required: false,
+    //                disclaimer: "",
+    //                defaultValue: function () {
+    //                    return $scope.pcr.crewSecondary ? $scope.pcr.crewSecondary.substr(0, $scope.pcr.crewSecondary.indexOf('(')).trim() : "";
+    //                }
+    //            },
+    //            {
+    //                nodeTitle: "ETT_Confirmation",
+    //                title: "ETT Confirmation",
+    //                required: false,
+    //                disclaimer: "My signature acknowledges that I have assessed the placement of the endotracheal tube upon the arrival to my facility.",
+    //                defaultValue: function () {
+    //                    return "";
+    //                }
+    //            },
+    //            {
+    //                nodeTitle: "Patient_RMA",
+    //                title: "Patient, Refused Medical Assistance (RMA)",
+    //                required: false,
+    //                disclaimer: "I hereby refuse (treatment/transport to a hospital) and I acknowledge that such treatment/transportation was advised by the ambulance crew or physician. I hereby release such persons from liability for respecting and following my express wishes."
+	//					+ "\n\n"
+	//					+ "Mediante la presente declaro que me niego a aceptar el tratamiento/traslado a un hospital y reconozco asimismo que el medical o el personal de la ambulancia recomendaron ese tratamiento/traslado. Consiguientemente, eximo a dichas personas de toda responsibilidad por haber respetado y cumplido mis deseos expresos.",
+    //                //	"I understand that the EMS personnel are not physicians and are not qualified or authorized to make a diagnosis and that their care is not a substitute for that of a physician. I recognize that I may have a serious injury or illness which could get worse without medical attention even though I (or the patient on whose behalf I legally sign this document) may feel fine at the present time.\n\nI understand that I may change my mind and call 9-1-1 if treatment or assistance is needed later. I also understand that treatment is available at an emergency department 24 hours a day or from my physician. If I have insisted on being transported to a destination other than that recommended by the EMS personnel, I understand and have been informed that there may be a significant delay in receiving care at the emergency room, that the emergency room may lack the staff, equipment, beds or resources to care for me promptly, and/or that I might not be able to be admitted to that hospital.\n\nI acknowledge that this advice has been explained to me by the ambulance crew and that I have read this form completely and understand its provisions. I agree, on my own behalf (and on behalf of the patient for whom I legally sign this document), to release, indemnify and hold harmless the ambulance service and its officers, members, employees or other agents, and the medical command physician and medical command facility, from any and all claims, actions, causes of action, damages, or legal liabilities of any kind arising out of my decision, or from any act or omission of the ambulance service or its crew, or the medical command physician or medical command facility.\n\nI also acknowledge receipt of the ambulance service's Notice of Privacy Practices.",
+    //                defaultValue: function () {
+    //                    return ($scope.pcr.patientFirstName || "") + " " + ($scope.pcr.patientLastName || "").trim();
+    //                }
+    //            },
+    //            {
+    //                nodeTitle: "Patient",
+    //                title: "Patient",
+    //                required: false,
+    //                disclaimer: "I authorize the submission of a claim to Medicare, Medicaid, or any other payer for any services provided to me by EMS now, in the past, or in the future, until such time as I revoke this authorization in writing. I understand that I am financially responsible for the services and supplies provided to me by EMS, regardless of my insurance coverage, and in some cases, may be responsible for an amount in addition to that which was paid by my insurance. I agree to immediately remit to EMS any payments that I receive directly from insurance or any source whatsoever for the services provided to me and I assign all rights to such payments to EMS. I authorize EMS to appeal payment denials or other adverse decisions on my behalf. I authorize and direct any holder of medical, insurance, billing or other relevant information about me to release such information to EMS and its billing agents, the Centers for Medicare and Medicaid Services, and/or any other payers or insurers, and their respective agents or contractors, as may be necessary to determine these or other benefits payable for any services provided to me by EMS, now, in the past, or in the future.  I also authorize EMS to obtain medical, insurance, billing and other relevant information about me from any party, database or other source that maintains such information. . Privacy Practices Acknowledgement, by signing below, I acknowledge that I have received a copy of EMS' Notice of Privacy Practices.",
+    //                defaultValue: function () {
+    //                    return ($scope.pcr.patientFirstName || "") + " " + ($scope.pcr.patientLastName || "").trim();
+    //                }
+    //            },
+    //            {
+    //                nodeTitle: "Student_Author",
+    //                title: "Student Author",
+    //                required: false,
+    //                disclaimer: "Signature of the student that completed the documentation. I have written the patient care report and can attest that the content is true and accurate to the best of my knowledge.",
+    //                defaultValue: function () {
+    //                    return "";
+    //                }
+    //            },
+    //            {
+    //                nodeTitle: "Peer_Review",
+    //                title: "Peer Review",
+    //                required: false,
+    //                disclaimer: "I have reviewed the patient care report and can attest that the content is true and accurate to the best of my knowledge.",
+    //                defaultValue: function () {
+    //                    return "";
+    //                }
+    //            },
+    //            {
+    //                nodeTitle: "AuthRep",
+    //                title: "Patient Representative",
+    //                required: false,
+    //                disclaimer: "I am signing on behalf of the patient. I recognize that signing on behalf of the patient is not an acceptance of financial responsibility for the services rendered. Notice of Privacy Practices applicable only to the following: Patient's Legal Guardian or Patient's Durable Power of Attorney who arranges treatments or handles the patient's affairs. Privacy Practices Acknowledgement, by signing below, I acknowledge that I have received a copy of EMS' Notice of Privacy Practices.",
+    //                defaultValue: function () {
+    //                    return "";
+    //                }
+    //            },
+    //            {
+    //                nodeTitle: "Witness",
+    //                title: "Witness",
+    //                required: false,
+    //                disclaimer: "I acknowledge that my signature is in witness to the above person(s) signing patient care report or refusal.",
+    //                defaultValue: function () {
+    //                    return "";
+    //                }
+    //            },
+    //            {
+    //                nodeTitle: "Received_By",
+    //                title: "Received By",
+    //                required: false,
+    //                disclaimer: "I acknowledge that I have received report and patient care for the above listed patient. I understand that my signature is only that I have received the transfer of care from EMS. My signature is not acceptance of financial responsibility for the services rendered.",
+    //                defaultValue: function () {
+    //                    return "";
+    //                }
+    //            },
+    //            {
+    //                nodeTitle: "Guardian",
+    //                title: "Parent/Guardian",
+    //                required: false,
+    //                disclaimer: "",
+    //                defaultValue: function () {
+    //                    return "";
+    //                }
+    //            }
+    //        ];
+
+
+    //        if (demographics.AgencyRequiredFieldsArr) {
+    //            //alert(JSON.stringify($scope.demo.AgencyRequiredFieldsArr));
+    //            demographics.AgencyRequiredFieldsArr.forEach(function (element, index, array) {
+    //                $("[data-ng-model=" + "'" + element + "'" + "]").rules("add", {
+    //                    required: true
+    //                });
+    //                $("[data-ng-model=" + "'" + element + "'" + "]").addClass("RequiredRedBorder");
+    //            });
+    //        }
+
+    //        //add the fips list based on configured fips
+    //        var fipsUrl9 = "/api/FIPSQuery?fipslist=" + $scope.demo2["ConfigFIPSList"] + "&";
+    //        $('.aaCustomFips').select2(
+    //             {
+    //                 placeholder: 'Enter City or County',
+    //                 //Does the user have to enter any data before sending the ajax request
+    //                 minimumInputLength: 3,
+    //                 width: "100%",
+    //                 allowClear: true,
+    //                 data: offlineFipsList
+    //                 //ajax: {
+    //                 //    How long the user has to pause their typing before sending the next request
+    //                 //    quietMillis: 150,
+    //                 //    The url of the json service
+    //                 //    type: "GET",
+    //                 //    url: fipsUrl9,
+    //                 //    Our search term and what page we are on
+    //                 //    data: function (term, page) {
+    //                 //        return {
+    //                 //            q: term,
+    //                 //        };
+    //                 //    },
+    //                 //    results: function (data, page) {
+    //                 //        return { results: data };
+    //                 //    }
+    //                 //}
+    //             });
+
+
+    //        $scope.pcr.demo = {};
+    //        $scope.pcr.demo.agencyNumber = "" + demographics["AgencyNumber"];
+    //        $scope.pcr.demo.agencyLevelOfService = "" + demographics["AgencyLevelOfService"];
+    //        $scope.pcr.demo.agencyOrganizationalType = "" + demographics["AgencyOrganizationalType"];
+    //        $scope.pcr.demo.agencyOrganizationStatus = "" + demographics["AgencyOrganizationStatus"];
+    //        $scope.pcr.demo.agencyNationalProviderIdentifier = "" + demographics["AgencyNationalProviderIdentifier"];
+    //        $scope.pcr.demo.agencyStates = "" + demographics["AgencyState"];
+    //        $scope.pcr.demo.agencyCountys = "" + demographics["AgencyCounty"];
+    //        $scope.pcr.demo.AgencyName = demographics["AgencyName"];
+    //        $scope.pcr.demo.AutoGenNarOpt = demographics["AutoGenNarOpt"];
+    //        //   alert("New");
+
+    //        if (demographics["AgencyContactAddresss"] && demographics["AgencyContactAddresss"][0]) {
+    //            $scope.pcr.demo.agencyContactDemographicZip = "" + demographics["AgencyContactAddresss"][0]["AgencyContactDemographicZip"];
+    //        }
+
+    //        if (isNew) {
+    //            //if (!($scope.pcr)) {
+    //            //    $scope.InitializePcr();
+    //            //}
+    //            $scope.pcr.googleAddress = {};
+    //            $scope.pcr.whoGeneratedThisReportCheckbox = true;
+    //            if (!($scope.pcr.incidentDate) || $scope.pcr.incidentDate == "") {
+    //                $scope.pcr.incidentDate = getDate();
+    //                $scope.UpdateTimelineDates();
+    //            }
+    //            //  alert(JSON.stringify(demographics));
+    //            $scope.FormActionSetAgencyDefaultValues("" + demographics["AgencyDefaultValues"]);
+    //            $scope.pcr.currentDisposition = $scope.dispositionsObject[0];
+
+    //            // var $LocationZoneNumber = $("input[title='']").first();
+    //            // Select2Single($LocationZoneNumber, $scope.demo.ConfigZoneNumbers);
+    //        }
+
+
+
+    //        $scope.$apply();
+    //        //}
+
+    //        //$scope.ApplyDisposition();
+    //    }
+    //}
 
     $scope.sign = function (sigData) {
         var src = $scope.pcr.signatures[sigData.nodeTitle] ? $scope.pcr.signatures[sigData.nodeTitle].src : "";
@@ -1602,308 +1602,310 @@ app.controller('myCtrl', function ($scope) {
         }
     };
 
-    $scope.NullableDefaultObjectProperties = {
-        "googleAddress": {
-            "targetAddress": "DestinationAddress",
-            "number": "",
-            "street": "***Not Applicable",
-            "city": "***Not Applicable",
-            "state": "***Not Applicable",
-            "zip": "***Not Applicable",
-            "fipsCounty": "***Not Applicable",
-            "fips": "***Not Applicable",
-            "country": "",
-            "combinedStreet": "***Not Applicable"
-        },
-        "whoGeneratedThisReportCheckbox": true,
-        "incidentDate": "",
-        "incidentOnsetDate": "",
-        "incidentCallRecievedDate": "",
-        "incidentDispatchNotifiedDate": "",
-        "incidentDispatchedDate": "",
-        "incidentEnrouteDate": "",
-        "incidentArriveSceneDate": "",
-        "incidentPtContactDate": "",
-        "incidentTransferPtDate": "",
-        "incidentDepartSceneDate": "",
-        "incidentArriveDestinationDate": "",
-        "incidentInServiceDate": "",
-        "incidentAtBaseDate": "",
-        "incidentUnitCanceledDate": "",
-        "currentDisposition": { "name": "Default", "results": { "outcome": "", "sections": [], "tables": [], "tabs": [] } },
-        "demo": { "agencyNumber": "29", "agencyLevelOfService": "EMT-Paramedic", "agencyOrganizationalType": "Community, Non-Profit", "agencyOrganizationStatus": "Mixed", "agencyNationalProviderIdentifier": "undefined" },
-        "SceneAddress": { "number": "", "street": "***Not Applicable", "combinedStreet": "***Not Applicable", "city": "***Not Applicable", "state": "***Not Applicable", "zip": "***Not Applicable", "country": "", "fips": "***Not Applicable", "fipsCounty": "***Not Applicable", "notes": "undefined", "valid": true },
-        "incidentVehicleResponseNumber": "***Not Applicable",
-        "servicesOnScene": "***Not Applicable",
-        "agenciesOnScene": "***Not Applicable",
-        "emsSystem": "***Not Applicable",
-        "delaysSwitch": true,
-        "delayDispatch": "***Not Applicable",
-        "delayTransport": "***Not Applicable",
-        "delayResponse": "***Not Applicable",
-        "delayScene": "***Not Applicable",
-        "delayTurnAround": "***Not Applicable",
-        "emdContact": "***Not Applicable",
-        "vehicleDispatchLocation": "***Not Applicable",
-        "incidentLocationFacilityCode": "***Not Applicable",
-        "incidentLocationLong": "",
-        "odometerStart": null,
-        "odometerScene": null,
-        "odometerDest": null,
-        "odometerTotal": null,
-        "odometerservice": null,
-        "crewPrimary": "***Not Applicable",
-        "whoGeneratedThisReport": "***Not Applicable",
-        "crewDriver": "***Not Applicable",
-        "crewSecondary": "***Not Applicable",
-        "crewThird": "***Not Applicable",
-        "crewOther": "***Not Applicable",
-        "patientFirstName": "***Not Applicable",
-        "patientLastName": "***Not Applicable",
-        "patientPhoneNumber": "***Not Applicable",
-        "patientMiddleName": "***Not Applicable",
-        "patientDOB": "",
-        "patientAge": null,
-        "patientAgeMonths": null,
-        "patientEthnicity": "***Not Applicable",
-        "patientGender": "Female",
-        "patientFemalePregant": "***Not Applicable",
-        "patientFemalePregnancyDuration": "N/A",
-        "patientDriverLicenseNumber": "***Not Applicable",
-        "practitionerLast": "***Not Applicable",
-        "patientDriverLicenseState": "***Not Applicable",
-        "patientMedicalHistory": "***Not Applicable",
-        "patientMedicationAllergies": "***Not Applicable",
-        "patientEnvironmentalAllergies": "***Not Applicable",
-        "advancedDirectives": "***Not Applicable",
-        "emergencyInfoFormSelect": "***Not Applicable",
-        "patientMedications": [{ "medicationName": "***Not Applicable", "medicationRoute": null }],
-        "primaryComplaint": "***Not Applicable",
-        "secondaryComplaint": "***Not Applicable",
-        "primaryComplaintDuration": "",
-        "secondaryComplaintDuration": "",
-        "barriersPatientCare": "***Not Applicable",
-        "secondarySymptoms": "***Not Applicable",
-        "primaryImpression": "***Not Applicable",
-        "secondaryImpressions": "***Not Applicable",
-        "signsOfDrugs": "***Not Applicable",
-        "cardiacArrestSelect": false,
-        "cardiacArrest": "***Not Applicable",
-        "mvc": "***Not Applicable",
-        "trauma": "***Not Applicable",
-        "traumaSelect": true,
-        "nhtsaNeck": "***Not Applicable",
-        "nhtsaThorax": "***Not Applicable",
-        "nhtsaAbdomen": "***Not Applicable",
-        "nhtsaSpine": "***Not Applicable",
-        "nhtsaPelvis": "***Not Applicable",
-        "nhtsaHead": "***Not Applicable",
-        "nhtsaFace": "***Not Applicable",
-        "nhtsaUpperExtremities": "***Not Applicable",
-        "nhtsaLowerExtremities": "***Not Applicable",
-        "nhtsaExternalSkin": "***Not Applicable",
-        "nhtsaUnscpecified": "***Not Applicable",
-        "exams": [{ "examDate": "", "examTime": "", "examSkin": "***Not Applicable", "examFace": "***Not Applicable", "examNeck": "***Not Applicable", "examLeftEye": "***Not Applicable", "examRightEye": "***Not Applicable", "examMental": "***Not Applicable", "examNeuro": "***Not Applicable", "examChest": "***Not Applicable", "examHeart": "***Not Applicable", "examAbsLeftUpper": "***Not Applicable", "examAbsLeftLower": "***Not Applicable", "examAbsRightUpper": "***Not Applicable", "examAbsRightLower": "***Not Applicable", "examGU": "***Not Applicable", "examBackCervical": "***Not Applicable", "examBackThoracic": "***Not Applicable", "examBackLumbar": "***Not Applicable", "examExtremRightUpper": "***Not Applicable", "examExtremRightLower": "***Not Applicable", "examExtremLeftLower": "***Not Applicable", "examExtremLeftUpper": "***Not Applicable" }],
-        "conditionCodes": "***Not Applicable",
-        "primaryPaymentMethod": "***Not Applicable",
-        "billingWorkRelatedSelect": "***Not Applicable",
-        "patientEmployer": "***Not Applicable",
-        "EmployerAddress": { "number": "", "street": "***Not Applicable", "combinedStreet": "***Not Applicable", "city": "***Not Applicable", "state": "***Not Applicable", "zip": "***Not Applicable", "country": "", "fips": "***Not Applicable", "fipsCounty": "***Not Applicable", "notes": "undefined", "valid": true },
-        "patientOccupationIndustry": "***Not Applicable",
-        "certificateMedNecessitySelect": "***Not Applicable",
-        "billingDifferentThanPatientSelect": false,
-        "billingDifferentThanPatient": "***Not Applicable",
-        "treatmentMedications": [{ "medComplication": "***Not Applicable", "medName": "***Not Applicable" }],
-        "procedures": [{ "procProcedure": "***Not Applicable", "procComplication": "***Not Applicable", "procNumberOfAttempts": "***Not Applicable", "procSuccess": "***Not Applicable" }],
-        "procSuccessfulIvSite": "***Not Applicable",
-        "procEtTubeConfirm": "***Not Applicable",
-        "protocols": "***Not Applicable",
-        "incidentDestination": "***Not Applicable",
-        "DestinationAddress": { "number": "", "street": "***Not Applicable", "combinedStreet": "***Not Applicable", "city": "***Not Applicable", "state": "***Not Applicable", "zip": "***Not Applicable", "country": "", "fips": "***Not Applicable", "fipsCounty": "***Not Applicable", "notes": "undefined", "valid": true },
-        "conditionOfPtAtDest": "***Not Applicable",
-        "incidentDestinationType": "***Not Applicable",
-        "incidentDestinationCode": "***Not Applicable",
-        "incidentDestinationReason": "***Not Applicable",
-        "massCasualitySelect": "***Not Applicable",
-        "numberOfPts": "***Not Applicable",
-        "edDisposition": "***Not Applicable",
-        "hospitalDisposition": "***Not Applicable",
-        "modeFromScene": "***Not Applicable",
-        "nuerologicalOutcomeAtDischarge": "***Not Applicable",
-        "reviewRequestedSelect": "***Not Applicable",
-        "fluidContactSelect": "***Not Applicable",
-        "emsDeathSelect": "***Not Applicable",
-        "requiredReportableConditionsSelect": "***Not Applicable",
-        "disasters": "***Not Applicable",
-        "fluidContactType": "***Not Applicable",
-        "emsDeathType": "***Not Applicable"
-    };
+    //// Since we allow defaulting based on disposition, i dont think this pattern is needed anymore
+    ////$scope.NullableDefaultObjectProperties = {
+    ////    "googleAddress": {
+    ////        "targetAddress": "DestinationAddress",
+    ////        "number": "",
+    ////        "street": "***Not Applicable",
+    ////        "city": "***Not Applicable",
+    ////        "state": "***Not Applicable",
+    ////        "zip": "***Not Applicable",
+    ////        "fipsCounty": "***Not Applicable",
+    ////        "fips": "***Not Applicable",
+    ////        "country": "",
+    ////        "combinedStreet": "***Not Applicable"
+    ////    },
+    ////    "whoGeneratedThisReportCheckbox": true,
+    ////    "incidentDate": "",
+    ////    "incidentOnsetDate": "",
+    ////    "incidentCallRecievedDate": "",
+    ////    "incidentDispatchNotifiedDate": "",
+    ////    "incidentDispatchedDate": "",
+    ////    "incidentEnrouteDate": "",
+    ////    "incidentArriveSceneDate": "",
+    ////    "incidentPtContactDate": "",
+    ////    "incidentTransferPtDate": "",
+    ////    "incidentDepartSceneDate": "",
+    ////    "incidentArriveDestinationDate": "",
+    ////    "incidentInServiceDate": "",
+    ////    "incidentAtBaseDate": "",
+    ////    "incidentUnitCanceledDate": "",
+    ////    "currentDisposition": { "name": "Default", "results": { "outcome": "", "sections": [], "tables": [], "tabs": [] } },
+    ////    "demo": { "agencyNumber": "29", "agencyLevelOfService": "EMT-Paramedic", "agencyOrganizationalType": "Community, Non-Profit", "agencyOrganizationStatus": "Mixed", "agencyNationalProviderIdentifier": "undefined" },
+    ////    "SceneAddress": { "number": "", "street": "***Not Applicable", "combinedStreet": "***Not Applicable", "city": "***Not Applicable", "state": "***Not Applicable", "zip": "***Not Applicable", "country": "", "fips": "***Not Applicable", "fipsCounty": "***Not Applicable", "notes": "undefined", "valid": true },
+    ////    "incidentVehicleResponseNumber": "***Not Applicable",
+    ////    "servicesOnScene": "***Not Applicable",
+    ////    "agenciesOnScene": "***Not Applicable",
+    ////    "emsSystem": "***Not Applicable",
+    ////    "delaysSwitch": true,
+    ////    "delayDispatch": "***Not Applicable",
+    ////    "delayTransport": "***Not Applicable",
+    ////    "delayResponse": "***Not Applicable",
+    ////    "delayScene": "***Not Applicable",
+    ////    "delayTurnAround": "***Not Applicable",
+    ////    "emdContact": "***Not Applicable",
+    ////    "vehicleDispatchLocation": "***Not Applicable",
+    ////    "incidentLocationFacilityCode": "***Not Applicable",
+    ////    "incidentLocationLong": "",
+    ////    "odometerStart": null,
+    ////    "odometerScene": null,
+    ////    "odometerDest": null,
+    ////    "odometerTotal": null,
+    ////    "odometerservice": null,
+    ////    "crewPrimary": "***Not Applicable",
+    ////    "whoGeneratedThisReport": "***Not Applicable",
+    ////    "crewDriver": "***Not Applicable",
+    ////    "crewSecondary": "***Not Applicable",
+    ////    "crewThird": "***Not Applicable",
+    ////    "crewOther": "***Not Applicable",
+    ////    "patientFirstName": "***Not Applicable",
+    ////    "patientLastName": "***Not Applicable",
+    ////    "patientPhoneNumber": "***Not Applicable",
+    ////    "patientMiddleName": "***Not Applicable",
+    ////    "patientDOB": "",
+    ////    "patientAge": null,
+    ////    "patientAgeMonths": null,
+    ////    "patientEthnicity": "***Not Applicable",
+    ////    "patientGender": "Female",
+    ////    "patientFemalePregant": "***Not Applicable",
+    ////    "patientFemalePregnancyDuration": "N/A",
+    ////    "patientDriverLicenseNumber": "***Not Applicable",
+    ////    "practitionerLast": "***Not Applicable",
+    ////    "patientDriverLicenseState": "***Not Applicable",
+    ////    "patientMedicalHistory": "***Not Applicable",
+    ////    "patientMedicationAllergies": "***Not Applicable",
+    ////    "patientEnvironmentalAllergies": "***Not Applicable",
+    ////    "advancedDirectives": "***Not Applicable",
+    ////    "emergencyInfoFormSelect": "***Not Applicable",
+    ////    "patientMedications": [{ "medicationName": "***Not Applicable", "medicationRoute": null }],
+    ////    "primaryComplaint": "***Not Applicable",
+    ////    "secondaryComplaint": "***Not Applicable",
+    ////    "primaryComplaintDuration": "",
+    ////    "secondaryComplaintDuration": "",
+    ////    "barriersPatientCare": "***Not Applicable",
+    ////    "secondarySymptoms": "***Not Applicable",
+    ////    "primaryImpression": "***Not Applicable",
+    ////    "secondaryImpressions": "***Not Applicable",
+    ////    "signsOfDrugs": "***Not Applicable",
+    ////    "cardiacArrestSelect": false,
+    ////    "cardiacArrest": "***Not Applicable",
+    ////    "mvc": "***Not Applicable",
+    ////    "trauma": "***Not Applicable",
+    ////    "traumaSelect": true,
+    ////    "nhtsaNeck": "***Not Applicable",
+    ////    "nhtsaThorax": "***Not Applicable",
+    ////    "nhtsaAbdomen": "***Not Applicable",
+    ////    "nhtsaSpine": "***Not Applicable",
+    ////    "nhtsaPelvis": "***Not Applicable",
+    ////    "nhtsaHead": "***Not Applicable",
+    ////    "nhtsaFace": "***Not Applicable",
+    ////    "nhtsaUpperExtremities": "***Not Applicable",
+    ////    "nhtsaLowerExtremities": "***Not Applicable",
+    ////    "nhtsaExternalSkin": "***Not Applicable",
+    ////    "nhtsaUnscpecified": "***Not Applicable",
+    ////    "exams": [{ "examDate": "", "examTime": "", "examSkin": "***Not Applicable", "examFace": "***Not Applicable", "examNeck": "***Not Applicable", "examLeftEye": "***Not Applicable", "examRightEye": "***Not Applicable", "examMental": "***Not Applicable", "examNeuro": "***Not Applicable", "examChest": "***Not Applicable", "examHeart": "***Not Applicable", "examAbsLeftUpper": "***Not Applicable", "examAbsLeftLower": "***Not Applicable", "examAbsRightUpper": "***Not Applicable", "examAbsRightLower": "***Not Applicable", "examGU": "***Not Applicable", "examBackCervical": "***Not Applicable", "examBackThoracic": "***Not Applicable", "examBackLumbar": "***Not Applicable", "examExtremRightUpper": "***Not Applicable", "examExtremRightLower": "***Not Applicable", "examExtremLeftLower": "***Not Applicable", "examExtremLeftUpper": "***Not Applicable" }],
+    ////    "conditionCodes": "***Not Applicable",
+    ////    "primaryPaymentMethod": "***Not Applicable",
+    ////    "billingWorkRelatedSelect": "***Not Applicable",
+    ////    "patientEmployer": "***Not Applicable",
+    ////    "EmployerAddress": { "number": "", "street": "***Not Applicable", "combinedStreet": "***Not Applicable", "city": "***Not Applicable", "state": "***Not Applicable", "zip": "***Not Applicable", "country": "", "fips": "***Not Applicable", "fipsCounty": "***Not Applicable", "notes": "undefined", "valid": true },
+    ////    "patientOccupationIndustry": "***Not Applicable",
+    ////    "certificateMedNecessitySelect": "***Not Applicable",
+    ////    "billingDifferentThanPatientSelect": false,
+    ////    "billingDifferentThanPatient": "***Not Applicable",
+    ////    "treatmentMedications": [{ "medComplication": "***Not Applicable", "medName": "***Not Applicable" }],
+    ////    "procedures": [{ "procProcedure": "***Not Applicable", "procComplication": "***Not Applicable", "procNumberOfAttempts": "***Not Applicable", "procSuccess": "***Not Applicable" }],
+    ////    "procSuccessfulIvSite": "***Not Applicable",
+    ////    "procEtTubeConfirm": "***Not Applicable",
+    ////    "protocols": "***Not Applicable",
+    ////    "incidentDestination": "***Not Applicable",
+    ////    "DestinationAddress": { "number": "", "street": "***Not Applicable", "combinedStreet": "***Not Applicable", "city": "***Not Applicable", "state": "***Not Applicable", "zip": "***Not Applicable", "country": "", "fips": "***Not Applicable", "fipsCounty": "***Not Applicable", "notes": "undefined", "valid": true },
+    ////    "conditionOfPtAtDest": "***Not Applicable",
+    ////    "incidentDestinationType": "***Not Applicable",
+    ////    "incidentDestinationCode": "***Not Applicable",
+    ////    "incidentDestinationReason": "***Not Applicable",
+    ////    "massCasualitySelect": "***Not Applicable",
+    ////    "numberOfPts": "***Not Applicable",
+    ////    "edDisposition": "***Not Applicable",
+    ////    "hospitalDisposition": "***Not Applicable",
+    ////    "modeFromScene": "***Not Applicable",
+    ////    "nuerologicalOutcomeAtDischarge": "***Not Applicable",
+    ////    "reviewRequestedSelect": "***Not Applicable",
+    ////    "fluidContactSelect": "***Not Applicable",
+    ////    "emsDeathSelect": "***Not Applicable",
+    ////    "requiredReportableConditionsSelect": "***Not Applicable",
+    ////    "disasters": "***Not Applicable",
+    ////    "fluidContactType": "***Not Applicable",
+    ////    "emsDeathType": "***Not Applicable"
+    ////};
+
+    //// as stated above, i dont think this is needed 
+    ////$scope.SetNullableValues = function () {
+    ////    var nullableObject = $scope.NullableDefaultObjectProperties;
+
+    ////    for (var key in nullableObject) {
+
+    ////        if (nullableObject.hasOwnProperty(key)) {
+    ////            var attr = nullableObject[key];
+
+    ////            //alert(""  key  " : "  attr);
+
+    ////            //alert("[data-ng-model='pcr."  key  "']");
+
+    ////            var $thisControl = $("[data-ng-model='pcr." + key + "']").first();
+    ////            // alert(JSON.stringify($thisControl));
+
+    ////            if ($thisControl.length == 1 && !ControlIsVisible($thisControl)) {
+    ////                //  alert("before - " + key  + " : " +$scope.pcr[key]);
+    ////                $scope.pcr[key] = nullableObject[key];
+    ////                // alert("after - " + key + " : " + $scope.pcr[key]);
+
+    ////            }
 
 
-    $scope.SetNullableValues = function () {
-        var nullableObject = $scope.NullableDefaultObjectProperties;
+    ////        }
+    ////    }
 
-        for (var key in nullableObject) {
+    ////    //Exception Cases
 
-            if (nullableObject.hasOwnProperty(key)) {
-                var attr = nullableObject[key];
+    ////    //Patient Medications
+    ////    if (!JarvisWidgetIsVisible($("#PatientMedicationsJWidget"))) {
+    ////        $scope.pcr.patientMedications = nullableObject.patientMedications;
+    ////    }
 
-                //alert(""  key  " : "  attr);
+    ////    //exams
+    ////    if (!JarvisWidgetIsVisible($("#ExamsJWidget"))) {
+    ////        $scope.pcr.exams = nullableObject.exams;
+    ////    }
 
-                //alert("[data-ng-model='pcr."  key  "']");
+    ////    //Treatment Meds        
+    ////    if (!JarvisWidgetIsVisible($("#TreatmentMedsJWidget"))) {
+    ////        $scope.pcr.treatmentMedications = nullableObject.treatmentMedications;
+    ////    }
 
-                var $thisControl = $("[data-ng-model='pcr." + key + "']").first();
-                // alert(JSON.stringify($thisControl));
+    ////    //procedures    
+    ////    if (!JarvisWidgetIsVisible($("#ProceduresJWidget"))) {
+    ////        $scope.pcr.procedures = nullableObject.procedures;
+    ////    }
 
-                if ($thisControl.length == 1 && !ControlIsVisible($thisControl)) {
-                    //  alert("before - " + key  + " : " +$scope.pcr[key]);
-                    $scope.pcr[key] = nullableObject[key];
-                    // alert("after - " + key + " : " + $scope.pcr[key]);
+    ////    //Scene Address
+    ////    if (!ControlIsVisible($("[data-ng-click=\"SetTargetAddress('SceneAddress');\"]"))) {
+    ////        $scope.pcr.SceneAddress = nullableObject.SceneAddress;
+    ////    }
 
-                }
+    ////    //employeraddress
+    ////    if (!ControlIsVisible($("[data-ng-click=\"SetTargetAddress('EmployerAddress');\"]"))) {
+    ////        $scope.pcr.EmployerAddress = nullableObject.EmployerAddress;
+    ////    }
 
+    ////    //DestinationAddress
+    ////    if (!ControlIsVisible($("[data-ng-click=\"SetTargetAddress('DestinationAddress');\"]"))) {
+    ////        $scope.pcr.DestinationAddress = nullableObject.DestinationAddress;
+    ////    }
 
-            }
-        }
+    ////    //MVC
+    ////    if (!ControlIsVisible($("[data-ng-model='pcr.mvcSelect']"))) {
+    ////        $scope.pcr.mvc = nullableObject.mvc;
+    ////    }
 
-        //Exception Cases
+    ////    //MVC
+    ////    if (!ControlIsVisible($("[data-ng-model='pcr.traumaSelect']"))) {
+    ////        $scope.pcr.trauma = nullableObject.trauma;
+    ////    }
 
-        //Patient Medications
-        if (!JarvisWidgetIsVisible($("#PatientMedicationsJWidget"))) {
-            $scope.pcr.patientMedications = nullableObject.patientMedications;
-        }
+    ////    //EMD Cotnact
+    ////    if (!ControlIsVisible($("[data-ng-model='pcr.emdContactSelect']"))) {
+    ////        $scope.pcr.emdContact = nullableObject.emdContact;
+    ////    }
 
-        //exams
-        if (!JarvisWidgetIsVisible($("#ExamsJWidget"))) {
-            $scope.pcr.exams = nullableObject.exams;
-        }
+    ////    //billingDifferentThanPatient
+    ////    if (!ControlIsVisible($("[data-ng-model='pcr.billingDifferentThanPatientSelect']"))) {
+    ////        $scope.pcr.billingDifferentThanPatient = nullableObject.billingDifferentThanPatient;
+    ////    }
 
-        //Treatment Meds        
-        if (!JarvisWidgetIsVisible($("#TreatmentMedsJWidget"))) {
-            $scope.pcr.treatmentMedications = nullableObject.treatmentMedications;
-        }
+    ////    //pcr.cardiacArrestSelect
+    ////    if (!ControlIsVisible($("[data-ng-model='pcr.cardiacArrestSelect']"))) {
+    ////        $scope.pcr.cardiacArrest = nullableObject.cardiacArrest;
+    ////    }
 
-        //procedures    
-        if (!JarvisWidgetIsVisible($("#ProceduresJWidget"))) {
-            $scope.pcr.procedures = nullableObject.procedures;
-        }
+    ////    //OdometerTotal
+    ////    if (!JarvisWidgetIsVisible($("#OdometerJWidget"))) {
+    ////        $scope.pcr.odometerTotal = nullableObject.odometerTotal;
+    ////    }
 
-        //Scene Address
-        if (!ControlIsVisible($("[data-ng-click=\"SetTargetAddress('SceneAddress');\"]"))) {
-            $scope.pcr.SceneAddress = nullableObject.SceneAddress;
-        }
+    ////    //patient age
+    ////    if (!ControlIsVisible($("[data-ng-model='pcr.patientDOB']"))) {
+    ////        $scope.pcr.patientAge = nullableObject.patientAge;
+    ////        $scope.pcr.patientAgeMonths = nullableObject.patientAgeMonths;
 
-        //employeraddress
-        if (!ControlIsVisible($("[data-ng-click=\"SetTargetAddress('EmployerAddress');\"]"))) {
-            $scope.pcr.EmployerAddress = nullableObject.EmployerAddress;
-        }
-
-        //DestinationAddress
-        if (!ControlIsVisible($("[data-ng-click=\"SetTargetAddress('DestinationAddress');\"]"))) {
-            $scope.pcr.DestinationAddress = nullableObject.DestinationAddress;
-        }
-
-        //MVC
-        if (!ControlIsVisible($("[data-ng-model='pcr.mvcSelect']"))) {
-            $scope.pcr.mvc = nullableObject.mvc;
-        }
-
-        //MVC
-        if (!ControlIsVisible($("[data-ng-model='pcr.traumaSelect']"))) {
-            $scope.pcr.trauma = nullableObject.trauma;
-        }
-
-        //EMD Cotnact
-        if (!ControlIsVisible($("[data-ng-model='pcr.emdContactSelect']"))) {
-            $scope.pcr.emdContact = nullableObject.emdContact;
-        }
-
-        //billingDifferentThanPatient
-        if (!ControlIsVisible($("[data-ng-model='pcr.billingDifferentThanPatientSelect']"))) {
-            $scope.pcr.billingDifferentThanPatient = nullableObject.billingDifferentThanPatient;
-        }
-
-        //pcr.cardiacArrestSelect
-        if (!ControlIsVisible($("[data-ng-model='pcr.cardiacArrestSelect']"))) {
-            $scope.pcr.cardiacArrest = nullableObject.cardiacArrest;
-        }
-
-        //OdometerTotal
-        if (!JarvisWidgetIsVisible($("#OdometerJWidget"))) {
-            $scope.pcr.odometerTotal = nullableObject.odometerTotal;
-        }
-
-        //patient age
-        if (!ControlIsVisible($("[data-ng-model='pcr.patientDOB']"))) {
-            $scope.pcr.patientAge = nullableObject.patientAge;
-            $scope.pcr.patientAgeMonths = nullableObject.patientAgeMonths;
-
-        }
+    ////    }
 
 
-    };
+    ////};
 
 
 
 
+    //// This wont work in the new ui framework, and probably is not as relevent
+    ////function JarvisWidgetIsVisible(thisControl) {
+    ////    var isVisible = true;
+    ////    if ("none" == $(thisControl).closest('.jarviswidget').css('display')) {
+    ////        isVisible = false;
+    ////    }
+    ////    else {
+    ////        var tabId = $(thisControl).closest('[tabs]').attr('id');
 
-    function JarvisWidgetIsVisible(thisControl) {
-        var isVisible = true;
-        if ("none" == $(thisControl).closest('.jarviswidget').css('display')) {
-            isVisible = false;
-        }
-        else {
-            var tabId = $(thisControl).closest('[tabs]').attr('id');
+    ////        //alert("tabId:"  tabId);
 
-            //alert("tabId:"  tabId);
+    ////        var tabBtnDisplayProperty = $("nav [onclick=" + '"' + "ShowTab('" + tabId + "')" + ';"' + "]").css('display');
 
-            var tabBtnDisplayProperty = $("nav [onclick=" + '"' + "ShowTab('" + tabId + "')" + ';"' + "]").css('display');
+    ////        //alert("nav [onclick="  '"'  "ShowTab('"  tabId  "')"  '"'  "]");
 
-            //alert("nav [onclick="  '"'  "ShowTab('"  tabId  "')"  '"'  "]");
+    ////        if ("none" == tabBtnDisplayProperty) {
+    ////            isVisible = false;
+    ////            // alert("tabs");
+    ////        }
+    ////    }
 
-            if ("none" == tabBtnDisplayProperty) {
-                isVisible = false;
-                // alert("tabs");
-            }
-        }
+    ////    return isVisible;
 
-        return isVisible;
+    ////}
 
-    }
+    //// This wont work in the new ui framework, and probably is not as relevent
+    ////function ControlIsVisible(thisControl) {
+    ////    var isVisible = true;
 
-    function ControlIsVisible(thisControl) {
-        var isVisible = true;
+    ////    if ("none" == $(thisControl).closest('section').css('display')) {
+    ////        isVisible = false;
+    ////    }
 
-        if ("none" == $(thisControl).closest('section').css('display')) {
-            isVisible = false;
-        }
+    ////    else if ("none" == $(thisControl).closest('.jarviswidget').css('display')) {
+    ////        isVisible = false;
+    ////    }
+    ////    else {
+    ////        var tabId = $(thisControl).closest('[tabs]').attr('id');
 
-        else if ("none" == $(thisControl).closest('.jarviswidget').css('display')) {
-            isVisible = false;
-        }
-        else {
-            var tabId = $(thisControl).closest('[tabs]').attr('id');
+    ////        //alert("tabId:"  tabId);
 
-            //alert("tabId:"  tabId);
+    ////        var tabBtnDisplayProperty = $("nav [onclick=" + '"' + "ShowTab('" + tabId + "')" + ';"' + "]");
 
-            var tabBtnDisplayProperty = $("nav [onclick=" + '"' + "ShowTab('" + tabId + "')" + ';"' + "]");
+    ////        if ($rootScope.UI.isMobile)
+    ////            tabBtnDisplayProperty = tabBtnDisplayProperty.eq(1).css('display');
+    ////        else
+    ////            tabBtnDisplayProperty = tabBtnDisplayProperty.eq(0).css('display');
 
-            if ($rootScope.UI.isMobile)
-                tabBtnDisplayProperty = tabBtnDisplayProperty.eq(1).css('display');
-            else
-                tabBtnDisplayProperty = tabBtnDisplayProperty.eq(0).css('display');
+    ////        //alert("nav [onclick="  '"'  "ShowTab('"  tabId  "')"  '"'  "]");
 
-            //alert("nav [onclick="  '"'  "ShowTab('"  tabId  "')"  '"'  "]");
+    ////        if ("none" == tabBtnDisplayProperty) {
+    ////            isVisible = false;
+    ////            //  alert("tabs");
+    ////        }
+    ////    }
 
-            if ("none" == tabBtnDisplayProperty) {
-                isVisible = false;
-                //  alert("tabs");
-            }
-        }
+    ////    return isVisible;
 
-        return isVisible;
-
-    }
+    ////}
 
 
 
@@ -1931,32 +1933,34 @@ app.controller('myCtrl', function ($scope) {
         }
     };
 
-    $scope.GetMostRecentPersonnelCertification = function (certs) {
 
-        if (certs == null)
-            return;
+    //// This is deprecated if we do not have multiple certs for each medic
+    ////$scope.GetMostRecentPersonnelCertification = function (certs) {
 
-        var i;
-        var mostRecentCert = { PersonnelAgencyCertificationStatus: "Nothing Found", day: 0, month: 0, year: 0 };
-        for (i = 0; i < certs.length; ++i) {
-            if (certs[i].PersonnelAgencyCertificationStatusDate) {
-                var date = certs[i].PersonnelAgencyCertificationStatusDate.split('/');
-                var day = date[1];
-                var month = date[0];
-                var year = date[2];
-                //alert(certs[i].PersonnelAgencyCertificationStatusDate);
-                //alert("new: " + year + "|old: " + mostRecentCert.year);
-                if ((year > mostRecentCert.year) || (year == mostRecentCert.year && month > mostRecentCert.month) || (year == mostRecentCert.year && month == mostRecentCert.month && day == mostRecentCert.day)) {
-                    mostRecentCert = certs[i];
-                    mostRecentCert.year = year;
-                    mostRecentCert.month = month;
-                    mostRecentCert.day = day;
-                }
-            }
-        }
+    ////    if (certs == null)
+    ////        return;
 
-        return mostRecentCert.PersonnelAgencyCertificationStatus;
-    };
+    ////    var i;
+    ////    var mostRecentCert = { PersonnelAgencyCertificationStatus: "Nothing Found", day: 0, month: 0, year: 0 };
+    ////    for (i = 0; i < certs.length; ++i) {
+    ////        if (certs[i].PersonnelAgencyCertificationStatusDate) {
+    ////            var date = certs[i].PersonnelAgencyCertificationStatusDate.split('/');
+    ////            var day = date[1];
+    ////            var month = date[0];
+    ////            var year = date[2];
+    ////            //alert(certs[i].PersonnelAgencyCertificationStatusDate);
+    ////            //alert("new: " + year + "|old: " + mostRecentCert.year);
+    ////            if ((year > mostRecentCert.year) || (year == mostRecentCert.year && month > mostRecentCert.month) || (year == mostRecentCert.year && month == mostRecentCert.month && day == mostRecentCert.day)) {
+    ////                mostRecentCert = certs[i];
+    ////                mostRecentCert.year = year;
+    ////                mostRecentCert.month = month;
+    ////                mostRecentCert.day = day;
+    ////            }
+    ////        }
+    ////    }
+
+    ////    return mostRecentCert.PersonnelAgencyCertificationStatus;
+    ////};
 
 
 
@@ -1964,6 +1968,7 @@ app.controller('myCtrl', function ($scope) {
         Timeline
     */
 
+    //// this is valid code i belive we can reuse
     function getTimelineItems() {
         var timeline = [];
         if ($scope.pcr.incidentOnsetTime && $scope.pcr.incidentOnsetDate)
@@ -1996,7 +2001,8 @@ app.controller('myCtrl', function ($scope) {
     }
 
     // build timeline on form change, if form is the procs page
-
+    //// again probably can reuse, but why is it equaling a local variable of buildTimeLine?
+    //// remove distracting times that from getTimeLineItems that do not matter, like backAtBase
     buildTimeline = $scope.buildTimeline = function () {
         var timeline = getTimelineItems();
 
@@ -2193,26 +2199,30 @@ app.controller('myCtrl', function ($scope) {
 
      ******/
 
-    $scope.SubmitSynonyms = function ($event) {
+    //// Submitting new synonyms is being deprecated
+    ////$scope.SubmitSynonyms = function ($event) {
 
-        $scope.Synonym.Ngmodel = $($event.target).parent().parent().parent().find('.helpModalTargetModel').html()
-        $scope.synonymsShow = false;
-        $scope.Synonym.Status = "Approved";
+    ////    $scope.Synonym.Ngmodel = $($event.target).parent().parent().parent().find('.helpModalTargetModel').html()
+    ////    $scope.synonymsShow = false;
+    ////    $scope.Synonym.Status = "Approved";
 
-        $.ajax({
-            type: "POST",
-            url: "/api/Synonym",
-            data: $scope.Synonym
-        })
-		.done(function (msg) {
+    ////    $.ajax({
+    ////        type: "POST",
+    ////        url: "/api/Synonym",
+    ////        data: $scope.Synonym
+    ////    })
+	////	.done(function (msg) {
 
-		})
-		.fail(function (xhr, textStatus, errorThrown) {
+	////	})
+	////	.fail(function (xhr, textStatus, errorThrown) {
 
-		});
+	////	});
 
-        $scope.Synonym.Synonym1 = "";
-    }
+    ////    $scope.Synonym.Synonym1 = "";
+    ////}
+
+
+
 
     $scope.HideAndClearModal2 = function (jqueryTargetModal) {
 
@@ -2237,49 +2247,41 @@ app.controller('myCtrl', function ($scope) {
 
     };
 
-    $scope.HideAndClearModalSelect2 = function (jqueryTargetModal) {
+    //// This is achieved by the above function
+    ////$scope.HideAndClearModalSelect2 = function (jqueryTargetModal) {
 
-        $(jqueryTargetModal + " input").each(function (index) {
-            $(this).select2("val", null);
-        });
+    ////    $(jqueryTargetModal + " input").each(function (index) {
+    ////        $(this).select2("val", null);
+    ////    });
 
-        $(jqueryTargetModal).modal('hide');
-    };
+    ////    $(jqueryTargetModal).modal('hide');
+    ////};
 
-    $scope.ClearModal2 = function (jqueryTargetModal) {
-
-
-        $(jqueryTargetModal + " input").val('');
-
-
-        $(jqueryTargetModal + " input").each(function (index) {
+    //// This looks like exactly above
+    ////$scope.ClearModal2 = function (jqueryTargetModal) {
 
 
-            $(this).select2("val", null);
-            //$('[data-clear-select2="' + modalId + '"]').select2("val", null)
-            //var thisValue = angular.element(this).data('$ngModelController');
-            //alert("" + thisValue);
-            //thisValue = "";
-        });
+    ////    $(jqueryTargetModal + " input").val('');
+
+
+    ////    $(jqueryTargetModal + " input").each(function (index) {
+
+
+    ////        $(this).select2("val", null);
+    ////        //$('[data-clear-select2="' + modalId + '"]').select2("val", null)
+    ////        //var thisValue = angular.element(this).data('$ngModelController');
+    ////        //alert("" + thisValue);
+    ////        //thisValue = "";
+    ////    });
 
 
 
-    };
+    ////};
 
     $scope.ClearModalSelect2 = function (jqueryTargetModal) {
-
         $(jqueryTargetModal + " input").each(function (index) {
-
-
             $(this).select2("val", null);
-            //$('[data-clear-select2="' + modalId + '"]').select2("val", null)
-            //var thisValue = angular.element(this).data('$ngModelController');
-            //alert("" + thisValue);
-            //thisValue = "";
         });
-
-
-
     };
 
     $scope.HideModal = function (jqueryTargetModal) {
@@ -3190,165 +3192,171 @@ app.controller('myCtrl', function ($scope) {
             _editTypeFunction is a function that accepts a control data object, and returns either null or a child element to display when editing forms,
             _viewTypeFunction is a function that accepts a control data object, and returns either null or a child element to display when viewing forms
     */
-    var formTypeDefs = {
-        "text": (function textFormDef() {
-            return {
-                "properties": {
-                    "fixedWidth": false,
-                    "fixedHeight": false,
-                    "ngModel": true,
-                    "clicks": 2
-                },
-                "build": function (data) {
-                    var child = document.createElement("span");
-                    $(child).html(data["ng-model"]);
-                    return child;
-                },
-                "edit": function (data) {
-                    var child = document.createElement("input");
-                    if (data["ng-model"]) {
-                        var storedValue = getNgModelValue(data["ng-model"]);
-                        $parse(data["ng-model"]).assign($scope.formData, storedValue);
-                        $(child).attr("data-ng-model", "formData." + data["ng-model"]);
-                    } else {
-                        var storedValue = getNgModelValue(data.title.replace(/ +/g, ""));
-                        $parse(data.title.replace(/ +/g, "")).assign($scope.formData, storedValue);
-                        $(child).attr("data-ng-model", "formData." + data.title.replace(/ +/g, ""));
-                    }
-                    $(child).attr("type", "text");
-                    return child;
-                },
-                "view": function (data) {
-                    var storedValue;
-                    if (data["ng-model"])
-                        storedValue = getNgModelValue(data["ng-model"]);
-                    else
-                        storedValue = getNgModelValue(data.title.replace(/ +/g, ""));
-                    var child = document.createElement("span");
-                    $(child).html(storedValue);
-                    return child;
-                }
-            };
-        })(),
-        "checkbox": (function checkboxFormDef() {
-            return {
-                "properties": {
-                    "fixedWidth": "height",
-                    "fixedHeight": "width",
-                    "ngModel": true,
-                    "clicks": 2
-                },
-                "build": function (data) {
-                    var child = document.createElement("span");
-                    $(child).html(data["ng-model"]);
-                    return child;
-                },
-                "edit": function (data) {
-                    var child = document.createElement("input");
-                    if (data["ng-model"]) {
-                        var storedValue = getNgModelValue(data["ng-model"]);
-                        $parse(data["ng-model"]).assign($scope.formData, storedValue == true);
-                        $(child).attr("data-ng-model", "formData." + data["ng-model"]);
-                    } else {
-                        var storedValue = getNgModelValue(data.title.replace(/ +/g, ""));
-                        $parse(data.title.replace(/ +/g, "")).assign($scope.formData, storedValue == true);
-                        $(child).attr("data-ng-model", "formData." + data.title.replace(/ +/g, ""));
-                    }
-                    $(child).attr("type", "checkbox");
-                    return child;
-                },
-                "view": function (data) {
-                    var storedValue;
-                    if (data["ng-model"])
-                        storedValue = getNgModelValue(data["ng-model"]);
-                    else
-                        storedValue = getNgModelValue(data.title.replace(/ +/g, ""));
-                    var child = document.createElement("span");
-                    if (storedValue == true) {
-                        $(child).html("&#x2714;");
-                        $(child).css("font-size", data.height + "px");
-                        $(child).css("font-weight", "bold");
-                        $(child).css("top", "-15px");
-                    }
-                    return child;
-                }
-            };
-        })(),
-        "signature": (function checkboxFormDef() {
-            return {
-                "properties": {
-                    "fixedWidth": false,
-                    "fixedHeight": false,
-                    "ngModel": false,
-                    "clicks": 2
-                },
-                "build": function (data) {
-                    var child = document.createElement("span");
-                    return child;
-                },
-                "edit": function (data) {
-                    var child = document.createElement("div");
-                    $(child).addClass("formSignature");
-                    var $img = $(document.createElement("img"));
-                    $(child).append($img);
-                    var $name = $(document.createElement("span"));
-                    $(child).append($name);
-                    $name.css("position", "absolute");
-                    $name.css("left", "0");
-                    $name.css("top", "0");
-                    $name.css("font-size", "10px");
 
-                    var model = data.title.replace(/ +/g, "") + "_Signature";
-                    var storedValue = getNgModelValue(model);
-                    var storedName = getNgModelValue(model + "_Name");
-                    $img.attr("src", storedValue || "");
-                    $name.html(storedName);
 
-                    $(child).click({ model: model, $img: $img, $name: $name }, function ($event) {
-                        signatureModal({
-                            src: getNgModelValue($event.data.model),
-                            success: function (newSrc, name) {
-                                $parse($event.data.model + "_Name").assign($scope.formData, name);
-                                $parse($event.data.model).assign($scope.formData, newSrc);
-                                $event.data.$img.attr("src", newSrc || "");
-                                $name.html(name);
-                            }
-                        });
-                    });
+//// Is this for display form?
+    ////var formTypeDefs = {
+    ////    "text": (function textFormDef() {
+    ////        return {
+    ////            "properties": {
+    ////                "fixedWidth": false,
+    ////                "fixedHeight": false,
+    ////                "ngModel": true,
+    ////                "clicks": 2
+    ////            },
+    ////            "build": function (data) {
+    ////                var child = document.createElement("span");
+    ////                $(child).html(data["ng-model"]);
+    ////                return child;
+    ////            },
+    ////            "edit": function (data) {
+    ////                var child = document.createElement("input");
+    ////                if (data["ng-model"]) {
+    ////                    var storedValue = getNgModelValue(data["ng-model"]);
+    ////                    $parse(data["ng-model"]).assign($scope.formData, storedValue);
+    ////                    $(child).attr("data-ng-model", "formData." + data["ng-model"]);
+    ////                } else {
+    ////                    var storedValue = getNgModelValue(data.title.replace(/ +/g, ""));
+    ////                    $parse(data.title.replace(/ +/g, "")).assign($scope.formData, storedValue);
+    ////                    $(child).attr("data-ng-model", "formData." + data.title.replace(/ +/g, ""));
+    ////                }
+    ////                $(child).attr("type", "text");
+    ////                return child;
+    ////            },
+    ////            "view": function (data) {
+    ////                var storedValue;
+    ////                if (data["ng-model"])
+    ////                    storedValue = getNgModelValue(data["ng-model"]);
+    ////                else
+    ////                    storedValue = getNgModelValue(data.title.replace(/ +/g, ""));
+    ////                var child = document.createElement("span");
+    ////                $(child).html(storedValue);
+    ////                return child;
+    ////            }
+    ////        };
+    ////    })(),
+    ////    "checkbox": (function checkboxFormDef() {
+    ////        return {
+    ////            "properties": {
+    ////                "fixedWidth": "height",
+    ////                "fixedHeight": "width",
+    ////                "ngModel": true,
+    ////                "clicks": 2
+    ////            },
+    ////            "build": function (data) {
+    ////                var child = document.createElement("span");
+    ////                $(child).html(data["ng-model"]);
+    ////                return child;
+    ////            },
+    ////            "edit": function (data) {
+    ////                var child = document.createElement("input");
+    ////                if (data["ng-model"]) {
+    ////                    var storedValue = getNgModelValue(data["ng-model"]);
+    ////                    $parse(data["ng-model"]).assign($scope.formData, storedValue == true);
+    ////                    $(child).attr("data-ng-model", "formData." + data["ng-model"]);
+    ////                } else {
+    ////                    var storedValue = getNgModelValue(data.title.replace(/ +/g, ""));
+    ////                    $parse(data.title.replace(/ +/g, "")).assign($scope.formData, storedValue == true);
+    ////                    $(child).attr("data-ng-model", "formData." + data.title.replace(/ +/g, ""));
+    ////                }
+    ////                $(child).attr("type", "checkbox");
+    ////                return child;
+    ////            },
+    ////            "view": function (data) {
+    ////                var storedValue;
+    ////                if (data["ng-model"])
+    ////                    storedValue = getNgModelValue(data["ng-model"]);
+    ////                else
+    ////                    storedValue = getNgModelValue(data.title.replace(/ +/g, ""));
+    ////                var child = document.createElement("span");
+    ////                if (storedValue == true) {
+    ////                    $(child).html("&#x2714;");
+    ////                    $(child).css("font-size", data.height + "px");
+    ////                    $(child).css("font-weight", "bold");
+    ////                    $(child).css("top", "-15px");
+    ////                }
+    ////                return child;
+    ////            }
+    ////        };
+    ////    })(),
+    ////    "signature": (function checkboxFormDef() {
+    ////        return {
+    ////            "properties": {
+    ////                "fixedWidth": false,
+    ////                "fixedHeight": false,
+    ////                "ngModel": false,
+    ////                "clicks": 2
+    ////            },
+    ////            "build": function (data) {
+    ////                var child = document.createElement("span");
+    ////                return child;
+    ////            },
+    ////            "edit": function (data) {
+    ////                var child = document.createElement("div");
+    ////                $(child).addClass("formSignature");
+    ////                var $img = $(document.createElement("img"));
+    ////                $(child).append($img);
+    ////                var $name = $(document.createElement("span"));
+    ////                $(child).append($name);
+    ////                $name.css("position", "absolute");
+    ////                $name.css("left", "0");
+    ////                $name.css("top", "0");
+    ////                $name.css("font-size", "10px");
 
-                    return child;
-                },
-                "view": function (data) {
-                    var child = document.createElement("div");
-                    $(child).addClass("formSignature");
-                    var $img = $(document.createElement("img"));
-                    $(child).append($img);
-                    var $name = $(document.createElement("span"));
-                    $(child).append($name);
-                    $name.css("position", "absolute");
-                    $name.css("left", "0");
-                    $name.css("top", "0");
-                    $name.css("font-size", "10px");
+    ////                var model = data.title.replace(/ +/g, "") + "_Signature";
+    ////                var storedValue = getNgModelValue(model);
+    ////                var storedName = getNgModelValue(model + "_Name");
+    ////                $img.attr("src", storedValue || "");
+    ////                $name.html(storedName);
 
-                    var model = data.title.replace(/ +/g, "") + "_Signature";
-                    var storedValue = getNgModelValue(model);
-                    var storedName = getNgModelValue(model + "_Name");
-                    $img.attr("src", storedValue || "");
-                    $name.html(storedName);
+    ////                $(child).click({ model: model, $img: $img, $name: $name }, function ($event) {
+    ////                    signatureModal({
+    ////                        src: getNgModelValue($event.data.model),
+    ////                        success: function (newSrc, name) {
+    ////                            $parse($event.data.model + "_Name").assign($scope.formData, name);
+    ////                            $parse($event.data.model).assign($scope.formData, newSrc);
+    ////                            $event.data.$img.attr("src", newSrc || "");
+    ////                            $name.html(name);
+    ////                        }
+    ////                    });
+    ////                });
 
-                    return child;
-                }
-            };
-        })()
-    }
+    ////                return child;
+    ////            },
+    ////            "view": function (data) {
+    ////                var child = document.createElement("div");
+    ////                $(child).addClass("formSignature");
+    ////                var $img = $(document.createElement("img"));
+    ////                $(child).append($img);
+    ////                var $name = $(document.createElement("span"));
+    ////                $(child).append($name);
+    ////                $name.css("position", "absolute");
+    ////                $name.css("left", "0");
+    ////                $name.css("top", "0");
+    ////                $name.css("font-size", "10px");
 
-    function getNgModelValue(ngModel) {
-        var formValue = $parse("formData." + ngModel)($scope);
-        if (formValue != null && formValue != undefined)
-            return formValue;
-        return $parse(ngModel)($scope);
-    }
+    ////                var model = data.title.replace(/ +/g, "") + "_Signature";
+    ////                var storedValue = getNgModelValue(model);
+    ////                var storedName = getNgModelValue(model + "_Name");
+    ////                $img.attr("src", storedValue || "");
+    ////                $name.html(storedName);
 
+    ////                return child;
+    ////            }
+    ////        };
+    ////    })()
+    ////}
+
+
+    //// Goes with dynamic 
+    ////function getNgModelValue(ngModel) {
+    ////    var formValue = $parse("formData." + ngModel)($scope);
+    ////    if (formValue != null && formValue != undefined)
+    ////        return formValue;
+    ////    return $parse(ngModel)($scope);
+    ////}
+
+    /* ////This is all dynamic form
     $scope.formData = {};
 
     // formDefs defines the form pages
@@ -3367,9 +3375,9 @@ app.controller('myCtrl', function ($scope) {
     // mousedown and mousepoint are a part of the field drop cycle
     var mousedown, mousepoint = null;
 
-    /*
-        setupOverlays() clears all of the pages and rebuilds all of the controls defined in $scope.formControls
-    */
+    
+    //    setupOverlays() clears all of the pages and rebuilds all of the controls defined in $scope.formControls
+    
     function setupOverlays() {
         $(".page .controlLayer").children("div").remove();
         $(".buildControlContainer").off("click");
@@ -3378,10 +3386,10 @@ app.controller('myCtrl', function ($scope) {
         }
     }
 
-    /*
-        buildControl() builds an individual control defined by the element at index, i, in the $scope.formControls array.
-        Optionally accepts a temporary form control data object as a second parameter, so a sample object can be rendered without modifying the original definition
-    */
+    
+    //    buildControl() builds an individual control defined by the element at index, i, in the $scope.formControls array.
+    //    Optionally accepts a temporary form control data object as a second parameter, so a sample object can be rendered without modifying the original definition
+    
     function buildControl(i, tempData) {
         $("#element_" + i).off("click");
         $("#element_" + i).remove(); // if the element has already been rendered, this removes it
@@ -3511,7 +3519,7 @@ app.controller('myCtrl', function ($scope) {
         $scope.SaveForm();
         $scope.CloseForm();
     }
-
+    */
     //END FORMS
 
     //Device Functions
@@ -3655,217 +3663,225 @@ app.controller('myCtrl', function ($scope) {
     /*  END Nates One to Many */
     /*  END Nates One to Many */
 
-    $scope.InstantiateSelect2sByEvent = function ($event) {
-        //alert($event.currentTarget);
-        //var modalTarget = 
-        var modaltarget = $($event.currentTarget).attr('data-target');
-        //$.ajax({
-        //    type: "GET",
-        //    url: "/api/DropDownSelect2Options/"
-        //})
-        //.done(function (msg) {
-        $(modaltarget + " input[data-select2_list]").each(function (index) {
+
+    //// What have a new dropdown and select2 pattern of using selects in v2.1
+    //// curious why we are passing in $event instead of this, which wuold make more sense
+    ////$scope.InstantiateSelect2sByEvent = function ($event) {
+    ////    //alert($event.currentTarget);
+    ////    //var modalTarget = 
+    ////    var modaltarget = $($event.currentTarget).attr('data-target');
+    ////    //$.ajax({
+    ////    //    type: "GET",
+    ////    //    url: "/api/DropDownSelect2Options/"
+    ////    //})
+    ////    //.done(function (msg) {
+    ////    $(modaltarget + " input[data-select2_list]").each(function (index) {
 
 
 
-            var array = $(this).attr('data-select2_list').split('|');
+    ////        var array = $(this).attr('data-select2_list').split('|');
 
 
 
-            var functionName = array[0];
+    ////        var functionName = array[0];
 
-            var listArrayName = array[1];
-            //alert(listArrayName);
-            var booles = (null == listArrayName);
+    ////        var listArrayName = array[1];
+    ////        //alert(listArrayName);
+    ////        var booles = (null == listArrayName);
 
-            //alert( "|" + functionName + "|" + listArrayName + "|" + booles);
+    ////        //alert( "|" + functionName + "|" + listArrayName + "|" + booles);
 
-            var arrayToPass = window[listArrayName].sort();
+    ////        var arrayToPass = window[listArrayName].sort();
 
-            if ("Select2Single" == functionName) {
+    ////        if ("Select2Single" == functionName) {
 
-                Select2Single(this, arrayToPass);
+    ////            Select2Single(this, arrayToPass);
 
-            }
-            else if ("Select2_TagsMultiple" == functionName) {
-                //if(msg[listArrayName])
-                //{
-                //    Select2_TagsMultiple(this, window[listArrayName].concat(msg[listArrayName]));
-                //}
-                //else
-                //{
-                Select2_TagsMultiple(this, arrayToPass);
-                //}
+    ////        }
+    ////        else if ("Select2_TagsMultiple" == functionName) {
+    ////            //if(msg[listArrayName])
+    ////            //{
+    ////            //    Select2_TagsMultiple(this, window[listArrayName].concat(msg[listArrayName]));
+    ////            //}
+    ////            //else
+    ////            //{
+    ////            Select2_TagsMultiple(this, arrayToPass);
+    ////            //}
 
-            }
-            else if ("Select2Multiple" == functionName) {
-                Select2Multiple(this, arrayToPass);
-            }
-            else if ("Select2_TagsSingle" == functionName) {
-                //if(msg[listArrayName])
-                //{
-                //    Select2_TagsSingle(this, window[listArrayName].concat(msg[listArrayName]));
-                //}
-                //else {
-                Select2_TagsSingle(this, arrayToPass);
-                // }
-            }
+    ////        }
+    ////        else if ("Select2Multiple" == functionName) {
+    ////            Select2Multiple(this, arrayToPass);
+    ////        }
+    ////        else if ("Select2_TagsSingle" == functionName) {
+    ////            //if(msg[listArrayName])
+    ////            //{
+    ////            //    Select2_TagsSingle(this, window[listArrayName].concat(msg[listArrayName]));
+    ////            //}
+    ////            //else {
+    ////            Select2_TagsSingle(this, arrayToPass);
+    ////            // }
+    ////        }
 
-        });
-        //});
-
-
-        $scope.AttachDemographicSelect2s();
-        $scope.UpdateCurrentCrewDropdowns();
-    };
-
-    $scope.InstantiateSelect2sBySelector = function (selector, attachDemographics) {
-        //alert($event.currentTarget);
-        //var modalTarget = 
-        //var modaltarget = $($event.currentTarget).attr('data-target');
-        //$.ajax({
-        //    type: "GET",
-        //    url: "/api/DropDownSelect2Options/"
-        //})
-        //.done(function (msg) {
-        $(selector + " input[data-select2_list]").each(function (index) {
+    ////    });
+        ////});
 
 
+    ////    $scope.AttachDemographicSelect2s();
+    ////    $scope.UpdateCurrentCrewDropdowns();
+    ////};
 
-            var array = $(this).attr('data-select2_list').split('|');
-
-
-            var functionName = array[0];
-
-            var listArrayName = array[1];
-            //alert(listArrayName);
-            var booles = (null == listArrayName);
-
-            var arrayToPass = window[listArrayName].sort();
-
-            //alert(JSON.stringify(arrayToPass));
-            if ("Select2Single" == functionName) {
-                Select2Single(this, arrayToPass);
-
-            }
-            else if ("Select2_TagsMultiple" == functionName) {
-                //if(msg[listArrayName])
-                //{
-                //    Select2_TagsMultiple(this, window[listArrayName].concat(msg[listArrayName]));
-                //}
-                //else
-                //{
-                Select2_TagsMultiple(this, arrayToPass);
-                //}
-
-            }
-            else if ("Select2Multiple" == functionName) {
-                Select2Multiple(this, arrayToPass);
-            }
-            else if ("Select2_TagsSingle" == functionName) {
-                //if(msg[listArrayName])
-                //{
-                //    Select2_TagsSingle(this, window[listArrayName].concat(msg[listArrayName]));
-                //}
-                //else {
-                Select2_TagsSingle(this, arrayToPass);
-                // }
-            }
-
-        });
-        //});
-
-        if (attachDemographics) {
-            $scope.AttachDemographicSelect2s();
-        }
-        $scope.UpdateCurrentCrewDropdowns();
-    };
-
-    $scope.InstantiateSelect2s = function () {
-
-        //$.ajax({
-        //    type: "GET",
-        //    url: "/api/DropDownSelect2Options/"
-        //})
-        //.done(function (msg) {
-        $("input[data-Select2_list]").each(function (index) {
+    //// rethink instantiation of select2s
+    ////$scope.InstantiateSelect2sBySelector = function (selector, attachDemographics) {
+    ////    //alert($event.currentTarget);
+    ////    //var modalTarget = 
+    ////    //var modaltarget = $($event.currentTarget).attr('data-target');
+    ////    //$.ajax({
+    ////    //    type: "GET",
+    ////    //    url: "/api/DropDownSelect2Options/"
+    ////    //})
+    ////    //.done(function (msg) {
+    ////    $(selector + " input[data-select2_list]").each(function (index) {
 
 
 
-            var array = $(this).attr('data-Select2_list').split('|');
-
-            var functionName = array[0];
-
-            var listArrayName = array[1];
-
-            var booles = (null == listArrayName);
-
-            //alert( "|" + functionName + "|" + listArrayName + "|" + booles);
-
-            var arrayToPass = window[listArrayName].sort();
-
-            if ("Select2Single" == functionName) {
-
-                Select2Single(this, arrayToPass);
-
-            }
-            else if ("Select2_TagsMultiple" == functionName) {
-                //if(msg[listArrayName])
-                //{
-                //    Select2_TagsMultiple(this, window[listArrayName].concat(msg[listArrayName]));
-                //}
-                //else
-                //{
-                Select2_TagsMultiple(this, arrayToPass);
-                //}
-
-            }
-            else if ("Select2Multiple" == functionName) {
-                Select2Multiple(this, arrayToPass);
-            }
-            else if ("Select2_TagsSingle" == functionName) {
-                //if(msg[listArrayName])
-                //{
-                //    Select2_TagsSingle(this, window[listArrayName].concat(msg[listArrayName]));
-                //}
-                //else {
-                Select2_TagsSingle(this, arrayToPass);
-                // }
-            }
-
-        });
-        //});
-
-        $scope.AttachDemographicSelect2s();
+    ////        var array = $(this).attr('data-select2_list').split('|');
 
 
-    };
+    ////        var functionName = array[0];
 
-    $scope.CreateMergedView = function () {
-        if ($scope.vitalViewToggle == false) {
-            $scope.tempVitals = [];
-            $scope.mergedVitals = [];
-            if ($scope.pcr.vitals && $scope.pcr.vitals.length > 0) {
-                $scope.tempVitals = $scope.tempVitals.concat($scope.pcr.vitals);
-            }
-            if ($scope.pcr.treatmentMedications && $scope.pcr.treatmentMedications.length > 0) {
-                $scope.tempVitals = $scope.tempVitals.concat($scope.pcr.treatmentMedications);
-            }
-            if ($scope.pcr.procedures && $scope.pcr.procedures.length > 0) {
-                $scope.tempVitals = $scope.tempVitals.concat($scope.pcr.procedures);
-            }
+    ////        var listArrayName = array[1];
+    ////        //alert(listArrayName);
+    ////        var booles = (null == listArrayName);
 
-            for (var i = 0; i < $scope.tempVitals.length; i++) {
-                $scope.mergedVitals.push(
-                    {
-                        Time: i
-                    }
-                );
-            }
+    ////        var arrayToPass = window[listArrayName].sort();
 
-        }
-    };
+    ////        //alert(JSON.stringify(arrayToPass));
+    ////        if ("Select2Single" == functionName) {
+    ////            Select2Single(this, arrayToPass);
 
+    ////        }
+    ////        else if ("Select2_TagsMultiple" == functionName) {
+    ////            //if(msg[listArrayName])
+    ////            //{
+    ////            //    Select2_TagsMultiple(this, window[listArrayName].concat(msg[listArrayName]));
+    ////            //}
+    ////            //else
+    ////            //{
+    ////            Select2_TagsMultiple(this, arrayToPass);
+    ////            //}
+
+    ////        }
+    ////        else if ("Select2Multiple" == functionName) {
+    ////            Select2Multiple(this, arrayToPass);
+    ////        }
+    ////        else if ("Select2_TagsSingle" == functionName) {
+    ////            //if(msg[listArrayName])
+    ////            //{
+    ////            //    Select2_TagsSingle(this, window[listArrayName].concat(msg[listArrayName]));
+    ////            //}
+    ////            //else {
+    ////            Select2_TagsSingle(this, arrayToPass);
+    ////            // }
+    ////        }
+
+    ////    });
+    ////    //});
+
+    ////    if (attachDemographics) {
+    ////        $scope.AttachDemographicSelect2s();
+    ////    }
+    ////    $scope.UpdateCurrentCrewDropdowns();
+    ////};
+
+    ////$scope.InstantiateSelect2s = function () {
+
+    ////    //$.ajax({
+    ////    //    type: "GET",
+    ////    //    url: "/api/DropDownSelect2Options/"
+    ////    //})
+    ////    //.done(function (msg) {
+    ////    $("input[data-Select2_list]").each(function (index) {
+
+
+
+    ////        var array = $(this).attr('data-Select2_list').split('|');
+
+    ////        var functionName = array[0];
+
+    ////        var listArrayName = array[1];
+
+    ////        var booles = (null == listArrayName);
+
+    ////        //alert( "|" + functionName + "|" + listArrayName + "|" + booles);
+
+    ////        var arrayToPass = window[listArrayName].sort();
+
+    ////        if ("Select2Single" == functionName) {
+
+    ////            Select2Single(this, arrayToPass);
+
+    ////        }
+    ////        else if ("Select2_TagsMultiple" == functionName) {
+    ////            //if(msg[listArrayName])
+    ////            //{
+    ////            //    Select2_TagsMultiple(this, window[listArrayName].concat(msg[listArrayName]));
+    ////            //}
+    ////            //else
+    ////            //{
+    ////            Select2_TagsMultiple(this, arrayToPass);
+    ////            //}
+
+    ////        }
+    ////        else if ("Select2Multiple" == functionName) {
+    ////            Select2Multiple(this, arrayToPass);
+    ////        }
+    ////        else if ("Select2_TagsSingle" == functionName) {
+    ////            //if(msg[listArrayName])
+    ////            //{
+    ////            //    Select2_TagsSingle(this, window[listArrayName].concat(msg[listArrayName]));
+    ////            //}
+    ////            //else {
+    ////            Select2_TagsSingle(this, arrayToPass);
+    ////            // }
+    ////        }
+
+    ////    });
+    ////    //});
+
+    ////    $scope.AttachDemographicSelect2s();
+
+
+    ////};
+
+
+    //// Do not see this being used anywhere
+    ////$scope.CreateMergedView = function () {
+    ////    if ($scope.vitalViewToggle == false) {
+    ////        $scope.tempVitals = [];
+    ////        $scope.mergedVitals = [];
+    ////        if ($scope.pcr.vitals && $scope.pcr.vitals.length > 0) {
+    ////            $scope.tempVitals = $scope.tempVitals.concat($scope.pcr.vitals);
+    ////        }
+    ////        if ($scope.pcr.treatmentMedications && $scope.pcr.treatmentMedications.length > 0) {
+    ////            $scope.tempVitals = $scope.tempVitals.concat($scope.pcr.treatmentMedications);
+    ////        }
+    ////        if ($scope.pcr.procedures && $scope.pcr.procedures.length > 0) {
+    ////            $scope.tempVitals = $scope.tempVitals.concat($scope.pcr.procedures);
+    ////        }
+
+    ////        for (var i = 0; i < $scope.tempVitals.length; i++) {
+    ////            $scope.mergedVitals.push(
+    ////                {
+    ////                    Time: i
+    ////                }
+    ////            );
+    ////        }
+
+    ////    }
+    ////};
+
+
+    //// belongs in Javascript utils
     $scope.GetGuid = function () {
         var guid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
             var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
@@ -3876,36 +3892,34 @@ app.controller('myCtrl', function ($scope) {
         return guid;
     };
 
-    $scope.LoadFromOffline = function () {
+    //// Is this even being used?
+    ////$scope.LoadFromOffline = function () {
 
-        var PcrOfflineArray = JSON.parse(localStorage.getItem("PcrOfflineArray"));
-        var offlineId = $scope.pcrid;
+    ////    var PcrOfflineArray = JSON.parse(localStorage.getItem("PcrOfflineArray"));
+    ////    var offlineId = $scope.pcrid;
 
 
-        //alert("offlineId: |" + offlineId + "|");
-        //alert("Length:" + PcrOfflineArray.length);
-        if (PcrOfflineArray) {
-            for (var i = 0; i < PcrOfflineArray.length; i++) {
+    ////    //alert("offlineId: |" + offlineId + "|");
+    ////    //alert("Length:" + PcrOfflineArray.length);
+    ////    if (PcrOfflineArray) {
+    ////        for (var i = 0; i < PcrOfflineArray.length; i++) {
 
-                if (PcrOfflineArray[i].ID == offlineId) {
-                    // alert(PcrOfflineArray[i].DataAsJson);
-                    $scope.Version = PcrOfflineArray[i].Version;
-                    $scope.pcr = JSON.parse(PcrOfflineArray[i].DataAsJson);
-                    $scope.oldPcrReport = JSON.stringify($scope.pcr);
-                    $scope.OfflinePcr = PcrOfflineArray[i].Offline;
-                    var pcrLoaded = true;
-                    break;
-                }
-                //dataSet.push(["<a href='/SmartAdmin15/Pcr_form.aspx?offlineId=" + item.ID + "' >Show Details</a>", item.ID, item.Name, item.Created, item.CreatedBy]);
-            }
-        }
-    };
+    ////            if (PcrOfflineArray[i].ID == offlineId) {
+    ////                // alert(PcrOfflineArray[i].DataAsJson);
+    ////                $scope.Version = PcrOfflineArray[i].Version;
+    ////                $scope.pcr = JSON.parse(PcrOfflineArray[i].DataAsJson);
+    ////                $scope.oldPcrReport = JSON.stringify($scope.pcr);
+    ////                $scope.OfflinePcr = PcrOfflineArray[i].Offline;
+    ////                var pcrLoaded = true;
+    ////                break;
+    ////            }
+    ////            //dataSet.push(["<a href='/SmartAdmin15/Pcr_form.aspx?offlineId=" + item.ID + "' >Show Details</a>", item.ID, item.Name, item.Created, item.CreatedBy]);
+    ////        }
+    ////    }
+    ////};
 
     $scope.readFrequentFlyerInfo = function () {
 
-        //alert($('#aafrequentFlyerSelect2').val());
-
-        //if ($scope.PageOnline) {
         $.ajax({
             type: "GET",
             url: "/api/CloudPCR/" + $('#aafrequentFlyerSelect2').val()
@@ -3973,149 +3987,150 @@ app.controller('myCtrl', function ($scope) {
 
         });
 
-        //}
-
-
     };
 
-    $scope.readReportFromList = function () {
-        var data = DataService.pcr.GetPcr($scope.pcrid);
+    //// Most of this will not be needed if we are always and only working out of local memory
+    //// But still not sure what is going on with the setting of the pcr data
+    ////$scope.readReportFromList = function () {
+    ////    var data = DataService.pcr.GetPcr($scope.pcrid);
 
-        if (data.promise == null)
-            initReport(data);
-        else
-            data.promise.done(initReport);
+    ////    if (data.promise == null)
+    ////        initReport(data);
+    ////    else
+    ////        data.promise.done(initReport);
 
-        function initReport(msg) {
+    ////    function initReport(msg) {
 
-            $timeout(function () {
-                loadNotes();
+    ////        $timeout(function () {
+    ////            loadNotes();
 
-                if (!msg || angular.isString(msg)) {
-                    alert("Error loading pcr\n" + msg)
-                    $state.go("ListView");
-                }
+    ////            if (!msg || angular.isString(msg)) {
+    ////                alert("Error loading pcr\n" + msg)
+    ////                $state.go("ListView");
+    ////            }
 
-                if (msg.ModifiedBy != currentUser && msg.CreatedBy != currentUser
-                    && $rootScope.user.roles.indexOf("Admin") == -1 && $rootScope.user.roles.indexOf("Approver") == -1) {
-                    $state.go("Error", { id: "invalidPCR" });
-                    return;
-                }
+    ////            if (msg.ModifiedBy != currentUser && msg.CreatedBy != currentUser
+    ////                && $rootScope.user.roles.indexOf("Admin") == -1 && $rootScope.user.roles.indexOf("Approver") == -1) {
+    ////                $state.go("Error", { id: "invalidPCR" });
+    ////                return;
+    ////            }
 
-                try {
-                    $scope.pcr = JSON.parse(msg.DataAsJson);
-                    if (!$scope.pcr)
-                        $scope.pcr = {};
-                }
-                catch (ex) {
-                    $scope.pcr = {};
-                }
+    ////            try {
+    ////                $scope.pcr = JSON.parse(msg.DataAsJson);
+    ////                if (!$scope.pcr)
+    ////                    $scope.pcr = {};
+    ////            }
+    ////            catch (ex) {
+    ////                $scope.pcr = {};
+    ////            }
 
-                $scope.pcr.customForms = defaultedValue($scope.pcr.customForms, []);
-                $scope.pcr.signatures = defaultedValue($scope.pcr.signatures, {});
+    ////            $scope.pcr.customForms = defaultedValue($scope.pcr.customForms, []);
+    ////            $scope.pcr.signatures = defaultedValue($scope.pcr.signatures, {});
 
-                $scope.Modified = msg.Modified;
-                $scope.ModifiedBy = msg.ModifiedBy;
-                $scope.Created = msg.Created;
-                $scope.CreatedBy = msg.CreatedBy;
-                $scope.Version = msg.Version;
+    ////            $scope.Modified = msg.Modified;
+    ////            $scope.ModifiedBy = msg.ModifiedBy;
+    ////            $scope.Created = msg.Created;
+    ////            $scope.CreatedBy = msg.CreatedBy;
+    ////            $scope.Version = msg.Version;
 
-                $scope.extraPcrData = {
-                    Cache: msg.Cache,
-                    isActive: msg.IsActive,
-                    Created: msg.Created,
-                    CreatedBy: msg.CreatedBy,
-                    Modified: msg.Modified, // update this somewhere, probably pcr service
-                    ModifiedBy: msg.ModifiedBy, // update this somewhere, probably pcr service
-                    //StateXml: msg.StateXml,
-                    //NemsisXml: msg.NemsisXml,
-                    Version: msg.Version,
-                    Status: msg.Status
-                };
+    ////            $scope.extraPcrData = {
+    ////                Cache: msg.Cache,
+    ////                isActive: msg.IsActive,
+    ////                Created: msg.Created,
+    ////                CreatedBy: msg.CreatedBy,
+    ////                Modified: msg.Modified, // update this somewhere, probably pcr service
+    ////                ModifiedBy: msg.ModifiedBy, // update this somewhere, probably pcr service
+    ////                //StateXml: msg.StateXml,
+    ////                //NemsisXml: msg.NemsisXml,
+    ////                Version: msg.Version,
+    ////                Status: msg.Status
+    ////            };
 
-                $scope.oldPcrReport = JSON.stringify($scope.pcr);
+    ////            $scope.oldPcrReport = JSON.stringify($scope.pcr);
 
-                //if (msg.Status != "0") {
-                //    alert("You are viewing a submitted PCR.  You will not be able to save changes to this report");
-                //}
+    ////            //if (msg.Status != "0") {
+    ////            //    alert("You are viewing a submitted PCR.  You will not be able to save changes to this report");
+    ////            //}
 
-                $scope.offlinePCR = false;
-                //$scope.$apply();
-                if ($scope.pcr.currentDisposition) {
-                    $scope.ApplyDisposition();
-                }
-                $scope.$apply();
-                $scope.InstantiateSelect2s();
+    ////            $scope.offlinePCR = false;
+    ////            //$scope.$apply();
+    ////            if ($scope.pcr.currentDisposition) {
+    ////                $scope.ApplyDisposition();
+    ////            }
+    ////            $scope.$apply();
+    ////            $scope.InstantiateSelect2s();
 
 
-                $('[data-page-loading="waiting"]').hide();
-                $('[data-page-loading="form"]').slideDown();
+    ////            $('[data-page-loading="waiting"]').hide();
+    ////            $('[data-page-loading="form"]').slideDown();
 
-                ShowTab('tabs-Incident');
-                $('.pcrtabs').show();
-                var pcrLoaded = true;
-                $("#contentWrapper").show();
-                LoadingGifService.HideLoading();
+    ////            ShowTab('tabs-Incident');
+    ////            $('.pcrtabs').show();
+    ////            var pcrLoaded = true;
+    ////            $("#contentWrapper").show();
+    ////            LoadingGifService.HideLoading();
 
-                if ($scope.pcr.SceneAddress)
-                    $scope.pcr.SceneAddress.advancedFips = $scope.pcr.SceneAddress.advancedFips != false;
-                else
-                    $scope.pcr.SceneAddress = { advancedFips: true };
+    ////            if ($scope.pcr.SceneAddress)
+    ////                $scope.pcr.SceneAddress.advancedFips = $scope.pcr.SceneAddress.advancedFips != false;
+    ////            else
+    ////                $scope.pcr.SceneAddress = { advancedFips: true };
 
-                if ($scope.pcr.DestinationAddress)
-                    $scope.pcr.DestinationAddress.advancedFips = $scope.pcr.DestinationAddress.advancedFips != false;
-                else
-                    $scope.pcr.DestinationAddress = { advancedFips: true };
+    ////            if ($scope.pcr.DestinationAddress)
+    ////                $scope.pcr.DestinationAddress.advancedFips = $scope.pcr.DestinationAddress.advancedFips != false;
+    ////            else
+    ////                $scope.pcr.DestinationAddress = { advancedFips: true };
 
-                if ($scope.pcr.PatientAddress)
-                    $scope.pcr.PatientAddress.advancedFips = $scope.pcr.PatientAddress.advancedFips != false;
-                else
-                    $scope.pcr.PatientAddress = { advancedFips: true };
+    ////            if ($scope.pcr.PatientAddress)
+    ////                $scope.pcr.PatientAddress.advancedFips = $scope.pcr.PatientAddress.advancedFips != false;
+    ////            else
+    ////                $scope.pcr.PatientAddress = { advancedFips: true };
 
-                if ($scope.pcr.EmployerAddress)
-                    $scope.pcr.EmployerAddress.advancedFips = $scope.pcr.EmployerAddress.advancedFips != false;
-                else
-                    $scope.pcr.EmployerAddress = { advancedFips: true };
+    ////            if ($scope.pcr.EmployerAddress)
+    ////                $scope.pcr.EmployerAddress.advancedFips = $scope.pcr.EmployerAddress.advancedFips != false;
+    ////            else
+    ////                $scope.pcr.EmployerAddress = { advancedFips: true };
 
-                if ($scope.pcr.GuardianAddress)
-                    $scope.pcr.GuardianAddress.advancedFips = $scope.pcr.GuardianAddress.advancedFips != false;
-                else
-                    $scope.pcr.GuardianAddress = { advancedFips: true };
+    ////            if ($scope.pcr.GuardianAddress)
+    ////                $scope.pcr.GuardianAddress.advancedFips = $scope.pcr.GuardianAddress.advancedFips != false;
+    ////            else
+    ////                $scope.pcr.GuardianAddress = { advancedFips: true };
 
-                $timeout(function () {
-                    $(".select2-offscreen").each(function () {
-                        var $control = $(this);
-                        var ng_model = $control.attr("ng-model") || $control.attr("data-ng-model");
-                        var value = $parse(ng_model)($scope);
-                        if (!$(".select2-container", $control.parent()).hasClass("select2-container-multi")) {
-                            if (value != ($control.select2("data") || { id: null }).id) {
-                                $control.select2("data", { text: value, id: value }, true);
-                            }
-                        } else {
-                            var valueArray = (value != null ? value.split(",") : []);
-                            var data = $control.select2("data");
-                            for (var i = 0; i < valueArray.length; i++) {
-                                if (valueArray[i] && $.inArray(valueArray[i], data)) {
-                                    data.push({ text: valueArray[i], id: valueArray[i] });
-                                }
-                            }
-                            $control.select2("data", data, true);
-                        }
-                    })
-                }, 1);
+    ////            $timeout(function () {
+    ////                $(".select2-offscreen").each(function () {
+    ////                    var $control = $(this);
+    ////                    var ng_model = $control.attr("ng-model") || $control.attr("data-ng-model");
+    ////                    var value = $parse(ng_model)($scope);
+    ////                    if (!$(".select2-container", $control.parent()).hasClass("select2-container-multi")) {
+    ////                        if (value != ($control.select2("data") || { id: null }).id) {
+    ////                            $control.select2("data", { text: value, id: value }, true);
+    ////                        }
+    ////                    } else {
+    ////                        var valueArray = (value != null ? value.split(",") : []);
+    ////                        var data = $control.select2("data");
+    ////                        for (var i = 0; i < valueArray.length; i++) {
+    ////                            if (valueArray[i] && $.inArray(valueArray[i], data)) {
+    ////                                data.push({ text: valueArray[i], id: valueArray[i] });
+    ////                            }
+    ////                        }
+    ////                        $control.select2("data", data, true);
+    ////                    }
+    ////                })
+    ////            }, 1);
 
-                $scope.updatePcrToList();
-                $timeout(sync, 1);
-                buildTimeline();
+    ////            $scope.updatePcrToList();
+    ////            $timeout(sync, 1);
+    ////            buildTimeline();
 
-            });
-        }
-    };
+    ////        });
+    ////    }
+    ////};
 
     /*
         Help info
     */
 
+
+    //// is this still used? 
     $scope.ShowHelpInfo = ShowHelpInfo;
     function ShowHelpInfo(event) {
         $('[modaltarget = "HelpModeModal"]').modal('toggle');
@@ -4178,110 +4193,114 @@ app.controller('myCtrl', function ($scope) {
             select2.trigger("change");
         }
     }
+    
+    //// No more alias requests
+    ////$scope.resetAliasReq = function () {
+    ////    $scope.aliasReq = {
+    ////        field: '',
+    ////        alias: '',
+    ////        entry: '',
+    ////        model: '',
+    ////        comments: '',
+    ////        context: '',
+    ////        listName: '',
+    ////        list: []
+    ////    };
+    ////}
+    ////$scope.resetAliasReq();
+    ////var aliasObj;
 
-    $scope.resetAliasReq = function () {
-        $scope.aliasReq = {
-            field: '',
-            alias: '',
-            entry: '',
-            model: '',
-            comments: '',
-            context: '',
-            listName: '',
-            list: []
-        };
-    }
-    $scope.resetAliasReq();
-    var aliasObj;
+    //// no more alias requesting
+    ////$scope.requestAlias = function (event) {
 
-    $scope.requestAlias = function (event) {
+    ////    try {
+    ////        if (event.type != "click") return;
+    ////        $scope.resetAliasReq();
+    ////        var target = $(event.target);
+    ////        var select2 = $("#aliasSelect2");
+    ////        var list = $("[data-select2_list]", target.parent()).last().attr("data-select2_list");
+    ////        $scope.aliasReq.field = target.parent().children().first().text().replace(':', "").trim();
+    ////        if (list) list = list.split('|')[1];
+    ////        else list = $("[data-listname]", target.parent()).last().attr("data-listname"); // data-listname is used when the item is not a traditional select2 list ?
+    ////        $scope.aliasReq.list = $filter('filter')(window[list], '');
+    ////        for (var i = 0; i < $scope.aliasReq.list.length; i++) {
+    ////            if ($scope.aliasReq.list[i].alias) {
+    ////                $scope.aliasReq.list.splice(i--, 1);
+    ////            }
+    ////        }
+    ////        $scope.aliasReq.listName = list;
+    ////        $scope.aliasReq.model = ($("input.select2-offscreen", target.parent()).last().attr("data-ng-model") || $("input.select2-offscreen", target.parent()).last().attr("ng-model"));
+    ////        $scope.aliasReq.context = target.parent();
+    ////        Select2Single(select2, $scope.aliasReq.list);
+    ////        var options = $filter('filter')($scope.aliasReq.list, 'other');
+    ////        if (options.length > 0) {
+    ////            select2.select2('val', options[0].text);
+    ////            $scope.aliasReq.entry = options[0].text;
+    ////        }
+    ////        else
+    ////            $scope.aliasReq.entry = '';
+    ////        $('#aliasFieldBox').val($scope.aliasReq.field);
 
-        try {
-            if (event.type != "click") return;
-            $scope.resetAliasReq();
-            var target = $(event.target);
-            var select2 = $("#aliasSelect2");
-            var list = $("[data-select2_list]", target.parent()).last().attr("data-select2_list");
-            $scope.aliasReq.field = target.parent().children().first().text().replace(':', "").trim();
-            if (list) list = list.split('|')[1];
-            else list = $("[data-listname]", target.parent()).last().attr("data-listname"); // data-listname is used when the item is not a traditional select2 list ?
-            $scope.aliasReq.list = $filter('filter')(window[list], '');
-            for (var i = 0; i < $scope.aliasReq.list.length; i++) {
-                if ($scope.aliasReq.list[i].alias) {
-                    $scope.aliasReq.list.splice(i--, 1);
-                }
-            }
-            $scope.aliasReq.listName = list;
-            $scope.aliasReq.model = ($("input.select2-offscreen", target.parent()).last().attr("data-ng-model") || $("input.select2-offscreen", target.parent()).last().attr("ng-model"));
-            $scope.aliasReq.context = target.parent();
-            Select2Single(select2, $scope.aliasReq.list);
-            var options = $filter('filter')($scope.aliasReq.list, 'other');
-            if (options.length > 0) {
-                select2.select2('val', options[0].text);
-                $scope.aliasReq.entry = options[0].text;
-            }
-            else
-                $scope.aliasReq.entry = '';
-            $('#aliasFieldBox').val($scope.aliasReq.field);
+    ////        $("#requestAliasModal").modal('show');
+    ////    } catch (e) {
+    ////        //alert(e.message + "\n\n" + e.stack);
+    ////    }
+    ////}
 
-            $("#requestAliasModal").modal('show');
-        } catch (e) {
-            //alert(e.message + "\n\n" + e.stack);
-        }
-    }
 
-    $scope.validateAlias = function () {
-        try {
-            if ($("#aliasValidForm").valid()) {
-                aliasObj = {
-                    ID: 0,
-                    NameOfField: $scope.aliasReq.field,
-                    NewAliasedValue: $scope.aliasReq.alias,
-                    NemsisExportedValue: $scope.aliasReq.entry,
-                    NgModelOfField: $scope.aliasReq.model,
-                    Comments: $scope.aliasReq.comments,
-                    Select2ListName: $scope.aliasReq.listName,
-                    Status: "Pending"
-                }
-                $scope.HideAndClearModal2('[modalTarget=requestAliasModal]');
-                $.ajax({
-                    type: "PUT",
-                    url: "/api/alias/0", // using zero signifies a new request
-                    data: aliasObj
-                }).done(function (msg) {
-                    if (msg) {
-                        var newItem = {
-                            id: aliasObj.NewAliasedValue + " [" + aliasObj.NemsisExportedValue + "]",
-                            text: aliasObj.NewAliasedValue + " [" + aliasObj.NemsisExportedValue + "]",
-                            alias: true
-                        };
-                        var select2 = $(".select2-container", $scope.aliasReq.context);
-                        window[$scope.aliasReq.listName].push(newItem);
-                        if (select2.hasClass("select2-container-multi")) {
-                            var selectData = select2.select2("data");
-                            if (!selectData) selectData = [];
-                            else selectData.push(newItem);
-                            select2.select2("data", selectData, true);
-                        }
-                        else {
-                            select2.select2('data', newItem, true);
-                        }
-                        //select2.trigger("change");
-                        //$('<option value=' + aliasObj.NemsisExportedValue + '>' + aliasObj.NewAliasedValue + '</option>').appendTo(select2);
-                        $scope.clearAliasValidator();
-                        toastr.success("", "Request Submitted Successfully");
-                    } else
-                        toastr.error("", "An error occurred while submitting your request");
-                });
-            }
-        } catch (e) {
-            toastr.error("", "An error occurred while submitting your request");
-        }
-    }
+    //// no more ajax of alias
+    ////$scope.validateAlias = function () {
+    ////    try {
+    ////        if ($("#aliasValidForm").valid()) {
+    ////            aliasObj = {
+    ////                ID: 0,
+    ////                NameOfField: $scope.aliasReq.field,
+    ////                NewAliasedValue: $scope.aliasReq.alias,
+    ////                NemsisExportedValue: $scope.aliasReq.entry,
+    ////                NgModelOfField: $scope.aliasReq.model,
+    ////                Comments: $scope.aliasReq.comments,
+    ////                Select2ListName: $scope.aliasReq.listName,
+    ////                Status: "Pending"
+    ////            }
+    ////            $scope.HideAndClearModal2('[modalTarget=requestAliasModal]');
+    ////            $.ajax({
+    ////                type: "PUT",
+    ////                url: "/api/alias/0", // using zero signifies a new request
+    ////                data: aliasObj
+    ////            }).done(function (msg) {
+    ////                if (msg) {
+    ////                    var newItem = {
+    ////                        id: aliasObj.NewAliasedValue + " [" + aliasObj.NemsisExportedValue + "]",
+    ////                        text: aliasObj.NewAliasedValue + " [" + aliasObj.NemsisExportedValue + "]",
+    ////                        alias: true
+    ////                    };
+    ////                    var select2 = $(".select2-container", $scope.aliasReq.context);
+    ////                    window[$scope.aliasReq.listName].push(newItem);
+    ////                    if (select2.hasClass("select2-container-multi")) {
+    ////                        var selectData = select2.select2("data");
+    ////                        if (!selectData) selectData = [];
+    ////                        else selectData.push(newItem);
+    ////                        select2.select2("data", selectData, true);
+    ////                    }
+    ////                    else {
+    ////                        select2.select2('data', newItem, true);
+    ////                    }
+    ////                    //select2.trigger("change");
+    ////                    //$('<option value=' + aliasObj.NemsisExportedValue + '>' + aliasObj.NewAliasedValue + '</option>').appendTo(select2);
+    ////                    $scope.clearAliasValidator();
+    ////                    toastr.success("", "Request Submitted Successfully");
+    ////                } else
+    ////                    toastr.error("", "An error occurred while submitting your request");
+    ////            });
+    ////        }
+    ////    } catch (e) {
+    ////        toastr.error("", "An error occurred while submitting your request");
+    ////    }
+    ////}
 
-    $scope.clearAliasValidator = function () {
-        $("#aliasValidForm").validate().resetForm();
-    }
+    ////$scope.clearAliasValidator = function () {
+    ////    $("#aliasValidForm").validate().resetForm();
+    ////}
 
     /*
         *********************************************************
@@ -4491,6 +4510,7 @@ app.controller('myCtrl', function ($scope) {
     $scope.pcr.insuranceDifferentThanPatientSelect = $scope.nullOptions[0];
     $scope.pcr.billingDifferentThanPatientSelect = $scope.nullOptions[0];
 
+    //// this whole function needs explained
     $(document).ready(function () {
         if (agencyEditFormJS) {
             agencyEditFormJS();
@@ -4679,24 +4699,25 @@ app.controller('myCtrl', function ($scope) {
 
         //function to merge synonyms and current data
 
-        $.ajax({
-            type: "GET",
-            url: "/api/Synonym",
-            success: function (msg) {
-                $scope.searchData = msg;
-                for (i = 0; i < $scope.searchData.length; i++) {
-                    if ($scope.searchData[i].Synonym1 != null && $scope.searchData[i].NgModel != null)
-                        fieldsForSearchArray.push({ id: $scope.searchData[i].NgModel, text: $scope.searchData[i].Synonym1 });
-                }
-                //push data to select2
-                $("#searchTextBox").select2({
-                    placeholder: "",
-                    width: "100%",
-                    multiple: false,
-                    data: fieldsForSearchArray
-                });
-            }
-        });
+        //// help should be offline
+        ////$.ajax({
+        ////    type: "GET",
+        ////    url: "/api/Synonym",
+        ////    success: function (msg) {
+        ////        $scope.searchData = msg;
+        ////        for (i = 0; i < $scope.searchData.length; i++) {
+        ////            if ($scope.searchData[i].Synonym1 != null && $scope.searchData[i].NgModel != null)
+        ////                fieldsForSearchArray.push({ id: $scope.searchData[i].NgModel, text: $scope.searchData[i].Synonym1 });
+        ////        }
+        ////        //push data to select2
+        ////        $("#searchTextBox").select2({
+        ////            placeholder: "",
+        ////            width: "100%",
+        ////            multiple: false,
+        ////            data: fieldsForSearchArray
+        ////        });
+        ////    }
+        ////});
 
 
 

@@ -1,0 +1,21 @@
+﻿@using KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
+
+@model Tab
+
+
+
+<div id="@Model.TabTargetName"  class="row no-padding custom-tabs" style="display:none" >
+    <div class="col-md-12 no-padding noPaddingImportant" >
+        @foreach (Section section in Model.Sections)
+        {
+            if (section.Side == SectionSideEnum.left)
+            {
+                @Html.Partial("Controls/" + section.PartialTemplateName , section);
+            }
+        }
+    </div>
+  
+</div>
+
+
+

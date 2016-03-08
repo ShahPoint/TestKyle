@@ -8,7 +8,7 @@
     <div class="col-md-6 no-padding noPaddingImportant" >
         @foreach (Section section in Model.Sections)
         {
-            if (section.side == SectionSideEnum.left)
+            if (section.Side == SectionSideEnum.left)
             {
                 @Html.Partial("Controls/Section", section);
             }
@@ -17,9 +17,9 @@
     <div class="col-md-6 no-padding noPaddingImportant">
         @foreach (Section section in Model.Sections)
         {
-            if (section.side == SectionSideEnum.right)
+            if (section.Side == SectionSideEnum.right)
             {
-                @Html.Partial("Controls/Section", section);
+                @Html.Partial("Controls/" + section.PartialTemplateName, section);
             }
         }
 

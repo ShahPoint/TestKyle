@@ -57,7 +57,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
 
-<div id="mainApp" data-ng-app="myApp" data-ng-controller="myCtrl" style="display:none" >
+<div id="mainApp" data-ng-app="myApp" data-ng-controller="myCtrl"  >
 
     @*<input type="text" ng-model="greg"/> {{greg}}
 
@@ -68,7 +68,7 @@
 
     @foreach (Tab tab in Model.Tabs)
     {
-        @Html.Partial("Controls/Tab", tab);
+        @Html.Partial("Controls/" + @tab.PartialTemplateName, tab);
     }
 </div>
 

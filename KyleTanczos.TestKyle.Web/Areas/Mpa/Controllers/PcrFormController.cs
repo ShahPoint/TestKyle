@@ -28,10 +28,12 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
     {
         public Tab()
         {
+            PartialTemplateName = "Tab";
             Sections = new List<Section>();
         }
         public string TabTargetName { get; set; }
         public List<Section> Sections { get; set; }
+        public string PartialTemplateName { get; set; }
     }
 
     public class Section
@@ -40,12 +42,14 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
         {
             Controls = new List<Ctrl>();
             ResponsiveWidth = 12;
-            side = SectionSideEnum.left;
+            Side = SectionSideEnum.left;
+            PartialTemplateName = "Section";
         }
         public string SectionName { get; set; }
         public int ResponsiveWidth { get; set; }
         public List<Ctrl> Controls { get; set; }
-        public SectionSideEnum side { get; set; }
+        public SectionSideEnum Side { get; set; }
+        public string PartialTemplateName { get; set; }
     }
 
     public enum SectionSideEnum {left, right}
@@ -123,19 +127,20 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 
         AppContextDb db = new AppContextDb();
         
-        string agencyToken = "Superior";
+        string agencyToken;
 
-        string state = "PA";
+        string state;
+
+        List<Select2OptionsList> select2OptionsLists = null;
 
         // GET: Mpa/PcrForm
         public ActionResult Index()
         {
-            
+            //(Constructor)
 
-
-            var select2OptionsLists =  db.Select2OptionsList.Where(x => x.Association == "Default" || x.Association == state || x.Association == agencyToken).ToList();
-
-
+            state = "PA"; // set from user info
+            agencyToken = "Superior"; // set from user info
+            select2OptionsLists =  db.Select2OptionsList.Where(x => x.Association == "Default" || x.Association == state || x.Association == agencyToken).ToList();
 
             PcrForm pcrForm = new PcrForm()
             {
@@ -164,17 +169,17 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                    new Ctrl() { DisplayName = "Incident Number", ControlType = ControlTypeEnum.TextBox
                                         },
                                     new Ctrl() { DisplayName = "Response Urgency", ControlType = ControlTypeEnum.Select2,
-                                        DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
+                                        DropDownOptions = NemsisSelectOptions("E1_04")
                                         },
 
                                     new Ctrl() { DisplayName = "CMS Level", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = GetSelect2Options("E1_03", agencyToken, state, select2OptionsLists)
+                                        DropDownOptions = NemsisSelectOptions("E1_03")
                                         },
                                     new Ctrl() { DisplayName = "Type Of Location", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = GetSelect2Options("E1_01", agencyToken, state, select2OptionsLists)
+                                        DropDownOptions = NemsisSelectOptions("E1_01")
                                         },
                                     new Ctrl() { DisplayName = "Nature Of Incident", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = GetSelect2Options("E1_02", agencyToken, state, select2OptionsLists)
+                                        DropDownOptions = NemsisSelectOptions("E1_02")
                                         },
                                     new Ctrl() { DisplayName = "Scene Address", ControlType = ControlTypeEnum.TextBox
 
@@ -189,27 +194,27 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                    new Ctrl() { DisplayName = "Call Sign", ControlType = ControlTypeEnum.TextBox
                                         },
                                     new Ctrl() { DisplayName = "Vehicle Number", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
+                                        DropDownOptions = NemsisSelectOptions("E1_04")
                                         },
 
                                     new Ctrl() { DisplayName = "Other Agencies", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = GetSelect2Options("E1_03", agencyToken, state, select2OptionsLists)
+                                        DropDownOptions = NemsisSelectOptions("E1_03")
                                         },
                                     new Ctrl() { DisplayName = "Mode To Scene", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = GetSelect2Options("E1_01", agencyToken, state, select2OptionsLists)
+                                        DropDownOptions = NemsisSelectOptions("E1_01")
                                         },
                                     new Ctrl() { DisplayName = "Responder Time", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = GetSelect2Options("E1_02", agencyToken, state, select2OptionsLists)
+                                        DropDownOptions = NemsisSelectOptions("E1_02")
                                         },
                                     new Ctrl() { DisplayName = "Service Requested", ControlType = ControlTypeEnum.TextBox
                                         },
                                     new Ctrl() { DisplayName = "Responder Time", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = GetSelect2Options("E1_02", agencyToken, state, select2OptionsLists)
+                                        DropDownOptions = NemsisSelectOptions("E1_02")
                                         }
                                 }
                             },
                             new Section()
-                            {   side = SectionSideEnum.right,
+                            {   Side = SectionSideEnum.right,
                                 SectionName = "Times",
                                 ResponsiveWidth = 6,
                                 Controls = new List<Ctrl>()
@@ -241,42 +246,42 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                             new Section()
                             {
                                 SectionName = "Crew",
-                                side = SectionSideEnum.right,
+                                Side = SectionSideEnum.right,
                                 ResponsiveWidth = 6,
                                 Controls = new List<Ctrl>()
                                 {
                                    new Ctrl() { DisplayName = "Primary", ControlType = ControlTypeEnum.Select2, ResponsiveWidth = 12,
-                                        DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
+                                        DropDownOptions = NemsisSelectOptions("E1_04")
                                         },
                                     new Ctrl() { DisplayName = "Secondary", ControlType = ControlTypeEnum.Select2, ResponsiveWidth = 12,
-                                        DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
+                                        DropDownOptions = NemsisSelectOptions("E1_04")
                                         },
                                     new Ctrl() { DisplayName = "Third", ControlType = ControlTypeEnum.Select2, ResponsiveWidth = 12,
-                                        DropDownOptions = GetSelect2Options("E1_03", agencyToken, state, select2OptionsLists)
+                                        DropDownOptions = NemsisSelectOptions("E1_03")
                                         },
                                     new Ctrl() { DisplayName = "Other", ControlType = ControlTypeEnum.Select2, ResponsiveWidth = 12,
-                                        DropDownOptions = GetSelect2Options("E1_01", agencyToken, state, select2OptionsLists)
+                                        DropDownOptions = NemsisSelectOptions("E1_01")
                                         }
                                 }
-                            },                           
+                            },
                             new Section()
                             {
                                 SectionName = "Mileage",
-                                side = SectionSideEnum.right,
+                                Side = SectionSideEnum.right,
                                 ResponsiveWidth = 6,
                                 Controls = new List<Ctrl>()
                                 {
                                    new Ctrl() { DisplayName = "Start", ControlType = ControlTypeEnum.MileageBox, ResponsiveWidth = 12,
-                                        DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
+                                        DropDownOptions = NemsisSelectOptions("E1_04")
                                         },
                                     new Ctrl() { DisplayName = "Scene", ControlType = ControlTypeEnum.MileageBox, ResponsiveWidth = 12,
-                                        DropDownOptions = GetSelect2Options("E1_04", agencyToken, state, select2OptionsLists)
+                                        DropDownOptions = NemsisSelectOptions("E1_04")
                                         },
                                     new Ctrl() { DisplayName = "Dest.", ControlType = ControlTypeEnum.MileageBox, ResponsiveWidth = 12,
-                                        DropDownOptions = GetSelect2Options("E1_03", agencyToken, state, select2OptionsLists)
+                                        DropDownOptions = NemsisSelectOptions("E1_03")
                                         },
                                     new Ctrl() { DisplayName = "Service", ControlType = ControlTypeEnum.MileageBox, ResponsiveWidth = 12,
-                                        DropDownOptions = GetSelect2Options("E1_01", agencyToken, state, select2OptionsLists)
+                                        DropDownOptions = NemsisSelectOptions("E1_01")
                                         }
                                 }
                             }
@@ -319,7 +324,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                  SectionName = "Personal",
                                  Controls = new List<Ctrl>()
                                  {
-                                                                            
+
                                     new Ctrl() { DisplayName = "DL Number", ControlType = ControlTypeEnum.TextBox
                                        },
                                     new Ctrl() { DisplayName = "DL State", ControlType = ControlTypeEnum.TextBox
@@ -331,7 +336,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                              new Section()
                              {
                                  SectionName = "Medical Info",
-                                 side = SectionSideEnum.right,
+                                 Side = SectionSideEnum.right,
                                  Controls = new List<Ctrl>()
                                  {
                                      new Ctrl() { DisplayName = "History", ControlType = ControlTypeEnum.TextBox
@@ -349,14 +354,14 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                     new Ctrl() { DisplayName = "Triage Color", ControlType = ControlTypeEnum.TextBox
                                        },
                                     new Ctrl() { DisplayName = "Triage Category", ControlType = ControlTypeEnum.TextBox
-                                       }                             
+                                       }
                                  }
 
                              },
                              new Section()
                              {
                                  SectionName = "Medications",
-                                 side = SectionSideEnum.right,
+                                 Side = SectionSideEnum.right,
                                  Controls = new List<Ctrl>()
                                  {
                                      new Ctrl()
@@ -368,6 +373,424 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                              }
                          }
 
+                    },
+                    new Tab()
+                    {
+                        TabTargetName = "AssessmentTab",
+                        Sections = new List<Section>()
+                        {
+                            new Section()
+                            {
+                                SectionName = "Patient Complaints",
+                                Controls = new List<Ctrl>()
+                                {
+                                    new Ctrl() { DisplayName = "Chief Complaint", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Duration", ControlType = ControlTypeEnum.TextBox, ResponsiveWidth = 3
+                                       },
+                                    new Ctrl() { DisplayName = "Units", ControlType = ControlTypeEnum.TextBox, ResponsiveWidth = 3
+                                       },
+                                    new Ctrl() { DisplayName = "Secondary Complaint", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Duration", ControlType = ControlTypeEnum.TextBox, ResponsiveWidth = 3
+                                       },
+                                    new Ctrl() { DisplayName = "Units", ControlType = ControlTypeEnum.TextBox, ResponsiveWidth = 3
+                                       },
+                                    new Ctrl() { DisplayName = "Barriers To Patient Care", ControlType = ControlTypeEnum.TextBox, ResponsiveWidth = 12
+                                       }
+                                }
+                            },
+                            new Section()
+                            {
+                                SectionName = "Exams",
+                                Controls = new List<Ctrl>()
+                                {
+                                    new Ctrl() { DisplayName = "Patient Complaints", ControlType = ControlTypeEnum.TextBox, ResponsiveWidth = 12 }
+
+                                }
+                            },
+                            new Section()
+                            {
+                                SectionName = "Vehicle Collision",
+                                Controls = new List<Ctrl>()
+                                {
+                                    new Ctrl() { DisplayName = "Vehicle Collision Impact", ControlType = ControlTypeEnum.TextBox, ResponsiveWidth = 12
+                                       },
+                                    new Ctrl() { DisplayName = "Report Number", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Pt Location", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Row", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Safety Equipment", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Airbags", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Injury Indicators", ControlType = ControlTypeEnum.TextBox
+                                       }
+                                }
+                            },
+                            new Section()
+                            {
+                                SectionName = "Trauma",
+                                Controls = new List<Ctrl>()
+                                {
+                                    new Ctrl() { DisplayName = "Height of Fall(ft.)", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Cause of Injury", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Intent of Injury", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Trauma Type", ControlType = ControlTypeEnum.TextBox
+                                       }
+                                }
+                            },
+                            new Section()
+                            {
+                                Side = SectionSideEnum.right,
+                                SectionName = "Cardiac Arrest",
+                                Controls = new List<Ctrl>()
+                                {
+                                    new Ctrl() { DisplayName = "Pre-Arrival", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Cardiac Arest Time", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Etiology", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Witnessed By", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "First Rhythm", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Circulation Return", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Resusitations", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Discontinue Reason", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Discontinue Time", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Discontinue Date", ControlType = ControlTypeEnum.TextBox
+                                       }
+                                }
+                            },
+                            new Section()
+                            {
+                                Side = SectionSideEnum.right,
+                                SectionName = "Impression",
+                                Controls = new List<Ctrl>()
+                                {
+                                    new Ctrl() { DisplayName = "Complaint Location", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Organ System", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Primary Symptoms", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Other Symptoms", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Impression", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Secondary Impression", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Drugs/Alcohol", ControlType = ControlTypeEnum.TextBox
+                                       }
+                                }
+                            },
+
+                            new Section()
+                            {
+                                Side = SectionSideEnum.right,
+                                SectionName = "Prior Aid Given",
+                                Controls = new List<Ctrl>()
+                                {
+                                    new Ctrl() { DisplayName = "Prior Aid", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Treated By", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Aid Outcome", ControlType = ControlTypeEnum.TextBox
+                                       }
+                                }
+                            }
+                        }
+                    },
+                    new Tab()
+                    {
+
+                        TabTargetName = "BillingTab",
+                        Sections = new List<Section>()
+                        {
+                            new Section()
+                            {
+                                SectionName = "Billing",
+                                Controls = new List<Ctrl>()
+                                {
+                                    new Ctrl() { DisplayName = "Condition Codes", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Payment Method", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Necessity Certificate", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Patient Email", ControlType = ControlTypeEnum.TextBox
+                                       }
+                                }
+                            },
+                            new Section()
+                            {
+                                SectionName = "Employer",
+                                Controls = new List<Ctrl>()
+                                {
+                                    new Ctrl() { DisplayName = "Work Related", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Employer", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Employer Address", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Employer Phone", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Patient Occupation", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Occupation Industry", ControlType = ControlTypeEnum.TextBox
+                                       }
+                                }
+                            }
+                            ,new Section()
+                            {
+                                Side = SectionSideEnum.right,
+                                SectionName = "Guardian/Patient",
+                                Controls = new List<Ctrl>()
+                                {
+                                    new Ctrl() { DisplayName = "Last Name", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "First Name", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "M.I.", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Phone #", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Relationship", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Guardian Address", ControlType = ControlTypeEnum.TextBox
+                                       }
+                                }
+                            },
+                            new Section()
+                            {
+                                Side = SectionSideEnum.right,
+                                SectionName = "Insurance",
+                                Controls = new List<Ctrl>()
+                                {
+                                    new Ctrl() { DisplayName = "Triage Category", ControlType = ControlTypeEnum.TextBox, ResponsiveWidth = 12
+                                       }
+                                }
+                            }
+                        }
+                    },        
+                    new Tab()
+                    {
+                        PartialTemplateName = "TabSingleColumn",
+                        TabTargetName = "TreatmentTab",
+                        Sections = new List<Section>()
+                        {
+                            new Section()
+                            {   
+                                SectionName = "Timeline",
+                                Controls = new List<Ctrl>()
+                                {
+                                    new Ctrl() { DisplayName = "Triage Category", ControlType = ControlTypeEnum.TextBox
+                                       }
+                                }
+                            }
+                        }
+                    },
+                    new Tab()
+                    {
+                        TabTargetName = "OutcomeTab",
+                        Sections = new List<Section>()
+                        {
+                            new Section()
+                            {
+                                SectionName = "Destination/Transfer To",
+                                Controls = new List<Ctrl>()
+                                {
+                                    new Ctrl() { DisplayName = "Destination", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Destination Reason", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Destination Address", ControlType = ControlTypeEnum.TextBox, ResponsiveWidth = 12
+                                       },
+                                    new Ctrl() { DisplayName = "Transfer Condition", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Destination Type", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Destination Code", ControlType = ControlTypeEnum.TextBox
+                                       }
+                                }
+                            },
+                            new Section()
+                            {
+                                SectionName = "Transport Information",
+                                Controls = new List<Ctrl>()
+                                {
+                                    new Ctrl() { DisplayName = "MCI", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Rythm at Destination", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Number of Patients", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "ER Disposition", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "To Ambulance Via", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Hospital Disposition", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Transport Position", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "From Ambulance Via", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Mode From Scene", ControlType = ControlTypeEnum.TextBox
+                                       }
+                                }
+                            },
+
+                            new Section()
+                            {
+                                Side = SectionSideEnum.right,
+                                SectionName = "Other Reporting Information",
+                                Controls = new List<Ctrl>()
+                                {
+                                    new Ctrl() { DisplayName = "Discharge Neuro", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Transfer-To Record #", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Trauma Registry ID", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Destination Record #", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Fire Report #", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Destination Zone", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Patient ID Tag #", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Vehicle Lat GPS", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Destination Lat GPS", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Vehicle Long GPS", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Destination Long GPS", ControlType = ControlTypeEnum.TextBox
+                                       }
+                                }
+                            }
+                        }
+                    },
+                    new Tab()
+                    {
+                        PartialTemplateName = "TabSingleColumn",
+                        TabTargetName = "NarrativeTab",
+                        Sections = new List<Section>()
+                        {
+                            new Section()
+                            {
+                                PartialTemplateName = "SectionWithDialog",
+                                SectionName = "Narrative",
+                                Controls = new List<Ctrl>()
+                                {
+                                    new Ctrl() { DisplayName = "", ControlType = ControlTypeEnum.TextBox
+                                       }
+                                }
+                            },
+                            new Section()
+                            {
+                                ResponsiveWidth = 6,
+                                SectionName = "Other Fields",
+                                Controls = new List<Ctrl>()
+                                {
+                                    new Ctrl() { DisplayName = "Review Requested", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "EMS Injury", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Injury Type", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Contact Blood/Fluids", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Fluid Exposure Type", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Personnel Exposed", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Req. Reportable Cond.", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Registry Candidate", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Protective Equipment", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Disasters", ControlType = ControlTypeEnum.TextBox
+                                       },
+                                    new Ctrl() { DisplayName = "Precautions", ControlType = ControlTypeEnum.TextBox
+                                       }
+                                }
+                            }
+                        }
+                    },
+                    new Tab()
+                    {
+                        PartialTemplateName = "TabSingleColumn",
+                        TabTargetName = "DocumentsTab",
+                        Sections = new List<Section>()
+                        {
+                            new Section()
+                            {
+                                SectionName = "Forms",
+                                Controls = new List<Ctrl>()
+                                {
+                                    new Ctrl() { DisplayName = "Triage Category", ControlType = ControlTypeEnum.TextBox
+                                       }
+                                }
+                            },
+                            new Section()
+                            {
+                                SectionName = "Attachments",
+                                Controls = new List<Ctrl>()
+                                {
+                                    new Ctrl() { DisplayName = "Triage Category", ControlType = ControlTypeEnum.TextBox
+                                       }
+                                }
+                            }
+
+                        }
+                    },
+                    new Tab()
+                    {
+                        PartialTemplateName = "TabSingleColumn",
+                        TabTargetName = "SignaturesTab",
+                        Sections = new List<Section>()
+                        {
+                            new Section()
+                            {
+                                SectionName = "Signatures",
+                                Controls = new List<Ctrl>()
+                                {
+                                    new Ctrl() { DisplayName = "Triage Category", ControlType = ControlTypeEnum.TextBox
+                                       }
+                                }
+                            }
+                        }
+                    },
+                    new Tab()
+                    {
+                        PartialTemplateName = "TabSingleColumn",
+                        TabTargetName = "NotesTab",
+                        Sections = new List<Section>()
+                        {
+                            new Section()
+                            {
+                                SectionName = "Notes",
+                                Controls = new List<Ctrl>()
+                                {
+                                    new Ctrl() { DisplayName = "Triage Category", ControlType = ControlTypeEnum.TextBox
+                                       }
+                                }
+                            }
+                        }
                     }
                 }
             };
@@ -433,9 +856,14 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
             return db.NemsisDataElements.Where(x => x.FieldNumber == nemsisCode).Select(x => new Select2Option() { id = x.OptionText, text = x.OptionText }).ToList();
         }
 
-        private List<Select2Option> GetSelect2Options(string controlName, string agencyToken, string state, List<Select2OptionsList> select2OptionsLists)
+        /// <summary>
+        /// Returns select2 options list based on NemsisCode, global class variables select2OPtionsLists, agencyToken, and state must be preset
+        /// </summary>
+        /// <param name="NemsisId"></param>
+        /// <returns></returns>
+        private List<Select2Option> NemsisSelectOptions(string NemsisId)
         {
-            var controlMatchedList = select2OptionsLists.Where(x => x.ControlName == controlName);
+            var controlMatchedList = select2OptionsLists.Where(x => x.ControlName == NemsisId);
 
             if (controlMatchedList.FirstOrDefault(x => x.Association == agencyToken) != null)
             {

@@ -24,13 +24,6 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Startup
 
                 )
                 .AddItem(new MenuItemDefinition(
-                    "PcrForm",
-                    L("PcrForm"),
-                    url: "Mpa/PcrForm",
-                    icon: "icon-grid"
-                    )
-                )
-                .AddItem(new MenuItemDefinition(
                     "IncidentTab",
                     L("IncidentTab"),
                     url: "#IncidentTab",
