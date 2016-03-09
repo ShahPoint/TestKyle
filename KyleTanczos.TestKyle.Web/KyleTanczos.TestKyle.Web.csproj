@@ -2930,6 +2930,7 @@
     <Content Include="Areas\Mpa\Views\PcrForm\Controls\TabSingleColumn.cshtml" />
     <Content Include="Areas\Mpa\Views\PcrForm\Controls\Narrative.cshtml" />
     <Content Include="Areas\Mpa\Views\PcrForm\Controls\SectionWithDialog.cshtml" />
+    <Content Include="Areas\Mpa\Views\PcrForm\Controls\Dialog.cshtml" />
     <None Include="Properties\PublishProfiles\FileSystem_Release.pubxml" />
     <Content Include="Views\Account\TenantSelection.cshtml" />
     <Content Include="Scripts\version.json" />

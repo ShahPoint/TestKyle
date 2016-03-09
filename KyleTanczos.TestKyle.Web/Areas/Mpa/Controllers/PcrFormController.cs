@@ -40,19 +40,43 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
     {
         public Section()
         {
+            SectionName = "Title Here";
             Controls = new List<Ctrl>();
             ResponsiveWidth = 12;
             Side = SectionSideEnum.left;
             PartialTemplateName = "Section";
+            
         }
         public string SectionName { get; set; }
         public int ResponsiveWidth { get; set; }
         public List<Ctrl> Controls { get; set; }
         public SectionSideEnum Side { get; set; }
         public string PartialTemplateName { get; set; }
+        public Dialog Dialog { get; set; }
     }
 
-    public enum SectionSideEnum {left, right}
+    public enum SectionSideEnum { left, right }
+
+    public class Dialog
+    {
+        public Dialog()
+        {
+            Controls = new List<Ctrl>();
+            DialogTitle = "Title Here";
+            SubmitBtnText = "Save";
+            CancelBtnText = "Cancel";
+        }
+
+        public string DialogTargetId { get; set; }
+        public string DialogTitle { get; set; }
+        public List<Ctrl> Controls { get; set; }
+        public string OnSubmitClick { get; set; }
+        public string OnCancelClick { get; set; }
+        public string NgSubmitClick { get; set; }
+        public string NgCancelClick { get; set; }
+        public string SubmitBtnText { get; set; }
+        public string CancelBtnText { get; set; }
+    }
 
     
     public class Ctrl
@@ -76,7 +100,6 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 
     public static class CtrlHelpers
     {
-
         public static List<Select2Option> GetSelect2Options(IEnumerable<string> strOptions)
         {
             var returnOptions = strOptions.Select(x => new Select2Option() { id = x, text = x }).ToList();
@@ -134,7 +157,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
         List<Select2OptionsList> agencySelect2OptionsLists = null;
 
 
-        [OutputCache(Duration = 36000, VaryByParam = "none", Location = OutputCacheLocation.Server)]
+        //[OutputCache(Duration = 36000, VaryByParam = "none", Location = OutputCacheLocation.Server)]
         // GET: Mpa/PcrForm
         public ActionResult Index()
         {
@@ -155,17 +178,36 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                         {
                             new Section()
                             {
-                                 SectionName = "Disposition",
+                                PartialTemplateName = "SectionWithDialog",
+
+                                Dialog = new Dialog()
+                                {
+                                        DialogTargetId = "IncidentDialog",
+                                        DialogTitle = "Incident Modal",
+                                        Controls = new List<Ctrl>()
+                                        {
+                                            new Ctrl() { DisplayName = "Disposition/Outcome2", ControlType = ControlTypeEnum.DropDownList,
+                                                DropDownOptions = NemsisSelectOptions("E20_10"), ResponsiveWidth = 12
+                                                }
+
+                                        },
+                                         OnCancelClick = "alert('cancel')",
+                                         OnSubmitClick = "alert('submit')"
+                                     
+                                },
+
+                                SectionName = "Disposition",
                                 Controls = new List<Ctrl>()
                                 {
-                                    new Ctrl() { DisplayName = "Disposition/Outcome", ControlType = ControlTypeEnum.Select2,
+                                    new Ctrl() { DisplayName = "Disposition/Outcome2", ControlType = ControlTypeEnum.Select2,
                                         DropDownOptions = NemsisSelectOptions("E20_10"), ResponsiveWidth = 12
                                         }
-
                                 }
                             },
                             new Section()
-                            {    SectionName = "Incident",
+                            {
+                               
+                                SectionName = "Incident",
                                 Controls = new List<Ctrl>()
                                 {
                                    new Ctrl() { DisplayName = "Incident Number", ControlType = ControlTypeEnum.TextBox
@@ -775,7 +817,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                         {
                             new Section()
                             {
-                                PartialTemplateName = "SectionWithDialog",
+                                
                                 SectionName = "Narrative",
                                 Controls = new List<Ctrl>()
                                 {

@@ -10,7 +10,7 @@
         {
             if (section.Side == SectionSideEnum.left)
             {
-                @Html.Partial("Controls/Section", section);
+                @Html.Partial("Controls/" + section.PartialTemplateName, section);
             }
         }
     </div>
