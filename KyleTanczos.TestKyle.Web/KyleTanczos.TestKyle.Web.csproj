@@ -972,6 +972,9 @@
     <Content Include="libs\jquery\jquery-migrate.min.js" />
     <Content Include="libs\jquery\jquery.min.js" />
     <Content Include="libs\jquery-blockui\jquery.blockui.min.js" />
+    <Content Include="libs\JsInputMask-master\input-mask.js" />
+    <Content Include="libs\JsInputMask-master\input-maskv2.js" />
+    <Content Include="libs\JsInputMask-master\sample\sample.html" />
     <Content Include="libs\json2\json2.js" />
     <Content Include="libs\json2\json2.min.js" />
     <Content Include="libs\jstree\themes\default\32px_line.png" />
@@ -2932,6 +2935,9 @@
     <Content Include="Areas\Mpa\Views\PcrForm\Controls\SectionWithDialog.cshtml" />
     <Content Include="Areas\Mpa\Views\PcrForm\Controls\Dialog.cshtml" />
     <Content Include="Areas\Mpa\Views\PcrForm\Controls\SectionWithToggleCtrl.cshtml" />
+    <Content Include="libs\JsInputMask-master\.DS_Store" />
+    <Content Include="libs\JsInputMask-master\LICENSE" />
+    <Content Include="libs\JsInputMask-master\README.md" />
     <None Include="Properties\PublishProfiles\FileSystem_Release.pubxml" />
     <Content Include="Views\Account\TenantSelection.cshtml" />
     <Content Include="Scripts\version.json" />
