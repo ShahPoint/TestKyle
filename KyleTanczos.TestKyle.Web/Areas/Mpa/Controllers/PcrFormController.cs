@@ -8,7 +8,7 @@ using System.Web.Mvc;
 using Newtonsoft.Json;
 using Microsoft.VisualBasic.FileIO;
 using System.IO;
-
+using System.Web.UI;
 
 namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 {
@@ -133,6 +133,8 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 
         List<Select2OptionsList> agencySelect2OptionsLists = null;
 
+
+        [OutputCache(Duration = 36000, VaryByParam = "none", Location = OutputCacheLocation.Server)]
         // GET: Mpa/PcrForm
         public ActionResult Index()
         {
