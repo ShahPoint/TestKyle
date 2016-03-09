@@ -1,0 +1,49 @@
+﻿@using KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
+
+@model Section
+
+<div class="col-md-@Model.ResponsiveWidth no-padding onlyLeftPaddingImportant">
+    <div class="portlet box blue-hoki">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-gift"></i>@Model.SectionName
+            </div>
+            <div class="tools">
+
+                <input type="checkbox" class="make-switch" ng-model="@Model.Toggle.NgModel" targetContainterId="@(Model.Toggle.TargetContainerId + "Toggle" )" onchange="ShowHideContent(this)" data-on-color="default" data-size="mini" data-on-text="&nbsp;@Model.Toggle.OnText&nbsp;" data-off-text="&nbsp;@Model.Toggle.OffText&nbsp;">
+
+
+            </div>
+        </div>
+        <div class="portlet-body form">
+            <!-- BEGIN FORM-->
+            <form action="#" class="horizontal-form">
+                <div class="form-body">
+
+                    <div id="@(Model.Toggle.TargetContainerId + "Toggle" )" style="display:none" class="row">
+         
+                        @foreach (Ctrl control in Model.Controls)
+                        {
+                            @Html.Partial("Controls/" + control.ControlType, control);
+                        }
+
+                    </div>
+                </div>
+            </form>
+            <!-- END FORM-->
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+                    function ShowHideContent(thisControl)
+                    {                       
+                        targetContainerId = $(thisControl).attr('targetContainterId') ;
+
+                        if( $(thisControl).prop("checked") == true )
+                            $("#" + targetContainerId).slideDown();
+                        else
+                            $("#" + targetContainerId).slideUp();
+                    }
+                    
+</script>

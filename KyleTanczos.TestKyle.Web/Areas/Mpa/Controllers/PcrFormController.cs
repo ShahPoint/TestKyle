@@ -45,7 +45,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
             ResponsiveWidth = 12;
             Side = SectionSideEnum.left;
             PartialTemplateName = "Section";
-            
+
         }
         public string SectionName { get; set; }
         public int ResponsiveWidth { get; set; }
@@ -53,7 +53,24 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
         public SectionSideEnum Side { get; set; }
         public string PartialTemplateName { get; set; }
         public Dialog Dialog { get; set; }
+        public Toggle Toggle { get; set; }
     }
+
+    public class Toggle
+    {
+        public Toggle()
+        {
+            OnText = "Yes";
+            OffText = "No";
+        }
+
+        public string OnText { get; set; }
+        public string OffText { get; set; }
+        //public string IsChecked { get; set; }
+        public string NgModel { get; set; }
+        public string TargetContainerId { get; set; }
+    }
+
 
     public enum SectionSideEnum { left, right }
 
@@ -199,14 +216,14 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 SectionName = "Disposition",
                                 Controls = new List<Ctrl>()
                                 {
-                                    new Ctrl() { DisplayName = "Disposition/Outcome2", ControlType = ControlTypeEnum.Select2,
+                                    new Ctrl() { DisplayName = "Disposition/Outcome", ControlType = ControlTypeEnum.Select2,
                                         DropDownOptions = NemsisSelectOptions("E20_10"), ResponsiveWidth = 12
                                         }
                                 }
                             },
                             new Section()
                             {
-                               
+         
                                 SectionName = "Incident",
                                 Controls = new List<Ctrl>()
                                 {
@@ -253,7 +270,13 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 }
                             },
                             new Section()
-                            {    SectionName = "Others On Scene",
+                            {
+                                PartialTemplateName = "SectionWithToggleCtrl",
+                                Toggle = new Toggle()
+                                {
+                                     TargetContainerId = "OthersOnScene"
+                                },
+                                SectionName = "Others On Scene",
                                 Controls = new List<Ctrl>()
                                 {
                                     new Ctrl() { DisplayName = "Services On Scene", ControlType = ControlTypeEnum.DropDownList,
@@ -270,11 +293,16 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                             }
                             ,
                             new Section()
-                            {   Side = SectionSideEnum.right,
+                            {
+
+
+                                Side = SectionSideEnum.right,
                                 SectionName = "Times",
                                 ResponsiveWidth = 6,
                                 Controls = new List<Ctrl>()
                                 {
+                                   new Ctrl() { DisplayName = "Incident Date", ControlType = ControlTypeEnum.TimePicker, ResponsiveWidth = 12
+                                        },
                                    new Ctrl() { DisplayName = "Onset", ControlType = ControlTypeEnum.TimePicker, ResponsiveWidth = 12
                                         },
                                     new Ctrl() { DisplayName = "Recieved", ControlType = ControlTypeEnum.TimePicker,  ResponsiveWidth = 12
@@ -487,7 +515,11 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 }
                             },
                             new Section()
-                            {
+                            {   PartialTemplateName = "SectionWithToggleCtrl",
+                                Toggle = new Toggle()
+                                {
+                                     TargetContainerId = "VehicleCollision"
+                                },
                                 SectionName = "Vehicle Collision",
                                 Controls = new List<Ctrl>()
                                 {
@@ -514,7 +546,11 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 }
                             },
                             new Section()
-                            {
+                            {   PartialTemplateName = "SectionWithToggleCtrl",
+                                Toggle = new Toggle()
+                                {
+                                     TargetContainerId = "Toggle"
+                                },
                                 SectionName = "Trauma",
                                 Controls = new List<Ctrl>()
                                 {
@@ -532,7 +568,11 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 }
                             },
                             new Section()
-                            {
+                            {   PartialTemplateName = "SectionWithToggleCtrl",
+                                Toggle = new Toggle()
+                                {
+                                     TargetContainerId = "CardiacArrest"
+                                },
                                 Side = SectionSideEnum.right,
                                 SectionName = "Cardiac Arrest",
                                 Controls = new List<Ctrl>()
@@ -598,6 +638,11 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 
                             new Section()
                             {
+                                PartialTemplateName = "SectionWithToggleCtrl",
+                                Toggle = new Toggle()
+                                {
+                                     TargetContainerId = "PriorAid"
+                                },
                                 Side = SectionSideEnum.right,
                                 SectionName = "Prior Aid Given",
                                 Controls = new List<Ctrl>()
@@ -663,6 +708,11 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                             }
                             ,new Section()
                             {
+                                PartialTemplateName = "SectionWithToggleCtrl",
+                                Toggle = new Toggle()
+                                {
+                                     TargetContainerId = "GuardianPatient"
+                                },
                                 Side = SectionSideEnum.right,
                                 SectionName = "Guardian/Patient",
                                 Controls = new List<Ctrl>()
