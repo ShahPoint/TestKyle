@@ -115,11 +115,13 @@
     @RenderSection("Scripts", false)
 
    
-
+    <script src="~/libs/jquery-inputmask/jquery.inputmask.bundle.min.js"></script>
 
     <script type="text/javascript">
 
-
+        $(document).ready(function () {
+            $("input.inputmask").inputmask("h:s", { "placeholder": "hh/mm" });
+        });
        
         var data = [{ id: 0, text: '' }, { id: 1, text: 'bug' }, { id: 2, text: 'duplicate' }, { id: 3, text: 'invalid' }, { id: 4, text: 'wontfix' }];
 
@@ -131,7 +133,7 @@
         function InstantiateSelect2s(jqueryTargetDiv)
         {
 
-            $(".select2Defualt").select2({
+            $(jqueryTargetDiv + " .select2Defualt").select2({
                 //allowClear: true,
                 width: 'element',
                 theme: "bootstrap"

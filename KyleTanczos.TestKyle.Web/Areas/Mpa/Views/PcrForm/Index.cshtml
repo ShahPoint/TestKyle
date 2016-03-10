@@ -57,13 +57,21 @@
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
 
+@*<a onclick="TestDefaultDispositions();" href="#">click me</a>*@
+
+<script type="text/javascript">
+
+
+</script>
+
+
 <div id="mainApp" data-ng-app="myApp" data-ng-controller="myCtrl"  >
 
-    @*<input type="text" ng-model="greg"/> {{greg}}
+    <input type="text" ng-model="greg"/> {{greg}} {{E20_10}} {{E08_02}} {{E07_33}}
 
-    <input type="button" ng-click="SendAlert()" />
+    @*<input type="button" ng-click="SendAlert()" />*@
 
-    <div id="thisSpan"></div>*@
+    <div id="thisSpan"></div> 
 
 
     @foreach (Tab tab in Model.Tabs)
@@ -83,6 +91,8 @@
         return JSON.parse(localStorage.getItem(key));
     }
 </script>
+
+
 
 
 <script type="text/javascript" src="~/Areas/Mpa/Angular/Controllers/PcrFormController.js"></script>
