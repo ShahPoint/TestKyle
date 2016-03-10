@@ -22,7 +22,7 @@
     <div class="form-group">
         <label class="control-label col-xs-6">@Model.DisplayName </label>
         <div class="col-xs-6">
-            <input type="tel" id="@Model.ClientId" class="form-control time-control inputmask" style="min-width:50px" placeholder="@Model.PlaceHolder">
+            <input type="tel" @Model.NgModel @*id="@Model.ClientId"*@ class="form-control time-control inputmask" style="min-width:50px" placeholder="@Model.PlaceHolder">
         </div>
         
 
