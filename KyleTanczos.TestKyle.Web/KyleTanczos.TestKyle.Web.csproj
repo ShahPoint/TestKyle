@@ -2952,7 +2952,6 @@
     <Content Include="Areas\Mpa\Views\PcrForm\Controls\Dialog.cshtml" />
     <Content Include="Areas\Mpa\Views\PcrForm\Controls\SectionWithToggleCtrl.cshtml" />
     <Content Include="libs\jquery-inputmask\README.md" />
-    <Content Include="Areas\Mpa\Views\PcrForm\Controls\DropDownListTest.cshtml" />
     <None Include="Properties\PublishProfiles\FileSystem_Release.pubxml" />
     <Content Include="Views\Account\TenantSelection.cshtml" />
     <Content Include="Scripts\version.json" />

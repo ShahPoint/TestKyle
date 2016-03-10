@@ -171,7 +171,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
     }
 
 
-    public enum ControlTypeEnum { PatientMeds, MileageBox, TextBox, DropDownList, DropDownListTest, Select2, Select2Single, Select2Many, Select2TagsSingle, Select2TagsMany, TimePicker }
+    public enum ControlTypeEnum { PatientMeds, MileageBox, TextBox, DropDownList, Select2, Select2Single, Select2Many, Select2TagsSingle, Select2TagsMany, TimePicker }
 
     public class GetPcrFormSelect2Options
     {
@@ -211,7 +211,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
         }
 }
 
-    [OutputCache(Duration = 120, VaryByParam = "none", Location = OutputCacheLocation.Client)]
+    //[OutputCache(Duration = 120, VaryByParam = "none", Location = OutputCacheLocation.Client)]
     // public enum ResponsiveWidthEnum {ng1, ng2, ng3, ng4, ng5, ng6, ng7, ng8, ng9, ng10, ng11, ng12 }
     public class PcrFormController : Controller
     {
@@ -289,7 +289,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 {
                                     new DropDownList() { DisplayName = "Disposition/Outcome", 
                                         DropDownOptions = options.NemsisSelectOptions("E20_10"), ResponsiveWidth = 12
-                                        ,NgModel = "E20_10"
+                                        ,NgModel = "E20_10", IsSelect2 = true
                                         }
                                 }
                             },
@@ -302,11 +302,11 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                    new TextBox() { DisplayName = "Incident Number"
                                    ,NgModel = "E02_02"
                                         },
-                                    new DropDownList() { DisplayName = "Response Urgency", ControlType = ControlTypeEnum.DropDownListTest,
+                                    new DropDownList() { DisplayName = "Response Urgency", 
                                         DropDownOptions = options.NemsisSelectOptions("E07_33")
                                         ,NgModel = "E07_33"
                                         },
-                                    new DropDownList() { DisplayName = "CMS Level", ControlType = ControlTypeEnum.DropDownListTest,
+                                    new DropDownList() { DisplayName = "CMS Level",
                                         DropDownOptions = options.NemsisSelectOptions("D01_06")
                                         ,NgModel = "D01_06"
                                         },
