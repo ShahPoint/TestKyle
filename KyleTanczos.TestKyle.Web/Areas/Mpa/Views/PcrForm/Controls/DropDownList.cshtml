@@ -1,14 +1,14 @@
 ﻿@using KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 
 
-@model KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers.Ctrl
+@model KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers.DropDownList
 
 
 <div class="col-xs-@Model.ResponsiveWidth minimalPaddingImportant">
     <div class="form-group">
         <label class="control-label">@Model.DisplayName </label>
 
-        <select  id="@Model.ClientId" class="form-control" @Model.NgModel >
+        <select  id="@Model.ClientId" class="form-control @Model.GetSelect2Class()" @Model.NgModel >
             <option value="">@Model.PlaceHolder</option>
 
             @foreach (var option in Model.DropDownOptions)

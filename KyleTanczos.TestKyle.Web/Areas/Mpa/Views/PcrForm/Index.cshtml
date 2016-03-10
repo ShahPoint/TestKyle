@@ -67,7 +67,7 @@
 
 <div id="mainApp" data-ng-app="myApp" data-ng-controller="myCtrl"  >
 
-    <input type="text" ng-model="greg"/> {{greg}} {{E20_10}} {{E08_02}} {{E07_33}}
+    <input type="text" ng-model="greg"/> 
 
     @*<input type="button" ng-click="SendAlert()" />*@
 
@@ -78,6 +78,8 @@
     {
         @Html.Partial("Controls/" + @tab.PartialTemplateName, tab);
     }
+
+    {{greg}} {{E20_10}} {{E08_02}} {{E07_33}} <br/><br/> {{pcr}}
 </div>
 
 

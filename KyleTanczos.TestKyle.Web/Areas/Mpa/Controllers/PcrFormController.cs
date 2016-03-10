@@ -97,16 +97,17 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 
     public class DropDownList : Ctrl
     {
-        private string _NgModel;
-
-        public new string NgModel
+        public DropDownList()
         {
-            get
-            {
-                return (string.IsNullOrEmpty(_NgModel) ? ""
-                    : "ng-model=" + _NgModel + @" ng-init=''");
-            }
-            set { _NgModel = value; }
+            DropDownOptions = new List<Select2Option>();
+            IsSelect2 = false;
+            ControlType = ControlTypeEnum.DropDownList;
+        }
+        public List<Select2Option> DropDownOptions { get; set; }
+        public bool IsSelect2 { get; set; }
+        public string GetSelect2Class()
+        {
+            return (IsSelect2 ? "select2Defualt" : "");
         }
     }
 
@@ -114,16 +115,25 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
     {
         public Ctrl()
         {
-            ResponsiveWidth = 6;
-            DropDownOptions = new List<Select2Option>();
+            ResponsiveWidth = 6; 
         }
         public string DisplayName { get; set; }
         public ControlTypeEnum ControlType { get; set; }
-        public List<Select2Option> DropDownOptions { get; set; }
+
         public int ResponsiveWidth { get; set; }
         public string PlaceHolder { get; set; }
-        public string ClientId { get; set; }       
-        public string NgModel { get; set; }
+        public string ClientId { get; set; }
+        private string _NgModel;
+
+        public string NgModel
+        {
+            get
+            {
+                return (string.IsNullOrEmpty(_NgModel) ? ""
+                    : "ng-model=pcr." + _NgModel);
+            }
+            set { _NgModel = value; }
+        }
 
     }
 
@@ -247,7 +257,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                         DialogTitle = "Incident Modal",
                                         Controls = new List<Ctrl>()
                                         {
-                                            new Ctrl() { DisplayName = "Disposition/Outcome2", ControlType = ControlTypeEnum.DropDownList,
+                                            new DropDownList() { DisplayName = "Disposition/Outcome2", ControlType = ControlTypeEnum.DropDownList,
                                                 DropDownOptions = options.NemsisSelectOptions("E20_10"), ResponsiveWidth = 12
                                                 }
 
@@ -260,7 +270,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 SectionName = "Disposition",
                                 Controls = new List<Ctrl>()
                                 {
-                                    new Ctrl() { DisplayName = "Disposition/Outcome", ControlType = ControlTypeEnum.DropDownList,
+                                    new DropDownList() { DisplayName = "Disposition/Outcome", ControlType = ControlTypeEnum.DropDownList,
                                         DropDownOptions = options.NemsisSelectOptions("E20_10"), ResponsiveWidth = 12
                                         ,NgModel = "E20_10"
                                         }
@@ -273,24 +283,26 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 Controls = new List<Ctrl>()
                                 {
                                    new Ctrl() { DisplayName = "Incident Number", ControlType = ControlTypeEnum.TextBox
+                                   ,NgModel = "E02_02"
                                         },
                                     new DropDownList() { DisplayName = "Response Urgency", ControlType = ControlTypeEnum.DropDownListTest,
                                         DropDownOptions = options.NemsisSelectOptions("E07_33")
                                         ,NgModel = "E07_33"
                                         },
-                                    new Ctrl() { DisplayName = "CMS Level", ControlType = ControlTypeEnum.DropDownList,
+                                    new DropDownList() { DisplayName = "CMS Level", ControlType = ControlTypeEnum.DropDownListTest,
                                         DropDownOptions = options.NemsisSelectOptions("D01_06")
                                         ,NgModel = "D01_06"
                                         },
-                                    new Ctrl() { DisplayName = "Type Of Location", ControlType = ControlTypeEnum.DropDownList,
+                                    new DropDownList() { DisplayName = "Type Of Location", ControlType = ControlTypeEnum.DropDownList,
                                         DropDownOptions = options.NemsisSelectOptions("E08_07")
                                         ,NgModel = "E08_07"
                                         },
-                                    new Ctrl() { DisplayName = "Nature Of Incident", ControlType = ControlTypeEnum.DropDownList,
+                                    new DropDownList() { DisplayName = "Nature Of Incident", ControlType = ControlTypeEnum.DropDownList,
                                         DropDownOptions = options.NemsisSelectOptions("E03_01")
                                         ,NgModel = "E03_01"
                                         },
                                     new Ctrl() { DisplayName = "Scene Address", ControlType = ControlTypeEnum.TextBox
+                                        ,NgModel = ""
                                         }
 
                                 }
@@ -299,25 +311,26 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                             {    SectionName = "Dispatch",
                                 Controls = new List<Ctrl>()
                                 {
-                                   new Ctrl() { DisplayName = "Call Sign", ControlType = ControlTypeEnum.DropDownList,
+                                   new DropDownList() { DisplayName = "Call Sign", ControlType = ControlTypeEnum.DropDownList,
                                         DropDownOptions = options.NemsisSelectOptions("E02_12")
                                         ,NgModel = "E02_12"
                                         },
-                                        new Ctrl() { DisplayName = "Vehicle Number", ControlType = ControlTypeEnum.DropDownList,
+                                        new DropDownList() { DisplayName = "Vehicle Number", ControlType = ControlTypeEnum.DropDownList,
                                         DropDownOptions = options.NemsisSelectOptions("E02_11")
                                         ,NgModel = "E02_11"
                                         },
-                                    new Ctrl() { DisplayName = "Mode To Scene", ControlType = ControlTypeEnum.DropDownList,
+                                    new DropDownList() { DisplayName = "Mode To Scene", ControlType = ControlTypeEnum.DropDownList,
                                         DropDownOptions = options.NemsisSelectOptions("E02_20")
                                         ,NgModel = "E02_20"
                                         },
                                         new Ctrl() { DisplayName = "Veh. Incident #", ControlType = ControlTypeEnum.TextBox
+                                        ,NgModel = ""
                                         },
-                                    new Ctrl() { DisplayName = "Service Requested", ControlType = ControlTypeEnum.DropDownList,
+                                    new DropDownList() { DisplayName = "Service Requested", ControlType = ControlTypeEnum.DropDownList,
                                         DropDownOptions = options.NemsisSelectOptions("E02_04")
                                         ,NgModel = "E02_04"
                                         },
-                                    new Ctrl() { DisplayName = "Role", ControlType = ControlTypeEnum.DropDownList,
+                                    new DropDownList() { DisplayName = "Role", ControlType = ControlTypeEnum.DropDownList,
                                         DropDownOptions = options.NemsisSelectOptions("E02_05")
                                         ,NgModel = "E02_05"
                                         }
@@ -333,17 +346,19 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 SectionName = "Others On Scene",
                                 Controls = new List<Ctrl>()
                                 {
-                                    new Ctrl() { DisplayName = "Services On Scene", ControlType = ControlTypeEnum.DropDownList,
+                                    new DropDownList() { DisplayName = "Services On Scene", ControlType = ControlTypeEnum.DropDownList,
                                         DropDownOptions = options.NemsisSelectOptions("E08_02")
                                         ,NgModel = "E08_02"
                                         },
-                                    new Ctrl() { DisplayName = "Other EMS Agencies", ControlType = ControlTypeEnum.DropDownList,
+                                    new DropDownList() { DisplayName = "Other EMS Agencies", ControlType = ControlTypeEnum.DropDownList,
                                         DropDownOptions = options.NemsisSelectOptions("E08_01")
                                         ,NgModel = "E08_01"
                                         },
                                     new Ctrl() { DisplayName = "EMS System", ControlType = ControlTypeEnum.TextBox
+                                        ,NgModel = "D04_17"
                                         },
                                     new Ctrl() { DisplayName = "Response Differential", ControlType = ControlTypeEnum.TextBox
+                                    ,NgModel = "E08_03"
                                     }
                                 }
                             }
@@ -358,29 +373,35 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 Controls = new List<Ctrl>()
                                 {
                                    new Ctrl() { DisplayName = "Incident Date", ControlType = ControlTypeEnum.TimePicker, ResponsiveWidth = 12
-                                        },
+                                        ,NgModel = ""
+                                   },
                                    new Ctrl() { DisplayName = "Onset", ControlType = ControlTypeEnum.TimePicker, ResponsiveWidth = 12
-                                        },
+                                   ,NgModel = "E05_01"
+                                   },
                                     new Ctrl() { DisplayName = "Recieved", ControlType = ControlTypeEnum.TimePicker,  ResponsiveWidth = 12
-                                        },
+                                        ,NgModel = "E05_02"},
                                    new Ctrl() { DisplayName = "Notified", ControlType = ControlTypeEnum.TimePicker, ResponsiveWidth = 12
-                                        },
+                                        ,NgModel = "E05_03"},
                                     new Ctrl() { DisplayName = "Dispatched", ControlType = ControlTypeEnum.TimePicker,ResponsiveWidth = 12
-                                        },
+                                        ,NgModel = "E05_04"},
                                      new Ctrl() { DisplayName = "Enroute", ControlType = ControlTypeEnum.TimePicker, ResponsiveWidth = 12
-                                        },
+                                        ,NgModel = "E05_05"},
                                     new Ctrl() { DisplayName = "Arrival", ControlType = ControlTypeEnum.TimePicker,ResponsiveWidth = 12
-                                        },
+                                        ,NgModel = "E05_06"},
                                     new Ctrl() { DisplayName = "Contacted", ControlType = ControlTypeEnum.TimePicker,ResponsiveWidth = 12
-                                        },
+                                        ,NgModel = "E05_07"},
+                                    new Ctrl() { DisplayName = "Transfer", ControlType = ControlTypeEnum.TimePicker,ResponsiveWidth = 12
+                                        ,NgModel = "E05_08"},
                                     new Ctrl() { DisplayName = "Departed", ControlType = ControlTypeEnum.TimePicker,ResponsiveWidth = 12
-                                        },
+                                        ,NgModel = "E05_09"},
                                     new Ctrl() { DisplayName = "Arrival", ControlType = ControlTypeEnum.TimePicker,ResponsiveWidth = 12
-                                        },
+                                        ,NgModel = "E05_10"},
                                     new Ctrl() { DisplayName = "Available", ControlType = ControlTypeEnum.TimePicker,ResponsiveWidth = 12
-                                        },
+                                        ,NgModel = "E05_11"},
                                     new Ctrl() { DisplayName = "At Base", ControlType = ControlTypeEnum.TimePicker,ResponsiveWidth = 12
-                                        },
+                                        ,NgModel = "E05_13"},
+                                    new Ctrl() { DisplayName = "Cancelled", ControlType = ControlTypeEnum.TimePicker,ResponsiveWidth = 12
+                                        ,NgModel = "E05_12"},
                                 }
                             },
                             new Section()
@@ -390,18 +411,18 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 ResponsiveWidth = 6,
                                 Controls = new List<Ctrl>()
                                 {
-                                   new Ctrl() { DisplayName = "Primary", ControlType = ControlTypeEnum.DropDownList,
+                                   new DropDownList() { DisplayName = "Primary", ControlType = ControlTypeEnum.DropDownList,
                                         DropDownOptions = options.NemsisSelectOptions(""), ResponsiveWidth = 12
-                                        },
-                                    new Ctrl() { DisplayName = "Secondary", ControlType = ControlTypeEnum.DropDownList,
+                                        ,NgModel = "E04_02"},
+                                    new DropDownList() { DisplayName = "Secondary", ControlType = ControlTypeEnum.DropDownList,
                                         DropDownOptions = options.NemsisSelectOptions(""), ResponsiveWidth = 12
-                                        },
-                                    new Ctrl() { DisplayName = "Third", ControlType = ControlTypeEnum.DropDownList,
+                                        ,NgModel = ""},
+                                    new DropDownList() { DisplayName = "Third", ControlType = ControlTypeEnum.DropDownList,
                                         DropDownOptions = options.NemsisSelectOptions(""), ResponsiveWidth = 12
-                                        },
-                                    new Ctrl() { DisplayName = "Other", ControlType = ControlTypeEnum.DropDownList,
+                                        ,NgModel = ""},
+                                    new DropDownList() { DisplayName = "Other", ControlType = ControlTypeEnum.DropDownList,
                                         DropDownOptions = options.NemsisSelectOptions(""), ResponsiveWidth = 12
-                                        }
+                                        ,NgModel = ""}
                                 }
                             },
                             new Section()
@@ -412,13 +433,13 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 Controls = new List<Ctrl>()
                                 {
                                    new Ctrl() { DisplayName = "Start", ControlType = ControlTypeEnum.TextBox, ResponsiveWidth = 12
-                                        },
+                                        ,NgModel = "E02_16"},
                                     new Ctrl() { DisplayName = "Scene", ControlType = ControlTypeEnum.TextBox, ResponsiveWidth = 12
-                                        },
+                                        ,NgModel = "E02_17"},
                                     new Ctrl() { DisplayName = "Dest.", ControlType = ControlTypeEnum.TextBox, ResponsiveWidth = 12
-                                        },
+                                        ,NgModel = "E02_18"},
                                     new Ctrl() { DisplayName = "Service", ControlType = ControlTypeEnum.TextBox, ResponsiveWidth = 12
-                                        }
+                                        ,NgModel = "E02_19"}
                                 }
                             }
 
@@ -436,30 +457,30 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                  Controls = new List<Ctrl>()
                                  {
                                     new Ctrl() { DisplayName = "First Name", ControlType = ControlTypeEnum.TextBox
-                                       },
+                                       ,NgModel = "E06_02"},
                                     new Ctrl() { DisplayName = "Phone", ControlType = ControlTypeEnum.TextBox
-                                       },
+                                       ,NgModel = "E06_17"},
                                     new Ctrl() { DisplayName = "Last Name", ControlType = ControlTypeEnum.TextBox
-                                       },
+                                       ,NgModel = "E06_01"},
                                     new Ctrl() { DisplayName = "Weight", ControlType = ControlTypeEnum.TextBox
-                                       },
+                                       ,NgModel = "E16_01"},
                                     new Ctrl() { DisplayName = "M.I.", ControlType = ControlTypeEnum.TextBox
-                                       },
-                                    new Ctrl() { DisplayName = "Race", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
+                                       ,NgModel = "E06_03"},
+                                    new DropDownList() { DisplayName = "Race", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E06_12")
+                                       ,NgModel = "E06_12"},
                                     new Ctrl() { DisplayName = "DOB", ControlType = ControlTypeEnum.TextBox
-                                       },
-                                    new Ctrl() { DisplayName = "Ethnicity", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Gender", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
+                                       ,NgModel = "E06_16"},
+                                    new DropDownList() { DisplayName = "Ethnicity", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E06_13")
+                                       ,NgModel = "E06_13"},
+                                    new DropDownList() { DisplayName = "Gender", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E06_11")
+                                       ,NgModel = "E06_11"},
                                     new Ctrl() { DisplayName = "SSN", ControlType = ControlTypeEnum.TextBox
-                                       },
+                                       ,NgModel = "E06_10"},
                                     new Ctrl() { DisplayName = "Pattient Address", ControlType = ControlTypeEnum.TextBox
-                                       }
+                                       ,NgModel = ""}
                                     }
                              },
                              new Section()
@@ -469,12 +490,12 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                  {
 
                                     new Ctrl() { DisplayName = "DL Number", ControlType = ControlTypeEnum.TextBox
-                                       },
-                                    new Ctrl() { DisplayName = "DL State", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
+                                       ,NgModel = "E06_19"},
                                     new Ctrl() { DisplayName = "Pt Practitioner Name", ControlType = ControlTypeEnum.TextBox
-                                       }
+                                       ,NgModel = "E06_18"},
+                                     new DropDownList() { DisplayName = "DL State", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E12_06")
+                                       ,NgModel = "E12_06"}
                                  }
                              },
                              new Section()
@@ -483,36 +504,36 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                  Side = SectionSideEnum.right,
                                  Controls = new List<Ctrl>()
                                  {
-                                     new Ctrl() { DisplayName = "History", ControlType = ControlTypeEnum.DropDownList,
+                                     new DropDownList() { DisplayName = "History", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E12_10")
+                                       ,NgModel = "E12_10"},
+                                    new DropDownList() { DisplayName = "History Obtained", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E12_11")
+                                       ,NgModel = "E12_11"},
+                                    new DropDownList() { DisplayName = "Allergies (Meds)", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E12_08")
+                                       ,NgModel = "E12_08"},
+                                    new DropDownList() { DisplayName = "Emergency Form", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E12_18")
+                                       ,NgModel = "E12_18" },
+                                    new DropDownList() { DisplayName = "Allergies (Other)", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E12_09")
+                                       ,NgModel = "E12_09" },
+                                    new DropDownList() { DisplayName = "Advanced Directives", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E12_07")
+                                       ,NgModel = "E12_07" },
+                                    new DropDownList() { DisplayName = "Triage Color", ControlType = ControlTypeEnum.DropDownList,
                                         DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "History Obtained", ControlType = ControlTypeEnum.DropDownList,
+                                       ,NgModel = "CustomTriageColor" },
+                                    new DropDownList() { DisplayName = "Triage Category", ControlType = ControlTypeEnum.DropDownList,
                                         DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Allergies", ControlType = ControlTypeEnum.DropDownList,
+                                       ,NgModel = "CustomTriageCategory" },
+                                    new DropDownList() { DisplayName = "Pregnant?", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E12_20")
+                                       ,NgModel = "E12_20" },
+                                    new DropDownList() { DisplayName = "# Past Pregnancies", ControlType = ControlTypeEnum.DropDownList,
                                         DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Emergency Form", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Enviromental/Food Allergies", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Advanced Directives", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Triage Color", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Triage Category", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Pregnant", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "# Past Pregnancies", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       }
+                                       ,NgModel = "" }
                                  }
 
                              },
@@ -543,22 +564,22 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 Controls = new List<Ctrl>()
                                 {
                                     new Ctrl() { DisplayName = "Chief Complaint", ControlType = ControlTypeEnum.TextBox
-                                       },
+                                       ,NgModel = "E09_05" },
                                     new Ctrl() { DisplayName = "Duration", ControlType = ControlTypeEnum.TextBox, ResponsiveWidth = 3
-                                       },
-                                    new Ctrl() { DisplayName = "Units", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions(""), ResponsiveWidth = 3
-                                       },
+                                       ,NgModel = "E09_06" },
+                                    new DropDownList() { DisplayName = "Units", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E09_07"), ResponsiveWidth = 3
+                                       ,NgModel = "E09_07" },
                                     new Ctrl() { DisplayName = "Secondary Complaint", ControlType = ControlTypeEnum.TextBox
-                                       },
+                                       ,NgModel = "E09_08" },
                                     new Ctrl() { DisplayName = "Duration", ControlType = ControlTypeEnum.TextBox, ResponsiveWidth = 3
-                                       },
-                                    new Ctrl() { DisplayName = "Units", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions(""), ResponsiveWidth = 3
-                                       },
-                                    new Ctrl() { DisplayName = "Barriers To Patient Care", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions(""), ResponsiveWidth = 12
-                                       }
+                                       ,NgModel = "E09_09" },
+                                    new DropDownList() { DisplayName = "Units", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E09_10"), ResponsiveWidth = 3
+                                       ,NgModel = "E09_10" },
+                                    new DropDownList() { DisplayName = "Barriers To Patient Care", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E12_01"), ResponsiveWidth = 12
+                                       ,NgModel = "E12_01" }
                                 }
                             },
                             new Section()
@@ -579,26 +600,26 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 SectionName = "Vehicle Collision",
                                 Controls = new List<Ctrl>()
                                 {
-                                    new Ctrl() { DisplayName = "Vehicle Collision Impact", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions(""), ResponsiveWidth = 12
-                                       },
+                                    new DropDownList() { DisplayName = "Vehicle Collision Impact", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E10_05"), ResponsiveWidth = 12
+                                       ,NgModel = "E10_05" },
                                     new Ctrl() { DisplayName = "Report Number", ControlType = ControlTypeEnum.TextBox
-                                       },
-                                    new Ctrl() { DisplayName = "Pt Location", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Row", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Safety Equipment", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Airbags", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Injury Indicators", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       }
+                                       ,NgModel = "E22_03" },
+                                    new DropDownList() { DisplayName = "Pt Location", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E10_07")
+                                       ,NgModel = "E10_07" },
+                                    new DropDownList() { DisplayName = "Row", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E10_06")
+                                       ,NgModel = "E10_06" },
+                                    new DropDownList() { DisplayName = "Safety Equipment", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E10_08")
+                                       ,NgModel = "E10_08" },
+                                    new DropDownList() { DisplayName = "Airbags", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E10_09")
+                                       ,NgModel = "E10_09" },
+                                    new DropDownList() { DisplayName = "Injury Indicators", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E10_04")
+                                       ,NgModel = "E10_04" }
                                 }
                             },
                             new Section()
@@ -611,16 +632,16 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 Controls = new List<Ctrl>()
                                 {
                                     new Ctrl() { DisplayName = "Height of Fall(ft.)", ControlType = ControlTypeEnum.TextBox
-                                       },
-                                    new Ctrl() { DisplayName = "Cause of Injury", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Intent of Injury", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Trauma Type", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       }
+                                       ,NgModel = "E10_10" },
+                                    new DropDownList() { DisplayName = "Cause of Injury", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E10_01")
+                                       ,NgModel = "E10_01" },
+                                    new DropDownList() { DisplayName = "Intent of Injury", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E10_02")
+                                       ,NgModel = "E10_02" },
+                                    new DropDownList() { DisplayName = "Trauma Type", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E10_03")
+                                       ,NgModel = "E10_03" }
                                 }
                             },
                             new Section()
@@ -634,32 +655,32 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 Controls = new List<Ctrl>()
                                 {
                                     new Ctrl() { DisplayName = "Pre-Arrival", ControlType = ControlTypeEnum.TextBox
-                                       },
-                                    new Ctrl() { DisplayName = "Cardiac Arest Time", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Etiology", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Witnessed By", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "First Rhythm", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Circulation Return", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Resusitations", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Discontinue Reason", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
+                                       ,NgModel = "" },
+                                    new DropDownList() { DisplayName = "Cardiac Arest Time", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E11_08")
+                                       ,NgModel = "E11_08" },
+                                    new DropDownList() { DisplayName = "Etiology", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E11_02")
+                                       ,NgModel = "E11_02" },
+                                    new DropDownList() { DisplayName = "Witnessed By", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E11_04")
+                                       ,NgModel = "E11_04" },
+                                    new DropDownList() { DisplayName = "First Rhythm", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E11_05")
+                                       ,NgModel = "E11_05" },
+                                    new DropDownList() { DisplayName = "Circulation Return", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E11_06")
+                                       ,NgModel = "E11_06" },
+                                    new DropDownList() { DisplayName = "Resusitations", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E11_03")
+                                       ,NgModel = "E11_03" },
+                                    new DropDownList() { DisplayName = "Discontinue Reason", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E11_10")
+                                       ,NgModel = "E11_10" },
                                     new Ctrl() { DisplayName = "Discontinue Time", ControlType = ControlTypeEnum.TextBox
-                                       },
+                                       ,NgModel = "E11_09" },
                                     new Ctrl() { DisplayName = "Discontinue Date", ControlType = ControlTypeEnum.TextBox
-                                       }
+                                       ,NgModel = "" }
                                 }
                             },
                             new Section()
@@ -668,27 +689,27 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 SectionName = "Impression",
                                 Controls = new List<Ctrl>()
                                 {
-                                    new Ctrl() { DisplayName = "Complaint Location", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Organ System", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Primary Symptoms", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Other Symptoms", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Impression", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Secondary Impression", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Drugs/Alcohol", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       }
+                                    new DropDownList() { DisplayName = "Complaint Location", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E09_11")
+                                       ,NgModel = "E09_11" },
+                                    new DropDownList() { DisplayName = "Organ System", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E09_12")
+                                       ,NgModel = "E09_12" },
+                                    new DropDownList() { DisplayName = "Primary Symptoms", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E09_13")
+                                       ,NgModel = "E09_13" },
+                                    new DropDownList() { DisplayName = "Other Symptoms", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E09_14")
+                                       ,NgModel = "E09_14" },
+                                    new DropDownList() { DisplayName = "Impression", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E09_15")
+                                       ,NgModel = "E09_15" },
+                                    new DropDownList() { DisplayName = "Secondary Impression", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E09_16")
+                                       ,NgModel = "E09_16" },
+                                    new DropDownList() { DisplayName = "Drugs/Alcohol", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E12_19")
+                                       ,NgModel = "E12_19" }
                                 }
                             },
 
@@ -703,15 +724,15 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 SectionName = "Prior Aid Given",
                                 Controls = new List<Ctrl>()
                                 {
-                                    new Ctrl() { DisplayName = "Prior Aid", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Treated By", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Aid Outcome", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       }
+                                    new DropDownList() { DisplayName = "Prior Aid", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E09_01")
+                                       ,NgModel = "E09_01" },
+                                    new DropDownList() { DisplayName = "Treated By", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E09_02")
+                                       ,NgModel = "E09_02" },
+                                    new DropDownList() { DisplayName = "Aid Outcome", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E09_03")
+                                       ,NgModel = "E09_03" }
                                 }
                             }
                         }
@@ -727,17 +748,17 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 SectionName = "Billing",
                                 Controls = new List<Ctrl>()
                                 {
-                                    new Ctrl() { DisplayName = "Condition Codes", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Payment Method", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Necessity Certificate", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Patient Email", ControlType = ControlTypeEnum.TextBox
-                                       }
+                                    new DropDownList() { DisplayName = "Condition Codes", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E07_35")
+                                       ,NgModel = "E07_35" },
+                                    new DropDownList() { DisplayName = "Payment Method", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E07_01")
+                                       ,NgModel = "E07_01" },
+                                    new DropDownList() { DisplayName = "Necessity Certificate", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E07_02")
+                                       ,NgModel = "E07_02" },
+                                    new DropDownList() { DisplayName = "Patient Email", ControlType = ControlTypeEnum.TextBox
+                                       ,NgModel = "CustomPatientEmail" }
                                 }
                             },
                             new Section()
@@ -745,21 +766,21 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 SectionName = "Employer",
                                 Controls = new List<Ctrl>()
                                 {
-                                    new Ctrl() { DisplayName = "Work Related", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Employer", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
+                                    new DropDownList() { DisplayName = "Work Related", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E07_15")
+                                       ,NgModel = "E07_15" },
+                                    new DropDownList() { DisplayName = "Employer", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E07_27")
+                                       ,NgModel = "E07_27" },
                                     new Ctrl() { DisplayName = "Employer Address", ControlType = ControlTypeEnum.TextBox
-                                       },
+                                       ,NgModel = "" },
                                     new Ctrl() { DisplayName = "Employer Phone", ControlType = ControlTypeEnum.TextBox
-                                       },
+                                       ,NgModel = "E07_32" },
                                     new Ctrl() { DisplayName = "Patient Occupation", ControlType = ControlTypeEnum.TextBox
-                                       },
-                                    new Ctrl() { DisplayName = "Occupation Industry", ControlType = ControlTypeEnum.DropDownList,
+                                       ,NgModel = "E07_17" },
+                                    new DropDownList() { DisplayName = "Occupation Industry", ControlType = ControlTypeEnum.DropDownList,
                                         DropDownOptions = options.NemsisSelectOptions("")
-                                       }
+                                       ,NgModel = "" }
                                 }
                             }
                             ,new Section()
@@ -774,18 +795,18 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 Controls = new List<Ctrl>()
                                 {
                                     new Ctrl() { DisplayName = "Last Name", ControlType = ControlTypeEnum.TextBox
-                                       },
+                                       ,NgModel = "E07_18" },
                                     new Ctrl() { DisplayName = "First Name", ControlType = ControlTypeEnum.TextBox
-                                       },
+                                       ,NgModel = "E07_19" },
                                     new Ctrl() { DisplayName = "M.I.", ControlType = ControlTypeEnum.TextBox
-                                       },
+                                       ,NgModel = "E07_20" },
                                     new Ctrl() { DisplayName = "Phone #", ControlType = ControlTypeEnum.TextBox
-                                       },
-                                    new Ctrl() { DisplayName = "Relationship", ControlType = ControlTypeEnum.DropDownList,
+                                       ,NgModel = "E07_25" },
+                                    new DropDownList() { DisplayName = "Relationship", ControlType = ControlTypeEnum.DropDownList,
                                         DropDownOptions = options.NemsisSelectOptions("")
-                                       },
+                                       ,NgModel = "E07_26" },
                                     new Ctrl() { DisplayName = "Guardian Address", ControlType = ControlTypeEnum.TextBox
-                                       }
+                                       ,NgModel = "" }
                                 }
                             },
                             new Section()
@@ -827,23 +848,23 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 SectionName = "Destination/Transfer To",
                                 Controls = new List<Ctrl>()
                                 {
-                                    new Ctrl() { DisplayName = "Destination", ControlType = ControlTypeEnum.DropDownList,
+                                    new DropDownList() { DisplayName = "Destination", ControlType = ControlTypeEnum.DropDownList,
                                         DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Destination Reason", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
+                                       ,NgModel = "" },
+                                    new DropDownList() { DisplayName = "Destination Reason", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E20_16")
+                                       ,NgModel = "E20_16" },
                                     new Ctrl() { DisplayName = "Destination Address", ControlType = ControlTypeEnum.TextBox, ResponsiveWidth = 12
-                                       },
-                                    new Ctrl() { DisplayName = "Transfer Condition", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Destination Type", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Destination Code", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       }
+                                       ,NgModel = "" },
+                                    new DropDownList() { DisplayName = "Transfer Condition", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E20_15")
+                                       ,NgModel = "E20_15" },
+                                    new DropDownList() { DisplayName = "Destination Type", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E20_17")
+                                       ,NgModel = "E20_17" },
+                                    new DropDownList() { DisplayName = "Destination Code", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E20_02")
+                                       ,NgModel = "E20_02" }
                                 }
                             },
                             new Section()
@@ -851,66 +872,66 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 SectionName = "Transport Information",
                                 Controls = new List<Ctrl>()
                                 {
-                                    new Ctrl() { DisplayName = "MCI", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Rythm at Destination", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Number of Patients", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "ER Disposition", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "To Ambulance Via", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Hospital Disposition", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Transport Position", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "From Ambulance Via", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Mode From Scene", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       }
+                                    new DropDownList() { DisplayName = "MCI", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E08_06")
+                                       ,NgModel = "E08_06" },
+                                    new DropDownList() { DisplayName = "Rythm at Destination", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E11_11")
+                                       ,NgModel = "E11_11" },
+                                    new DropDownList() { DisplayName = "Number of Patients", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E08_05")
+                                       ,NgModel = "E08_05" },
+                                    new DropDownList() { DisplayName = "ER Disposition", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E22_01")
+                                       ,NgModel = "E22_01" },
+                                    new DropDownList() { DisplayName = "To Ambulance Via", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E20_11")
+                                       ,NgModel = "E20_11" },
+                                    new DropDownList() { DisplayName = "Hospital Disposition", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E22_02")
+                                       ,NgModel = "E22_02" },
+                                    new DropDownList() { DisplayName = "Transport Position", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E20_12")
+                                       ,NgModel = "E20_12" },
+                                    new DropDownList() { DisplayName = "From Ambulance Via", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E20_13")
+                                       ,NgModel = "E20_13" },
+                                    new DropDownList() { DisplayName = "Mode From Scene", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E20_14")
+                                       ,NgModel = "E20_14" }
                                 }
                             },
 
                             new Section()
                             {
                                 Side = SectionSideEnum.right,
-                                SectionName = "Other Reporting Information",
+                                SectionName = "Other Reporting Info",
                                 Controls = new List<Ctrl>()
                                 {
-                                    new Ctrl() { DisplayName = "Discharge Neuro", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
+                                    new DropDownList() { DisplayName = "Discharge Neuro", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E11_07")
+                                       ,NgModel = "E11_07" },
                                     new Ctrl() { DisplayName = "Transfer-To Record #", ControlType = ControlTypeEnum.TextBox
-                                       },
-                                    new Ctrl() { DisplayName = "Trauma Registry ID", ControlType = ControlTypeEnum.TextBox
-                                       },
+                                       ,NgModel = "E12_02" },
+                                    new DropDownList() { DisplayName = "Trauma Registry ID", ControlType = ControlTypeEnum.TextBox
+                                       ,NgModel = "E22_04" },
                                     new Ctrl() { DisplayName = "Destination Record #", ControlType = ControlTypeEnum.TextBox
-                                       },
+                                       ,NgModel = "E12_03" },
                                     new Ctrl() { DisplayName = "Fire Report #", ControlType = ControlTypeEnum.TextBox
-                                       },
-                                    new Ctrl() { DisplayName = "Destination Zone", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
+                                       ,NgModel = "E22_05" },
+                                    new DropDownList() { DisplayName = "Destination Zone", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E20_09")
+                                       ,NgModel = "E20_09" },
                                     new Ctrl() { DisplayName = "Patient ID Tag #", ControlType = ControlTypeEnum.TextBox
-                                       },
+                                       ,NgModel = "E22_06" },
                                     new Ctrl() { DisplayName = "Vehicle Lat GPS", ControlType = ControlTypeEnum.TextBox
-                                       },
+                                       ,NgModel = "E02_15" },
                                     new Ctrl() { DisplayName = "Destination Lat GPS", ControlType = ControlTypeEnum.TextBox
-                                       },
+                                       ,NgModel = "E20_08" },
                                     new Ctrl() { DisplayName = "Vehicle Long GPS", ControlType = ControlTypeEnum.TextBox
-                                       },
+                                       ,NgModel = "E02_15" },
                                     new Ctrl() { DisplayName = "Destination Long GPS", ControlType = ControlTypeEnum.TextBox
-                                       }
+                                       ,NgModel = "E20_08" }
                                 }
                             }
                         }
@@ -937,39 +958,39 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 SectionName = "Other Fields",
                                 Controls = new List<Ctrl>()
                                 {
-                                    new Ctrl() { DisplayName = "Review Requested", ControlType = ControlTypeEnum.DropDownList,
+                                    new DropDownList() { DisplayName = "Review Requested", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E23_01")
+                                       ,NgModel = "E23_01" },
+                                    new DropDownList() { DisplayName = "EMS Injury", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E23_05")
+                                       ,NgModel = "E23_05" },
+                                    new DropDownList() { DisplayName = "Injury Type", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E23_05")
+                                       ,NgModel = "E23_06" },
+                                    new DropDownList() { DisplayName = "Contact Blood/Fluids", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E23_08")
+                                       ,NgModel = "E23_05" },
+                                    new DropDownList() { DisplayName = "Fluid Exposure Type", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E23_06")
+                                       ,NgModel = "E23_06" },
+                                    new DropDownList() { DisplayName = "Personnel Exposed", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E23_07")
+                                       ,NgModel = "E23_07" },
+                                    new DropDownList() { DisplayName = "Req. Reportable Cond.", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E23_08")
+                                       ,NgModel = "E23_08" },
+                                    new DropDownList() { DisplayName = "Registry Candidate", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E23_02")
+                                       ,NgModel = "E23_02" },
+                                    new DropDownList() { DisplayName = "Protective Equipment", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E23_03")
+                                       ,NgModel = "E23_03" },
+                                    new DropDownList() { DisplayName = "Disasters", ControlType = ControlTypeEnum.DropDownList,
+                                        DropDownOptions = options.NemsisSelectOptions("E23_04")
+                                       ,NgModel = "E23_04" },
+                                    new DropDownList() { DisplayName = "Precautions", ControlType = ControlTypeEnum.DropDownList,
                                         DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "EMS Injury", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Injury Type", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Contact Blood/Fluids", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Fluid Exposure Type", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Personnel Exposed", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Req. Reportable Cond.", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Registry Candidate", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Protective Equipment", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Disasters", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       },
-                                    new Ctrl() { DisplayName = "Precautions", ControlType = ControlTypeEnum.DropDownList,
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       }
+                                       ,NgModel = "" }
                                 }
                             }
                         }

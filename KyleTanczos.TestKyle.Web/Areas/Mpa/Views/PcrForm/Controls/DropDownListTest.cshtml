@@ -8,7 +8,7 @@
     <div class="form-group">
         <label class="control-label">@Model.DisplayName </label>
 
-        <select  id="@Model.ClientId" class="form-control" @Model.NgModel >
+        <select  id="@Model.ClientId" class="form-control @Model." @Model.NgModel >
             <option value="">@Model.PlaceHolder</option>
 
             @foreach (var option in Model.DropDownOptions)
