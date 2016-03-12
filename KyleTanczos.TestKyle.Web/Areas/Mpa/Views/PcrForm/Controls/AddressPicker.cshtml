@@ -1,0 +1,28 @@
+﻿@using KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
+
+
+
+@model KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers.AddressPicker
+
+<div class="col-xs-@Model.ResponsiveWidth minimalPaddingImportant">
+    <div class="form-group">
+        <label class="control-label"> @Model.DisplayName </label>
+
+        <a style="display:none" id="@(Model.Dialog.DialogTargetId)Button" class="btn btn-default btn-xs" type="button" data-toggle="modal" href="#@Model.Dialog.DialogTargetId">Edit</a>
+
+        <textarea class="form-control autosizeme" rows="4" placeholder="Autosizeme..." 
+                  data-autosize-on="true" style="overflow: hidden; word-wrap: break-word; 
+                    resize: horizontal; height: 99px;"
+                  onfocus="$('#@(Model.Dialog.DialogTargetId)Button').click();" >
+
+        </textarea>
+
+
+    </div>
+</div>
+
+
+
+@Html.Partial("Controls/" + Model.Dialog.PartialTemplateName, Model.Dialog)
+
+

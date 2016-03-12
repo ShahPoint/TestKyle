@@ -2,29 +2,50 @@
 
 @model KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers.Ctrl
 
-@*<div class="col-xs-@Model.ResponsiveWidth">
-        <div class="form-group">
-            <label class="control-label col-xs-4">@Model.DisplayName</label>
-            <div class="col-xs-8">
-                <div class="input-group">
-                    <input type="text" id="@Model.ClientId" placeholder="@Model.PlaceHolder" class="form-control">
-                    <span class="input-group-btn">
-                        <button class="btn default" type="button">
-                            <i class="fa fa-clock-o"></i>
-                        </button>
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>*@
+
+
+@section MyTimePickerScript {
+    <script type="text/javascript">
+
+        //$.mask.definitions['H'] = "[0-2]";
+        //$.mask.definitions['h'] = "[0-9]";
+        //$.mask.definitions['M'] = "[0-5]";
+        //$.mask.definitions['m'] = "[0-9]";
+
+
+        //$(".time-control").mask("Hh:Mm");
+
+        function SetTimeControl(thisControl)
+        {
+            alert("adsfdfa");
+
+            var val = $(this).val();
+
+            val = val.replace(":", "");
+
+            var timeNumber = parseInt(val);
+
+            var hours = Math.floor(timeNumber / 100);
+            
+            var minutes = timeNumber - (hour * 100); 
+
+            alert("hours : " + hours);
+
+            alert("minutes : " + minutes);
+        }
+
+    </script>
+}
 
 <div class="col-xs-@Model.ResponsiveWidth" style="margin-bottom:5px">
     <div class="form-group">
         <label class="control-label col-xs-6">@Model.DisplayName </label>
         <div class="col-xs-6">
-            <input type="tel" @Model.NgModel @*id="@Model.ClientId"*@ class="form-control time-control inputmask" style="min-width:50px" placeholder="@Model.PlaceHolder">
+            <input type="tel" onchange="SetTimeControl(this)" @Model.NgModel class="form-control time-control" style="min-width:50px" placeholder="@Model.PlaceHolder">
+            @*id="@Model.ClientId"*@
+            @*<input type="text"  /> onchange="$hidden = $(this).siblings('input'); $hidden.val($(this).val()).trigger('input');"*@
         </div>
-        
+
 
     </div>
 </div>

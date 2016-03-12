@@ -2994,6 +2994,8 @@
     <Content Include="libs\jquery-maskedinput\spec\lib\jasmine-species\BSD.LICENSE" />
     <Content Include="libs\jquery-maskedinput\spec\lib\jasmine-species\version.json" />
     <Content Include="libs\jquery-maskedinput\spec\lib\jasmine\MIT.LICENSE" />
+    <Content Include="Areas\Mpa\Views\PcrForm\Controls\AddressPicker.cshtml" />
+    <Content Include="Areas\Mpa\Views\PcrForm\Controls\DialogAddress.cshtml" />
     <None Include="Properties\PublishProfiles\FileSystem_Release.pubxml" />
     <Content Include="Views\Account\TenantSelection.cshtml" />
     <Content Include="Scripts\version.json" />

@@ -63,6 +63,9 @@
 
 
 <div id="mainApp" data-ng-app="myApp" data-ng-controller="myCtrl"  >
+    <input type="text" data-ng-model="pcr.GuardianAddress.autocomplete" ng-autocomplete details="details" />
+
+
 
     @foreach (Tab tab in Model.Tabs)
     {
@@ -70,6 +73,24 @@
     }
 
     {{greg}} {{E20_10}} {{E08_02}} {{E07_33}} <br/><br/> {{pcr}}
+    <button type="button" id="saveButton" ng-click="SaveCurrentPcr()" >Save</button>
+    <button type="button" id="saveButton" ng-click="LoadPcrArray()" >GetList</button>
+
+    <hr />
+
+    <table>
+
+        <tr ng-repeat="pcr in pcrArray">
+            <td>{{pcr.offlineId}}</td>
+            <td>{{pcr.E02_20}}</td>
+            <td><button ng-click="Load($index)">Load</button></td>
+            <td><button ng-click="Delete($index)">Delete</button></td>
+        </tr>
+
+    </table>
+
+    @*<button ng-click="DeleteAllPcrs()">Delete All</button>*@
+
 </div>
 
 

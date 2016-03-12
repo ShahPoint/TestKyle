@@ -1,14 +1,14 @@
 ﻿@using KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 
-@model Dialog
+@model DialogAddress
 
 
 <div class="modal fade" id="@Model.DialogTargetId" role="basic" aria-hidden="true" style="display: none;">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div id="model-content" class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                <h4 class="modal-title">base @Model.DialogTitle</h4>
+                <h4 class="modal-title"> @Model.AddressName Address </h4>
             </div>
             <div class="modal-body">
                 <form action="#" class="horizontal-form">
@@ -18,13 +18,18 @@
                             @Html.Partial("Controls/" + control.ControlType, control);
                         }
                     </div>
+                    
                 </form>
             </div>
+            <div class="col-xs-12">
+                <hr />
+            </div>
             <div class="modal-footer">
+                
                 <button type="button" onclick="@Model.OnCancelClick" class="btn btn-outline @Model.GetHideBtnClass" data-dismiss="modal">@Model.CancelBtnText</button>
                 <button type="button" ng-click="@Model.NgSubmitClick" onclick="@Model.OnSubmitClick" class="btn btn-default">@Model.SubmitBtnText</button>
             </div>
-            </div>
+        </div>
         <!-- /.modal-content -->
     </div>
     <!-- /.modal-dialog -->

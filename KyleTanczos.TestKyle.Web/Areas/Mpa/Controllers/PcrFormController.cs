@@ -74,16 +74,67 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 
     public enum SectionSideEnum { left, right }
 
+
+    public class DialogAddress : Dialog
+    {
+        public DialogAddress()
+        {
+            PartialTemplateName = "DialogAddress";
+            SubmitBtnText = "Close";
+            HideCancelButton = true;
+            OnSubmitClick = "alert('hello');"; //SetTextArea('TextAreaSceneAddress', this);           
+        }
+
+        public string AddressName { get; set; }
+
+        public new List<Ctrl> Controls { get { return                    
+                    new List<Ctrl>()
+                    {
+                        new TextBox() { DisplayName = "Google Address (Quick Search)", NgModel= AddressName + "Address.AutoComplete", ResponsiveWidth = 12
+                            //, DropDownOptions = new List<Select2Option>() { new Select2Option() { id = "Herm", text = "Hermitage" }, new Select2Option() { id = "sharon", text = "Sharon" }, new Select2Option() { id = "pitts", text = "Pittsburgh" } }
+                            },
+                        new TextBox() { DisplayName = "Street Address", NgModel= AddressName + "Address.Street", ResponsiveWidth = 12
+                            },
+                        new TextBox() { DisplayName = "Street Address 2", NgModel= AddressName + "Address.Street2", ResponsiveWidth = 12
+                            },
+                        new TextBox() { DisplayName = "City", NgModel= AddressName + "Address.City", ResponsiveWidth = 7
+                            },
+                        new TextBox() { DisplayName = "State", NgModel= AddressName + "Address.State", ResponsiveWidth = 2
+                            },
+                        new TextBox() { DisplayName = "Zip", NgModel= AddressName + "Address.Zip", ResponsiveWidth = 3
+                            },
+                        new DropDownList() { DisplayName = "Municipality Picker", NgModel= AddressName + "Address.FipsPicker", ResponsiveWidth = 12, select2_OfflineListName = "PatientMedicationList"
+                                , DropDownOptions = new List<Select2Option>() { new Select2Option() { id = "Herm", text = "Hermitage" }, new Select2Option() { id = "sharon", text = "Sharon" }, new Select2Option() { id = "pitts", text = "Pittsburgh" } }
+                            },
+                        new TextBox() { DisplayName = "Municipality City Code", NgModel= AddressName + "Address.MinicipalityCode", ResponsiveWidth = 6
+                            },
+                        new TextBox() { DisplayName = "County Code", NgModel= AddressName + "Address.CountyCode", ResponsiveWidth = 6
+                            },
+                        new TextBox() { DisplayName = "Additional Notes", NgModel= AddressName + "Address.AddressNotes", ResponsiveWidth = 12
+                            }
+
+
+
+                    };
+            } } 
+
+    }
+
+
+
+
     public class Dialog
     {
         public Dialog()
         {
+            PartialTemplateName = "Dialog";
             Controls = new List<Ctrl>();
             DialogTitle = "Title Here";
             SubmitBtnText = "Save";
             CancelBtnText = "Cancel";
         }
 
+        public string PartialTemplateName { get; set; }
         public string DialogTargetId { get; set; }
         public string DialogTitle { get; set; }
         public List<Ctrl> Controls { get; set; }
@@ -93,6 +144,8 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
         public string NgCancelClick { get; set; }
         public string SubmitBtnText { get; set; }
         public string CancelBtnText { get; set; }
+        public bool HideCancelButton { get; set; }
+        public string GetHideBtnClass { get { return (HideCancelButton ? "hidden" : ""); } }
     }
 
     public class DropDownList : Ctrl
@@ -105,10 +158,26 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
         }
         public List<Select2Option> DropDownOptions { get; set; }
         public bool IsSelect2 { get; set; }
+
         public string GetSelect2Class()
         {
             return (IsSelect2 ? "select2Defualt" : "");
         }
+        public bool IsSelect2modal { get; set; }
+
+        public string GetSelect2ModalClass()
+        {
+            return (IsSelect2modal ? "select2modal" : "");
+        }
+
+        public string select2_OfflineListName { get; set; }
+
+        public string RenderSelect2_OfflineList()
+        {
+            return (string.IsNullOrEmpty(select2_OfflineListName) ? "" : "offlineSelect2listName=" + select2_OfflineListName );
+        }
+
+
     }
 
     public class TimePicker : Ctrl
@@ -117,6 +186,20 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
         {
             ControlType = ControlTypeEnum.TimePicker;
         }
+    }
+
+    public class AddressPicker : Ctrl
+    {
+        public AddressPicker()
+        {
+            ControlType = ControlTypeEnum.AddressPicker;
+
+        }
+
+        
+        public Dialog Dialog { get; set; }
+
+
     }
 
     public class TextBox : Ctrl
@@ -141,6 +224,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
         public string PlaceHolder { get; set; }
         public string ClientId { get; set; }
         private string _NgModel;
+        
 
         public string NgModel
         {
@@ -170,8 +254,8 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
         public string text { get; set; }
     }
 
-
-    public enum ControlTypeEnum { PatientMeds, MileageBox, TextBox, DropDownList, Select2, Select2Single, Select2Many, Select2TagsSingle, Select2TagsMany, TimePicker }
+                                 
+    public enum ControlTypeEnum { PatientMeds, MileageBox, TextBox, DropDownList, Select2, Select2Single, Select2Many, AddressPicker, Select2TagsSingle, Select2TagsMany, TimePicker }
 
     public class GetPcrFormSelect2Options
     {
@@ -209,9 +293,9 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
             var defaultSelect2Options = defaultOptions.Where(x => x.FieldNumber == NemsisId);
             return defaultSelect2Options.Select(x => new Select2Option() { id = x.OptionText, text = x.OptionText }).ToList();
         }
-}
+    }
 
-    //[OutputCache(Duration = 120, VaryByParam = "none", Location = OutputCacheLocation.Client)]
+    [OutputCache(Duration = 1, VaryByParam = "none", Location = OutputCacheLocation.Client)]
     // public enum ResponsiveWidthEnum {ng1, ng2, ng3, ng4, ng5, ng6, ng7, ng8, ng9, ng10, ng11, ng12 }
     public class PcrFormController : Controller
     {
@@ -300,11 +384,21 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 Controls = new List<Ctrl>()
                                 {
                                    new TextBox() { DisplayName = "Incident Number"
-                                   ,NgModel = "E02_02"
+                                       ,NgModel = "E02_02"
                                         },
                                     new DropDownList() { DisplayName = "Response Urgency", 
                                         DropDownOptions = options.NemsisSelectOptions("E07_33")
                                         ,NgModel = "E07_33"
+                                        }
+                                    ,
+                                    new AddressPicker() { DisplayName = "Scene Address"                                       
+                                        , Dialog = new DialogAddress()
+                                            {
+                                                DialogTargetId = "SceneAddress",
+                                                
+                                                AddressName = "Scene"
+                                            }
+
                                         },
                                     new DropDownList() { DisplayName = "CMS Level",
                                         DropDownOptions = options.NemsisSelectOptions("D01_06")
@@ -317,9 +411,6 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                     new DropDownList() { DisplayName = "Nature Of Incident", 
                                         DropDownOptions = options.NemsisSelectOptions("E03_01")
                                         ,NgModel = "E03_01"
-                                        },
-                                    new TextBox() { DisplayName = "Scene Address"
-                                        ,NgModel = ""
                                         }
 
                                 }
@@ -332,7 +423,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                         DropDownOptions = options.NemsisSelectOptions("E02_12")
                                         ,NgModel = "E02_12"
                                         },
-                                        new DropDownList() { DisplayName = "Vehicle Number", 
+                                   new DropDownList() { DisplayName = "Vehicle Number", 
                                         DropDownOptions = options.NemsisSelectOptions("E02_11")
                                         ,NgModel = "E02_11"
                                         },
@@ -340,7 +431,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                         DropDownOptions = options.NemsisSelectOptions("E02_20")
                                         ,NgModel = "E02_20"
                                         },
-                                        new TextBox() { DisplayName = "Veh. Incident #"
+                                   new TextBox() { DisplayName = "Veh. Incident #"
                                         ,NgModel = ""
                                         },
                                     new DropDownList() { DisplayName = "Service Requested", 
@@ -584,7 +675,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                        ,NgModel = "E09_05" },
                                     new TextBox() { DisplayName = "Duration", ResponsiveWidth = 3
                                        ,NgModel = "E09_06" },
-                                    new DropDownList() { DisplayName = "Units", 
+                                    new DropDownList() { DisplayName = "Units", IsSelect2 = true,
                                         DropDownOptions = options.NemsisSelectOptions("E09_07"), ResponsiveWidth = 3
                                        ,NgModel = "E09_07" },
                                     new TextBox() { DisplayName = "Secondary Complaint"
