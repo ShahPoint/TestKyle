@@ -91,7 +91,7 @@ var Utils = {
 }
 
 
-var app = angular.module('myApp', []);
+var app = angular.module('myApp', ["ngAutocomplete"]);
 app.controller('myCtrl', function ($scope) {
     $scope.firstName = "John";
     $scope.lastName = "Doe";

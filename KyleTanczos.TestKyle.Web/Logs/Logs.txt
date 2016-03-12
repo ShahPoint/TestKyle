@@ -5149,3 +5149,838 @@ DEBUG 2016-03-07 00:33:48,254 [306  ] Abp.Logging.LogHelper                    -
 DEBUG 2016-03-07 00:33:48,255 [306  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Users.Profile.IProfileAppService' with service name 'app/profile'.
 DEBUG 2016-03-07 00:33:48,256 [306  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Roles.IRoleAppService' with service name 'app/role'.
 DEBUG 2016-03-07 00:33:48,256 [306  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Auditing.IAuditLogAppService' with service name 'app/auditLog'.
+DEBUG 2016-03-12 01:11:44,075 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2016-03-12 01:11:44,836 [1    ] Abp.Modules.AbpModuleManager             - Found 14 ABP modules in total.
+DEBUG 2016-03-12 01:11:44,839 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:11:44,841 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:11:44,841 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:11:44,841 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:11:44,841 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:11:44,841 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:11:44,841 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.Zero, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:11:44,841 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFramework.AbpZeroEntityFrameworkModule, Abp.Zero.EntityFramework, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:11:44,841 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.Ldap.AbpZeroLdapModule, Abp.Zero.Ldap, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:11:44,841 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleApplicationModule, KyleTanczos.TestKyle.Application, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:11:44,842 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleCoreModule, KyleTanczos.TestKyle.Core, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:11:44,842 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleDataModule, KyleTanczos.TestKyle.EntityFramework, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:11:44,842 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.Web.TestKyleWebModule, KyleTanczos.TestKyle.Web, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:11:44,842 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.WebApi.TestKyleWebApiModule, KyleTanczos.TestKyle.WebApi, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:11:44,847 [1    ] Abp.Modules.AbpModuleManager             - 14 modules loaded.
+DEBUG 2016-03-12 01:11:44,870 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-12 01:11:44,870 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-12 01:11:44,870 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-12 01:11:44,870 [1    ] o.Configuration.LanguageManagementConfig - Converted TestKyle (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-12 01:11:45,751 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2016-03-12 01:11:45,755 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2016-03-12 01:11:45,756 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2016-03-12 01:11:45,760 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2016-03-12 01:11:45,769 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: TestKyle
+DEBUG 2016-03-12 01:11:46,196 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 27 classes defines auto mapping attributes
+DEBUG 2016-03-12 01:11:46,196 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2016-03-12 01:11:46,204 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Sessions.Dto.UserLoginInfoDto
+DEBUG 2016-03-12 01:11:46,205 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Organizations.Dto.OrganizationUnitDto
+DEBUG 2016-03-12 01:11:46,208 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Organizations.Dto.OrganizationUnitUserListDto
+DEBUG 2016-03-12 01:11:46,209 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.MultiTenancy.Dto.TenantListDto
+DEBUG 2016-03-12 01:11:46,210 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.MultiTenancy.Dto.TenantEditDto
+DEBUG 2016-03-12 01:11:46,212 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Localization.Dto.ApplicationLanguageEditDto
+DEBUG 2016-03-12 01:11:46,213 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Localization.Dto.ApplicationLanguageListDto
+DEBUG 2016-03-12 01:11:46,214 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.EditionEditDto
+DEBUG 2016-03-12 01:11:46,215 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.FlatFeatureDto
+DEBUG 2016-03-12 01:11:46,216 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.EditionListDto
+DEBUG 2016-03-12 01:11:46,217 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Dto.UserListDto
+DEBUG 2016-03-12 01:11:46,218 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Profile.Dto.CurrentUserProfileEditDto
+DEBUG 2016-03-12 01:11:46,220 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Roles.Dto.RoleListDto
+DEBUG 2016-03-12 01:11:46,223 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Roles.Dto.RoleEditDto
+DEBUG 2016-03-12 01:11:46,226 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Dto.FlatPermissionDto
+DEBUG 2016-03-12 01:11:46,226 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Auditing.Dto.AuditLogListDto
+DEBUG 2016-03-12 01:11:46,229 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Dto.UserListDto+UserListRoleDto
+DEBUG 2016-03-12 01:11:46,230 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Users.UserPermissionsEditViewModel
+DEBUG 2016-03-12 01:11:46,231 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Users.CreateOrEditUserModalViewModel
+DEBUG 2016-03-12 01:11:46,232 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Roles.CreateOrEditRoleModalViewModel
+DEBUG 2016-03-12 01:11:46,232 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Profile.MySettingsViewModel
+DEBUG 2016-03-12 01:11:46,239 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Editions.CreateOrEditEditionModalViewModel
+DEBUG 2016-03-12 01:11:46,240 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Tenants.TenantFeaturesEditViewModel
+DEBUG 2016-03-12 01:11:46,241 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.OrganizationUnits.EditOrganizationUnitModalViewModel
+DEBUG 2016-03-12 01:11:46,242 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Languages.CreateOrEditLanguageModalViewModel
+DEBUG 2016-03-12 01:11:46,242 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Models.Account.TenantSelectionViewModel+TenantInfo
+DEBUG 2016-03-12 01:11:46,250 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Tenants.Dashboard.ITenantDashboardAppService' with service name 'app/tenantDashboard'.
+DEBUG 2016-03-12 01:11:46,251 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Sessions.ISessionAppService' with service name 'app/session'.
+DEBUG 2016-03-12 01:11:46,252 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Organizations.IOrganizationUnitAppService' with service name 'app/organizationUnit'.
+DEBUG 2016-03-12 01:11:46,252 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.MultiTenancy.ITenantAppService' with service name 'app/tenant'.
+DEBUG 2016-03-12 01:11:46,254 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Localization.ILanguageAppService' with service name 'app/language'.
+DEBUG 2016-03-12 01:11:46,254 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Editions.IEditionAppService' with service name 'app/edition'.
+DEBUG 2016-03-12 01:11:46,256 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Configuration.Host.IHostSettingsAppService' with service name 'app/hostSettings'.
+DEBUG 2016-03-12 01:11:46,257 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Configuration.Tenants.ITenantSettingsAppService' with service name 'app/tenantSettings'.
+DEBUG 2016-03-12 01:11:46,258 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Common.ICommonLookupAppService' with service name 'app/commonLookup'.
+DEBUG 2016-03-12 01:11:46,259 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Users.IUserAppService' with service name 'app/user'.
+DEBUG 2016-03-12 01:11:46,260 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Users.Profile.IProfileAppService' with service name 'app/profile'.
+DEBUG 2016-03-12 01:11:46,261 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Roles.IRoleAppService' with service name 'app/role'.
+DEBUG 2016-03-12 01:11:46,262 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Auditing.IAuditLogAppService' with service name 'app/auditLog'.
+DEBUG 2016-03-12 01:35:44,236 [101  ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2016-03-12 01:35:44,769 [101  ] Abp.Modules.AbpModuleManager             - Found 14 ABP modules in total.
+DEBUG 2016-03-12 01:35:44,772 [101  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:35:44,774 [101  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:35:44,774 [101  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:35:44,774 [101  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:35:44,774 [101  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:35:44,775 [101  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:35:44,775 [101  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.Zero, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:35:44,775 [101  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFramework.AbpZeroEntityFrameworkModule, Abp.Zero.EntityFramework, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:35:44,775 [101  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.Ldap.AbpZeroLdapModule, Abp.Zero.Ldap, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:35:44,775 [101  ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleApplicationModule, KyleTanczos.TestKyle.Application, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:35:44,776 [101  ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleCoreModule, KyleTanczos.TestKyle.Core, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:35:44,776 [101  ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleDataModule, KyleTanczos.TestKyle.EntityFramework, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:35:44,776 [101  ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.Web.TestKyleWebModule, KyleTanczos.TestKyle.Web, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:35:44,776 [101  ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.WebApi.TestKyleWebApiModule, KyleTanczos.TestKyle.WebApi, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:35:44,779 [101  ] Abp.Modules.AbpModuleManager             - 14 modules loaded.
+DEBUG 2016-03-12 01:35:44,800 [101  ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-12 01:35:44,800 [101  ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-12 01:35:44,800 [101  ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-12 01:35:44,800 [101  ] o.Configuration.LanguageManagementConfig - Converted TestKyle (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-12 01:35:45,619 [101  ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2016-03-12 01:35:45,623 [101  ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2016-03-12 01:35:45,623 [101  ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2016-03-12 01:35:45,630 [101  ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2016-03-12 01:35:45,635 [101  ] Abp.Localization.LocalizationManager     - Initialized localization source: TestKyle
+DEBUG 2016-03-12 01:35:46,062 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - Found 27 classes defines auto mapping attributes
+DEBUG 2016-03-12 01:35:46,062 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2016-03-12 01:35:46,069 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Sessions.Dto.UserLoginInfoDto
+DEBUG 2016-03-12 01:35:46,069 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Organizations.Dto.OrganizationUnitDto
+DEBUG 2016-03-12 01:35:46,071 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Organizations.Dto.OrganizationUnitUserListDto
+DEBUG 2016-03-12 01:35:46,072 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.MultiTenancy.Dto.TenantListDto
+DEBUG 2016-03-12 01:35:46,073 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.MultiTenancy.Dto.TenantEditDto
+DEBUG 2016-03-12 01:35:46,075 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Localization.Dto.ApplicationLanguageEditDto
+DEBUG 2016-03-12 01:35:46,076 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Localization.Dto.ApplicationLanguageListDto
+DEBUG 2016-03-12 01:35:46,077 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.EditionEditDto
+DEBUG 2016-03-12 01:35:46,078 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.FlatFeatureDto
+DEBUG 2016-03-12 01:35:46,079 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.EditionListDto
+DEBUG 2016-03-12 01:35:46,079 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Dto.UserListDto
+DEBUG 2016-03-12 01:35:46,080 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Profile.Dto.CurrentUserProfileEditDto
+DEBUG 2016-03-12 01:35:46,083 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Roles.Dto.RoleListDto
+DEBUG 2016-03-12 01:35:46,086 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Roles.Dto.RoleEditDto
+DEBUG 2016-03-12 01:35:46,087 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Dto.FlatPermissionDto
+DEBUG 2016-03-12 01:35:46,088 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Auditing.Dto.AuditLogListDto
+DEBUG 2016-03-12 01:35:46,090 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Dto.UserListDto+UserListRoleDto
+DEBUG 2016-03-12 01:35:46,090 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Users.UserPermissionsEditViewModel
+DEBUG 2016-03-12 01:35:46,091 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Users.CreateOrEditUserModalViewModel
+DEBUG 2016-03-12 01:35:46,092 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Roles.CreateOrEditRoleModalViewModel
+DEBUG 2016-03-12 01:35:46,092 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Profile.MySettingsViewModel
+DEBUG 2016-03-12 01:35:46,095 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Editions.CreateOrEditEditionModalViewModel
+DEBUG 2016-03-12 01:35:46,096 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Tenants.TenantFeaturesEditViewModel
+DEBUG 2016-03-12 01:35:46,096 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.OrganizationUnits.EditOrganizationUnitModalViewModel
+DEBUG 2016-03-12 01:35:46,097 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Languages.CreateOrEditLanguageModalViewModel
+DEBUG 2016-03-12 01:35:46,097 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Models.Account.TenantSelectionViewModel+TenantInfo
+DEBUG 2016-03-12 01:35:46,105 [101  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Tenants.Dashboard.ITenantDashboardAppService' with service name 'app/tenantDashboard'.
+DEBUG 2016-03-12 01:35:46,106 [101  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Sessions.ISessionAppService' with service name 'app/session'.
+DEBUG 2016-03-12 01:35:46,106 [101  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Organizations.IOrganizationUnitAppService' with service name 'app/organizationUnit'.
+DEBUG 2016-03-12 01:35:46,107 [101  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.MultiTenancy.ITenantAppService' with service name 'app/tenant'.
+DEBUG 2016-03-12 01:35:46,108 [101  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Localization.ILanguageAppService' with service name 'app/language'.
+DEBUG 2016-03-12 01:35:46,109 [101  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Editions.IEditionAppService' with service name 'app/edition'.
+DEBUG 2016-03-12 01:35:46,109 [101  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Configuration.Host.IHostSettingsAppService' with service name 'app/hostSettings'.
+DEBUG 2016-03-12 01:35:46,110 [101  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Configuration.Tenants.ITenantSettingsAppService' with service name 'app/tenantSettings'.
+DEBUG 2016-03-12 01:35:46,111 [101  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Common.ICommonLookupAppService' with service name 'app/commonLookup'.
+DEBUG 2016-03-12 01:35:46,112 [101  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Users.IUserAppService' with service name 'app/user'.
+DEBUG 2016-03-12 01:35:46,112 [101  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Users.Profile.IProfileAppService' with service name 'app/profile'.
+DEBUG 2016-03-12 01:35:46,113 [101  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Roles.IRoleAppService' with service name 'app/role'.
+DEBUG 2016-03-12 01:35:46,114 [101  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Auditing.IAuditLogAppService' with service name 'app/auditLog'.
+DEBUG 2016-03-12 01:37:57,011 [101  ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2016-03-12 01:37:57,706 [101  ] Abp.Modules.AbpModuleManager             - Found 14 ABP modules in total.
+DEBUG 2016-03-12 01:37:57,708 [101  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:37:57,710 [101  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:37:57,710 [101  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:37:57,710 [101  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:37:57,710 [101  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:37:57,710 [101  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:37:57,710 [101  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.Zero, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:37:57,711 [101  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFramework.AbpZeroEntityFrameworkModule, Abp.Zero.EntityFramework, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:37:57,711 [101  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.Ldap.AbpZeroLdapModule, Abp.Zero.Ldap, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:37:57,711 [101  ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleApplicationModule, KyleTanczos.TestKyle.Application, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:37:57,711 [101  ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleCoreModule, KyleTanczos.TestKyle.Core, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:37:57,711 [101  ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleDataModule, KyleTanczos.TestKyle.EntityFramework, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:37:57,711 [101  ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.Web.TestKyleWebModule, KyleTanczos.TestKyle.Web, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:37:57,711 [101  ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.WebApi.TestKyleWebApiModule, KyleTanczos.TestKyle.WebApi, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:37:57,714 [101  ] Abp.Modules.AbpModuleManager             - 14 modules loaded.
+DEBUG 2016-03-12 01:37:57,737 [101  ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-12 01:37:57,737 [101  ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-12 01:37:57,737 [101  ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-12 01:37:57,737 [101  ] o.Configuration.LanguageManagementConfig - Converted TestKyle (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-12 01:37:58,540 [101  ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2016-03-12 01:37:58,544 [101  ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2016-03-12 01:37:58,544 [101  ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2016-03-12 01:37:58,549 [101  ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2016-03-12 01:37:58,554 [101  ] Abp.Localization.LocalizationManager     - Initialized localization source: TestKyle
+DEBUG 2016-03-12 01:37:58,960 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - Found 27 classes defines auto mapping attributes
+DEBUG 2016-03-12 01:37:58,960 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2016-03-12 01:37:58,966 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Sessions.Dto.UserLoginInfoDto
+DEBUG 2016-03-12 01:37:58,967 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Organizations.Dto.OrganizationUnitDto
+DEBUG 2016-03-12 01:37:58,968 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Organizations.Dto.OrganizationUnitUserListDto
+DEBUG 2016-03-12 01:37:58,969 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.MultiTenancy.Dto.TenantListDto
+DEBUG 2016-03-12 01:37:58,970 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.MultiTenancy.Dto.TenantEditDto
+DEBUG 2016-03-12 01:37:58,972 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Localization.Dto.ApplicationLanguageEditDto
+DEBUG 2016-03-12 01:37:58,973 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Localization.Dto.ApplicationLanguageListDto
+DEBUG 2016-03-12 01:37:58,974 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.EditionEditDto
+DEBUG 2016-03-12 01:37:58,975 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.FlatFeatureDto
+DEBUG 2016-03-12 01:37:58,977 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.EditionListDto
+DEBUG 2016-03-12 01:37:58,978 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Dto.UserListDto
+DEBUG 2016-03-12 01:37:58,979 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Profile.Dto.CurrentUserProfileEditDto
+DEBUG 2016-03-12 01:37:58,981 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Roles.Dto.RoleListDto
+DEBUG 2016-03-12 01:37:58,983 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Roles.Dto.RoleEditDto
+DEBUG 2016-03-12 01:37:58,985 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Dto.FlatPermissionDto
+DEBUG 2016-03-12 01:37:58,985 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Auditing.Dto.AuditLogListDto
+DEBUG 2016-03-12 01:37:58,987 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Dto.UserListDto+UserListRoleDto
+DEBUG 2016-03-12 01:37:58,988 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Users.UserPermissionsEditViewModel
+DEBUG 2016-03-12 01:37:58,989 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Users.CreateOrEditUserModalViewModel
+DEBUG 2016-03-12 01:37:58,989 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Roles.CreateOrEditRoleModalViewModel
+DEBUG 2016-03-12 01:37:58,990 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Profile.MySettingsViewModel
+DEBUG 2016-03-12 01:37:58,994 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Editions.CreateOrEditEditionModalViewModel
+DEBUG 2016-03-12 01:37:58,995 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Tenants.TenantFeaturesEditViewModel
+DEBUG 2016-03-12 01:37:58,995 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.OrganizationUnits.EditOrganizationUnitModalViewModel
+DEBUG 2016-03-12 01:37:58,996 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Languages.CreateOrEditLanguageModalViewModel
+DEBUG 2016-03-12 01:37:58,996 [101  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Models.Account.TenantSelectionViewModel+TenantInfo
+DEBUG 2016-03-12 01:37:59,003 [101  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Tenants.Dashboard.ITenantDashboardAppService' with service name 'app/tenantDashboard'.
+DEBUG 2016-03-12 01:37:59,004 [101  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Sessions.ISessionAppService' with service name 'app/session'.
+DEBUG 2016-03-12 01:37:59,005 [101  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Organizations.IOrganizationUnitAppService' with service name 'app/organizationUnit'.
+DEBUG 2016-03-12 01:37:59,006 [101  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.MultiTenancy.ITenantAppService' with service name 'app/tenant'.
+DEBUG 2016-03-12 01:37:59,007 [101  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Localization.ILanguageAppService' with service name 'app/language'.
+DEBUG 2016-03-12 01:37:59,007 [101  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Editions.IEditionAppService' with service name 'app/edition'.
+DEBUG 2016-03-12 01:37:59,008 [101  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Configuration.Host.IHostSettingsAppService' with service name 'app/hostSettings'.
+DEBUG 2016-03-12 01:37:59,010 [101  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Configuration.Tenants.ITenantSettingsAppService' with service name 'app/tenantSettings'.
+DEBUG 2016-03-12 01:37:59,011 [101  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Common.ICommonLookupAppService' with service name 'app/commonLookup'.
+DEBUG 2016-03-12 01:37:59,012 [101  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Users.IUserAppService' with service name 'app/user'.
+DEBUG 2016-03-12 01:37:59,013 [101  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Users.Profile.IProfileAppService' with service name 'app/profile'.
+DEBUG 2016-03-12 01:37:59,013 [101  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Roles.IRoleAppService' with service name 'app/role'.
+DEBUG 2016-03-12 01:37:59,014 [101  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Auditing.IAuditLogAppService' with service name 'app/auditLog'.
+DEBUG 2016-03-12 01:52:23,575 [95   ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2016-03-12 01:52:24,111 [95   ] Abp.Modules.AbpModuleManager             - Found 14 ABP modules in total.
+DEBUG 2016-03-12 01:52:24,113 [95   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:52:24,115 [95   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:52:24,115 [95   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:52:24,115 [95   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:52:24,115 [95   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:52:24,115 [95   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:52:24,115 [95   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.Zero, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:52:24,115 [95   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFramework.AbpZeroEntityFrameworkModule, Abp.Zero.EntityFramework, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:52:24,116 [95   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.Ldap.AbpZeroLdapModule, Abp.Zero.Ldap, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:52:24,116 [95   ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleApplicationModule, KyleTanczos.TestKyle.Application, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:52:24,116 [95   ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleCoreModule, KyleTanczos.TestKyle.Core, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:52:24,116 [95   ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleDataModule, KyleTanczos.TestKyle.EntityFramework, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:52:24,116 [95   ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.Web.TestKyleWebModule, KyleTanczos.TestKyle.Web, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:52:24,116 [95   ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.WebApi.TestKyleWebApiModule, KyleTanczos.TestKyle.WebApi, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 01:52:24,120 [95   ] Abp.Modules.AbpModuleManager             - 14 modules loaded.
+DEBUG 2016-03-12 01:52:24,139 [95   ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-12 01:52:24,139 [95   ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-12 01:52:24,139 [95   ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-12 01:52:24,139 [95   ] o.Configuration.LanguageManagementConfig - Converted TestKyle (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-12 01:52:24,941 [95   ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2016-03-12 01:52:24,945 [95   ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2016-03-12 01:52:24,945 [95   ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2016-03-12 01:52:24,950 [95   ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2016-03-12 01:52:24,955 [95   ] Abp.Localization.LocalizationManager     - Initialized localization source: TestKyle
+DEBUG 2016-03-12 01:52:25,367 [95   ] Abp.AutoMapper.AbpAutoMapperModule       - Found 27 classes defines auto mapping attributes
+DEBUG 2016-03-12 01:52:25,367 [95   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2016-03-12 01:52:25,373 [95   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Sessions.Dto.UserLoginInfoDto
+DEBUG 2016-03-12 01:52:25,374 [95   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Organizations.Dto.OrganizationUnitDto
+DEBUG 2016-03-12 01:52:25,375 [95   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Organizations.Dto.OrganizationUnitUserListDto
+DEBUG 2016-03-12 01:52:25,377 [95   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.MultiTenancy.Dto.TenantListDto
+DEBUG 2016-03-12 01:52:25,378 [95   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.MultiTenancy.Dto.TenantEditDto
+DEBUG 2016-03-12 01:52:25,381 [95   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Localization.Dto.ApplicationLanguageEditDto
+DEBUG 2016-03-12 01:52:25,382 [95   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Localization.Dto.ApplicationLanguageListDto
+DEBUG 2016-03-12 01:52:25,383 [95   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.EditionEditDto
+DEBUG 2016-03-12 01:52:25,384 [95   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.FlatFeatureDto
+DEBUG 2016-03-12 01:52:25,385 [95   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.EditionListDto
+DEBUG 2016-03-12 01:52:25,386 [95   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Dto.UserListDto
+DEBUG 2016-03-12 01:52:25,387 [95   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Profile.Dto.CurrentUserProfileEditDto
+DEBUG 2016-03-12 01:52:25,388 [95   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Roles.Dto.RoleListDto
+DEBUG 2016-03-12 01:52:25,391 [95   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Roles.Dto.RoleEditDto
+DEBUG 2016-03-12 01:52:25,392 [95   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Dto.FlatPermissionDto
+DEBUG 2016-03-12 01:52:25,393 [95   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Auditing.Dto.AuditLogListDto
+DEBUG 2016-03-12 01:52:25,394 [95   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Dto.UserListDto+UserListRoleDto
+DEBUG 2016-03-12 01:52:25,395 [95   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Users.UserPermissionsEditViewModel
+DEBUG 2016-03-12 01:52:25,396 [95   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Users.CreateOrEditUserModalViewModel
+DEBUG 2016-03-12 01:52:25,397 [95   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Roles.CreateOrEditRoleModalViewModel
+DEBUG 2016-03-12 01:52:25,397 [95   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Profile.MySettingsViewModel
+DEBUG 2016-03-12 01:52:25,401 [95   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Editions.CreateOrEditEditionModalViewModel
+DEBUG 2016-03-12 01:52:25,402 [95   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Tenants.TenantFeaturesEditViewModel
+DEBUG 2016-03-12 01:52:25,402 [95   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.OrganizationUnits.EditOrganizationUnitModalViewModel
+DEBUG 2016-03-12 01:52:25,402 [95   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Languages.CreateOrEditLanguageModalViewModel
+DEBUG 2016-03-12 01:52:25,403 [95   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Models.Account.TenantSelectionViewModel+TenantInfo
+DEBUG 2016-03-12 01:52:25,410 [95   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Tenants.Dashboard.ITenantDashboardAppService' with service name 'app/tenantDashboard'.
+DEBUG 2016-03-12 01:52:25,411 [95   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Sessions.ISessionAppService' with service name 'app/session'.
+DEBUG 2016-03-12 01:52:25,412 [95   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Organizations.IOrganizationUnitAppService' with service name 'app/organizationUnit'.
+DEBUG 2016-03-12 01:52:25,413 [95   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.MultiTenancy.ITenantAppService' with service name 'app/tenant'.
+DEBUG 2016-03-12 01:52:25,415 [95   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Localization.ILanguageAppService' with service name 'app/language'.
+DEBUG 2016-03-12 01:52:25,416 [95   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Editions.IEditionAppService' with service name 'app/edition'.
+DEBUG 2016-03-12 01:52:25,417 [95   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Configuration.Host.IHostSettingsAppService' with service name 'app/hostSettings'.
+DEBUG 2016-03-12 01:52:25,418 [95   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Configuration.Tenants.ITenantSettingsAppService' with service name 'app/tenantSettings'.
+DEBUG 2016-03-12 01:52:25,418 [95   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Common.ICommonLookupAppService' with service name 'app/commonLookup'.
+DEBUG 2016-03-12 01:52:25,419 [95   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Users.IUserAppService' with service name 'app/user'.
+DEBUG 2016-03-12 01:52:25,420 [95   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Users.Profile.IProfileAppService' with service name 'app/profile'.
+DEBUG 2016-03-12 01:52:25,421 [95   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Roles.IRoleAppService' with service name 'app/role'.
+DEBUG 2016-03-12 01:52:25,421 [95   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Auditing.IAuditLogAppService' with service name 'app/auditLog'.
+DEBUG 2016-03-12 02:18:59,621 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2016-03-12 02:19:00,366 [1    ] Abp.Modules.AbpModuleManager             - Found 14 ABP modules in total.
+DEBUG 2016-03-12 02:19:00,369 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.Web.TestKyleWebModule, KyleTanczos.TestKyle.Web, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 02:19:00,371 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 02:19:00,371 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 02:19:00,371 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 02:19:00,371 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleDataModule, KyleTanczos.TestKyle.EntityFramework, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 02:19:00,371 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFramework.AbpZeroEntityFrameworkModule, Abp.Zero.EntityFramework, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 02:19:00,371 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.Zero, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 02:19:00,372 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 02:19:00,372 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleCoreModule, KyleTanczos.TestKyle.Core, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 02:19:00,372 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.Ldap.AbpZeroLdapModule, Abp.Zero.Ldap, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 02:19:00,372 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleApplicationModule, KyleTanczos.TestKyle.Application, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 02:19:00,372 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 02:19:00,372 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.WebApi.TestKyleWebApiModule, KyleTanczos.TestKyle.WebApi, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 02:19:00,372 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 02:19:00,816 [1    ] Abp.Modules.AbpModuleManager             - 14 modules loaded.
+DEBUG 2016-03-12 02:19:00,836 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-12 02:19:00,836 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-12 02:19:00,836 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-12 02:19:00,836 [1    ] o.Configuration.LanguageManagementConfig - Converted TestKyle (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-12 02:19:01,968 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2016-03-12 02:19:01,972 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2016-03-12 02:19:01,973 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2016-03-12 02:19:01,978 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2016-03-12 02:19:01,983 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: TestKyle
+DEBUG 2016-03-12 02:19:02,295 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 27 classes defines auto mapping attributes
+DEBUG 2016-03-12 02:19:02,295 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Users.UserPermissionsEditViewModel
+DEBUG 2016-03-12 02:19:02,298 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Users.CreateOrEditUserModalViewModel
+DEBUG 2016-03-12 02:19:02,299 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Roles.CreateOrEditRoleModalViewModel
+DEBUG 2016-03-12 02:19:02,299 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Profile.MySettingsViewModel
+DEBUG 2016-03-12 02:19:02,303 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Editions.CreateOrEditEditionModalViewModel
+DEBUG 2016-03-12 02:19:02,304 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Tenants.TenantFeaturesEditViewModel
+DEBUG 2016-03-12 02:19:02,304 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.OrganizationUnits.EditOrganizationUnitModalViewModel
+DEBUG 2016-03-12 02:19:02,304 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Languages.CreateOrEditLanguageModalViewModel
+DEBUG 2016-03-12 02:19:02,304 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Models.Account.TenantSelectionViewModel+TenantInfo
+DEBUG 2016-03-12 02:19:02,309 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2016-03-12 02:19:02,310 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Sessions.Dto.UserLoginInfoDto
+DEBUG 2016-03-12 02:19:02,311 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Organizations.Dto.OrganizationUnitDto
+DEBUG 2016-03-12 02:19:02,312 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Organizations.Dto.OrganizationUnitUserListDto
+DEBUG 2016-03-12 02:19:02,313 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.MultiTenancy.Dto.TenantListDto
+DEBUG 2016-03-12 02:19:02,313 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.MultiTenancy.Dto.TenantEditDto
+DEBUG 2016-03-12 02:19:02,315 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Localization.Dto.ApplicationLanguageEditDto
+DEBUG 2016-03-12 02:19:02,316 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Localization.Dto.ApplicationLanguageListDto
+DEBUG 2016-03-12 02:19:02,317 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.EditionEditDto
+DEBUG 2016-03-12 02:19:02,318 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.FlatFeatureDto
+DEBUG 2016-03-12 02:19:02,319 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.EditionListDto
+DEBUG 2016-03-12 02:19:02,320 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Dto.UserListDto
+DEBUG 2016-03-12 02:19:02,321 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Profile.Dto.CurrentUserProfileEditDto
+DEBUG 2016-03-12 02:19:02,323 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Roles.Dto.RoleListDto
+DEBUG 2016-03-12 02:19:02,325 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Roles.Dto.RoleEditDto
+DEBUG 2016-03-12 02:19:02,327 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Dto.FlatPermissionDto
+DEBUG 2016-03-12 02:19:02,328 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Auditing.Dto.AuditLogListDto
+DEBUG 2016-03-12 02:19:02,329 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Dto.UserListDto+UserListRoleDto
+DEBUG 2016-03-12 02:19:02,337 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Tenants.Dashboard.ITenantDashboardAppService' with service name 'app/tenantDashboard'.
+DEBUG 2016-03-12 02:19:02,338 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Sessions.ISessionAppService' with service name 'app/session'.
+DEBUG 2016-03-12 02:19:02,338 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Organizations.IOrganizationUnitAppService' with service name 'app/organizationUnit'.
+DEBUG 2016-03-12 02:19:02,339 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.MultiTenancy.ITenantAppService' with service name 'app/tenant'.
+DEBUG 2016-03-12 02:19:02,340 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Localization.ILanguageAppService' with service name 'app/language'.
+DEBUG 2016-03-12 02:19:02,341 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Editions.IEditionAppService' with service name 'app/edition'.
+DEBUG 2016-03-12 02:19:02,342 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Configuration.Host.IHostSettingsAppService' with service name 'app/hostSettings'.
+DEBUG 2016-03-12 02:19:02,342 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Configuration.Tenants.ITenantSettingsAppService' with service name 'app/tenantSettings'.
+DEBUG 2016-03-12 02:19:02,343 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Common.ICommonLookupAppService' with service name 'app/commonLookup'.
+DEBUG 2016-03-12 02:19:02,344 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Users.IUserAppService' with service name 'app/user'.
+DEBUG 2016-03-12 02:19:02,345 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Users.Profile.IProfileAppService' with service name 'app/profile'.
+DEBUG 2016-03-12 02:19:02,347 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Roles.IRoleAppService' with service name 'app/role'.
+DEBUG 2016-03-12 02:19:02,347 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Auditing.IAuditLogAppService' with service name 'app/auditLog'.
+DEBUG 2016-03-12 02:22:47,996 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2016-03-12 02:22:49,046 [1    ] Abp.Modules.AbpModuleManager             - Found 14 ABP modules in total.
+DEBUG 2016-03-12 02:22:49,049 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.Web.TestKyleWebModule, KyleTanczos.TestKyle.Web, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 02:22:49,050 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 02:22:49,051 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 02:22:49,051 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 02:22:49,051 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleDataModule, KyleTanczos.TestKyle.EntityFramework, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 02:22:49,051 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFramework.AbpZeroEntityFrameworkModule, Abp.Zero.EntityFramework, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 02:22:49,051 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.Zero, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 02:22:49,051 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 02:22:49,052 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleCoreModule, KyleTanczos.TestKyle.Core, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 02:22:49,052 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.Ldap.AbpZeroLdapModule, Abp.Zero.Ldap, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 02:22:49,052 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleApplicationModule, KyleTanczos.TestKyle.Application, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 02:22:49,052 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 02:22:49,052 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.WebApi.TestKyleWebApiModule, KyleTanczos.TestKyle.WebApi, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 02:22:49,052 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 02:22:49,642 [1    ] Abp.Modules.AbpModuleManager             - 14 modules loaded.
+DEBUG 2016-03-12 02:22:49,664 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-12 02:22:49,664 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-12 02:22:49,664 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-12 02:22:49,664 [1    ] o.Configuration.LanguageManagementConfig - Converted TestKyle (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-12 02:22:51,184 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2016-03-12 02:22:51,189 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2016-03-12 02:22:51,189 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2016-03-12 02:22:51,199 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2016-03-12 02:22:51,205 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: TestKyle
+DEBUG 2016-03-12 02:22:51,567 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 27 classes defines auto mapping attributes
+DEBUG 2016-03-12 02:22:51,567 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Users.UserPermissionsEditViewModel
+DEBUG 2016-03-12 02:22:51,574 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Users.CreateOrEditUserModalViewModel
+DEBUG 2016-03-12 02:22:51,574 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Roles.CreateOrEditRoleModalViewModel
+DEBUG 2016-03-12 02:22:51,575 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Profile.MySettingsViewModel
+DEBUG 2016-03-12 02:22:51,579 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Editions.CreateOrEditEditionModalViewModel
+DEBUG 2016-03-12 02:22:51,580 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Tenants.TenantFeaturesEditViewModel
+DEBUG 2016-03-12 02:22:51,581 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.OrganizationUnits.EditOrganizationUnitModalViewModel
+DEBUG 2016-03-12 02:22:51,582 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Languages.CreateOrEditLanguageModalViewModel
+DEBUG 2016-03-12 02:22:51,582 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Models.Account.TenantSelectionViewModel+TenantInfo
+DEBUG 2016-03-12 02:22:51,586 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2016-03-12 02:22:51,588 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Sessions.Dto.UserLoginInfoDto
+DEBUG 2016-03-12 02:22:51,589 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Organizations.Dto.OrganizationUnitDto
+DEBUG 2016-03-12 02:22:51,590 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Organizations.Dto.OrganizationUnitUserListDto
+DEBUG 2016-03-12 02:22:51,591 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.MultiTenancy.Dto.TenantListDto
+DEBUG 2016-03-12 02:22:51,592 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.MultiTenancy.Dto.TenantEditDto
+DEBUG 2016-03-12 02:22:51,594 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Localization.Dto.ApplicationLanguageEditDto
+DEBUG 2016-03-12 02:22:51,595 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Localization.Dto.ApplicationLanguageListDto
+DEBUG 2016-03-12 02:22:51,596 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.EditionEditDto
+DEBUG 2016-03-12 02:22:51,597 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.FlatFeatureDto
+DEBUG 2016-03-12 02:22:51,598 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.EditionListDto
+DEBUG 2016-03-12 02:22:51,599 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Dto.UserListDto
+DEBUG 2016-03-12 02:22:51,600 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Profile.Dto.CurrentUserProfileEditDto
+DEBUG 2016-03-12 02:22:51,603 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Roles.Dto.RoleListDto
+DEBUG 2016-03-12 02:22:51,607 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Roles.Dto.RoleEditDto
+DEBUG 2016-03-12 02:22:51,608 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Dto.FlatPermissionDto
+DEBUG 2016-03-12 02:22:51,609 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Auditing.Dto.AuditLogListDto
+DEBUG 2016-03-12 02:22:51,610 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Dto.UserListDto+UserListRoleDto
+DEBUG 2016-03-12 02:22:51,619 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Tenants.Dashboard.ITenantDashboardAppService' with service name 'app/tenantDashboard'.
+DEBUG 2016-03-12 02:22:51,619 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Sessions.ISessionAppService' with service name 'app/session'.
+DEBUG 2016-03-12 02:22:51,620 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Organizations.IOrganizationUnitAppService' with service name 'app/organizationUnit'.
+DEBUG 2016-03-12 02:22:51,621 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.MultiTenancy.ITenantAppService' with service name 'app/tenant'.
+DEBUG 2016-03-12 02:22:51,622 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Localization.ILanguageAppService' with service name 'app/language'.
+DEBUG 2016-03-12 02:22:51,623 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Editions.IEditionAppService' with service name 'app/edition'.
+DEBUG 2016-03-12 02:22:51,623 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Configuration.Host.IHostSettingsAppService' with service name 'app/hostSettings'.
+DEBUG 2016-03-12 02:22:51,624 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Configuration.Tenants.ITenantSettingsAppService' with service name 'app/tenantSettings'.
+DEBUG 2016-03-12 02:22:51,625 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Common.ICommonLookupAppService' with service name 'app/commonLookup'.
+DEBUG 2016-03-12 02:22:51,626 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Users.IUserAppService' with service name 'app/user'.
+DEBUG 2016-03-12 02:22:51,627 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Users.Profile.IProfileAppService' with service name 'app/profile'.
+DEBUG 2016-03-12 02:22:51,627 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Roles.IRoleAppService' with service name 'app/role'.
+DEBUG 2016-03-12 02:22:51,628 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Auditing.IAuditLogAppService' with service name 'app/auditLog'.
+ERROR 2016-03-12 02:24:14,983 [7    ] stKyle.Web.Controllers.AccountController - System.Data.DataException: An exception occurred while initializing the database. See the InnerException for details. ---> System.Data.Entity.Core.EntityCommandExecutionException: An error occurred while executing the command definition. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding. ---> System.ComponentModel.Win32Exception: The wait operation timed out
+   --- End of inner exception stack trace ---
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParserStateObject.ReadSniError(TdsParserStateObject stateObj, UInt32 error)
+   at System.Data.SqlClient.TdsParserStateObject.ReadSniSyncOverAsync()
+   at System.Data.SqlClient.TdsParserStateObject.TryReadNetworkPacket()
+   at System.Data.SqlClient.TdsParserStateObject.TryPrepareBuffer()
+   at System.Data.SqlClient.TdsParserStateObject.TryReadByte(Byte& value)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.<Reader>b__c(DbCommand t, DbCommandInterceptionContext`1 c)
+   at System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   at System.Data.Entity.Internal.InterceptableDbCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   at System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlan.Execute[TResultType](ObjectContext context, ObjectParameterCollection parameterValues)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__6()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   at System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source)
+   at System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.<GetElementFunction>b__1[TResult](IEnumerable`1 sequence)
+   at System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.ExecuteSingle[TResult](IEnumerable`1 query, Expression queryRoot)
+   at System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.System.Linq.IQueryProvider.Execute[TResult](Expression expression)
+   at System.Data.Entity.Internal.Linq.DbQueryProvider.Execute[TResult](Expression expression)
+   at System.Linq.Queryable.FirstOrDefault[TSource](IQueryable`1 source)
+   at System.Data.Entity.Migrations.History.HistoryRepository.GetLastModel(String& migrationId, String& productVersion, String contextKey)
+   at System.Data.Entity.Internal.InternalContext.QueryForModel(DatabaseExistenceState existenceState)
+   at System.Data.Entity.Internal.ModelCompatibilityChecker.CompatibleWithModel(InternalContext internalContext, ModelHashCalculator modelHashCalculator, Boolean throwIfNoMetadata, DatabaseExistenceState existenceState)
+   at System.Data.Entity.Internal.InternalContext.CompatibleWithModel(Boolean throwIfNoMetadata, DatabaseExistenceState existenceState)
+   at System.Data.Entity.CreateDatabaseIfNotExists`1.InitializeDatabase(TContext context)
+   at System.Data.Entity.Internal.InternalContext.<>c__DisplayClassf`1.<CreateInitializationAction>b__e()
+   at System.Data.Entity.Internal.InternalContext.PerformInitializationAction(Action action)
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Internal.InternalContext.PerformInitializationAction(Action action)
+   at System.Data.Entity.Internal.InternalContext.PerformDatabaseInitialization()
+   at System.Data.Entity.Internal.LazyInternalContext.<InitializeDatabase>b__4(InternalContext c)
+   at System.Data.Entity.Internal.RetryAction`1.PerformAction(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeDatabaseAction(Action`1 action)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeDatabase()
+   at System.Data.Entity.Database.Initialize(Boolean force)
+   at Abp.EntityFramework.AbpDbContext.Initialize()
+   at Castle.MicroKernel.LifecycleConcerns.InitializationConcern.Apply(ComponentModel model, Object component)
+   at Castle.MicroKernel.ComponentActivator.AbstractComponentActivator.ApplyConcerns(IEnumerable`1 steps, Object instance)
+   at Castle.MicroKernel.ComponentActivator.AbstractComponentActivator.ApplyCommissionConcerns(Object instance)
+   at Castle.MicroKernel.ComponentActivator.DefaultComponentActivator.InternalCreate(CreationContext context)
+   at Castle.MicroKernel.ComponentActivator.AbstractComponentActivator.Create(CreationContext context, Burden burden)
+   at Castle.MicroKernel.Lifestyle.AbstractLifestyleManager.CreateInstance(CreationContext context, Boolean trackedExternally)
+   at Castle.MicroKernel.Lifestyle.AbstractLifestyleManager.Resolve(CreationContext context, IReleasePolicy releasePolicy)
+   at Castle.MicroKernel.Handlers.DefaultHandler.ResolveCore(CreationContext context, Boolean requiresDecommission, Boolean instanceRequired, Burden& burden)
+   at Castle.MicroKernel.Handlers.ExtendedHandler.InvokeResolvePipeline(Int32 extensionIndex, ResolveInvocation invocation)
+   at Castle.MicroKernel.Handlers.ExtendedHandler.<>c__DisplayClass6.<InvokeResolvePipeline>b__5()
+   at Castle.MicroKernel.Handlers.ResolveInvocation.Proceed()
+   at Castle.MicroKernel.Handlers.ComponentLifecycleExtension.Intercept(ResolveInvocation invocation)
+   at Castle.MicroKernel.Handlers.ExtendedHandler.InvokeResolvePipeline(Int32 extensionIndex, ResolveInvocation invocation)
+   at Castle.MicroKernel.Handlers.ExtendedHandler.Resolve(CreationContext context, Boolean instanceRequired)
+   at Castle.MicroKernel.Handlers.AbstractHandler.Resolve(CreationContext context)
+   at Castle.MicroKernel.DefaultKernel.ResolveComponent(IHandler handler, Type service, IDictionary additionalArguments, IReleasePolicy policy)
+   at Castle.MicroKernel.DefaultKernel.Castle.MicroKernel.IKernelInternal.Resolve(Type service, IDictionary arguments, IReleasePolicy policy)
+   at Castle.MicroKernel.DefaultKernel.Resolve(Type service, IDictionary arguments)
+   at Castle.Windsor.WindsorContainer.Resolve[T]()
+   at Abp.Dependency.IocManager.Resolve[T]()
+   at Abp.EntityFramework.Uow.EfUnitOfWork.Resolve[TDbContext]()
+   at Abp.EntityFramework.Uow.EfUnitOfWork.GetOrCreateDbContext[TDbContext]()
+   at Abp.EntityFramework.Uow.UnitOfWorkExtensions.GetDbContext[TDbContext](IActiveUnitOfWork unitOfWork)
+   at Abp.EntityFramework.Uow.UnitOfWorkDbContextProvider`1.get_DbContext()
+   at Castle.Proxies.EfRepositoryBase`3Proxy_2.get_Context_callback()
+   at Castle.Proxies.Invocations.EfRepositoryBase`3_get_Context_5.InvokeMethodOnTarget()
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Abp.Domain.Uow.UnitOfWorkInterceptor.Intercept(IInvocation invocation)
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Castle.Proxies.EfRepositoryBase`3Proxy_2.get_Context()
+   at Abp.EntityFramework.Repositories.EfRepositoryBase`3.get_Table()
+   at Castle.Proxies.EfRepositoryBase`3Proxy_2.get_Table_callback()
+   at Castle.Proxies.Invocations.EfRepositoryBase`3_get_Table_5.InvokeMethodOnTarget()
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Abp.Domain.Uow.UnitOfWorkInterceptor.Intercept(IInvocation invocation)
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Castle.Proxies.EfRepositoryBase`3Proxy_2.get_Table()
+   at Castle.Proxies.EfRepositoryBase`3Proxy_2.GetAll_callback()
+   at Castle.Proxies.Invocations.EfRepositoryBase`3_GetAll_5.InvokeMethodOnTarget()
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Abp.Domain.Uow.UnitOfWorkInterceptor.Intercept(IInvocation invocation)
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Castle.Proxies.EfRepositoryBase`3Proxy_2.GetAll()
+   at Abp.EntityFramework.Repositories.EfRepositoryBase`3.<GetAllListAsync>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Abp.Threading.InternalAsyncHelper.<AwaitTaskWithPostActionAndFinallyAndGetResult>d__10`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Abp.Configuration.SettingStore.<GetAllListAsync>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Abp.Configuration.SettingManager.<<GetApplicationSettingsAsync>b__3d>d__3e.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Abp.Runtime.Caching.CacheExtensions.<>c__DisplayClassd`2.<<GetAsync>b__c>d__f.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Abp.Runtime.Caching.CacheBase.<GetAsync>d__1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Abp.Runtime.Caching.CacheExtensions.<GetAsync>d__13`2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Abp.Configuration.SettingManager.<GetApplicationSettingsAsync>d__43.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Abp.Configuration.SettingManager.<GetSettingValueForApplicationOrNullAsync>d__34.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Abp.Configuration.SettingManager.<GetSettingValueInternalAsync>d__23.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Nito.AsyncEx.Synchronous.TaskExtensions.WaitAndUnwrapException[TResult](Task`1 task)
+   at Nito.AsyncEx.AsyncContext.<>c__DisplayClass7`1.<Run>b__5(Task`1 t)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.Execute()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Nito.AsyncEx.Synchronous.TaskExtensions.WaitAndUnwrapException[TResult](Task`1 task)
+   at Nito.AsyncEx.AsyncContext.Run[TResult](Func`1 action)
+   at Abp.Threading.AsyncHelper.RunSync[TResult](Func`1 func)
+   at Abp.Configuration.SettingManagerExtensions.GetSettingValue(ISettingManager settingManager, String name)
+   at KyleTanczos.TestKyle.Web.MultiTenancy.SubdomainTenancyNameFinder.GetCurrentTenancyNameOrNull() in C:\GitHubLocal\TestKyle\KyleTanczos.TestKyle.Web\MultiTenancy\SubdomainTenancyNameFinder.cs:line 33
+   at KyleTanczos.TestKyle.Web.Controllers.AccountController.Login(String userNameOrEmailAddress, String returnUrl, String successMessage) in C:\GitHubLocal\TestKyle\KyleTanczos.TestKyle.Web\Controllers\AccountController.cs:line 98
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.ActionInvocation.InvokeSynchronousActionMethod()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+System.Data.DataException: An exception occurred while initializing the database. See the InnerException for details. ---> System.Data.Entity.Core.EntityCommandExecutionException: An error occurred while executing the command definition. See the inner exception for details. ---> System.Data.SqlClient.SqlException: Timeout expired.  The timeout period elapsed prior to completion of the operation or the server is not responding. ---> System.ComponentModel.Win32Exception: The wait operation timed out
+   --- End of inner exception stack trace ---
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParserStateObject.ReadSniError(TdsParserStateObject stateObj, UInt32 error)
+   at System.Data.SqlClient.TdsParserStateObject.ReadSniSyncOverAsync()
+   at System.Data.SqlClient.TdsParserStateObject.TryReadNetworkPacket()
+   at System.Data.SqlClient.TdsParserStateObject.TryPrepareBuffer()
+   at System.Data.SqlClient.TdsParserStateObject.TryReadByte(Byte& value)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.<Reader>b__c(DbCommand t, DbCommandInterceptionContext`1 c)
+   at System.Data.Entity.Infrastructure.Interception.InternalDispatcher`1.Dispatch[TTarget,TInterceptionContext,TResult](TTarget target, Func`3 operation, TInterceptionContext interceptionContext, Action`3 executing, Action`3 executed)
+   at System.Data.Entity.Infrastructure.Interception.DbCommandDispatcher.Reader(DbCommand command, DbCommandInterceptionContext interceptionContext)
+   at System.Data.Entity.Internal.InterceptableDbCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Core.EntityClient.Internal.EntityCommandDefinition.ExecuteStoreCommands(EntityCommand entityCommand, CommandBehavior behavior)
+   at System.Data.Entity.Core.Objects.Internal.ObjectQueryExecutionPlan.Execute[TResultType](ObjectContext context, ObjectParameterCollection parameterValues)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__6()
+   at System.Data.Entity.Core.Objects.ObjectContext.ExecuteInTransaction[T](Func`1 func, IDbExecutionStrategy executionStrategy, Boolean startLocalTransaction, Boolean releaseConnectionOnSuccess)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<>c__DisplayClass7.<GetResults>b__5()
+   at System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy.Execute[TResult](Func`1 operation)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.GetResults(Nullable`1 forMergeOption)
+   at System.Data.Entity.Core.Objects.ObjectQuery`1.<System.Collections.Generic.IEnumerable<T>.GetEnumerator>b__0()
+   at System.Data.Entity.Internal.LazyEnumerator`1.MoveNext()
+   at System.Linq.Enumerable.FirstOrDefault[TSource](IEnumerable`1 source)
+   at System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.<GetElementFunction>b__1[TResult](IEnumerable`1 sequence)
+   at System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.ExecuteSingle[TResult](IEnumerable`1 query, Expression queryRoot)
+   at System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.System.Linq.IQueryProvider.Execute[TResult](Expression expression)
+   at System.Data.Entity.Internal.Linq.DbQueryProvider.Execute[TResult](Expression expression)
+   at System.Linq.Queryable.FirstOrDefault[TSource](IQueryable`1 source)
+   at System.Data.Entity.Migrations.History.HistoryRepository.GetLastModel(String& migrationId, String& productVersion, String contextKey)
+   at System.Data.Entity.Internal.InternalContext.QueryForModel(DatabaseExistenceState existenceState)
+   at System.Data.Entity.Internal.ModelCompatibilityChecker.CompatibleWithModel(InternalContext internalContext, ModelHashCalculator modelHashCalculator, Boolean throwIfNoMetadata, DatabaseExistenceState existenceState)
+   at System.Data.Entity.Internal.InternalContext.CompatibleWithModel(Boolean throwIfNoMetadata, DatabaseExistenceState existenceState)
+   at System.Data.Entity.CreateDatabaseIfNotExists`1.InitializeDatabase(TContext context)
+   at System.Data.Entity.Internal.InternalContext.<>c__DisplayClassf`1.<CreateInitializationAction>b__e()
+   at System.Data.Entity.Internal.InternalContext.PerformInitializationAction(Action action)
+   --- End of inner exception stack trace ---
+   at System.Data.Entity.Internal.InternalContext.PerformInitializationAction(Action action)
+   at System.Data.Entity.Internal.InternalContext.PerformDatabaseInitialization()
+   at System.Data.Entity.Internal.LazyInternalContext.<InitializeDatabase>b__4(InternalContext c)
+   at System.Data.Entity.Internal.RetryAction`1.PerformAction(TInput input)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeDatabaseAction(Action`1 action)
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeDatabase()
+   at System.Data.Entity.Database.Initialize(Boolean force)
+   at Abp.EntityFramework.AbpDbContext.Initialize()
+   at Castle.MicroKernel.LifecycleConcerns.InitializationConcern.Apply(ComponentModel model, Object component)
+   at Castle.MicroKernel.ComponentActivator.AbstractComponentActivator.ApplyConcerns(IEnumerable`1 steps, Object instance)
+   at Castle.MicroKernel.ComponentActivator.AbstractComponentActivator.ApplyCommissionConcerns(Object instance)
+   at Castle.MicroKernel.ComponentActivator.DefaultComponentActivator.InternalCreate(CreationContext context)
+   at Castle.MicroKernel.ComponentActivator.AbstractComponentActivator.Create(CreationContext context, Burden burden)
+   at Castle.MicroKernel.Lifestyle.AbstractLifestyleManager.CreateInstance(CreationContext context, Boolean trackedExternally)
+   at Castle.MicroKernel.Lifestyle.AbstractLifestyleManager.Resolve(CreationContext context, IReleasePolicy releasePolicy)
+   at Castle.MicroKernel.Handlers.DefaultHandler.ResolveCore(CreationContext context, Boolean requiresDecommission, Boolean instanceRequired, Burden& burden)
+   at Castle.MicroKernel.Handlers.ExtendedHandler.InvokeResolvePipeline(Int32 extensionIndex, ResolveInvocation invocation)
+   at Castle.MicroKernel.Handlers.ExtendedHandler.<>c__DisplayClass6.<InvokeResolvePipeline>b__5()
+   at Castle.MicroKernel.Handlers.ResolveInvocation.Proceed()
+   at Castle.MicroKernel.Handlers.ComponentLifecycleExtension.Intercept(ResolveInvocation invocation)
+   at Castle.MicroKernel.Handlers.ExtendedHandler.InvokeResolvePipeline(Int32 extensionIndex, ResolveInvocation invocation)
+   at Castle.MicroKernel.Handlers.ExtendedHandler.Resolve(CreationContext context, Boolean instanceRequired)
+   at Castle.MicroKernel.Handlers.AbstractHandler.Resolve(CreationContext context)
+   at Castle.MicroKernel.DefaultKernel.ResolveComponent(IHandler handler, Type service, IDictionary additionalArguments, IReleasePolicy policy)
+   at Castle.MicroKernel.DefaultKernel.Castle.MicroKernel.IKernelInternal.Resolve(Type service, IDictionary arguments, IReleasePolicy policy)
+   at Castle.MicroKernel.DefaultKernel.Resolve(Type service, IDictionary arguments)
+   at Castle.Windsor.WindsorContainer.Resolve[T]()
+   at Abp.Dependency.IocManager.Resolve[T]()
+   at Abp.EntityFramework.Uow.EfUnitOfWork.Resolve[TDbContext]()
+   at Abp.EntityFramework.Uow.EfUnitOfWork.GetOrCreateDbContext[TDbContext]()
+   at Abp.EntityFramework.Uow.UnitOfWorkExtensions.GetDbContext[TDbContext](IActiveUnitOfWork unitOfWork)
+   at Abp.EntityFramework.Uow.UnitOfWorkDbContextProvider`1.get_DbContext()
+   at Castle.Proxies.EfRepositoryBase`3Proxy_2.get_Context_callback()
+   at Castle.Proxies.Invocations.EfRepositoryBase`3_get_Context_5.InvokeMethodOnTarget()
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Abp.Domain.Uow.UnitOfWorkInterceptor.Intercept(IInvocation invocation)
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Castle.Proxies.EfRepositoryBase`3Proxy_2.get_Context()
+   at Abp.EntityFramework.Repositories.EfRepositoryBase`3.get_Table()
+   at Castle.Proxies.EfRepositoryBase`3Proxy_2.get_Table_callback()
+   at Castle.Proxies.Invocations.EfRepositoryBase`3_get_Table_5.InvokeMethodOnTarget()
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Abp.Domain.Uow.UnitOfWorkInterceptor.Intercept(IInvocation invocation)
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Castle.Proxies.EfRepositoryBase`3Proxy_2.get_Table()
+   at Castle.Proxies.EfRepositoryBase`3Proxy_2.GetAll_callback()
+   at Castle.Proxies.Invocations.EfRepositoryBase`3_GetAll_5.InvokeMethodOnTarget()
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Abp.Domain.Uow.UnitOfWorkInterceptor.Intercept(IInvocation invocation)
+   at Castle.DynamicProxy.AbstractInvocation.Proceed()
+   at Castle.Proxies.EfRepositoryBase`3Proxy_2.GetAll()
+   at Abp.EntityFramework.Repositories.EfRepositoryBase`3.<GetAllListAsync>d__3.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Abp.Threading.InternalAsyncHelper.<AwaitTaskWithPostActionAndFinallyAndGetResult>d__10`1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Abp.Configuration.SettingStore.<GetAllListAsync>d__4.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Abp.Configuration.SettingManager.<<GetApplicationSettingsAsync>b__3d>d__3e.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Abp.Runtime.Caching.CacheExtensions.<>c__DisplayClassd`2.<<GetAsync>b__c>d__f.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Abp.Runtime.Caching.CacheBase.<GetAsync>d__1.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Abp.Runtime.Caching.CacheExtensions.<GetAsync>d__13`2.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Abp.Configuration.SettingManager.<GetApplicationSettingsAsync>d__43.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Abp.Configuration.SettingManager.<GetSettingValueForApplicationOrNullAsync>d__34.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Abp.Configuration.SettingManager.<GetSettingValueInternalAsync>d__23.MoveNext()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Nito.AsyncEx.Synchronous.TaskExtensions.WaitAndUnwrapException[TResult](Task`1 task)
+   at Nito.AsyncEx.AsyncContext.<>c__DisplayClass7`1.<Run>b__5(Task`1 t)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.Tasks.Task.Execute()
+--- End of stack trace from previous location where exception was thrown ---
+   at System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)
+   at System.Runtime.CompilerServices.TaskAwaiter`1.GetResult()
+   at Nito.AsyncEx.Synchronous.TaskExtensions.WaitAndUnwrapException[TResult](Task`1 task)
+   at Nito.AsyncEx.AsyncContext.Run[TResult](Func`1 action)
+   at Abp.Threading.AsyncHelper.RunSync[TResult](Func`1 func)
+   at Abp.Configuration.SettingManagerExtensions.GetSettingValue(ISettingManager settingManager, String name)
+   at KyleTanczos.TestKyle.Web.MultiTenancy.SubdomainTenancyNameFinder.GetCurrentTenancyNameOrNull() in C:\GitHubLocal\TestKyle\KyleTanczos.TestKyle.Web\MultiTenancy\SubdomainTenancyNameFinder.cs:line 33
+   at KyleTanczos.TestKyle.Web.Controllers.AccountController.Login(String userNameOrEmailAddress, String returnUrl, String successMessage) in C:\GitHubLocal\TestKyle\KyleTanczos.TestKyle.Web\Controllers\AccountController.cs:line 98
+   at lambda_method(Closure , ControllerBase , Object[] )
+   at System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)
+   at System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)
+   at System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.ActionInvocation.InvokeSynchronousActionMethod()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<BeginInvokeSynchronousActionMethod>b__39(IAsyncResult asyncResult, ActionInvocation innerInvokeState)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3d()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.<>c__DisplayClass46.<InvokeActionMethodFilterAsynchronouslyRecursive>b__3f()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass33.<BeginInvokeActionMethodWithFilters>b__32(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()
+   at System.Web.Mvc.Async.AsyncResultWrapper.End[TResult](IAsyncResult asyncResult, Object tag)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<>c__DisplayClass2b.<BeginInvokeAction>b__1c()
+   at System.Web.Mvc.Async.AsyncControllerActionInvoker.<>c__DisplayClass21.<BeginInvokeAction>b__1e(IAsyncResult asyncResult)
+DEBUG 2016-03-12 02:27:30,873 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2016-03-12 02:27:32,182 [1    ] Abp.Modules.AbpModuleManager             - Found 14 ABP modules in total.
+DEBUG 2016-03-12 02:27:32,185 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.Web.TestKyleWebModule, KyleTanczos.TestKyle.Web, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 02:27:32,187 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 02:27:32,187 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 02:27:32,187 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 02:27:32,187 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleDataModule, KyleTanczos.TestKyle.EntityFramework, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 02:27:32,187 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFramework.AbpZeroEntityFrameworkModule, Abp.Zero.EntityFramework, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 02:27:32,188 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.Zero, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 02:27:32,188 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 02:27:32,188 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleCoreModule, KyleTanczos.TestKyle.Core, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 02:27:32,188 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.Ldap.AbpZeroLdapModule, Abp.Zero.Ldap, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 02:27:32,188 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleApplicationModule, KyleTanczos.TestKyle.Application, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 02:27:32,188 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 02:27:32,188 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.WebApi.TestKyleWebApiModule, KyleTanczos.TestKyle.WebApi, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 02:27:32,189 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-12 02:27:32,943 [1    ] Abp.Modules.AbpModuleManager             - 14 modules loaded.
+DEBUG 2016-03-12 02:27:32,964 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-12 02:27:32,964 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-12 02:27:32,964 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-12 02:27:32,964 [1    ] o.Configuration.LanguageManagementConfig - Converted TestKyle (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-12 02:27:34,162 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2016-03-12 02:27:34,167 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2016-03-12 02:27:34,168 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2016-03-12 02:27:34,173 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2016-03-12 02:27:34,178 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: TestKyle
+DEBUG 2016-03-12 02:27:34,522 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 27 classes defines auto mapping attributes
+DEBUG 2016-03-12 02:27:34,522 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Users.UserPermissionsEditViewModel
+DEBUG 2016-03-12 02:27:34,526 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Users.CreateOrEditUserModalViewModel
+DEBUG 2016-03-12 02:27:34,527 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Roles.CreateOrEditRoleModalViewModel
+DEBUG 2016-03-12 02:27:34,527 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Profile.MySettingsViewModel
+DEBUG 2016-03-12 02:27:34,531 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Editions.CreateOrEditEditionModalViewModel
+DEBUG 2016-03-12 02:27:34,532 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Tenants.TenantFeaturesEditViewModel
+DEBUG 2016-03-12 02:27:34,532 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.OrganizationUnits.EditOrganizationUnitModalViewModel
+DEBUG 2016-03-12 02:27:34,533 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Languages.CreateOrEditLanguageModalViewModel
+DEBUG 2016-03-12 02:27:34,533 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Models.Account.TenantSelectionViewModel+TenantInfo
+DEBUG 2016-03-12 02:27:34,536 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2016-03-12 02:27:34,538 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Sessions.Dto.UserLoginInfoDto
+DEBUG 2016-03-12 02:27:34,539 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Organizations.Dto.OrganizationUnitDto
+DEBUG 2016-03-12 02:27:34,540 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Organizations.Dto.OrganizationUnitUserListDto
+DEBUG 2016-03-12 02:27:34,541 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.MultiTenancy.Dto.TenantListDto
+DEBUG 2016-03-12 02:27:34,542 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.MultiTenancy.Dto.TenantEditDto
+DEBUG 2016-03-12 02:27:34,543 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Localization.Dto.ApplicationLanguageEditDto
+DEBUG 2016-03-12 02:27:34,544 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Localization.Dto.ApplicationLanguageListDto
+DEBUG 2016-03-12 02:27:34,545 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.EditionEditDto
+DEBUG 2016-03-12 02:27:34,546 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.FlatFeatureDto
+DEBUG 2016-03-12 02:27:34,547 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.EditionListDto
+DEBUG 2016-03-12 02:27:34,548 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Dto.UserListDto
+DEBUG 2016-03-12 02:27:34,549 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Profile.Dto.CurrentUserProfileEditDto
+DEBUG 2016-03-12 02:27:34,551 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Roles.Dto.RoleListDto
+DEBUG 2016-03-12 02:27:34,553 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Roles.Dto.RoleEditDto
+DEBUG 2016-03-12 02:27:34,554 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Dto.FlatPermissionDto
+DEBUG 2016-03-12 02:27:34,555 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Auditing.Dto.AuditLogListDto
+DEBUG 2016-03-12 02:27:34,556 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Dto.UserListDto+UserListRoleDto
+DEBUG 2016-03-12 02:27:34,563 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Tenants.Dashboard.ITenantDashboardAppService' with service name 'app/tenantDashboard'.
+DEBUG 2016-03-12 02:27:34,564 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Sessions.ISessionAppService' with service name 'app/session'.
+DEBUG 2016-03-12 02:27:34,565 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Organizations.IOrganizationUnitAppService' with service name 'app/organizationUnit'.
+DEBUG 2016-03-12 02:27:34,566 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.MultiTenancy.ITenantAppService' with service name 'app/tenant'.
+DEBUG 2016-03-12 02:27:34,566 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Localization.ILanguageAppService' with service name 'app/language'.
+DEBUG 2016-03-12 02:27:34,567 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Editions.IEditionAppService' with service name 'app/edition'.
+DEBUG 2016-03-12 02:27:34,568 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Configuration.Host.IHostSettingsAppService' with service name 'app/hostSettings'.
+DEBUG 2016-03-12 02:27:34,569 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Configuration.Tenants.ITenantSettingsAppService' with service name 'app/tenantSettings'.
+DEBUG 2016-03-12 02:27:34,570 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Common.ICommonLookupAppService' with service name 'app/commonLookup'.
+DEBUG 2016-03-12 02:27:34,571 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Users.IUserAppService' with service name 'app/user'.
+DEBUG 2016-03-12 02:27:34,572 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Users.Profile.IProfileAppService' with service name 'app/profile'.
+DEBUG 2016-03-12 02:27:34,572 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Roles.IRoleAppService' with service name 'app/role'.
+DEBUG 2016-03-12 02:27:34,573 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Auditing.IAuditLogAppService' with service name 'app/auditLog'.

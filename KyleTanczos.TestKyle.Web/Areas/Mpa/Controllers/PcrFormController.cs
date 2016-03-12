@@ -82,8 +82,10 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
             PartialTemplateName = "DialogAddress";
             SubmitBtnText = "Close";
             HideCancelButton = true;
-            OnSubmitClick = "alert('hello');"; //SetTextArea('TextAreaSceneAddress', this);           
+            //OnSubmitClick = "alert('hello');"; //SetTextArea('TextAreaSceneAddress', this);           
         }
+
+        public new string OnSubmitClick { get { return "alert('hello2');"; } } //SetTextArea('TextAreaSceneAddress', this); 
 
         public string AddressName { get; set; }
 
@@ -91,6 +93,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                     new List<Ctrl>()
                     {
                         new TextBox() { DisplayName = "Google Address (Quick Search)", NgModel= AddressName + "Address.AutoComplete", ResponsiveWidth = 12
+                            , CustomAttributes = "ng-autocomplete details=details"
                             //, DropDownOptions = new List<Select2Option>() { new Select2Option() { id = "Herm", text = "Hermitage" }, new Select2Option() { id = "sharon", text = "Sharon" }, new Select2Option() { id = "pitts", text = "Pittsburgh" } }
                             },
                         new TextBox() { DisplayName = "Street Address", NgModel= AddressName + "Address.Street", ResponsiveWidth = 12
@@ -178,6 +181,8 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
         }
 
 
+
+
     }
 
     public class TimePicker : Ctrl
@@ -235,6 +240,8 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
             }
             set { _NgModel = value; }
         }
+
+        public string CustomAttributes { get; set; }
 
     }
 
