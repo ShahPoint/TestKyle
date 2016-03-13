@@ -302,7 +302,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
         }
     }
 
-    [OutputCache(Duration = 1, VaryByParam = "none", Location = OutputCacheLocation.Client)]
+    [OutputCache(Duration = 120, VaryByParam = "none", Location = OutputCacheLocation.ServerAndClient)]
     // public enum ResponsiveWidthEnum {ng1, ng2, ng3, ng4, ng5, ng6, ng7, ng8, ng9, ng10, ng11, ng12 }
     public class PcrFormController : Controller
     {
