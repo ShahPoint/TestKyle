@@ -109,7 +109,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                         new DropDownList() { DisplayName = "Municipality Picker", NgModel= AddressName + "Address.FipsPicker", ResponsiveWidth = 12, select2_OfflineListName = "PatientMedicationList"
                                 , DropDownOptions = new List<Select2Option>() { new Select2Option() { id = "Herm", text = "Hermitage" }, new Select2Option() { id = "sharon", text = "Sharon" }, new Select2Option() { id = "pitts", text = "Pittsburgh" } }
                             },
-                        new TextBox() { DisplayName = "Municipality City Code", NgModel= AddressName + "Address.MinicipalityCode", ResponsiveWidth = 6
+                        new TextBox() { DisplayName = "Municipality Code", NgModel= AddressName + "Address.MunicipalityCode", ResponsiveWidth = 6
                             },
                         new TextBox() { DisplayName = "County Code", NgModel= AddressName + "Address.CountyCode", ResponsiveWidth = 6
                             },
