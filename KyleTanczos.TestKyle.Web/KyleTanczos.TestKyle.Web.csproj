@@ -2960,6 +2960,7 @@
     <Content Include="libs\jquery-inputmask-Metronic\README.md" />
     <Content Include="Areas\Mpa\Views\PcrForm\Controls\AddressPicker.cshtml" />
     <Content Include="Areas\Mpa\Views\PcrForm\Controls\DialogAddress.cshtml" />
+    <Content Include="Areas\Mpa\Views\PcrForm\Controls\TableListView.cshtml" />
     <None Include="Properties\PublishProfiles\FileSystem_Release.pubxml" />
     <Content Include="Views\Account\TenantSelection.cshtml" />
     <Content Include="Scripts\version.json" />

@@ -54,6 +54,10 @@
     .pac-container {
         z-index: 11000 !important;
     }
+
+    .RequiredRedBorder {
+        border: 1px solid #b94a48 !important;
+    }
 </style>
 
 @*<script type="text/javascript" src="~/libs/aaaCustom/JavaScript.js"></script>*@
@@ -61,14 +65,9 @@
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
 
-@*<a onclick="TestDefaultDispositions();" href="#">click me</a>*@
-
-
 
 
 <div id="mainApp" data-ng-app="myApp" data-ng-controller="myCtrl"  >
-    <input type="text" data-ng-model="pcr.GuardianAddress.autocomplete" id="" ng-autocomplete="" details="details" />
-
 
 
     @foreach (Tab tab in Model.Tabs)
@@ -76,7 +75,7 @@
         @Html.Partial("Controls/" + @tab.PartialTemplateName, tab);
     }
 
-    {{greg}} {{E20_10}} {{E08_02}} {{E07_33}} <br/><br/> {{pcr}}
+    {{pcr.test}} <br/><br/> {{pcr}} <div id="testDiv"></div>
     <button type="button" id="saveButton" ng-click="SaveCurrentPcr()" >Save</button>
     <button type="button" id="saveButton" ng-click="LoadPcrArray()" >GetList</button>
 
@@ -84,11 +83,11 @@
 
     <table>
 
-        <tr ng-repeat="pcr in pcrArray">
-            <td>{{pcr.offlineId}}</td>
-            <td>{{pcr.E02_20}}</td>
-            <td><button ng-click="Load($index)">Load</button></td>
-            <td><button ng-click="Delete($index)">Delete</button></td>
+        <tr ng-repeat="item in pcrArray">
+            <td>{{item.offlineId}}</td>
+            <td>{{item.E02_20}}</td>
+            <td><button ng-click="LoadPcr($index)">Load</button></td>
+            <td><button ng-click="DeletePcr($index)">Delete</button></td>
         </tr>
 
     </table>

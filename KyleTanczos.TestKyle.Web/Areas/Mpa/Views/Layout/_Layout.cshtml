@@ -137,14 +137,7 @@
        
 
 
-        $(document).ready(function () {          
 
-            // On modal becomes shown
-            $('.modal').on('shown.bs.modal', function (e) {
-                
-                InstantiateSelect2Modal(this);                
-            });
-        });
 
         function InstantiateSelect2Modal(thisDialog) {
 
@@ -172,8 +165,22 @@
 
 
         function InstantiateSelect2s(jqueryTargetDiv) {
+            
 
-            $(jqueryTargetDiv + " [offlineSelect2listName]").each(function (i, obj) {
+            $(jqueryTargetDiv).find(".select2Default").each(function (i, obj) {
+
+
+                if (!$(obj).hasClass('select2-hidden-accessible')) { // check to see if the select2 has been init
+                    $(obj).select2({
+                        width: 'element',
+                        theme: "bootstrap"
+                    });
+                }
+            });
+
+
+            $(jqueryTargetDiv).find("[offlineSelect2listName]").each(function (i, obj) {
+
                 if (!$(obj).hasClass('select2-hidden-accessible')) { // check to see if the select2 has been init
 
                     var offlineListName = $(obj).attr('offlineSelect2listName');
@@ -190,20 +197,20 @@
                 }
             });
 
-            $(jqueryTargetDiv + " .select2Medications").each(function (i, obj) {
-                if (!$(obj).hasClass('select2-hidden-accessible')) { // check to see if the select2 has been init
-                    $(obj).select2({
-                        theme: "bootstrap",
-                        width: '100%',
-                        data: JSON.parse(localStorage.getItem("PatientMedicationList")),
-                        placeholder: "Start typing medication (Quick Add)",
-                        //allowClear: true,
-                        tags: true,
-                        minimumInputLength: 3
+            //$(jqueryTargetDiv + " .select2Medications").each(function (i, obj) {
+            //    if (!$(obj).hasClass('select2-hidden-accessible')) { // check to see if the select2 has been init
+            //        $(obj).select2({
+            //            theme: "bootstrap",
+            //            width: '100%',
+            //            data: JSON.parse(localStorage.getItem("PatientMedicationList")),
+            //            placeholder: "Start typing medication (Quick Add)",
+            //            //allowClear: true,
+            //            tags: true,
+            //            minimumInputLength: 3
 
-                    });
-                }
-            });
+            //        });
+            //    }
+            //});
         }
 
         function SideNav() {
@@ -264,7 +271,19 @@
             InstantiateSelect2s(tabTargetQuery);
         }
 
-        ShowPcrTab("#IncidentTab"); // this will be the first tab shown
+
+        $(document).ready(function () {
+
+            // On modal becomes shown
+            $('.modal').on('shown.bs.modal', function (e) {
+
+                InstantiateSelect2Modal(this);
+            });
+
+            ShowPcrTab("#IncidentTab");
+        });
+
+         // this will be the first tab shown
     </script>
 
 

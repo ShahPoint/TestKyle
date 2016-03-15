@@ -951,129 +951,116 @@ app.controller('myCtrl', function ($scope) {
     ////    return select2Array;
     ////}
 
-    var emptyarr = [];
+    //var emptyarr = [];
 
-    // what is this?  Guessing this will not be needed if we rethink COnley
-    try {
-        $scope.dispositions = JSON.parse(AgencyDispositions);
-        $scope.oldDisposition = $scope.dispositions[0];
-    } catch (e) { } // in case the parse fails
+    //// what is this?  Guessing this will not be needed if we rethink COnley
+    //try {
+    //    $scope.dispositions = JSON.parse(AgencyDispositions);
+    //    $scope.oldDisposition = $scope.dispositions[0];
+    //} catch (e) { } // in case the parse fails
 
-    //// This really needs rethough and simplified (Jay Shah)
-    ////$scope.ApplyDisposition = function () {
-    ////    // disposition_config pattern
-    ////    //alert(JSON.stringify($scope.pcr.currentDisposition));
-    ////    if ($scope.dispositions == undefined) return; // happens before dispositions request completes, on load of form
-    ////    var currentDisposition = $.grep($scope.dispositions, function (element, index) {
-    ////        return (element.outcome == $scope.pcr.currentDisposition.name)
-    ////    })[0];
 
-    ////    // defaults
-    ////    try {
-    ////        $scope.oldDisposition.defaults.forEach(function (element, index, array) {
-    ////            try {
-    ////                if ($("[data-ng-model='" + element.ngModel + "']").hasClass("select2-offscreen")) {
-    ////                    var currVals = jQuery.makeArray($("[data-ng-model='" + element.ngModel + "']").select2('val'));
-    ////                    if ($(element.value).not(currVals).length == 0 && $(currVals).not(element.value).length == 0) {
-    ////                        $("[data-ng-model='" + element.ngModel + "']").select2("val", []);
-    ////                        $("[data-ng-model='" + element.ngModel + "']").trigger("change");
-    ////                    }
-    ////                } else {
-    ////                    if ($("[data-ng-model='" + element.ngModel + "']").val() == element.value[0]) {
-    ////                        $("[data-ng-model='" + element.ngModel + "']").val("");
-    ////                    }
-    ////                }
-    ////            } catch (ex) {
-    ////                logError(ex);
-    ////                //logError({ message: "Clearing of old disposition defaults failed: " + element.ngModel + "\n\nApplyDisposition(...), PcrFormController.js", timestamp: new Date().toDateTime() });
-    ////            }
-    ////        });
-    ////    } catch (ex) {
-    ////        logError(ex);
-    ////    }
+    $scope.ApplyDisposition = function () {
+        // disposition_config pattern
+        //alert(JSON.stringify($scope.pcr.currentDisposition));
+        if ($scope.dispositions == undefined) return; // happens before dispositions request completes, on load of form
+        var currentDisposition = $.grep($scope.dispositions, function (element, index) {
+            return (element.outcome == $scope.pcr.currentDisposition.name)
+        })[0];
 
-    ////    try {
-    ////        currentDisposition.defaults.forEach(function (element, index, array) {
-    ////            try {
-    ////                if ($("[data-ng-model='" + element.ngModel + "']").hasClass("select2-offscreen")) {
-    ////                    $("[data-ng-model='" + element.ngModel + "']").select2("val", element.value);
-    ////                    $("[data-ng-model='" + element.ngModel + "']").trigger("change");
+            $scope.oldDisposition.defaults.forEach(function (element, index, array) {
+                try {
+                    var $control = $("[data-ng-model='" + element.ngModel + "']");
 
-    ////                } else {
+                        
+                    if ($control.hasClass("select2-offscreen")) {
+                        var currVals = jQuery.makeArray($control.select2('val'));
+                        if ($(element.value).not(currVals).length == 0 && $(currVals).not(element.value).length == 0) {
+                            $control.select2("val", []);
+                            $control.trigger("change");
+                        }
+                    } else {
+                        if ($control.val() == element.value[0]) {
+                            $control.val("");
+                        }
+                    }
+                } catch (ex) {
 
-    ////                    $("[data-ng-model='" + element.ngModel + "']").val(element.value[0]);
-    ////                }
-    ////            } catch (ex) {
-    ////                logError(ex);
-    ////            }
-    ////        });
-    ////    } catch (ex) {
-    ////        logError(ex);
-    ////    }
+                    logError({ message: "Clearing of old disposition defaults failed: " + element.ngModel + "\n\nApplyDisposition(...), PcrFormController.js", timestamp: new Date().toDateTime() });
+                }
+            });
 
-    ////    // hidden
-    ////    try {
-    ////        $scope.oldDisposition.hidden.forEach(function (element, index, array) {
-    ////            try {
-    ////                if (element.hasOwnProperty("id")) {
-    ////                    $("#" + element.id).show();
-    ////                }
-    ////                else {
-    ////                    $("[data-ng-model='" + element.ngModel + "']").closest("section").slideDown();
-    ////                }
-    ////            } catch (ex) {
-    ////                logError(ex);
-    ////            }
-    ////        });
-    ////    } catch (ex) {
-    ////        logError(ex);
-    ////    }
-    ////    try {
-    ////        currentDisposition.hidden.forEach(function (element, index, array) {
-    ////            try {
-    ////                if (element.hasOwnProperty("id")) {
-    ////                    $("#" + element.id).hide();
-    ////                }
-    ////                else {
-    ////                    $("[data-ng-model='" + element.ngModel + "']").closest("section").slideUp();
-    ////                }
-    ////            } catch (ex) {
-    ////                logError(ex);
-    ////            }
-    ////        });
-    ////    } catch (ex) {
-    ////        logError(ex);
-    ////    }
+ 
+            currentDisposition.defaults.forEach(function (element, index, array) {
+                try {
+                    var $control = $("[data-ng-model='" + element.ngModel + "']");
 
-    ////    // required
-    ////    try {
-    ////        $scope.oldDisposition.required.forEach(function (element, index, array) {
-    ////            try {
-    ////                $("[data-ng-model='" + element + "']").rules("add", {
-    ////                    required: false
-    ////                });
-    ////                $("[data-ng-model='" + element + "']").removeClass("RequiredRedBorder");
-    ////            } catch (ex) {
-    ////                logError(ex);
-    ////            }
-    ////        });
-    ////    } catch (ex) {
-    ////        logError(ex);
-    ////    }
-    ////    try {
-    ////        currentDisposition.required.forEach(function (element, index, array) {
-    ////            try {
-    ////                $("[data-ng-model='" + element + "']").rules("add", {
-    ////                    required: true
-    ////                });
-    ////                $("[data-ng-model='" + element + "']").addClass("RequiredRedBorder");
-    ////            } catch (ex) {
-    ////                logError(ex);
-    ////            }
-    ////        });
-    ////    } catch (ex) {
-    ////        logError(ex);
-    ////    }
+                    if ($control.hasClass("select2-offscreen")) {
+                        $control.select2("val", element.value);
+                        $control.trigger("change");
+
+                    } else {
+
+                        $control.val(element.value[0]);
+                    }
+                } catch (ex) {
+                    logError(ex);
+                }
+            });
+       
+
+            $scope.oldDisposition.hidden.forEach(function (element, index, array) {
+                try {
+                    if (element.hasOwnProperty("id")) {
+                        $("#" + element.id).show();
+                    }
+                    else {
+                        $("[data-ng-model='" + element.ngModel + "']").parents(".form-group").parent().slideDown();
+                    }
+                } catch (ex) {
+                    logError(ex);
+                }
+            });
+
+
+            currentDisposition.hidden.forEach(function (element, index, array) {
+                try {
+                    if (element.hasOwnProperty("id")) {
+                        $("#" + element.id).hide();
+                    }
+                    else {
+                        $("[data-ng-model='" + element.ngModel + "']").closest("section").slideUp();
+                    }
+                } catch (ex) {
+                    logError(ex);
+                }
+            });
+ 
+            $scope.oldDisposition.required.forEach(function (element, index, array) {
+                try {
+                    var $control = $("[data-ng-model='" + element + "']");
+
+                    $control.rules("add", { required: false });
+
+                    $control.removeClass("RequiredRedBorder");
+                } catch (ex) {
+                    logError(ex);
+                }
+            });
+
+
+            currentDisposition.required.forEach(function (element, index, array) {
+                try {
+                    var $control = $("[data-ng-model='" + element + "']");
+
+                    $control.rules("add", { required: true });
+
+                    $control.addClass("RequiredRedBorder");
+                } catch (ex) {
+                    logError(ex);
+                }
+            });
+
 
     ////    // deep copy setting oldDisposition to currentDisposition
     ////    $scope.oldDisposition = jQuery.extend(true, {}, currentDisposition);

@@ -89,7 +89,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 
         public string AddressName { get; set; }
 
-        public new List<Ctrl> Controls { get { return                    
+        public new List<Ctrl> Controls { get { return
                     new List<Ctrl>()
                     {
                         new TextBox() { DisplayName = "Google Address (Quick Search)", NgModel= AddressName + "Address.AutoComplete", ResponsiveWidth = 12
@@ -119,7 +119,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 
 
                     };
-            } } 
+            } }
 
     }
 
@@ -164,7 +164,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 
         public string GetSelect2Class()
         {
-            return (IsSelect2 ? "select2Defualt" : "");
+            return (IsSelect2 ? "select2Default" : "");
         }
         public bool IsSelect2modal { get; set; }
 
@@ -177,7 +177,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 
         public string RenderSelect2_OfflineList()
         {
-            return (string.IsNullOrEmpty(select2_OfflineListName) ? "" : "offlineSelect2listName=" + select2_OfflineListName );
+            return (string.IsNullOrEmpty(select2_OfflineListName) ? "" : "offlineSelect2listName=" + select2_OfflineListName);
         }
 
 
@@ -201,11 +201,25 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 
         }
 
-        
+
         public Dialog Dialog { get; set; }
 
 
     }
+
+    public class TableListView : Ctrl
+    {
+        public TableListView()
+        {
+            ControlType = ControlTypeEnum.TableListView;
+
+        }
+
+        public string ngListName { get; set; }
+        public List<string> ngFieldNames { get; set; }
+
+    }
+
 
     public class TextBox : Ctrl
     {
@@ -262,7 +276,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
     }
 
                                  
-    public enum ControlTypeEnum { PatientMeds, MileageBox, TextBox, DropDownList, Select2, Select2Single, Select2Many, AddressPicker, Select2TagsSingle, Select2TagsMany, TimePicker }
+    public enum ControlTypeEnum { PatientMeds, MileageBox, TextBox, DropDownList, Select2, Select2Single, Select2Many, AddressPicker, Select2TagsSingle, Select2TagsMany, TableListView, TimePicker }
 
     public class GetPcrFormSelect2Options
     {
@@ -302,7 +316,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
         }
     }
 
-    [OutputCache(Duration = 120, VaryByParam = "none", Location = OutputCacheLocation.ServerAndClient)]
+    //[OutputCache(Duration = 120, VaryByParam = "none", Location = OutputCacheLocation.ServerAndClient)]
     // public enum ResponsiveWidthEnum {ng1, ng2, ng3, ng4, ng5, ng6, ng7, ng8, ng9, ng10, ng11, ng12 }
     public class PcrFormController : Controller
     {
@@ -395,7 +409,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                         },
                                     new DropDownList() { DisplayName = "Response Urgency", 
                                         DropDownOptions = options.NemsisSelectOptions("E07_33")
-                                        ,NgModel = "E07_33"
+                                        ,NgModel = "E07_33", IsSelect2 = true
                                         }
                                     ,
                                     new AddressPicker() { DisplayName = "Scene Address"                                       
@@ -581,15 +595,15 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                        ,NgModel = "E16_01"},
                                     new TextBox() { DisplayName = "M.I."
                                        ,NgModel = "E06_03"},
-                                    new DropDownList() { DisplayName = "Race", 
+                                    new DropDownList() { DisplayName = "Race",
                                         DropDownOptions = options.NemsisSelectOptions("E06_12")
                                        ,NgModel = "E06_12"},
                                     new TextBox() { DisplayName = "DOB"
                                        ,NgModel = "E06_16"},
-                                    new DropDownList() { DisplayName = "Ethnicity", 
+                                    new DropDownList() { DisplayName = "Ethnicity",
                                         DropDownOptions = options.NemsisSelectOptions("E06_13")
                                        ,NgModel = "E06_13"},
-                                    new DropDownList() { DisplayName = "Gender", 
+                                    new DropDownList() { DisplayName = "Gender",
                                         DropDownOptions = options.NemsisSelectOptions("E06_11")
                                        ,NgModel = "E06_11"},
                                     new TextBox() { DisplayName = "SSN"
@@ -608,7 +622,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                        ,NgModel = "E06_19"},
                                     new TextBox() { DisplayName = "Pt Practitioner Name"
                                        ,NgModel = "E06_18"},
-                                     new DropDownList() { DisplayName = "DL State", 
+                                     new DropDownList() { DisplayName = "DL State",
                                         DropDownOptions = options.NemsisSelectOptions("E12_06")
                                        ,NgModel = "E12_06"}
                                  }
@@ -619,34 +633,34 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                  Side = SectionSideEnum.right,
                                  Controls = new List<Ctrl>()
                                  {
-                                     new DropDownList() { DisplayName = "History", 
+                                     new DropDownList() { DisplayName = "History",
                                         DropDownOptions = options.NemsisSelectOptions("E12_10")
                                        ,NgModel = "E12_10"},
-                                    new DropDownList() { DisplayName = "History Obtained", 
+                                    new DropDownList() { DisplayName = "History Obtained",
                                         DropDownOptions = options.NemsisSelectOptions("E12_11")
                                        ,NgModel = "E12_11"},
-                                    new DropDownList() { DisplayName = "Allergies (Meds)", 
+                                    new DropDownList() { DisplayName = "Allergies (Meds)",
                                         DropDownOptions = options.NemsisSelectOptions("E12_08")
                                        ,NgModel = "E12_08"},
-                                    new DropDownList() { DisplayName = "Emergency Form", 
+                                    new DropDownList() { DisplayName = "Emergency Form",
                                         DropDownOptions = options.NemsisSelectOptions("E12_18")
                                        ,NgModel = "E12_18" },
-                                    new DropDownList() { DisplayName = "Allergies (Other)", 
+                                    new DropDownList() { DisplayName = "Allergies (Other)",
                                         DropDownOptions = options.NemsisSelectOptions("E12_09")
                                        ,NgModel = "E12_09" },
-                                    new DropDownList() { DisplayName = "Advanced Directives", 
+                                    new DropDownList() { DisplayName = "Advanced Directives",
                                         DropDownOptions = options.NemsisSelectOptions("E12_07")
                                        ,NgModel = "E12_07" },
-                                    new DropDownList() { DisplayName = "Triage Color", 
+                                    new DropDownList() { DisplayName = "Triage Color",
                                         DropDownOptions = options.NemsisSelectOptions("")
                                        ,NgModel = "CustomTriageColor" },
-                                    new DropDownList() { DisplayName = "Triage Category", 
+                                    new DropDownList() { DisplayName = "Triage Category",
                                         DropDownOptions = options.NemsisSelectOptions("")
                                        ,NgModel = "CustomTriageCategory" },
-                                    new DropDownList() { DisplayName = "Pregnant?", 
+                                    new DropDownList() { DisplayName = "Pregnant?",
                                         DropDownOptions = options.NemsisSelectOptions("E12_20")
                                        ,NgModel = "E12_20" },
-                                    new DropDownList() { DisplayName = "# Past Pregnancies", 
+                                    new DropDownList() { DisplayName = "# Past Pregnancies",
                                         DropDownOptions = options.NemsisSelectOptions("")
                                        ,NgModel = "" }
                                  }
@@ -664,7 +678,40 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                      }
                                  }
 
-                             }
+                             },
+                            new Section()
+                            {
+                                PartialTemplateName = "SectionWithDialog",
+
+                                Dialog = new Dialog()
+                                {
+                                        DialogTargetId = "Immunizations",
+                                        DialogTitle = "Immunization Modal",
+                                        Controls = new List<Ctrl>()
+                                        {
+                                            new DropDownList() { DisplayName = "Immunization Date", NgModel = "forms.ImmunForm.ImmunDate",
+                                                DropDownOptions = options.NemsisSelectOptions("E20_10"), ResponsiveWidth = 12
+                                                },
+                                            new DropDownList() { DisplayName = "Immunization Type", NgModel = "forms.ImmunForm.ImmunType",
+                                                DropDownOptions = options.NemsisSelectOptions("E20_10"), ResponsiveWidth = 12
+                                                }
+
+                                        },
+                                            //OnCancelClick = "alert('cancel')",
+                                            //OnSubmitClick = "alert('submit')",
+                                            NgSubmitClick = "AddItemToList('Immunizations', 'ImmunForm' )"
+
+                                },
+
+                                SectionName = "Immunizations",
+                                Controls = new List<Ctrl>()
+                                {
+                                    new TableListView() { 
+                                        ngListName = "pcr.Immunizations",
+                                        ngFieldNames =  new List<string>() { "ImmunDate", "ImmunType" }
+                                        }
+                                }
+                            }
                          }
 
                     },

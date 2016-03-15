@@ -96,7 +96,7 @@ app.controller('myCtrl', function ($scope) {
     $scope.firstName = "John";
     $scope.lastName = "Doe";
 
-    $scope.pcr = {};
+    $scope.pcr = { forms : { ImmunForm : {}  } };
     
 
     //var medications = GetStorageObject("PatientMedicationList");
@@ -123,139 +123,214 @@ app.controller('myCtrl', function ($scope) {
         });
     }
 
-    $scope.Load = function (index) {
+    $scope.LoadPcr = function (index) {
         $scope.pcr = $scope.pcrArray[index];
     }
 
-    $scope.Delete = function (index) {
+    $scope.DeletePcr = function (index) {
         Utils.RemovePcrByOfflineId($scope.pcrArray[index].offlineId);
         $scope.LoadPcrArray();
     }
 
     $scope.pcrArray = [];
+
+
+    $scope.dispositions = [
+         {
+             name :"Cancelled"
+             , defaults: [{ ngModel: "E02_02", value: "aaaa" }]
+             , required: ['pcr.E07_33', 'pcr.E20_10']
+             , hidden: ['pcr.E07_33']
+         },
+         {
+                      name: "Dead at Scene"
+             , defaults: []
+             , required: []
+             , hidden: []
+         }
+    ];
+
+
+    $( document ).ready(function() {
+        $("[ng-model='pcr.E20_10']").change(function () {
+
+            $scope.ApplyDisposition();
+
+            //alert("Handler for .change() called.");
+        });
+    });
+
+
+
+    function logError(customObject)
+    {
+
+    }
+
+    $scope.AddItemToList = function (listName, formItemName)
+    {
+        //alert(JSON.stringify(listName));
+        //alert(JSON.stringify(formItemName));
+
+        //alert($(this).html());
+
+        if ($scope.pcr[listName] == null)
+            $scope.pcr[listName] = [];
+
+        var formItem = $scope.pcr.forms[formItemName];
+
+        var item = JSON.parse(JSON.stringify(formItem));
+
+        $scope.pcr[listName].push(item);
+
+        $scope.pcr.forms[formItemName] = {};
+
+       
+
+        //$scope.$apply(); // only called on item being added
+
+        //$("[ng-model='pcr.forms.ImmunForm.ImmunType']").val(null).trigger('change');
+
+    }
+
     
-    //$scope.DeleteAllPcrs = function () {
+    $scope.ApplyDisposition = function () {
+        // disposition_config pattern
+        //alert(JSON.stringify($scope.pcr.currentDisposition));
+        //if ($scope.pcr.E20_10 == undefined) return; // happens before dispositions request completes, on load of form
 
-    //    var emptyObject = {};
+        //$scope.oldDisposition = $scope.dispositions[0];
 
-    //    Utils.SavePcrList(emptyObject);
-    //}
 
-    //$scope.ApplyDisposition = function () {
-    //    // disposition_config pattern
-    //    //alert(JSON.stringify($scope.pcr.currentDisposition));
-    //    if ($scope.dispositions == undefined) return; // happens before dispositions request completes, on load of form
-    //    var currentDisposition = $.grep($scope.dispositions, function (element, index) {
-    //        return (element.outcome == $scope.pcr.currentDisposition.name)
-    //    })[0];
 
-    //    // defaults
-    //    try {
-    //        $scope.oldDisposition.defaults.forEach(function (element, index, array) {
-    //            try {
-    //                if ($("[data-ng-model='" + element.ngModel + "']").hasClass("select2-offscreen")) {
-    //                    var currVals = jQuery.makeArray($("[data-ng-model='" + element.ngModel + "']").select2('val'));
-    //                    if ($(element.value).not(currVals).length == 0 && $(currVals).not(element.value).length == 0) {
-    //                        $("[data-ng-model='" + element.ngModel + "']").select2("val", []);
-    //                        $("[data-ng-model='" + element.ngModel + "']").trigger("change");
-    //                    }
-    //                } else {
-    //                    if ($("[data-ng-model='" + element.ngModel + "']").val() == element.value[0]) {
-    //                        $("[data-ng-model='" + element.ngModel + "']").val("");
-    //                    }
-    //                }
-    //            } catch (ex) {
-    //                logError(ex);
-    //                //logError({ message: "Clearing of old disposition defaults failed: " + element.ngModel + "\n\nApplyDisposition(...), PcrFormController.js", timestamp: new Date().toDateTime() });
-    //            }
-    //        });
-    //    } catch (ex) {
-    //        logError(ex);
-    //    }
+        var currentDisposition = $.grep($scope.dispositions, function (element, index) {
+            return (element.name == "Cancelled")
+        })[0];
 
-    //    try {
-    //        currentDisposition.defaults.forEach(function (element, index, array) {
-    //            try {
-    //                if ($("[data-ng-model='" + element.ngModel + "']").hasClass("select2-offscreen")) {
-    //                    $("[data-ng-model='" + element.ngModel + "']").select2("val", element.value);
-    //                    $("[data-ng-model='" + element.ngModel + "']").trigger("change");
+        //alert(JSON.stringify(currentDisposition));
 
-    //                } else {
+        //$scope.oldDisposition.defaults.forEach(function (element, index, array) {
+        //    try {
+        //        var $control = $("[data-ng-model='" + element.ngModel + "']");
 
-    //                    $("[data-ng-model='" + element.ngModel + "']").val(element.value[0]);
-    //                }
-    //            } catch (ex) {
-    //                logError(ex);
-    //            }
-    //        });
-    //    } catch (ex) {
-    //        logError(ex);
-    //    }
 
-    //    // hidden
-    //    try {
-    //        $scope.oldDisposition.hidden.forEach(function (element, index, array) {
-    //            try {
-    //                if (element.hasOwnProperty("id")) {
-    //                    $("#" + element.id).show();
-    //                }
-    //                else {
-    //                    $("[data-ng-model='" + element.ngModel + "']").closest("section").slideDown();
-    //                }
-    //            } catch (ex) {
-    //                logError(ex);
-    //            }
-    //        });
-    //    } catch (ex) {
-    //        logError(ex);
-    //    }
-    //    try {
-    //        currentDisposition.hidden.forEach(function (element, index, array) {
-    //            try {
-    //                if (element.hasOwnProperty("id")) {
-    //                    $("#" + element.id).hide();
-    //                }
-    //                else {
-    //                    $("[data-ng-model='" + element.ngModel + "']").closest("section").slideUp();
-    //                }
-    //            } catch (ex) {
-    //                logError(ex);
-    //            }
-    //        });
-    //    } catch (ex) {
-    //        logError(ex);
-    //    }
+        //        if ($control.hasClass("select2-offscreen")) {
+        //            var currVals = jQuery.makeArray($control.select2('val'));
+        //            if ($(element.value).not(currVals).length == 0 && $(currVals).not(element.value).length == 0) {
+        //                $control.select2("val", []);
+        //                $control.trigger("change");
+        //            }
+        //        } else {
+        //            if ($control.val() == element.value[0]) {
+        //                $control.val("");
+        //            }
+        //        }
+        //    } catch (ex) {
 
-    //    // required
-    //    try {
-    //        $scope.oldDisposition.required.forEach(function (element, index, array) {
-    //            try {
-    //                $("[data-ng-model='" + element + "']").rules("add", {
-    //                    required: false
-    //                });
-    //                $("[data-ng-model='" + element + "']").removeClass("RequiredRedBorder");
-    //            } catch (ex) {
-    //                logError(ex);
-    //            }
-    //        });
-    //    } catch (ex) {
-    //        logError(ex);
-    //    }
-    //    try {
-    //        currentDisposition.required.forEach(function (element, index, array) {
-    //            try {
-    //                $("[data-ng-model='" + element + "']").rules("add", {
-    //                    required: true
-    //                });
-    //                $("[data-ng-model='" + element + "']").addClass("RequiredRedBorder");
-    //            } catch (ex) {
-    //                logError(ex);
-    //            }
-    //        });
-    //    } catch (ex) {
-    //        logError(ex);
-    //    }
+        //        alert({ message: "Clearing of old disposition defaults failed: " + element.ngModel + "\n\nApplyDisposition(...), PcrFormController.js", timestamp: new Date().toDateTime() });
+        //    }
+        //});
 
+
+        currentDisposition.defaults.forEach(function (element, index, array) {
+            try {
+
+                $scope.pcr[element.ngModel] = element.value;
+
+                //$scope.pcr["E07_33"] = 'Not Applicable';
+
+
+
+                //$("[ng-model='" + element.ngModel + "'] option[value='Not Applicable']").attr('selected', 'selected').trigger('input');
+
+                //$('.id_100 ').attr('selected', 'selected');
+
+                //var $control = $("[ng-model='" + element.ngModel + "'] option[value='Not Applicable']");
+
+                
+
+                //if ($control.hasClass("select2-offscreen")) {
+                //    $control.select2("val", element.value);
+                //    $control.trigger("change");
+
+                //} else {
+                //    $control.val(element.value);                   
+                //}
+            } catch (ex) {
+                alert(ex);
+            }
+        });
+
+
+        //$scope.oldDisposition.hidden.forEach(function (element, index, array) {
+        //    try {
+        //        if (element.hasOwnProperty("id")) {
+        //            $("#" + element.id).show();
+        //        }
+        //        else {
+        //            $("[data-ng-model='" + element.ngModel + "']").parents(".form-group").parent().slideDown();
+        //        }
+        //    } catch (ex) {
+        //        alert(ex);
+        //    }
+        //});
+
+
+        currentDisposition.hidden.forEach(function (element, index, array) {
+            try {
+
+                //alert('hidden: ' + element);
+
+                //if (element.hasOwnProperty("id")) {
+                //    $("#" + element.id).hide();
+                //}
+                //else {
+                    $("[ng-model='" + element+ "']").parents(".form-group").parent().slideUp();
+                //}
+            } catch (ex) {
+                alert(ex);
+            }
+        });
+
+        //$scope.oldDisposition.required.forEach(function (element, index, array) {
+        //    try {
+        //        var $control = $("[data-ng-model='" + element + "']");
+
+        //        $control.rules("add", { required: false });
+
+        //        $control.removeClass("RequiredRedBorder");
+        //    } catch (ex) {
+        //        alert(ex);
+        //    }
+        //});
+
+
+        currentDisposition.required.forEach(function (element, index, array) {
+            try {
+
+                var $control = $("[ng-model='" + element + "']");
+
+                $control.parents('form').validate();
+
+                if ($control.hasClass('select2-hidden-accessible')) //handles red box on select2
+                    $control.parent().children('.select2').addClass("RequiredRedBorder");
+
+                $control.rules("add", {
+                    required: true,
+                    messages: { required: "" }
+                });
+
+                $control.addClass("RequiredRedBorder");
+
+                //alert("valid: " + $control.parents('form').valid());
+
+            } catch (ex) {
+                alert(ex);
+            }
+        });
+
+        $scope.$apply();
+    }
 
 
 

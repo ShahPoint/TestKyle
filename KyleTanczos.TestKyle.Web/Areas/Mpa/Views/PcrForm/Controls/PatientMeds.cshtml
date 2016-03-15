@@ -4,71 +4,65 @@
 
 
 
-<select id="span_small" class="select2Medications form-control">
+                        
+    @Html.Partial("Controls/" + ControlTypeEnum.DropDownList.ToString(), new DropDownList()
+{
+    DisplayName = "",
+    ResponsiveWidth = 12,
+    select2_OfflineListName = "PatientMedicationList",
+    PlaceHolder = "Start typing medication (Quick Add)"
+                                
+})
 
-    <option value=""></option>
 
-</select>
-
-
-
-@*@Html.Partial("Controls/" + ControlTypeEnum.Select2.ToString(), new Ctrl()
-    {
-        DisplayName = "",
-        ResponsiveWidth = 12,
-        PlaceHolder = "Start typing medication (Quick Add)",
-        DropDownOptions =
-        new List<Select2Option>() { new Select2Option() { text = "Tylenol", id = "1" }, new Select2Option() { text = "Atorpatstat", id = "2" }, new Select2Option() { text = "Zolpadin", id = "3" }, new Select2Option() { text = "Metforman", id = "4" }, new Select2Option() { text = "Cozar", id = "6" }, new Select2Option() { text = "Lipitor", id = "7" }, new Select2Option() { text = "Tegretrol", id = "8" }, new Select2Option() { text = "IB Profen", id = "9" }, }
-    })*@
-
-<table class="col-xs-12 table table-hover">
-    <thead>
+    <table class="col-xs-12 table table-hover">
+        <thead>
+            <tr>
+                <th>Medication</th>
+            </tr>
+        </thead>
         <tr>
-            <th>Medication</th>
+            <td>Tyloneol</td>
+
         </tr>
-    </thead>
-    <tr>
-        <td>Tyloneol</td>
-        
-    </tr>
-    <tr>
-        <td>Zolpadan (ingested 77mg) </td>
-    </tr>
-</table>
+        <tr>
+            <td>Zolpadan (ingested 77mg) </td>
+        </tr>
+    </table>
 
 
 
-<a class="btn" data-toggle="modal" href="#basic"> Full (Medication/Dosage) </a>
+    <a class="btn" data-toggle="modal" href="#basic"> Full (Medication/Dosage) </a>
 
-<div class="portlet-body">
-    <div class="modal fade" id="basic" tabindex="-1" role="basic" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h4 class="modal-title">Modal Title</h4>
+    <div class="portlet-body">
+        <div class="modal fade" id="basic" tabindex="-1" role="basic" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                        <h4 class="modal-title">Modal Title</h4>
+                    </div>
+                    <div class="modal-body">
+                        @Html.Partial("Controls/TextBox", new Ctrl() { DisplayName = "Med Name", ControlType = ControlTypeEnum.TextBox })
+
+                        @Html.Partial("Controls/TextBox", new Ctrl() { DisplayName = "Route", ControlType = ControlTypeEnum.TextBox })
+                        @Html.Partial("Controls/TextBox", new Ctrl() { DisplayName = "Dosage", ControlType = ControlTypeEnum.TextBox })
+
+                        @Html.Partial("Controls/TextBox", new Ctrl() { DisplayName = "Units", ControlType = ControlTypeEnum.TextBox })
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default " data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary">Add</button>
+                    </div>
                 </div>
-                <div class="modal-body">
-                    @Html.Partial("Controls/TextBox", new Ctrl() { DisplayName = "Med Name", ControlType = ControlTypeEnum.TextBox })
-
-                    @Html.Partial("Controls/TextBox", new Ctrl() { DisplayName = "Route", ControlType = ControlTypeEnum.TextBox })
-                    @Html.Partial("Controls/TextBox", new Ctrl() { DisplayName = "Dosage", ControlType = ControlTypeEnum.TextBox })
-
-                    @Html.Partial("Controls/TextBox", new Ctrl() { DisplayName = "Units", ControlType = ControlTypeEnum.TextBox })
-
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default " data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary">Add</button>
-                </div>
+                <!-- /.modal-content -->
             </div>
-            <!-- /.modal-content -->
+            <!-- /.modal-dialog -->
         </div>
-        <!-- /.modal-dialog -->
     </div>
-</div>
 
-@*<a data-toggle="modal" data-ng-click="HideAndClearModal2('[modaltarget=PatientMedicationModal]');ClearPatientMedicationForm()" data-target="[modaltarget='PatientMedicationModal']" href="" style="margin-bottom: 7px" class="btn btn-default btn-xs"><i class="fa fa fa-plus"></i> Medication/Dosage/Route</a>*@
+    @*<a data-toggle="modal" data-ng-click="HideAndClearModal2('[modaltarget=PatientMedicationModal]');ClearPatientMedicationForm()" data-target="[modaltarget='PatientMedicationModal']" href="" style="margin-bottom: 7px" class="btn btn-default btn-xs"><i class="fa fa fa-plus"></i> Medication/Dosage/Route</a>*@
 
 

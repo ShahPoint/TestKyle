@@ -1,0 +1,31 @@
+﻿@using KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
+
+@model KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers.TableListView
+
+<table class="col-xs-12 table table-hover">
+
+    <tr ng-repeat="item in @(Model.ngListName)">
+
+        <td>
+            <a href="#" ng-click="LoadPcr($index)" class="btn btn-icon-only default">
+                <i class="fa fa-edit"></i>
+            </a>
+        </td>
+
+        @foreach (string fieldName in Model.ngFieldNames)
+        {
+            <td>{{item.@(fieldName)}}</td>
+        }
+
+        <td>
+            <a href="#" ng-click="DeletePcr($index)" class="btn btn-icon-only default">
+                <i class="fa fa-times"></i>
+            </a>
+        </td>
+
+        @*</a>
+        <td ><button>Load</button></td>
+        <td><button >Delete</button></td>*@
+    </tr>
+
+</table>
