@@ -96,7 +96,7 @@ app.controller('myCtrl', function ($scope) {
     $scope.firstName = "John";
     $scope.lastName = "Doe";
 
-    $scope.pcr = { forms : { ImmunForm : {}  } };
+    $scope.pcr = { forms : { Immunizations : {}  } };
     
 
     //var medications = GetStorageObject("PatientMedicationList");
@@ -169,11 +169,6 @@ app.controller('myCtrl', function ($scope) {
 
     $scope.AddItemToList = function (listName, formItemName)
     {
-        //alert(JSON.stringify(listName));
-        //alert(JSON.stringify(formItemName));
-
-        //alert($(this).html());
-
         if ($scope.pcr[listName] == null)
             $scope.pcr[listName] = [];
 
@@ -181,18 +176,53 @@ app.controller('myCtrl', function ($scope) {
 
         var item = JSON.parse(JSON.stringify(formItem));
 
-        $scope.pcr[listName].push(item);
+        var formId = formItem.ItemIndex
 
-        $scope.pcr.forms[formItemName] = {};
+        if (formId >= 0) {
+            $scope.pcr[listName].splice(formId, 1, item);
+        }
+        else {
+            $scope.pcr[listName].push(item);
+        }
 
-       
-
-        //$scope.$apply(); // only called on item being added
-
-        //$("[ng-model='pcr.forms.ImmunForm.ImmunType']").val(null).trigger('change');
 
     }
 
+    $scope.RemoveItem = function (index, listName) {
+
+        if (confirm("Are you sure you want to DELETE the item?") == true) {
+            $scope.pcr[listName].splice(index, 1);
+        }
+    };
+
+
+    $scope.LoadItemModal = function (index, listname, formName) {
+
+        var angularItem = angular.copy( $scope.pcr[listname][index]);
+
+        var strng = JSON.stringify(angularItem)
+
+        var itemToLoad = JSON.parse(strng);
+
+        itemToLoad.ItemIndex = index;
+
+
+        $scope.pcr.forms[formName] = itemToLoad;
+
+        $("#Immunizations").modal("show");
+
+
+        //$scope.$apply();
+
+    };
+
+    $scope.ClearCloseModal = function (modalTargetQuery, formItemName)
+    {
+
+        $scope.pcr.forms[formItemName] = {};
+
+        $(modalTargetQuery).modal('hide');
+    }
     
     $scope.ApplyDisposition = function () {
         // disposition_config pattern

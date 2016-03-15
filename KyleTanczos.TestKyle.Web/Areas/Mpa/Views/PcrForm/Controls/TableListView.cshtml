@@ -4,10 +4,10 @@
 
 <table class="col-xs-12 table table-hover">
 
-    <tr ng-repeat="item in @(Model.ngListName)">
+    <tr ng-repeat="item in pcr.@(Model.ngListName)">
 
         <td>
-            <a href="#" ng-click="LoadPcr($index)" class="btn btn-icon-only default">
+            <a href="javascript:;" ng-click="LoadItemModal($index, '@(Model.ngListName)', '@(Model.NgFormName)')" class="btn btn-icon-only default">
                 <i class="fa fa-edit"></i>
             </a>
         </td>
@@ -18,7 +18,7 @@
         }
 
         <td>
-            <a href="#" ng-click="DeletePcr($index)" class="btn btn-icon-only default">
+            <a href="javascript:;" ng-click="RemoveItem($index, '@(Model.NgFormName)')" class="btn btn-icon-only default">
                 <i class="fa fa-times"></i>
             </a>
         </td>

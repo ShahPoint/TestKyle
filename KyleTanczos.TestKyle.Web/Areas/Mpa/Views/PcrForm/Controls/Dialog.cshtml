@@ -21,7 +21,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" onclick="@Model.OnCancelClick" class="btn btn-outline @Model.GetHideBtnClass" data-dismiss="modal">@Model.CancelBtnText</button>
+                <button type="button" ng-click="@Model.NgCancelClick" onclick="@Model.OnCancelClick" class="btn btn-outline @Model.GetHideBtnClass" data-dismiss="modal">@Model.CancelBtnText</button>
                 <button type="button" ng-click="@Model.NgSubmitClick" onclick="@Model.OnSubmitClick" class="btn btn-default">@Model.SubmitBtnText</button>
             </div>
             </div>

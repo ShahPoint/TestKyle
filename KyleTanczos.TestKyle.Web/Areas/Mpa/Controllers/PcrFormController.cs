@@ -139,6 +139,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 
         public string PartialTemplateName { get; set; }
         public string DialogTargetId { get; set; }
+        public string NgFormName { get; set; }
         public string DialogTitle { get; set; }
         public List<Ctrl> Controls { get; set; }
         public string OnSubmitClick { get; set; }
@@ -217,8 +218,9 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 
         public string ngListName { get; set; }
         public List<string> ngFieldNames { get; set; }
+        public string NgFormName { get; set; }
 
-    }
+}
 
 
     public class TextBox : Ctrl
@@ -228,6 +230,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
             ControlType = ControlTypeEnum.TextBox;
         }
     }
+
 
 
     public class Ctrl
@@ -243,8 +246,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
         public string PlaceHolder { get; set; }
         public string ClientId { get; set; }
         private string _NgModel;
-        
-
+       
         public string NgModel
         {
             get
@@ -256,6 +258,8 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
         }
 
         public string CustomAttributes { get; set; }
+
+        public string CustomCssClass { get; set; }
 
     }
 
@@ -379,20 +383,20 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                         DialogTitle = "Incident Modal",
                                         Controls = new List<Ctrl>()
                                         {
-                                            new DropDownList() { DisplayName = "Disposition/Outcome2", 
+                                            new DropDownList() { DisplayName = "Disposition/Outcome2",
                                                 DropDownOptions = options.NemsisSelectOptions("E20_10"), ResponsiveWidth = 12
                                                 }
 
                                         },
                                          OnCancelClick = "alert('cancel')",
                                          OnSubmitClick = "alert('submit')"
-                                     
+
                                 },
 
                                 SectionName = "Disposition",
                                 Controls = new List<Ctrl>()
                                 {
-                                    new DropDownList() { DisplayName = "Disposition/Outcome", 
+                                    new DropDownList() { DisplayName = "Disposition/Outcome",
                                         DropDownOptions = options.NemsisSelectOptions("E20_10"), ResponsiveWidth = 12
                                         ,NgModel = "E20_10", IsSelect2 = true
                                         }
@@ -400,23 +404,23 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                             },
                             new Section()
                             {
-         
+
                                 SectionName = "Incident",
                                 Controls = new List<Ctrl>()
                                 {
                                    new TextBox() { DisplayName = "Incident Number"
                                        ,NgModel = "E02_02"
                                         },
-                                    new DropDownList() { DisplayName = "Response Urgency", 
+                                    new DropDownList() { DisplayName = "Response Urgency",
                                         DropDownOptions = options.NemsisSelectOptions("E07_33")
                                         ,NgModel = "E07_33", IsSelect2 = true
                                         }
                                     ,
-                                    new AddressPicker() { DisplayName = "Scene Address"                                       
+                                    new AddressPicker() { DisplayName = "Scene Address"
                                         , Dialog = new DialogAddress()
                                             {
                                                 DialogTargetId = "SceneAddress",
-                                                
+
                                                 AddressName = "Scene"
                                             }
 
@@ -425,11 +429,11 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                         DropDownOptions = options.NemsisSelectOptions("D01_06")
                                         ,NgModel = "D01_06"
                                         },
-                                    new DropDownList() { DisplayName = "Type Of Location", 
+                                    new DropDownList() { DisplayName = "Type Of Location",
                                         DropDownOptions = options.NemsisSelectOptions("E08_07")
                                         ,NgModel = "E08_07"
                                         },
-                                    new DropDownList() { DisplayName = "Nature Of Incident", 
+                                    new DropDownList() { DisplayName = "Nature Of Incident",
                                         DropDownOptions = options.NemsisSelectOptions("E03_01")
                                         ,NgModel = "E03_01"
                                         }
@@ -440,26 +444,26 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                             {    SectionName = "Dispatch",
                                 Controls = new List<Ctrl>()
                                 {
-                                   new DropDownList() { DisplayName = "Call Sign", 
+                                   new DropDownList() { DisplayName = "Call Sign",
                                         DropDownOptions = options.NemsisSelectOptions("E02_12")
                                         ,NgModel = "E02_12"
                                         },
-                                   new DropDownList() { DisplayName = "Vehicle Number", 
+                                   new DropDownList() { DisplayName = "Vehicle Number",
                                         DropDownOptions = options.NemsisSelectOptions("E02_11")
                                         ,NgModel = "E02_11"
                                         },
-                                    new DropDownList() { DisplayName = "Mode To Scene", 
+                                    new DropDownList() { DisplayName = "Mode To Scene",
                                         DropDownOptions = options.NemsisSelectOptions("E02_20")
                                         ,NgModel = "E02_20"
                                         },
                                    new TextBox() { DisplayName = "Veh. Incident #"
                                         ,NgModel = ""
                                         },
-                                    new DropDownList() { DisplayName = "Service Requested", 
+                                    new DropDownList() { DisplayName = "Service Requested",
                                         DropDownOptions = options.NemsisSelectOptions("E02_04")
                                         ,NgModel = "E02_04"
                                         },
-                                    new DropDownList() { DisplayName = "Role", 
+                                    new DropDownList() { DisplayName = "Role",
                                         DropDownOptions = options.NemsisSelectOptions("E02_05")
                                         ,NgModel = "E02_05"
                                         }
@@ -475,11 +479,11 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 SectionName = "Others On Scene",
                                 Controls = new List<Ctrl>()
                                 {
-                                    new DropDownList() { DisplayName = "Services On Scene", 
+                                    new DropDownList() { DisplayName = "Services On Scene",
                                         DropDownOptions = options.NemsisSelectOptions("E08_02")
                                         ,NgModel = "E08_02"
                                         },
-                                    new DropDownList() { DisplayName = "Other EMS Agencies", 
+                                    new DropDownList() { DisplayName = "Other EMS Agencies",
                                         DropDownOptions = options.NemsisSelectOptions("E08_01")
                                         ,NgModel = "E08_01"
                                         },
@@ -540,16 +544,16 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 ResponsiveWidth = 6,
                                 Controls = new List<Ctrl>()
                                 {
-                                   new DropDownList() { DisplayName = "Primary", 
+                                   new DropDownList() { DisplayName = "Primary",
                                         DropDownOptions = options.NemsisSelectOptions(""), ResponsiveWidth = 12
                                         ,NgModel = "E04_02"},
-                                    new DropDownList() { DisplayName = "Secondary", 
+                                    new DropDownList() { DisplayName = "Secondary",
                                         DropDownOptions = options.NemsisSelectOptions(""), ResponsiveWidth = 12
                                         ,NgModel = ""},
-                                    new DropDownList() { DisplayName = "Third", 
+                                    new DropDownList() { DisplayName = "Third",
                                         DropDownOptions = options.NemsisSelectOptions(""), ResponsiveWidth = 12
                                         ,NgModel = ""},
-                                    new DropDownList() { DisplayName = "Other", 
+                                    new DropDownList() { DisplayName = "Other",
                                         DropDownOptions = options.NemsisSelectOptions(""), ResponsiveWidth = 12
                                         ,NgModel = ""}
                                 }
@@ -687,27 +691,32 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 {
                                         DialogTargetId = "Immunizations",
                                         DialogTitle = "Immunization Modal",
+                                        NgFormName = "Immunizations",
                                         Controls = new List<Ctrl>()
                                         {
-                                            new DropDownList() { DisplayName = "Immunization Date", NgModel = "forms.ImmunForm.ImmunDate",
+                                            new TextBox() { DisplayName = "Hidden Item Index Id", NgModel = "forms.Immunizations.ItemIndex",
+                                                 ResponsiveWidth = 12, CustomCssClass = "hidden"
+                                                },
+                                            new DropDownList() { DisplayName = "Immunization Date", NgModel = "forms.Immunizations.ImmunDate",
                                                 DropDownOptions = options.NemsisSelectOptions("E20_10"), ResponsiveWidth = 12
                                                 },
-                                            new DropDownList() { DisplayName = "Immunization Type", NgModel = "forms.ImmunForm.ImmunType",
+                                            new DropDownList() { DisplayName = "Immunization Type", NgModel = "forms.Immunizations.ImmunType",
                                                 DropDownOptions = options.NemsisSelectOptions("E20_10"), ResponsiveWidth = 12
                                                 }
 
                                         },
                                             //OnCancelClick = "alert('cancel')",
                                             //OnSubmitClick = "alert('submit')",
-                                            NgSubmitClick = "AddItemToList('Immunizations', 'ImmunForm' )"
-
+                                            NgSubmitClick = "AddItemToList('Immunizations', 'Immunizations' );ClearCloseModal('#Immunizations', 'Immunizations');",
+                                            NgCancelClick = "ClearCloseModal('#Immunizations', 'Immunizations');"
                                 },
 
                                 SectionName = "Immunizations",
                                 Controls = new List<Ctrl>()
                                 {
-                                    new TableListView() { 
-                                        ngListName = "pcr.Immunizations",
+                                    new TableListView() {
+                                        NgFormName = "Immunizations",
+                                        ngListName = "Immunizations",
                                         ngFieldNames =  new List<string>() { "ImmunDate", "ImmunType" }
                                         }
                                 }
