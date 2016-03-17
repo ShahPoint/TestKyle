@@ -36,6 +36,15 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
         public string PartialTemplateName { get; set; }
     }
 
+    public class SectionTimeLine : Section
+    {
+        public Dialog VitalsDialog { get; set; }
+        public Dialog MedicationsDialog { get; set; }
+        public Dialog ProceduresDialog { get; set; }
+        public DialogExams ExamsDialog { get; set; }
+
+    }
+
     public class Section
     {
         public Section()
@@ -123,7 +132,15 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 
     }
 
+    public class DialogExams : Dialog
+    {
+        public List<Ctrl> Tab1Controls { get; set; }
+        public List<Ctrl> Tab2Controls { get; set; }
+        public List<Ctrl> Tab3Controls { get; set; }
+        public List<Ctrl> Tab4Controls { get; set; }
+        public List<Ctrl> Tab5Controls { get; set; }
 
+    }
 
 
     public class Dialog
@@ -135,6 +152,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
             DialogTitle = "Title Here";
             SubmitBtnText = "Save";
             CancelBtnText = "Cancel";
+            AllowKeepOpen = false;
         }
 
         public string PartialTemplateName { get; set; }
@@ -150,6 +168,8 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
         public string CancelBtnText { get; set; }
         public bool HideCancelButton { get; set; }
         public string GetHideBtnClass { get { return (HideCancelButton ? "hidden" : ""); } }
+
+        public bool AllowKeepOpen { get; set; }
     }
 
     public class DropDownList : Ctrl
@@ -213,11 +233,12 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
         public TableListView()
         {
             ControlType = ControlTypeEnum.TableListView;
-
+            DisplayNames = new List<string>();
         }
 
         public string ngListName { get; set; }
         public List<string> ngFieldNames { get; set; }
+        public List<string> DisplayNames { get; set; }
         public string NgFormName { get; set; }
 
 }
@@ -237,7 +258,8 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
     {
         public Ctrl()
         {
-            ResponsiveWidth = 6; 
+            ResponsiveWidth = 6;
+            DialogShowOnlyOnMore = false; 
         }
         public string DisplayName { get; set; }
         public ControlTypeEnum ControlType { get; set; }
@@ -260,6 +282,8 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
         public string CustomAttributes { get; set; }
 
         public string CustomCssClass { get; set; }
+
+        public bool DialogShowOnlyOnMore { get; set; }
 
     }
 
@@ -508,32 +532,32 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                    new TimePicker() { DisplayName = "Incident Date",  ResponsiveWidth = 12
                                         ,NgModel = ""
                                    },
-                                   new TimePicker() { DisplayName = "Onset",  ResponsiveWidth = 12
+                                   new TimePicker() { DisplayName = "Onset",  ResponsiveWidth = 12, PlaceHolder = "xx:xx"
                                    ,NgModel = "E05_01"
                                    },
-                                    new TimePicker() { DisplayName = "Recieved",   ResponsiveWidth = 12
+                                    new TimePicker() { DisplayName = "Recieved",   ResponsiveWidth = 12, PlaceHolder = "xx:xx"
                                         ,NgModel = "E05_02"},
-                                   new TimePicker() { DisplayName = "Notified",  ResponsiveWidth = 12
+                                   new TimePicker() { DisplayName = "Notified",  ResponsiveWidth = 12, PlaceHolder = "xx:xx"
                                         ,NgModel = "E05_03"},
-                                    new TimePicker() { DisplayName = "Dispatched", ResponsiveWidth = 12
+                                    new TimePicker() { DisplayName = "Dispatched", ResponsiveWidth = 12, PlaceHolder = "xx:xx"
                                         ,NgModel = "E05_04"},
-                                     new TimePicker() { DisplayName = "Enroute",  ResponsiveWidth = 12
+                                     new TimePicker() { DisplayName = "Enroute",  ResponsiveWidth = 12, PlaceHolder = "xx:xx"
                                         ,NgModel = "E05_05"},
-                                    new TimePicker() { DisplayName = "Arrival", ResponsiveWidth = 12
+                                    new TimePicker() { DisplayName = "Arrival", ResponsiveWidth = 12, PlaceHolder = "xx:xx"
                                         ,NgModel = "E05_06"},
-                                    new TimePicker() { DisplayName = "Contacted", ResponsiveWidth = 12
+                                    new TimePicker() { DisplayName = "Contacted", ResponsiveWidth = 12, PlaceHolder = "xx:xx"
                                         ,NgModel = "E05_07"},
-                                    new TimePicker() { DisplayName = "Transfer", ResponsiveWidth = 12
+                                    new TimePicker() { DisplayName = "Transfer", ResponsiveWidth = 12, PlaceHolder = "xx:xx"
                                         ,NgModel = "E05_08"},
-                                    new TimePicker() { DisplayName = "Departed", ResponsiveWidth = 12
+                                    new TimePicker() { DisplayName = "Departed", ResponsiveWidth = 12, PlaceHolder = "xx:xx"
                                         ,NgModel = "E05_09"},
-                                    new TimePicker() { DisplayName = "Arrival", ResponsiveWidth = 12
+                                    new TimePicker() { DisplayName = "Arrival", ResponsiveWidth = 12, PlaceHolder = "xx:xx"
                                         ,NgModel = "E05_10"},
-                                    new TimePicker() { DisplayName = "Available", ResponsiveWidth = 12
+                                    new TimePicker() { DisplayName = "Available", ResponsiveWidth = 12, PlaceHolder = "xx:xx"
                                         ,NgModel = "E05_11"},
-                                    new TimePicker() { DisplayName = "At Base", ResponsiveWidth = 12
+                                    new TimePicker() { DisplayName = "At Base", ResponsiveWidth = 12, PlaceHolder = "xx:xx"
                                         ,NgModel = "E05_13"},
-                                    new TimePicker() { DisplayName = "Cancelled", ResponsiveWidth = 12
+                                    new TimePicker() { DisplayName = "Cancelled", ResponsiveWidth = 12, PlaceHolder = "xx:xx"
                                         ,NgModel = "E05_12"},
                                 }
                             },
@@ -690,7 +714,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 Dialog = new Dialog()
                                 {
                                         DialogTargetId = "Immunizations",
-                                        DialogTitle = "Immunization Modal",
+                                        DialogTitle = "Immunizations",
                                         NgFormName = "Immunizations",
                                         Controls = new List<Ctrl>()
                                         {
@@ -707,7 +731,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                         },
                                             //OnCancelClick = "alert('cancel')",
                                             //OnSubmitClick = "alert('submit')",
-                                            NgSubmitClick = "AddItemToList('Immunizations', 'Immunizations' );ClearCloseModal('#Immunizations', 'Immunizations');",
+                                            NgSubmitClick = "AddItemToList('Immunizations');ClearCloseModal('#Immunizations', 'Immunizations');",
                                             NgCancelClick = "ClearCloseModal('#Immunizations', 'Immunizations');"
                                 },
 
@@ -715,9 +739,9 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 Controls = new List<Ctrl>()
                                 {
                                     new TableListView() {
-                                        NgFormName = "Immunizations",
                                         ngListName = "Immunizations",
-                                        ngFieldNames =  new List<string>() { "ImmunDate", "ImmunType" }
+                                        ngFieldNames =  new List<string>() { "ImmunDate", "ImmunType" },
+                                        DisplayNames = new List<string>() { "Date", "Type" }
                                         }
                                 }
                             }
@@ -745,10 +769,10 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                        ,NgModel = "E09_08" },
                                     new TextBox() { DisplayName = "Duration", ResponsiveWidth = 3
                                        ,NgModel = "E09_09" },
-                                    new DropDownList() { DisplayName = "Units", 
+                                    new DropDownList() { DisplayName = "Units",
                                         DropDownOptions = options.NemsisSelectOptions("E09_10"), ResponsiveWidth = 3
                                        ,NgModel = "E09_10" },
-                                    new DropDownList() { DisplayName = "Barriers To Patient Care", 
+                                    new DropDownList() { DisplayName = "Barriers To Patient Care",
                                         DropDownOptions = options.NemsisSelectOptions("E12_01"), ResponsiveWidth = 12
                                        ,NgModel = "E12_01" }
                                 }
@@ -771,24 +795,24 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 SectionName = "Vehicle Collision",
                                 Controls = new List<Ctrl>()
                                 {
-                                    new DropDownList() { DisplayName = "Vehicle Collision Impact", 
+                                    new DropDownList() { DisplayName = "Vehicle Collision Impact",
                                         DropDownOptions = options.NemsisSelectOptions("E10_05"), ResponsiveWidth = 12
                                        ,NgModel = "E10_05" },
                                     new TextBox() { DisplayName = "Report Number"
                                        ,NgModel = "E22_03" },
-                                    new DropDownList() { DisplayName = "Pt Location", 
+                                    new DropDownList() { DisplayName = "Pt Location",
                                         DropDownOptions = options.NemsisSelectOptions("E10_07")
                                        ,NgModel = "E10_07" },
-                                    new DropDownList() { DisplayName = "Row", 
+                                    new DropDownList() { DisplayName = "Row",
                                         DropDownOptions = options.NemsisSelectOptions("E10_06")
                                        ,NgModel = "E10_06" },
-                                    new DropDownList() { DisplayName = "Safety Equipment", 
+                                    new DropDownList() { DisplayName = "Safety Equipment",
                                         DropDownOptions = options.NemsisSelectOptions("E10_08")
                                        ,NgModel = "E10_08" },
-                                    new DropDownList() { DisplayName = "Airbags", 
+                                    new DropDownList() { DisplayName = "Airbags",
                                         DropDownOptions = options.NemsisSelectOptions("E10_09")
                                        ,NgModel = "E10_09" },
-                                    new DropDownList() { DisplayName = "Injury Indicators", 
+                                    new DropDownList() { DisplayName = "Injury Indicators",
                                         DropDownOptions = options.NemsisSelectOptions("E10_04")
                                        ,NgModel = "E10_04" }
                                 }
@@ -804,13 +828,13 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 {
                                     new TextBox() { DisplayName = "Height of Fall(ft.)"
                                        ,NgModel = "E10_10" },
-                                    new DropDownList() { DisplayName = "Cause of Injury", 
+                                    new DropDownList() { DisplayName = "Cause of Injury",
                                         DropDownOptions = options.NemsisSelectOptions("E10_01")
                                        ,NgModel = "E10_01" },
-                                    new DropDownList() { DisplayName = "Intent of Injury", 
+                                    new DropDownList() { DisplayName = "Intent of Injury",
                                         DropDownOptions = options.NemsisSelectOptions("E10_02")
                                        ,NgModel = "E10_02" },
-                                    new DropDownList() { DisplayName = "Trauma Type", 
+                                    new DropDownList() { DisplayName = "Trauma Type",
                                         DropDownOptions = options.NemsisSelectOptions("E10_03")
                                        ,NgModel = "E10_03" }
                                 }
@@ -827,25 +851,25 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 {
                                     new TextBox() { DisplayName = "Pre-Arrival"
                                        ,NgModel = "" },
-                                    new DropDownList() { DisplayName = "Cardiac Arest Time", 
+                                    new DropDownList() { DisplayName = "Cardiac Arest Time",
                                         DropDownOptions = options.NemsisSelectOptions("E11_08")
                                        ,NgModel = "E11_08" },
-                                    new DropDownList() { DisplayName = "Etiology", 
+                                    new DropDownList() { DisplayName = "Etiology",
                                         DropDownOptions = options.NemsisSelectOptions("E11_02")
                                        ,NgModel = "E11_02" },
-                                    new DropDownList() { DisplayName = "Witnessed By", 
+                                    new DropDownList() { DisplayName = "Witnessed By",
                                         DropDownOptions = options.NemsisSelectOptions("E11_04")
                                        ,NgModel = "E11_04" },
-                                    new DropDownList() { DisplayName = "First Rhythm", 
+                                    new DropDownList() { DisplayName = "First Rhythm",
                                         DropDownOptions = options.NemsisSelectOptions("E11_05")
                                        ,NgModel = "E11_05" },
-                                    new DropDownList() { DisplayName = "Circulation Return", 
+                                    new DropDownList() { DisplayName = "Circulation Return",
                                         DropDownOptions = options.NemsisSelectOptions("E11_06")
                                        ,NgModel = "E11_06" },
-                                    new DropDownList() { DisplayName = "Resusitations", 
+                                    new DropDownList() { DisplayName = "Resusitations",
                                         DropDownOptions = options.NemsisSelectOptions("E11_03")
                                        ,NgModel = "E11_03" },
-                                    new DropDownList() { DisplayName = "Discontinue Reason", 
+                                    new DropDownList() { DisplayName = "Discontinue Reason",
                                         DropDownOptions = options.NemsisSelectOptions("E11_10")
                                        ,NgModel = "E11_10" },
                                     new TextBox() { DisplayName = "Discontinue Time"
@@ -860,25 +884,25 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 SectionName = "Impression",
                                 Controls = new List<Ctrl>()
                                 {
-                                    new DropDownList() { DisplayName = "Complaint Location", 
+                                    new DropDownList() { DisplayName = "Complaint Location",
                                         DropDownOptions = options.NemsisSelectOptions("E09_11")
                                        ,NgModel = "E09_11" },
-                                    new DropDownList() { DisplayName = "Organ System", 
+                                    new DropDownList() { DisplayName = "Organ System",
                                         DropDownOptions = options.NemsisSelectOptions("E09_12")
                                        ,NgModel = "E09_12" },
-                                    new DropDownList() { DisplayName = "Primary Symptoms", 
+                                    new DropDownList() { DisplayName = "Primary Symptoms",
                                         DropDownOptions = options.NemsisSelectOptions("E09_13")
                                        ,NgModel = "E09_13" },
-                                    new DropDownList() { DisplayName = "Other Symptoms", 
+                                    new DropDownList() { DisplayName = "Other Symptoms",
                                         DropDownOptions = options.NemsisSelectOptions("E09_14")
                                        ,NgModel = "E09_14" },
-                                    new DropDownList() { DisplayName = "Impression", 
+                                    new DropDownList() { DisplayName = "Impression",
                                         DropDownOptions = options.NemsisSelectOptions("E09_15")
                                        ,NgModel = "E09_15" },
-                                    new DropDownList() { DisplayName = "Secondary Impression", 
+                                    new DropDownList() { DisplayName = "Secondary Impression",
                                         DropDownOptions = options.NemsisSelectOptions("E09_16")
                                        ,NgModel = "E09_16" },
-                                    new DropDownList() { DisplayName = "Drugs/Alcohol", 
+                                    new DropDownList() { DisplayName = "Drugs/Alcohol",
                                         DropDownOptions = options.NemsisSelectOptions("E12_19")
                                        ,NgModel = "E12_19" }
                                 }
@@ -895,13 +919,13 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 SectionName = "Prior Aid Given",
                                 Controls = new List<Ctrl>()
                                 {
-                                    new DropDownList() { DisplayName = "Prior Aid", 
+                                    new DropDownList() { DisplayName = "Prior Aid",
                                         DropDownOptions = options.NemsisSelectOptions("E09_01")
                                        ,NgModel = "E09_01" },
-                                    new DropDownList() { DisplayName = "Treated By", 
+                                    new DropDownList() { DisplayName = "Treated By",
                                         DropDownOptions = options.NemsisSelectOptions("E09_02")
                                        ,NgModel = "E09_02" },
-                                    new DropDownList() { DisplayName = "Aid Outcome", 
+                                    new DropDownList() { DisplayName = "Aid Outcome",
                                         DropDownOptions = options.NemsisSelectOptions("E09_03")
                                        ,NgModel = "E09_03" }
                                 }
@@ -919,13 +943,13 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 SectionName = "Billing",
                                 Controls = new List<Ctrl>()
                                 {
-                                    new DropDownList() { DisplayName = "Condition Codes", 
+                                    new DropDownList() { DisplayName = "Condition Codes",
                                         DropDownOptions = options.NemsisSelectOptions("E07_35")
                                        ,NgModel = "E07_35" },
-                                    new DropDownList() { DisplayName = "Payment Method", 
+                                    new DropDownList() { DisplayName = "Payment Method",
                                         DropDownOptions = options.NemsisSelectOptions("E07_01")
                                        ,NgModel = "E07_01" },
-                                    new DropDownList() { DisplayName = "Necessity Certificate", 
+                                    new DropDownList() { DisplayName = "Necessity Certificate",
                                         DropDownOptions = options.NemsisSelectOptions("E07_02")
                                        ,NgModel = "E07_02" },
                                     new TextBox() { DisplayName = "Patient Email"
@@ -937,10 +961,10 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 SectionName = "Employer",
                                 Controls = new List<Ctrl>()
                                 {
-                                    new DropDownList() { DisplayName = "Work Related", 
+                                    new DropDownList() { DisplayName = "Work Related",
                                         DropDownOptions = options.NemsisSelectOptions("E07_15")
                                        ,NgModel = "E07_15" },
-                                    new DropDownList() { DisplayName = "Employer", 
+                                    new DropDownList() { DisplayName = "Employer",
                                         DropDownOptions = options.NemsisSelectOptions("E07_27")
                                        ,NgModel = "E07_27" },
                                     new TextBox() { DisplayName = "Employer Address"
@@ -949,7 +973,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                        ,NgModel = "E07_32" },
                                     new TextBox() { DisplayName = "Patient Occupation"
                                        ,NgModel = "E07_17" },
-                                    new DropDownList() { DisplayName = "Occupation Industry", 
+                                    new DropDownList() { DisplayName = "Occupation Industry",
                                         DropDownOptions = options.NemsisSelectOptions("")
                                        ,NgModel = "" }
                                 }
@@ -973,7 +997,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                        ,NgModel = "E07_20" },
                                     new TextBox() { DisplayName = "Phone #"
                                        ,NgModel = "E07_25" },
-                                    new DropDownList() { DisplayName = "Relationship", 
+                                    new DropDownList() { DisplayName = "Relationship",
                                         DropDownOptions = options.NemsisSelectOptions("")
                                        ,NgModel = "E07_26" },
                                     new TextBox() { DisplayName = "Guardian Address"
@@ -982,29 +1006,356 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                             },
                             new Section()
                             {
+                                PartialTemplateName = "SectionWithDialog",
+                                SectionName = "Insurances",
                                 Side = SectionSideEnum.right,
-                                SectionName = "Insurance",
+
+                                Dialog = new Dialog()
+                                {
+                                        DialogTargetId = "Insurances",
+                                        DialogTitle = "Insurances",
+                                        NgFormName = "Insurances",
+                                        Controls = new List<Ctrl>()
+                                        {
+                                            new TextBox() { DisplayName = "Hidden Item Index Id", NgModel = "forms.Insurances.ItemIndex",
+                                                 ResponsiveWidth = 12, CustomCssClass = "hidden"
+                                                },
+                                            new TextBox() { DisplayName = "Insurance", NgModel = "forms.Insurances.InsuranceName"
+                                                },
+                                            new TextBox() { DisplayName = "Billing Priority", NgModel = "forms.Insurances.BillingPriority"
+                                                },
+                                            new TextBox() { DisplayName = "Group", NgModel = "forms.Insurances.Group"
+                                                },
+                                            new TextBox() { DisplayName = "Policy", NgModel = "forms.Insurances.Policy"
+                                                },
+                                            new TextBox() { DisplayName = "Insurance Differnt Than Patient", NgModel = "forms.Insurances.InsuranceDifferentThanPatient"
+                                                },
+                                            new TextBox() { DisplayName = "Primary Last Name", NgModel = "forms.Insurances.PrimaryLastName"
+                                                },
+                                            new TextBox() { DisplayName = "Primary First Name", NgModel = "forms.Insurances.PrimaryFirstName"
+                                                },
+                                            new TextBox() { DisplayName = "Primary Middle Name", NgModel = "forms.Insurances.PrimaryMiddleName"
+                                                },
+                                            new DropDownList() { DisplayName = "Relationship To Patient", NgModel = "forms.Insurances.ReletionshipToPatient"
+                                                },
+                                            new DropDownList() { DisplayName = "Street", NgModel = "forms.Insurances.Street"
+                                                },
+                                            new DropDownList() { DisplayName = "City", NgModel = "forms.Insurances.City", ResponsiveWidth = 6
+                                                },
+                                            new DropDownList() { DisplayName = "State", NgModel = "forms.Insurances.State", ResponsiveWidth = 3
+                                                },
+                                            new DropDownList() { DisplayName = "Zip", NgModel = "forms.Insurances.Zip", ResponsiveWidth = 3
+                                                }
+
+                                        },
+                                            //OnCancelClick = "alert('cancel')",
+                                            //OnSubmitClick = "alert('submit')",
+                                            NgSubmitClick = "AddItemToList('Insurances');ClearCloseModal('#Insurances', 'Insurances');",
+                                            NgCancelClick = "ClearCloseModal('#Insurances', 'Insurances');"
+                                },
+
                                 Controls = new List<Ctrl>()
                                 {
-                                    new Ctrl() { DisplayName = "Triage Category", ControlType = ControlTypeEnum.TextBox, ResponsiveWidth = 12
-                                       }
+                                    new TableListView() {
+                                        ngListName = "Insurances",
+                                        ngFieldNames =  new List<string>() { "InsuranceName", "Group", "Policy" },
+                                        DisplayNames = new List<string>() { "Insurance", "Group", "Policy" }
+                                    }
                                 }
                             }
                         }
-                    },        
+                    },
                     new Tab()
                     {
                         PartialTemplateName = "TabSingleColumn",
                         TabTargetName = "TreatmentTab",
                         Sections = new List<Section>()
                         {
-                            new Section()
-                            {   
+                            new SectionTimeLine()
+                            {
+                                PartialTemplateName = "SectionTimeline",
                                 SectionName = "Timeline",
+
+                                VitalsDialog = new Dialog()
+                                {
+                                        DialogTargetId = "Vitals",
+                                        DialogTitle = "Vitals",
+                                        NgFormName = "Vitals",
+                                         AllowKeepOpen = true,
+                                        Controls = new List<Ctrl>()
+                                        {
+                                            new TextBox() { DisplayName = "Hidden Item Index Id", NgModel = "forms.Vitals.ItemIndex",
+                                                 ResponsiveWidth = 12, CustomCssClass = "hidden"
+                                                },
+                                            new TextBox() { DisplayName = "Date", NgModel = "forms.Vitals.V0a"
+                                                },
+                                            new TextBox() { DisplayName = "Time", NgModel = "forms.Vitals.V0b"
+                                                },
+                                            new TextBox() { DisplayName = "SBP", NgModel = "forms.Vitals.E14_04", ResponsiveWidth = 4
+                                                },
+                                            new TextBox() { DisplayName = "DBP", NgModel = "forms.Vitals.E14_05", ResponsiveWidth = 4
+                                                },
+                                            new TextBox() { DisplayName = "BP Device", NgModel = "forms.Vitals.E14_06", ResponsiveWidth = 4
+                                                },
+                                            new TextBox() { DisplayName = "AVPU", NgModel = "forms.Vitals.E14_22", ResponsiveWidth = 4
+                                                },
+                                            new TextBox() { DisplayName = "Respiration  ", NgModel = "forms.Vitals.E14_11", ResponsiveWidth = 4
+                                                },
+                                            new TextBox() { DisplayName = "Pulse Ox", NgModel = "forms.Vitals.E14_09", ResponsiveWidth = 4
+                                                },
+                                            new TextBox() { DisplayName = "Pulse Rythm", NgModel = "forms.Vitals.E14_10", ResponsiveWidth = 4
+                                                },
+                                            new TextBox() { DisplayName = "Respiration Effort", NgModel = "forms.Vitals.E14_12", ResponsiveWidth = 4
+                                                },
+                                            new TextBox() { DisplayName = "Pulse Rate", NgModel = "forms.Vitals.E14_07", ResponsiveWidth = 4
+                                                },
+                                            new TextBox() { DisplayName = "Temp(F)", NgModel = "forms.Vitals.V0c", ResponsiveWidth = 4, DialogShowOnlyOnMore = true
+                                                },
+                                            new TextBox() { DisplayName = "Temp Method", NgModel = "forms.Vitals.E14_21", ResponsiveWidth = 4, DialogShowOnlyOnMore = true
+                                                },
+                                            new TextBox() { DisplayName = "Pain", NgModel = "forms.Vitals.V0d", ResponsiveWidth = 4, DialogShowOnlyOnMore = true
+                                                },
+                                            new TextBox() { DisplayName = "Heart Rate", NgModel = "forms.Vitals.V0e", ResponsiveWidth = 4, DialogShowOnlyOnMore = true
+                                                },
+                                            new TextBox() { DisplayName = "Cardiac Rhythm", NgModel = "forms.Vitals.E14_03", ResponsiveWidth = 4, DialogShowOnlyOnMore = true
+                                                },
+                                            new TextBox() { DisplayName = "CO2", NgModel = "forms.Vitals.V1", ResponsiveWidth = 4, DialogShowOnlyOnMore = true
+                                                },
+                                            new TextBox() { DisplayName = "Blood Glucose", NgModel = "forms.Vitals.V2", ResponsiveWidth = 4, DialogShowOnlyOnMore = true
+                                                },
+                                            new TextBox() { DisplayName = "Thrombolytic", NgModel = "forms.Vitals.E14_25", ResponsiveWidth = 4, DialogShowOnlyOnMore = true
+                                                },
+                                            new TextBox() { DisplayName = "Stroke Scale", NgModel = "forms.Vitals.E14_24", ResponsiveWidth = 6, DialogShowOnlyOnMore = true
+                                                },
+                                            new TextBox() { DisplayName = "APGAR", NgModel = "forms.Vitals.V3", ResponsiveWidth = 6, DialogShowOnlyOnMore = true
+                                                },
+                                            new TextBox() { DisplayName = "GCS Eyes", NgModel = "forms.Vitals.V4", ResponsiveWidth = 4, DialogShowOnlyOnMore = true
+                                                },
+                                            new TextBox() { DisplayName = "GCS Verbal", NgModel = "forms.Vitals.V5", ResponsiveWidth = 4, DialogShowOnlyOnMore = true
+                                                },
+                                            new TextBox() { DisplayName = "GCS Motor", NgModel = "forms.Vitals.V6", ResponsiveWidth = 4, DialogShowOnlyOnMore = true
+                                                },
+                                            new TextBox() { DisplayName = "GCS Qaul.", NgModel = "forms.Vitals.E14_18", ResponsiveWidth = 6, DialogShowOnlyOnMore = true
+                                                },
+                                            new TextBox() { DisplayName = "GCS Total", NgModel = "forms.Vitals.V7", ResponsiveWidth = 6, DialogShowOnlyOnMore = true
+                                                },
+                                            new TextBox() { DisplayName = "Revised Trauma", NgModel = "forms.Vitals.V8", ResponsiveWidth = 4, DialogShowOnlyOnMore = true
+                                                },
+                                            new TextBox() { DisplayName = "Pediatric Trauma", NgModel = "forms.Vitals.V9", ResponsiveWidth = 4, DialogShowOnlyOnMore = true
+                                                },
+                                            new TextBox() { DisplayName = "Is Prior Aid", NgModel = "forms.Vitals.E14_02", ResponsiveWidth = 4, DialogShowOnlyOnMore = true
+                                                }
+
+                                        },
+                                            //OnCancelClick = "alert('cancel')",
+                                            //OnSubmitClick = "alert('submit')",
+                                            NgSubmitClick = "AddItemToList('Vitals');ClearCloseModal('#Vitals', 'Vitals');",
+                                            NgCancelClick = "ClearCloseModal('#Vitals', 'Vitals');"
+                                },
+
+                                MedicationsDialog = new Dialog()
+                                {
+                                        DialogTargetId = "Medications",
+                                        DialogTitle = "Medications",
+                                        NgFormName = "Medications",
+                                         AllowKeepOpen = true,
+                                        Controls = new List<Ctrl>()
+                                        {
+                                            new TextBox() { DisplayName = "Hidden Item Index Id", NgModel = "forms.Medications.ItemIndex",
+                                                 ResponsiveWidth = 12, CustomCssClass = "hidden"
+                                                },
+                                            new TextBox() { DisplayName = "Time", NgModel = "forms.Medications.M1"
+                                                },
+                                            new TextBox() { DisplayName = "Date", NgModel = "forms.Medications.M2"
+                                                },
+                                            new TextBox() { DisplayName = "Crew", NgModel = "forms.Medications.E04_01"
+                                                },
+                                            new TextBox() { DisplayName = "Medication", NgModel = "forms.Medications.E18_03"
+                                                },
+                                            new TextBox() { DisplayName = "Dosage", NgModel = "forms.Medications.E18_05"
+                                                },
+                                            new TextBox() { DisplayName = "Units", NgModel = "forms.Medications.E18_06"
+                                                },
+                                            new TextBox() { DisplayName = "Route", NgModel = "forms.Medications.E18_04"
+                                                },
+                                            new TextBox() { DisplayName = "Response", NgModel = "forms.Medications.E18_07"
+                                                },
+                                            new TextBox() { DisplayName = "Complication", NgModel = "forms.Medications.E18_08"
+                                                },
+                                            new TextBox() { DisplayName = "Authorization", NgModel = "forms.Medications.E18_10"
+                                                },
+                                            new TextBox() { DisplayName = "Auth Physician", NgModel = "forms.Medications.E18_11"
+                                                },
+                                            new TextBox() { DisplayName = "Is Prior Aid", NgModel = "forms.Medications.E18_02"
+                                                },
+                                            new TextBox() { DisplayName = "Notes", NgModel = "forms.Medications.M3"
+                                                },
+
+
+
+                                        },
+                                            //OnCancelClick = "alert('cancel')",
+                                            //OnSubmitClick = "alert('submit')",
+                                            NgSubmitClick = "AddItemToList('Medications');ClearCloseModal('#Medications', 'Medications');",
+                                            NgCancelClick = "ClearCloseModal('#Medications', 'Medications');"
+                                },
+
+                                ProceduresDialog = new Dialog()
+                                {
+                                        DialogTargetId = "Procedures",
+                                        DialogTitle = "Procedures",
+                                        NgFormName = "Procedures",
+                                         AllowKeepOpen = true,
+                                        Controls = new List<Ctrl>()
+                                        {
+                                            new TextBox() { DisplayName = "Hidden Item Index Id", NgModel = "forms.Procedures.ItemIndex",
+                                                 ResponsiveWidth = 12, CustomCssClass = "hidden"
+                                                },
+                                            new TextBox() { DisplayName = "Time", NgModel = "forms.Procedures.P1"
+
+                                                },
+                                            new TextBox() { DisplayName = "Date", NgModel = "forms.Procedures.P2"
+
+                                                },
+                                            new TextBox() { DisplayName = "Crew", NgModel = "forms.Procedures.aaa"
+
+                                                },
+                                            new TextBox() { DisplayName = "Procedure", NgModel = "forms.Procedures.aaa"
+
+                                                },
+                                            new TextBox() { DisplayName = "Equip Size", NgModel = "forms.Procedures.aaa"
+
+                                                },
+                                            new TextBox() { DisplayName = "Success", NgModel = "forms.Procedures.aaa"
+
+                                                },
+                                            new TextBox() { DisplayName = "Attempts", NgModel = "forms.Procedures.aaa"
+
+                                                },
+                                            new TextBox() { DisplayName = "Response", NgModel = "forms.Procedures.aaa"
+
+                                                },
+                                            new TextBox() { DisplayName = "Complication", NgModel = "forms.Procedures.aaa"
+
+                                                },
+                                            new TextBox() { DisplayName = "Authorization", NgModel = "forms.Procedures.aaa"
+
+                                                },
+                                            new TextBox() { DisplayName = "Auth Phys.", NgModel = "forms.Procedures.aaa"
+
+                                                },
+                                            new TextBox() { DisplayName = "Is Prior Aid", NgModel = "forms.Procedures.aaa"
+
+                                                },
+                                            new TextBox() { DisplayName = "IV Success", NgModel = "forms.Procedures.aaa"
+
+                                                },
+                                            new TextBox() { DisplayName = "Tube Confirmation", NgModel = "forms.Procedures.aaa"
+
+                                                },
+                                            new TextBox() { DisplayName = "Tube Destination", NgModel = "forms.Procedures.aaa"
+
+                                                },
+                                            new TextBox() { DisplayName = "Notes", NgModel = "forms.Procedures.aaa"
+
+                                                }
+
+                                        },
+                                            //OnCancelClick = "alert('cancel')",
+                                            //OnSubmitClick = "alert('submit')",
+                                            NgSubmitClick = "AddItemToList('Procedures');ClearCloseModal('#Procedures', 'Procedures');",
+                                            NgCancelClick = "ClearCloseModal('#Procedures', 'Procedures');"
+                                },
+
+                                ExamsDialog = new DialogExams()
+                                {
+                                        DialogTargetId = "Exams",
+                                        DialogTitle = "Exams",
+                                        NgFormName = "Exams",
+                                         AllowKeepOpen = true,
+                                          PartialTemplateName = "DialogExams",
+
+                                    Tab1Controls = new List<Ctrl>()
+                                        {
+                                            new TextBox() { DisplayName = "Hidden Item Index Id", NgModel = "forms.Exams.ItemIndex",
+                                                 ResponsiveWidth = 12, CustomCssClass = "hidden"
+                                                },
+                                            new TextBox() { DisplayName = "Time", NgModel = "forms.Exams.Time"
+                                                },
+                                            new DropDownList() { DisplayName = "Exam", NgModel = "forms.Exams.Ex",
+                                                DropDownOptions = options.NemsisSelectOptions("E20_10"), ResponsiveWidth = 12
+                                                }
+
+                                        },
+
+
+                                        Tab2Controls = new List<Ctrl>()
+                                        {
+                                            new TextBox() { DisplayName = "Hidden Item Index Id", NgModel = "forms.Exams.ItemIndex",
+                                                 ResponsiveWidth = 12, CustomCssClass = "hidden"
+                                                },
+                                            new TextBox() { DisplayName = "Time", NgModel = "forms.Exams.Time"
+                                                },
+                                            new DropDownList() { DisplayName = "Exam", NgModel = "forms.Exams.Ex",
+                                                DropDownOptions = options.NemsisSelectOptions("E20_10"), ResponsiveWidth = 12
+                                                }
+
+                                        },
+
+                                        Tab3Controls = new List<Ctrl>()
+                                        {
+                                            new TextBox() { DisplayName = "Hidden Item Index Id", NgModel = "forms.Exams.ItemIndex",
+                                                 ResponsiveWidth = 12, CustomCssClass = "hidden"
+                                                },
+                                            new TextBox() { DisplayName = "Time", NgModel = "forms.Exams.Time"
+                                                },
+                                            new DropDownList() { DisplayName = "Exam", NgModel = "forms.Exams.Ex",
+                                                DropDownOptions = options.NemsisSelectOptions("E20_10"), ResponsiveWidth = 12
+                                                }
+
+                                        },
+
+                                        Tab4Controls = new List<Ctrl>()
+                                        {
+                                            new TextBox() { DisplayName = "Hidden Item Index Id", NgModel = "forms.Exams.ItemIndex",
+                                                 ResponsiveWidth = 12, CustomCssClass = "hidden"
+                                                },
+                                            new TextBox() { DisplayName = "Time", NgModel = "forms.Exams.Time"
+                                                },
+                                            new DropDownList() { DisplayName = "Exam", NgModel = "forms.Exams.Ex",
+                                                DropDownOptions = options.NemsisSelectOptions("E20_10"), ResponsiveWidth = 12
+                                                }
+
+                                        },
+
+                                        Tab5Controls = new List<Ctrl>()
+                                        {
+                                            new TextBox() { DisplayName = "Hidden Item Index Id", NgModel = "forms.Exams.ItemIndex",
+                                                 ResponsiveWidth = 12, CustomCssClass = "hidden"
+                                                },
+                                            new TextBox() { DisplayName = "Time", NgModel = "forms.Exams.Time"
+                                                },
+                                            new DropDownList() { DisplayName = "Exam", NgModel = "forms.Exams.Ex",
+                                                DropDownOptions = options.NemsisSelectOptions("E20_10"), ResponsiveWidth = 12
+                                                }
+
+                                        },
+                                            //OnCancelClick = "alert('cancel')",
+                                            //OnSubmitClick = "alert('submit')",
+                                            NgSubmitClick = "AddItemToList('Exams');ClearCloseModal('#Exams', 'Exams');",
+                                            NgCancelClick = "ClearCloseModal('#Exams', 'Exams');"
+                                },
+
+
+
+
                                 Controls = new List<Ctrl>()
                                 {
-                                    new Ctrl() { DisplayName = "Triage Category", ControlType = ControlTypeEnum.TextBox
-                                       }
+                                    new TableListView() {
+                                        ngListName = "timelines",
+                                        ngFieldNames =  new List<string>() { "Time", "Group", "Policy" },
+                                        DisplayNames = new List<string>() { "Time", "Group", "Policy" }
+                                    }
                                 }
                             }
                         }

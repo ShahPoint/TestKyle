@@ -3,11 +3,27 @@
 @model KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers.TableListView
 
 <table class="col-xs-12 table table-hover">
+    @if (Model.DisplayNames.Count > 0)
+    {
+        <tr>
+            <td></td>
+
+            @foreach (string displayName in Model.DisplayNames)
+            {
+                <td>@displayName</td>
+            }
+
+
+            <td></td>
+        </tr>
+
+    }
+
 
     <tr ng-repeat="item in pcr.@(Model.ngListName)">
 
         <td>
-            <a href="javascript:;" ng-click="LoadItemModal($index, '@(Model.ngListName)', '@(Model.NgFormName)')" class="btn btn-icon-only default">
+            <a href="javascript:;" ng-click="LoadItemModal($index, '@(Model.ngListName)')" class="btn btn-icon-only default">
                 <i class="fa fa-edit"></i>
             </a>
         </td>
@@ -18,14 +34,14 @@
         }
 
         <td>
-            <a href="javascript:;" ng-click="RemoveItem($index, '@(Model.NgFormName)')" class="btn btn-icon-only default">
+            <a href="javascript:;" ng-click="RemoveItem($index, '@(Model.ngListName)')" class="btn btn-icon-only default">
                 <i class="fa fa-times"></i>
             </a>
         </td>
 
         @*</a>
-        <td ><button>Load</button></td>
-        <td><button >Delete</button></td>*@
+            <td ><button>Load</button></td>
+            <td><button >Delete</button></td>*@
     </tr>
 
 </table>

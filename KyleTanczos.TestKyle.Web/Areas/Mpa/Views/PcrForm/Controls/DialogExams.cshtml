@@ -1,0 +1,110 @@
+﻿@using KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
+
+@model DialogExams
+
+
+<div class="modal fade" id="@Model.DialogTargetId" role="basic" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">@Model.DialogTitle</h4>
+            </div>
+
+            <div class="modal-body">
+                <form action="#" class="horizontal-form">
+                    <div class="form-body">
+
+                        <ul class="nav nav-tabs">
+                            <li class="active">
+                                <a href="#HeadTab" data-toggle="tab"> Head/Neck </a>
+                            </li>
+                            <li>
+                                <a href="#ChestTab" data-toggle="tab"> Chest/Abd </a>
+                            </li>
+                            <li>
+                                <a href="#ExtremetiesTab" data-toggle="tab"> Extremeties </a>
+                            </li>
+                            <li>
+                                <a href="#BackTab" data-toggle="tab"> Back </a>
+                            </li>
+                            <li>
+                                <a href="#NotesTab" data-toggle="tab"> Notes </a>
+                            </li>
+
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane fade active in" id="HeadTab">
+                                @foreach (Ctrl control in Model.Tab1Controls)
+                                {
+                                    @Html.Partial("Controls/" + control.ControlType, control);
+                                }
+                            </div>
+                            <div class="tab-pane fade" id="ChestTab">
+                                @foreach (Ctrl control in Model.Tab2Controls)
+                                {
+                                    @Html.Partial("Controls/" + control.ControlType, control);
+                                }
+                            </div>
+                            <div class="tab-pane fade" id="ExtremetiesTab">
+                                @foreach (Ctrl control in Model.Tab3Controls)
+                                {
+                                    @Html.Partial("Controls/" + control.ControlType, control);
+                                }
+                            </div>
+                            <div class="tab-pane fade" id="BackTab">
+                                @foreach (Ctrl control in Model.Tab4Controls)
+                                {
+                                    @Html.Partial("Controls/" + control.ControlType, control);
+                                }
+                            </div>
+                            <div class="tab-pane fade" id="NotesTab">
+                                @foreach (Ctrl control in Model.Tab5Controls)
+                                {
+                                    @Html.Partial("Controls/" + control.ControlType, control);
+                                }
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-xs-12 minimalPaddingImportant">
+                        <div class="form-group">
+                            <label class="control-label"> </label>
+                            <div style="text-align:right">
+                                @if (Model.Controls.Where(x => x.DialogShowOnlyOnMore == true).Count() > 0)
+                                {
+                                    <input type="checkbox" ng-model="pcr.forms.@(Model.DialogTargetId).showMore" /> <span>Show More Fields</span>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+            <div class="modal-footer">
+
+                <div class="col-xs-12 minimalPaddingImportant">
+
+
+                    <div class="col-xs-6" style="text-align:left">
+                        @if (Model.AllowKeepOpen)
+                        {
+                            <input type="checkbox" ng-model="pcr.forms.@(Model.DialogTargetId).keepOpen" /> <span>Keep Open</span>
+                        }
+                    </div>
+
+                    <div class="form-group col-xs-6">
+
+                        <button type="button" ng-click="@Model.NgCancelClick" onclick="@Model.OnCancelClick" class="btn btn-outline @Model.GetHideBtnClass" data-dismiss="modal">@Model.CancelBtnText</button>
+                        <button type="button" ng-click="@Model.NgSubmitClick" onclick="@Model.OnSubmitClick" class="btn btn-default">@Model.SubmitBtnText</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

@@ -128,6 +128,7 @@ app.controller('myCtrl', function ($scope) {
     }
 
     $scope.DeletePcr = function (index) {
+
         Utils.RemovePcrByOfflineId($scope.pcrArray[index].offlineId);
         $scope.LoadPcrArray();
     }
@@ -162,17 +163,60 @@ app.controller('myCtrl', function ($scope) {
 
 
 
+    //$scope.buildTimeline = function () {
+    //    //var timeline = getTimelineItems();
+
+
+    //    var list = JSON.parse(JSON.stringify());
+    //    var timeline = document.getElementById('timeline');
+    //    timeline.innerHTML = '';
+
+    //    var vitalIndex = 0, procIndex = 0, medIndex = 0, examIndex = 0, timelineIndex = 0, dates = [];
+    //    for (var i = 0; i < list.length; i++) {
+    //        if (list[i].medTime)
+    //            timelineItem = medsTable(list[i], medIndex++);
+    //        else if (list[i].vitalTime)
+    //            timelineItem = vitalTable(list[i], vitalIndex++);
+    //        else if (list[i].procTime)
+    //            timelineItem = procTable(list[i], procIndex++);
+    //        else if (list[i].examTime)
+    //            timelineItem = examTable(list[i], examIndex++);
+    //        else if (list[i].timelineTime)
+    //            timelineItem = timelineTable(list[i], timelineIndex++);
+    //        else continue;
+    //        $compile(timelineItem)($scope); // compile here to avoid compiling in the 3 different functions
+    //        // only 1 time and its corresponding date will be non-null for any element, so just use the null coalescing op to get the existing properties 
+    //        var date = new Date((list[i].examDate || list[i].medDate || list[i].procDate || list[i].vitalDate || list[i].timelineDate) + " " + (list[i].examTime || list[i].medTime || list[i].procTime || list[i].vitalTime || list[i].timelineTime));
+    //        for (var index = 0; index < dates.length; index++)
+    //            if (date < dates[index]) break;
+
+    //        if (index < dates.length)
+    //            timeline.insertBefore(timelineItem, timeline.childNodes[index * 2]); // index * 2 to skip over timeline breaks
+    //        else
+    //            timeline.appendChild(timelineItem);
+    //        $(timelineItem).after(document.createElement("br"));
+    //        dates.splice(index, 0, date);
+    //    }
+    //    $('.data').dataTable({ searching: false, info: false, paging: false, ordering: false, autoWidth: true });
+    //    +$('.table-outline').css("border", "3px solid silver");
+    //};
+
+
+
+
+
+
     function logError(customObject)
     {
 
     }
 
-    $scope.AddItemToList = function (listName, formItemName)
+    $scope.AddItemToList = function (listName)
     {
         if ($scope.pcr[listName] == null)
             $scope.pcr[listName] = [];
 
-        var formItem = $scope.pcr.forms[formItemName];
+        var formItem = $scope.pcr.forms[listName];
 
         var item = JSON.parse(JSON.stringify(formItem));
 
@@ -190,13 +234,25 @@ app.controller('myCtrl', function ($scope) {
 
     $scope.RemoveItem = function (index, listName) {
 
-        if (confirm("Are you sure you want to DELETE the item?") == true) {
-            $scope.pcr[listName].splice(index, 1);
-        }
+        $scope.pcr.timelines = [];
+
+        $scope.pcr.timelines = $scope.pcr.timelines.concat($scope.pcr.Exams || []).concat($scope.pcr.Vitals || []).concat($scope.pcr.Procedures || []).concat($scope.pcr.Medications || []);
+
+        $('#sample_1').DataTable({ responsive: true });
+
+        
+
+        //bootbox.confirm("Are you sure you want to DELETE the item?", function (result) {
+        //    $scope.pcr[listName].splice(index, 1);
+
+        //    $scope.$apply();
+        //});
+
+
     };
 
 
-    $scope.LoadItemModal = function (index, listname, formName) {
+    $scope.LoadItemModal = function (index, listname) {
 
         var angularItem = angular.copy( $scope.pcr[listname][index]);
 
@@ -207,19 +263,19 @@ app.controller('myCtrl', function ($scope) {
         itemToLoad.ItemIndex = index;
 
 
-        $scope.pcr.forms[formName] = itemToLoad;
+        $scope.pcr.forms[listname] = itemToLoad;
 
-        $("#Immunizations").modal("show");
+        $("#" + listname).modal("show");
 
 
         //$scope.$apply();
 
     };
 
-    $scope.ClearCloseModal = function (modalTargetQuery, formItemName)
+    $scope.ClearCloseModal = function (modalTargetQuery, listName)
     {
 
-        $scope.pcr.forms[formItemName] = {};
+        $scope.pcr.forms[listName] = {};
 
         $(modalTargetQuery).modal('hide');
     }

@@ -2961,6 +2961,10 @@
     <Content Include="Areas\Mpa\Views\PcrForm\Controls\AddressPicker.cshtml" />
     <Content Include="Areas\Mpa\Views\PcrForm\Controls\DialogAddress.cshtml" />
     <Content Include="Areas\Mpa\Views\PcrForm\Controls\TableListView.cshtml" />
+    <Content Include="Areas\Mpa\Views\PcrForm\Controls\SectionTimeline.cshtml" />
+    <Content Include="Areas\Mpa\Views\PcrForm\Controls\BlankPlaceHolder.cshtml" />
+    <Content Include="Areas\Mpa\Views\PcrForm\Controls\DialogOneToMany.cshtml" />
+    <Content Include="Areas\Mpa\Views\PcrForm\Controls\DialogExams.cshtml" />
     <None Include="Properties\PublishProfiles\FileSystem_Release.pubxml" />
     <Content Include="Views\Account\TenantSelection.cshtml" />
     <Content Include="Scripts\version.json" />

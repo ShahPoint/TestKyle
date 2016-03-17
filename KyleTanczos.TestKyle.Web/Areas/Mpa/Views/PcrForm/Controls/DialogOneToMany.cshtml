@@ -14,7 +14,16 @@
             <div class="modal-body">
                 <form action="#" class="horizontal-form">
                     <div class="form-body">
-                        @foreach (Ctrl control in Model.Controls)
+                        @foreach (Ctrl control in Model.Controls.Where(x => x.DialogShowOnlyOnMore == false))
+                        {
+                            @Html.Partial("Controls/" + control.ControlType, control);
+                        }
+                    </div>
+
+
+
+                    <div class="form-body" ng-show="pcr.forms.@(Model.DialogTargetId).showMore">
+                        @foreach (Ctrl control in Model.Controls.Where(x => x.DialogShowOnlyOnMore == true))
                         {
                             @Html.Partial("Controls/" + control.ControlType, control);
                         }
@@ -23,16 +32,30 @@
                     <div class="col-xs-12 minimalPaddingImportant">
                         <div class="form-group">
                             <label class="control-label"> </label>
-                            
+                            <div style="text-align:right">
+                                @if (Model.Controls.Where(x => x.DialogShowOnlyOnMore == true).Count() > 0 )
+                                {
+                                    <input type="checkbox" ng-model="pcr.forms.@(Model.DialogTargetId).showMore" /> <span>Show More Fields</span>
+                                }
+                            </div>
                         </div>
                     </div>
+
                 </form>
             </div>
             <div class="modal-footer">
 
                 <div class="col-xs-12 minimalPaddingImportant">
 
-                    <div class="form-group">
+
+                    <div class="col-xs-6" style="text-align:left">
+                        @if (Model.AllowKeepOpen)
+                        {
+                            <input type="checkbox" ng-model="pcr.forms.@(Model.DialogTargetId).keepOpen" /> <span>Keep Open</span>
+                        }
+                    </div>
+
+                    <div class="form-group col-xs-6">
 
                         <button type="button" ng-click="@Model.NgCancelClick" onclick="@Model.OnCancelClick" class="btn btn-outline @Model.GetHideBtnClass" data-dismiss="modal">@Model.CancelBtnText</button>
                         <button type="button" ng-click="@Model.NgSubmitClick" onclick="@Model.OnSubmitClick" class="btn btn-default">@Model.SubmitBtnText</button>
