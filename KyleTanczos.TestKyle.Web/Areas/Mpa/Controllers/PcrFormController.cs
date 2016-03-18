@@ -252,7 +252,15 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
         }
     }
 
+    public class Select2 : Ctrl
+    {
+        public Select2()
+        {
+            ControlType = ControlTypeEnum.Select2;
+        }
 
+
+    }
 
     public class Ctrl
     {
@@ -281,8 +289,8 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 
         public string CustomAttributes { get; set; }
 
-        public string CustomCssClass { get; set; }
-
+        public string ContainerCustomCssClass { get; set; }
+        public string ControlCustomCssClass { get; set; }
         public bool DialogShowOnlyOnMore { get; set; }
 
     }
@@ -433,11 +441,10 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 Controls = new List<Ctrl>()
                                 {
                                    new TextBox() { DisplayName = "Incident Number"
-                                       ,NgModel = "E02_02"
+                                       ,NgModel = "E02_02", ControlCustomCssClass = "input-spinner"
                                         },
-                                    new DropDownList() { DisplayName = "Response Urgency",
-                                        DropDownOptions = options.NemsisSelectOptions("E07_33")
-                                        ,NgModel = "E07_33", IsSelect2 = true
+                                    new Select2() { DisplayName = "Response Urgency"
+                                        ,NgModel = "E07_33"
                                         }
                                     ,
                                     new AddressPicker() { DisplayName = "Scene Address"
@@ -719,7 +726,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                         Controls = new List<Ctrl>()
                                         {
                                             new TextBox() { DisplayName = "Hidden Item Index Id", NgModel = "forms.Immunizations.ItemIndex",
-                                                 ResponsiveWidth = 12, CustomCssClass = "hidden"
+                                                 ResponsiveWidth = 12, ContainerCustomCssClass = "hidden"
                                                 },
                                             new DropDownList() { DisplayName = "Immunization Date", NgModel = "forms.Immunizations.ImmunDate",
                                                 DropDownOptions = options.NemsisSelectOptions("E20_10"), ResponsiveWidth = 12
@@ -731,7 +738,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                         },
                                             //OnCancelClick = "alert('cancel')",
                                             //OnSubmitClick = "alert('submit')",
-                                            NgSubmitClick = "AddItemToList('Immunizations');ClearCloseModal('#Immunizations', 'Immunizations');",
+                                            NgSubmitClick = "AddItemToList('Immunizations');",
                                             NgCancelClick = "ClearCloseModal('#Immunizations', 'Immunizations');"
                                 },
 
@@ -775,15 +782,6 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                     new DropDownList() { DisplayName = "Barriers To Patient Care",
                                         DropDownOptions = options.NemsisSelectOptions("E12_01"), ResponsiveWidth = 12
                                        ,NgModel = "E12_01" }
-                                }
-                            },
-                            new Section()
-                            {
-                                SectionName = "Exams",
-                                Controls = new List<Ctrl>()
-                                {
-                                    new Ctrl() { DisplayName = "Patient Complaints", ResponsiveWidth = 12 }
-
                                 }
                             },
                             new Section()
@@ -1018,7 +1016,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                         Controls = new List<Ctrl>()
                                         {
                                             new TextBox() { DisplayName = "Hidden Item Index Id", NgModel = "forms.Insurances.ItemIndex",
-                                                 ResponsiveWidth = 12, CustomCssClass = "hidden"
+                                                 ResponsiveWidth = 12, ContainerCustomCssClass = "hidden"
                                                 },
                                             new TextBox() { DisplayName = "Insurance", NgModel = "forms.Insurances.InsuranceName"
                                                 },
@@ -1050,7 +1048,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                         },
                                             //OnCancelClick = "alert('cancel')",
                                             //OnSubmitClick = "alert('submit')",
-                                            NgSubmitClick = "AddItemToList('Insurances');ClearCloseModal('#Insurances', 'Insurances');",
+                                            NgSubmitClick = "AddItemToList('Insurances');",
                                             NgCancelClick = "ClearCloseModal('#Insurances', 'Insurances');"
                                 },
 
@@ -1085,7 +1083,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                         Controls = new List<Ctrl>()
                                         {
                                             new TextBox() { DisplayName = "Hidden Item Index Id", NgModel = "forms.Vitals.ItemIndex",
-                                                 ResponsiveWidth = 12, CustomCssClass = "hidden"
+                                                 ResponsiveWidth = 12, ContainerCustomCssClass = "hidden"
                                                 },
                                             new TextBox() { DisplayName = "Date", NgModel = "forms.Vitals.V0a"
                                                 },
@@ -1149,7 +1147,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                         },
                                             //OnCancelClick = "alert('cancel')",
                                             //OnSubmitClick = "alert('submit')",
-                                            NgSubmitClick = "AddItemToList('Vitals');ClearCloseModal('#Vitals', 'Vitals');",
+                                            NgSubmitClick = "AddItemToList('Vitals');",
                                             NgCancelClick = "ClearCloseModal('#Vitals', 'Vitals');"
                                 },
 
@@ -1162,7 +1160,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                         Controls = new List<Ctrl>()
                                         {
                                             new TextBox() { DisplayName = "Hidden Item Index Id", NgModel = "forms.Medications.ItemIndex",
-                                                 ResponsiveWidth = 12, CustomCssClass = "hidden"
+                                                 ResponsiveWidth = 12, ContainerCustomCssClass = "hidden"
                                                 },
                                             new TextBox() { DisplayName = "Time", NgModel = "forms.Medications.M1"
                                                 },
@@ -1196,7 +1194,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                         },
                                             //OnCancelClick = "alert('cancel')",
                                             //OnSubmitClick = "alert('submit')",
-                                            NgSubmitClick = "AddItemToList('Medications');ClearCloseModal('#Medications', 'Medications');",
+                                            NgSubmitClick = "AddItemToList('Medications');",
                                             NgCancelClick = "ClearCloseModal('#Medications', 'Medications');"
                                 },
 
@@ -1209,7 +1207,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                         Controls = new List<Ctrl>()
                                         {
                                             new TextBox() { DisplayName = "Hidden Item Index Id", NgModel = "forms.Procedures.ItemIndex",
-                                                 ResponsiveWidth = 12, CustomCssClass = "hidden"
+                                                 ResponsiveWidth = 12, ContainerCustomCssClass = "hidden"
                                                 },
                                             new TextBox() { DisplayName = "Time", NgModel = "forms.Procedures.P1"
 
@@ -1263,7 +1261,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                         },
                                             //OnCancelClick = "alert('cancel')",
                                             //OnSubmitClick = "alert('submit')",
-                                            NgSubmitClick = "AddItemToList('Procedures');ClearCloseModal('#Procedures', 'Procedures');",
+                                            NgSubmitClick = "AddItemToList('Procedures');",
                                             NgCancelClick = "ClearCloseModal('#Procedures', 'Procedures');"
                                 },
 
@@ -1278,11 +1276,30 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                     Tab1Controls = new List<Ctrl>()
                                         {
                                             new TextBox() { DisplayName = "Hidden Item Index Id", NgModel = "forms.Exams.ItemIndex",
-                                                 ResponsiveWidth = 12, CustomCssClass = "hidden"
+                                                 ResponsiveWidth = 12, ContainerCustomCssClass = "hidden"
                                                 },
-                                            new TextBox() { DisplayName = "Time", NgModel = "forms.Exams.Time"
+                                            new DropDownList() { DisplayName = "Head", NgModel = "forms.Exams.Ex",
+                                                DropDownOptions = options.NemsisSelectOptions("E20_10"), ResponsiveWidth = 12
                                                 },
-                                            new DropDownList() { DisplayName = "Exam", NgModel = "forms.Exams.Ex",
+                                            new DropDownList() { DisplayName = "Mental", NgModel = "forms.Exams.Ex",
+                                                DropDownOptions = options.NemsisSelectOptions("E20_10"), ResponsiveWidth = 12
+                                                },
+                                            new DropDownList() { DisplayName = "Neuro", NgModel = "forms.Exams.Ex",
+                                                DropDownOptions = options.NemsisSelectOptions("E20_10"), ResponsiveWidth = 12
+                                                },
+                                            new DropDownList() { DisplayName = "Face", NgModel = "forms.Exams.Ex",
+                                                DropDownOptions = options.NemsisSelectOptions("E20_10"), ResponsiveWidth = 12
+                                                },
+                                            new DropDownList() { DisplayName = "Left Eye", NgModel = "forms.Exams.Ex",
+                                                DropDownOptions = options.NemsisSelectOptions("E20_10"), ResponsiveWidth = 12
+                                                },
+                                            new DropDownList() { DisplayName = "Right Eye", NgModel = "forms.Exams.Ex",
+                                                DropDownOptions = options.NemsisSelectOptions("E20_10"), ResponsiveWidth = 12
+                                                },
+                                            new DropDownList() { DisplayName = "Neck", NgModel = "forms.Exams.Ex",
+                                                DropDownOptions = options.NemsisSelectOptions("E20_10"), ResponsiveWidth = 12
+                                                },
+                                            new DropDownList() { DisplayName = "Skin", NgModel = "forms.Exams.Ex",
                                                 DropDownOptions = options.NemsisSelectOptions("E20_10"), ResponsiveWidth = 12
                                                 }
 
@@ -1291,58 +1308,80 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 
                                         Tab2Controls = new List<Ctrl>()
                                         {
-                                            new TextBox() { DisplayName = "Hidden Item Index Id", NgModel = "forms.Exams.ItemIndex",
-                                                 ResponsiveWidth = 12, CustomCssClass = "hidden"
+                                             new TextBox() { DisplayName = "Chest", NgModel = "forms.Exams.aaa",
+                                                 ResponsiveWidth = 12
                                                 },
-                                            new TextBox() { DisplayName = "Time", NgModel = "forms.Exams.Time"
+                                             new TextBox() { DisplayName = "Heart", NgModel = "forms.Exams.aaa",
+                                                 ResponsiveWidth = 12
                                                 },
-                                            new DropDownList() { DisplayName = "Exam", NgModel = "forms.Exams.Ex",
-                                                DropDownOptions = options.NemsisSelectOptions("E20_10"), ResponsiveWidth = 12
+                                             new TextBox() { DisplayName = "Abs Left Upper", NgModel = "forms.Exams.aaa",
+                                                 ResponsiveWidth = 12
+                                                },
+                                             new TextBox() { DisplayName = "Abs Left Lower", NgModel = "forms.Exams.aaa",
+                                                 ResponsiveWidth = 12
+                                                },
+                                             new TextBox() { DisplayName = "Abs Right Upper", NgModel = "forms.Exams.aaa",
+                                                 ResponsiveWidth = 12
+                                                },
+                                             new TextBox() { DisplayName = "Abs Right Lower", NgModel = "forms.Exams.aaa",
+                                                 ResponsiveWidth = 12
+                                                },
+                                             new TextBox() { DisplayName = "GU", NgModel = "forms.Exams.aaa",
+                                                 ResponsiveWidth = 12
                                                 }
 
                                         },
 
                                         Tab3Controls = new List<Ctrl>()
                                         {
-                                            new TextBox() { DisplayName = "Hidden Item Index Id", NgModel = "forms.Exams.ItemIndex",
-                                                 ResponsiveWidth = 12, CustomCssClass = "hidden"
+                                             new TextBox() { DisplayName = "Right - Upper", NgModel = "forms.Exams.aaa",
+                                                 ResponsiveWidth = 12
                                                 },
-                                            new TextBox() { DisplayName = "Time", NgModel = "forms.Exams.Time"
+                                             new TextBox() { DisplayName = "Right Lower", NgModel = "forms.Exams.aaa",
+                                                 ResponsiveWidth = 12
                                                 },
-                                            new DropDownList() { DisplayName = "Exam", NgModel = "forms.Exams.Ex",
-                                                DropDownOptions = options.NemsisSelectOptions("E20_10"), ResponsiveWidth = 12
+                                             new TextBox() { DisplayName = "Left Lower", NgModel = "forms.Exams.aaa",
+                                                 ResponsiveWidth = 12
+                                                },
+                                             new TextBox() { DisplayName = "Left Upper", NgModel = "forms.Exams.aaa",
+                                                 ResponsiveWidth = 12
                                                 }
 
                                         },
 
                                         Tab4Controls = new List<Ctrl>()
                                         {
-                                            new TextBox() { DisplayName = "Hidden Item Index Id", NgModel = "forms.Exams.ItemIndex",
-                                                 ResponsiveWidth = 12, CustomCssClass = "hidden"
+                                             new TextBox() { DisplayName = "Back Cervical", NgModel = "forms.Exams.aaa",
+                                                 ResponsiveWidth = 12
                                                 },
-                                            new TextBox() { DisplayName = "Time", NgModel = "forms.Exams.Time"
+                                             new TextBox() { DisplayName = "Back Thoracic", NgModel = "forms.Exams.aaa",
+                                                 ResponsiveWidth = 12
                                                 },
-                                            new DropDownList() { DisplayName = "Exam", NgModel = "forms.Exams.Ex",
-                                                DropDownOptions = options.NemsisSelectOptions("E20_10"), ResponsiveWidth = 12
+                                             new TextBox() { DisplayName = "Back Lumbar", NgModel = "forms.Exams.aaa",
+                                                 ResponsiveWidth = 12
+                                                },
+                                             new TextBox() { DisplayName = "Unspecified", NgModel = "forms.Exams.aaa",
+                                                 ResponsiveWidth = 12
                                                 }
 
                                         },
 
                                         Tab5Controls = new List<Ctrl>()
                                         {
-                                            new TextBox() { DisplayName = "Hidden Item Index Id", NgModel = "forms.Exams.ItemIndex",
-                                                 ResponsiveWidth = 12, CustomCssClass = "hidden"
+                                            new TextBox() { DisplayName = "Time", NgModel = "forms.Exams.aaa",
+                                                 ResponsiveWidth = 12
                                                 },
-                                            new TextBox() { DisplayName = "Time", NgModel = "forms.Exams.Time"
+                                            new TextBox() { DisplayName = "Date", NgModel = "forms.Exams.aaa",
+                                                 ResponsiveWidth = 12
                                                 },
-                                            new DropDownList() { DisplayName = "Exam", NgModel = "forms.Exams.Ex",
-                                                DropDownOptions = options.NemsisSelectOptions("E20_10"), ResponsiveWidth = 12
+                                            new TextBox() { DisplayName = "Notes", NgModel = "forms.Exams.aaa",
+                                                 ResponsiveWidth = 12
                                                 }
 
                                         },
                                             //OnCancelClick = "alert('cancel')",
                                             //OnSubmitClick = "alert('submit')",
-                                            NgSubmitClick = "AddItemToList('Exams');ClearCloseModal('#Exams', 'Exams');",
+                                            NgSubmitClick = "AddItemToList('Exams');",
                                             NgCancelClick = "ClearCloseModal('#Exams', 'Exams');"
                                 },
 

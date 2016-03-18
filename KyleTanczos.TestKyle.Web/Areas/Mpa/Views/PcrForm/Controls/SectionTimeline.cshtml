@@ -46,15 +46,7 @@
 
                                     <th>Time</th>
 
-                                    <th>Gone</th>
-
-                                    <th>Greg</th>
-
-                                    <th>Another</th>
-
-                                    <th>what</th>
-
-                                    <th>some</th>
+                                  
 
                                     <th></th>
                                 </tr>
@@ -64,35 +56,21 @@
 
                                 <tr ng-repeat="item in pcr.timelines">
 
-                                    @*<td>
-                                        <a href="javascript:;" ng-click="LoadTimeLineModal($index)" class="btn btn-icon-only default">
+                                    <td>
+                                        <a href="javascript:;" ng-click="LoadTimeLineModal($index)" class="btn btn-xs btn-icon-only default">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                    </td>*@
+                                    </td>
+
                                     <td>
                                         {{item.Time}}
                                     </td>
 
-                                    <td>Time</td>
-
-                                    <td>Gone</td>
-
-                                    <td>Greg</td>
-
-                                    <td>Another</td>
-
-                                    <td>what a</td>
-
-                                    <td>Another</td>
-
-                                    <td>what a</td>
-
-
-                                    @*<td>
-                                        <a href="javascript:;" ng-click="RemoveTimeLineItem($index)" class="btn btn-icon-only default">
+                                    <td>
+                                        <a href="javascript:;" ng-click="RemoveTimeLineItem($index)" class="btn btn-xs btn-icon-only default">
                                             <i class="fa fa-times"></i>
                                         </a>
-                                    </td>*@
+                                    </td>
 
                                 </tr>
                             </tbody>

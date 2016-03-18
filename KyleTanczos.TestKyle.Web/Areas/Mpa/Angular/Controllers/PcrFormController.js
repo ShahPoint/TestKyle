@@ -229,16 +229,28 @@ app.controller('myCtrl', function ($scope) {
             $scope.pcr[listName].push(item);
         }
 
+        
+        
+        if ($scope.pcr.forms[listName].keepOpen != true)
+            CloseModal("#" + listName);
 
+        ClearModal(listName);
+
+        RenderTimeline();
     }
 
-    $scope.RemoveItem = function (index, listName) {
-
+    function RenderTimeline()
+    {
         $scope.pcr.timelines = [];
 
         $scope.pcr.timelines = $scope.pcr.timelines.concat($scope.pcr.Exams || []).concat($scope.pcr.Vitals || []).concat($scope.pcr.Procedures || []).concat($scope.pcr.Medications || []);
 
-        $('#sample_1').DataTable({ responsive: true });
+        $('#timeLineTable').DataTable({ responsive: true });
+    }
+
+
+    $scope.RemoveItem = function (index, listName) {
+
 
         
 
@@ -248,7 +260,7 @@ app.controller('myCtrl', function ($scope) {
         //    $scope.$apply();
         //});
 
-
+        RenderTimeline();
     };
 
 
@@ -272,10 +284,18 @@ app.controller('myCtrl', function ($scope) {
 
     };
 
-    $scope.ClearCloseModal = function (modalTargetQuery, listName)
+    $scope.ClearCloseModal = function(modalTargetQuery, listName)
     {
+        ClearModal(listName);
+        CloseModal(modalTargetQuery);
+    }
+
+    function ClearModal(listName) {
 
         $scope.pcr.forms[listName] = {};
+    }
+
+    function CloseModal(modalTargetQuery) {
 
         $(modalTargetQuery).modal('hide');
     }
