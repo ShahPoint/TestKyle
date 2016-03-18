@@ -572,6 +572,10 @@
     <Content Include="libs\bootstrap-switch\css\bootstrap-switch.min.css" />
     <Content Include="libs\bootstrap-switch\js\bootstrap-switch.js" />
     <Content Include="libs\bootstrap-switch\js\bootstrap-switch.min.js" />
+    <Content Include="libs\bootstrap-touchspin\bootstrap.touchspin.css" />
+    <Content Include="libs\bootstrap-touchspin\bootstrap.touchspin.js" />
+    <Content Include="libs\bootstrap-touchspin\bootstrap.touchspin.min.css" />
+    <Content Include="libs\bootstrap-touchspin\bootstrap.touchspin.min.js" />
     <Content Include="libs\bootstrap\css\bootstrap-rtl.css" />
     <Content Include="libs\bootstrap\css\bootstrap-rtl.min.css" />
     <Content Include="libs\bootstrap\css\bootstrap.css" />
@@ -2666,6 +2670,7 @@
     <Compile Include="Areas\Mpa\Controllers\AuditLogsController.cs" />
     <Compile Include="Areas\Mpa\Controllers\Common.cs" />
     <Compile Include="Areas\Mpa\Controllers\EditionsController.cs" />
+    <Compile Include="Areas\Mpa\Controllers\NemsisTestController.cs" />
     <Compile Include="Areas\Mpa\Controllers\OrganizationUnitsController.cs" />
     <Compile Include="Areas\Mpa\Controllers\PcrFormController.cs" />
     <Compile Include="Areas\Mpa\Controllers\UploadReportsController.cs" />
@@ -2704,6 +2709,7 @@
     <Compile Include="Areas\Mpa\MpaAreaRegistration.cs" />
     <Compile Include="Areas\Mpa\Startup\MpaBundleConfig.cs" />
     <Compile Include="Areas\Mpa\Startup\MpaNavigationProvider.cs" />
+    <Compile Include="Areas\Mpa\Views\PcrForm\Controls\Class1.cs" />
     <Compile Include="Classes\PatientMedicationList.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApplicationController.cs" />
@@ -2965,6 +2971,9 @@
     <Content Include="Areas\Mpa\Views\PcrForm\Controls\BlankPlaceHolder.cshtml" />
     <Content Include="Areas\Mpa\Views\PcrForm\Controls\DialogOneToMany.cshtml" />
     <Content Include="Areas\Mpa\Views\PcrForm\Controls\DialogExams.cshtml" />
+    <Content Include="libs\bootstrap-touchspin\LICENSE.md" />
+    <Content Include="libs\bootstrap-touchspin\README.md" />
+    <Content Include="Areas\Mpa\Views\NemsisTest\Index.cshtml" />
     <None Include="Properties\PublishProfiles\FileSystem_Release.pubxml" />
     <Content Include="Views\Account\TenantSelection.cshtml" />
     <Content Include="Scripts\version.json" />

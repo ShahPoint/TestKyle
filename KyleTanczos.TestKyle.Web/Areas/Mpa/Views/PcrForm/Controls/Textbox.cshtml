@@ -2,10 +2,10 @@
 
 @model KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers.Ctrl
 
-<div class="col-xs-@Model.ResponsiveWidth minimalPaddingImportant @Model.CustomCssClass">
+<div class="col-xs-@Model.ResponsiveWidth minimalPaddingImportant @Model.ContainerCustomCssClass">
     <div class="form-group">
         <label class="control-label">@Model.DisplayName </label>
-        <input type="text" @Model.NgModel id="@Model.ClientId" class="form-control"  placeholder="@Model.PlaceHolder" @Model.CustomAttributes >
+        <input type="text" @Model.NgModel id="@Model.ClientId" class="form-control @Model.ControlCustomCssClass"  placeholder="@Model.PlaceHolder" @Model.CustomAttributes >
 
     </div>
 </div>
