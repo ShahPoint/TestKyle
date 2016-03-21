@@ -262,6 +262,16 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 
     }
 
+    public class TextArea : Ctrl
+    {
+        public TextArea()
+        {
+            ControlType = ControlTypeEnum.TextArea;
+        }
+
+        public int HeightRows { get; set; }
+    }
+
     public class Ctrl
     {
         public Ctrl()
@@ -312,7 +322,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
     }
 
                                  
-    public enum ControlTypeEnum { PatientMeds, MileageBox, TextBox, DropDownList, Select2, Select2Single, Select2Many, AddressPicker, Select2TagsSingle, Select2TagsMany, TableListView, TimePicker }
+    public enum ControlTypeEnum { PatientMeds, MileageBox, TextBox, DropDownList, Select2, Select2Single, TextArea, Select2Many, AddressPicker, Select2TagsSingle, Select2TagsMany, TableListView, TimePicker }
 
     public class GetPcrFormSelect2Options
     {
@@ -1509,7 +1519,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 SectionName = "Narrative",
                                 Controls = new List<Ctrl>()
                                 {
-                                    new Ctrl() { DisplayName = "", ControlType = ControlTypeEnum.TextBox
+                                    new TextArea() { DisplayName = "", HeightRows = 20
                                        }
                                 }
                             },
