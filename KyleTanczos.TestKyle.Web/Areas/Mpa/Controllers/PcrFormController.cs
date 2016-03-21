@@ -576,7 +576,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 Controls = new List<Ctrl>()
                                 {
                                    new DropDownList() { DisplayName = "Primary",
-                                        DropDownOptions = options.NemsisSelectOptions(""), ResponsiveWidth = 12
+                                        DropDownOptions = options.NemsisSelectOptions("E04_02"), ResponsiveWidth = 12
                                         ,NgModel = "E04_02"},
                                     new DropDownList() { DisplayName = "Secondary",
                                         DropDownOptions = options.NemsisSelectOptions(""), ResponsiveWidth = 12
@@ -643,8 +643,8 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                        ,NgModel = "E06_11"},
                                     new TextBox() { DisplayName = "SSN"
                                        ,NgModel = "E06_10"},
-                                    new TextBox() { DisplayName = "Pattient Address"
-                                       ,NgModel = ""}
+                                    new TextBox() { DisplayName = "Patient Address"
+                                       ,NgModel = "E06_04_0"}
                                     }
                              },
                              new Section()
@@ -656,10 +656,10 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                     new TextBox() { DisplayName = "DL Number"
                                        ,NgModel = "E06_19"},
                                     new TextBox() { DisplayName = "Pt Practitioner Name"
-                                       ,NgModel = "E06_18"},
+                                       ,NgModel = "E12_06"},
                                      new DropDownList() { DisplayName = "DL State",
-                                        DropDownOptions = options.NemsisSelectOptions("E12_06")
-                                       ,NgModel = "E12_06"}
+                                        DropDownOptions = options.NemsisSelectOptions("E06_18")
+                                       ,NgModel = "E06_18"}
                                  }
                              },
                              new Section()
@@ -694,10 +694,10 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                        ,NgModel = "CustomTriageCategory" },
                                     new DropDownList() { DisplayName = "Pregnant?",
                                         DropDownOptions = options.NemsisSelectOptions("E12_20")
-                                       ,NgModel = "E12_20" },
+                                       ,NgModel = "E12_20" }/*,
                                     new DropDownList() { DisplayName = "# Past Pregnancies",
                                         DropDownOptions = options.NemsisSelectOptions("")
-                                       ,NgModel = "" }
+                                       ,NgModel = "" }*/
                                  }
 
                              },
@@ -728,11 +728,11 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                             new TextBox() { DisplayName = "Hidden Item Index Id", NgModel = "forms.Immunizations.ItemIndex",
                                                  ResponsiveWidth = 12, ContainerCustomCssClass = "hidden"
                                                 },
-                                            new DropDownList() { DisplayName = "Immunization Date", NgModel = "forms.Immunizations.ImmunDate",
-                                                DropDownOptions = options.NemsisSelectOptions("E20_10"), ResponsiveWidth = 12
+                                            new DropDownList() { DisplayName = "Immunization Date", NgModel = "forms.Immunizations.E12_13",
+                                                DropDownOptions = options.NemsisSelectOptions("E12_13"), ResponsiveWidth = 12
                                                 },
-                                            new DropDownList() { DisplayName = "Immunization Type", NgModel = "forms.Immunizations.ImmunType",
-                                                DropDownOptions = options.NemsisSelectOptions("E20_10"), ResponsiveWidth = 12
+                                            new DropDownList() { DisplayName = "Immunization Type", NgModel = "forms.Immunizations.E12_13",
+                                                DropDownOptions = options.NemsisSelectOptions("E12_13"), ResponsiveWidth = 12
                                                 }
 
                                         },
@@ -966,14 +966,14 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                         DropDownOptions = options.NemsisSelectOptions("E07_27")
                                        ,NgModel = "E07_27" },
                                     new TextBox() { DisplayName = "Employer Address"
-                                       ,NgModel = "" },
+                                       ,NgModel = "E07_28-E07_31" },
                                     new TextBox() { DisplayName = "Employer Phone"
                                        ,NgModel = "E07_32" },
                                     new TextBox() { DisplayName = "Patient Occupation"
                                        ,NgModel = "E07_17" },
                                     new DropDownList() { DisplayName = "Occupation Industry",
-                                        DropDownOptions = options.NemsisSelectOptions("")
-                                       ,NgModel = "" }
+                                        DropDownOptions = options.NemsisSelectOptions("E07_16")
+                                       ,NgModel = "E07_16" }
                                 }
                             }
                             ,new Section()
@@ -999,7 +999,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                         DropDownOptions = options.NemsisSelectOptions("")
                                        ,NgModel = "E07_26" },
                                     new TextBox() { DisplayName = "Guardian Address"
-                                       ,NgModel = "" }
+                                       ,NgModel = "E07_21" }
                                 }
                             },
                             new Section()
@@ -1018,31 +1018,31 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                             new TextBox() { DisplayName = "Hidden Item Index Id", NgModel = "forms.Insurances.ItemIndex",
                                                  ResponsiveWidth = 12, ContainerCustomCssClass = "hidden"
                                                 },
-                                            new TextBox() { DisplayName = "Insurance", NgModel = "forms.Insurances.InsuranceName"
+                                            new TextBox() { DisplayName = "Insurance", NgModel = "forms.Insurances.E07_03"
                                                 },
-                                            new TextBox() { DisplayName = "Billing Priority", NgModel = "forms.Insurances.BillingPriority"
+                                            new TextBox() { DisplayName = "Billing Priority", NgModel = "forms.Insurances.E07_04"
                                                 },
-                                            new TextBox() { DisplayName = "Group", NgModel = "forms.Insurances.Group"
+                                            new TextBox() { DisplayName = "Group", NgModel = "forms.Insurances.E07_09"
                                                 },
-                                            new TextBox() { DisplayName = "Policy", NgModel = "forms.Insurances.Policy"
+                                            new TextBox() { DisplayName = "Policy", NgModel = "forms.Insurances.E07_10"
                                                 },
-                                            new TextBox() { DisplayName = "Insurance Differnt Than Patient", NgModel = "forms.Insurances.InsuranceDifferentThanPatient"
+                                            new TextBox() { DisplayName = "Insurance Different Than Patient", NgModel = "InsuranceForm.insuranceDifferentThanPatientSelect"
                                                 },
-                                            new TextBox() { DisplayName = "Primary Last Name", NgModel = "forms.Insurances.PrimaryLastName"
+                                            new TextBox() { DisplayName = "Primary Last Name", NgModel = "forms.Insurances.E07_11"
                                                 },
-                                            new TextBox() { DisplayName = "Primary First Name", NgModel = "forms.Insurances.PrimaryFirstName"
+                                            new TextBox() { DisplayName = "Primary First Name", NgModel = "forms.Insurances.E07_12"
                                                 },
-                                            new TextBox() { DisplayName = "Primary Middle Name", NgModel = "forms.Insurances.PrimaryMiddleName"
+                                            new TextBox() { DisplayName = "Primary Middle Name", NgModel = "forms.Insurances.E07_13"
                                                 },
-                                            new DropDownList() { DisplayName = "Relationship To Patient", NgModel = "forms.Insurances.ReletionshipToPatient"
+                                            new DropDownList() { DisplayName = "Relationship To Patient", NgModel = "forms.Insurances.E07_14"
                                                 },
-                                            new DropDownList() { DisplayName = "Street", NgModel = "forms.Insurances.Street"
+                                            new DropDownList() { DisplayName = "Street", NgModel = "forms.Insurances.E07_05"
                                                 },
-                                            new DropDownList() { DisplayName = "City", NgModel = "forms.Insurances.City", ResponsiveWidth = 6
+                                            new DropDownList() { DisplayName = "City", NgModel = "forms.Insurances.E07_06", ResponsiveWidth = 6
                                                 },
-                                            new DropDownList() { DisplayName = "State", NgModel = "forms.Insurances.State", ResponsiveWidth = 3
+                                            new DropDownList() { DisplayName = "State", NgModel = "forms.Insurances.E07_07", ResponsiveWidth = 3
                                                 },
-                                            new DropDownList() { DisplayName = "Zip", NgModel = "forms.Insurances.Zip", ResponsiveWidth = 3
+                                            new DropDownList() { DisplayName = "Zip", NgModel = "forms.Insurances.E07_08", ResponsiveWidth = 3
                                                 }
 
                                         },
@@ -1107,7 +1107,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                                 },
                                             new TextBox() { DisplayName = "Pulse Rate", NgModel = "forms.Vitals.E14_07", ResponsiveWidth = 4
                                                 },
-                                            new TextBox() { DisplayName = "Temp(F)", NgModel = "forms.Vitals.V0c", ResponsiveWidth = 4, DialogShowOnlyOnMore = true
+                                            new TextBox() { DisplayName = "Temp(F)", NgModel = "forms.Vitals.E14_20", ResponsiveWidth = 4, DialogShowOnlyOnMore = true
                                                 },
                                             new TextBox() { DisplayName = "Temp Method", NgModel = "forms.Vitals.E14_21", ResponsiveWidth = 4, DialogShowOnlyOnMore = true
                                                 },
@@ -1117,29 +1117,29 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                                 },
                                             new TextBox() { DisplayName = "Cardiac Rhythm", NgModel = "forms.Vitals.E14_03", ResponsiveWidth = 4, DialogShowOnlyOnMore = true
                                                 },
-                                            new TextBox() { DisplayName = "CO2", NgModel = "forms.Vitals.V1", ResponsiveWidth = 4, DialogShowOnlyOnMore = true
+                                            new TextBox() { DisplayName = "CO2", NgModel = "forms.Vitals.E14_13", ResponsiveWidth = 4, DialogShowOnlyOnMore = true
                                                 },
-                                            new TextBox() { DisplayName = "Blood Glucose", NgModel = "forms.Vitals.V2", ResponsiveWidth = 4, DialogShowOnlyOnMore = true
+                                            new TextBox() { DisplayName = "Blood Glucose", NgModel = "forms.Vitals.E14_14", ResponsiveWidth = 4, DialogShowOnlyOnMore = true
                                                 },
                                             new TextBox() { DisplayName = "Thrombolytic", NgModel = "forms.Vitals.E14_25", ResponsiveWidth = 4, DialogShowOnlyOnMore = true
                                                 },
                                             new TextBox() { DisplayName = "Stroke Scale", NgModel = "forms.Vitals.E14_24", ResponsiveWidth = 6, DialogShowOnlyOnMore = true
                                                 },
-                                            new TextBox() { DisplayName = "APGAR", NgModel = "forms.Vitals.V3", ResponsiveWidth = 6, DialogShowOnlyOnMore = true
+                                            new TextBox() { DisplayName = "APGAR", NgModel = "forms.Vitals.E14_26", ResponsiveWidth = 6, DialogShowOnlyOnMore = true
                                                 },
-                                            new TextBox() { DisplayName = "GCS Eyes", NgModel = "forms.Vitals.V4", ResponsiveWidth = 4, DialogShowOnlyOnMore = true
+                                            new TextBox() { DisplayName = "GCS Eyes", NgModel = "forms.Vitals.E14_15", ResponsiveWidth = 4, DialogShowOnlyOnMore = true
                                                 },
-                                            new TextBox() { DisplayName = "GCS Verbal", NgModel = "forms.Vitals.V5", ResponsiveWidth = 4, DialogShowOnlyOnMore = true
+                                            new TextBox() { DisplayName = "GCS Verbal", NgModel = "forms.Vitals.E14_16", ResponsiveWidth = 4, DialogShowOnlyOnMore = true
                                                 },
-                                            new TextBox() { DisplayName = "GCS Motor", NgModel = "forms.Vitals.V6", ResponsiveWidth = 4, DialogShowOnlyOnMore = true
+                                            new TextBox() { DisplayName = "GCS Motor", NgModel = "forms.Vitals.E14_17", ResponsiveWidth = 4, DialogShowOnlyOnMore = true
                                                 },
                                             new TextBox() { DisplayName = "GCS Qaul.", NgModel = "forms.Vitals.E14_18", ResponsiveWidth = 6, DialogShowOnlyOnMore = true
                                                 },
-                                            new TextBox() { DisplayName = "GCS Total", NgModel = "forms.Vitals.V7", ResponsiveWidth = 6, DialogShowOnlyOnMore = true
+                                            new TextBox() { DisplayName = "GCS Total", NgModel = "forms.Vitals.E14_19", ResponsiveWidth = 6, DialogShowOnlyOnMore = true
                                                 },
-                                            new TextBox() { DisplayName = "Revised Trauma", NgModel = "forms.Vitals.V8", ResponsiveWidth = 4, DialogShowOnlyOnMore = true
+                                            new TextBox() { DisplayName = "Revised Trauma", NgModel = "forms.Vitals.E14_27", ResponsiveWidth = 4, DialogShowOnlyOnMore = true
                                                 },
-                                            new TextBox() { DisplayName = "Pediatric Trauma", NgModel = "forms.Vitals.V9", ResponsiveWidth = 4, DialogShowOnlyOnMore = true
+                                            new TextBox() { DisplayName = "Pediatric Trauma", NgModel = "forms.Vitals.E14_28", ResponsiveWidth = 4, DialogShowOnlyOnMore = true
                                                 },
                                             new TextBox() { DisplayName = "Is Prior Aid", NgModel = "forms.Vitals.E14_02", ResponsiveWidth = 4, DialogShowOnlyOnMore = true
                                                 }
@@ -1162,9 +1162,9 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                             new TextBox() { DisplayName = "Hidden Item Index Id", NgModel = "forms.Medications.ItemIndex",
                                                  ResponsiveWidth = 12, ContainerCustomCssClass = "hidden"
                                                 },
-                                            new TextBox() { DisplayName = "Time", NgModel = "forms.Medications.M1"
+                                            new TextBox() { DisplayName = "Time", NgModel = "forms.Medications.E18_01"
                                                 },
-                                            new TextBox() { DisplayName = "Date", NgModel = "forms.Medications.M2"
+                                            new TextBox() { DisplayName = "Date", NgModel = "forms.Medications.E18_01"
                                                 },
                                             new TextBox() { DisplayName = "Crew", NgModel = "forms.Medications.E04_01"
                                                 },
@@ -1215,43 +1215,43 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                             new TextBox() { DisplayName = "Date", NgModel = "forms.Procedures.P2"
 
                                                 },
-                                            new TextBox() { DisplayName = "Crew", NgModel = "forms.Procedures.aaa"
+                                            new TextBox() { DisplayName = "Crew", NgModel = "forms.Procedures.E19_09"
 
                                                 },
-                                            new TextBox() { DisplayName = "Procedure", NgModel = "forms.Procedures.aaa"
+                                            new TextBox() { DisplayName = "Procedure", NgModel = "forms.Procedures.E19_03"
 
                                                 },
-                                            new TextBox() { DisplayName = "Equip Size", NgModel = "forms.Procedures.aaa"
+                                            new TextBox() { DisplayName = "Equip Size", NgModel = "forms.Procedures.E19_04"
 
                                                 },
-                                            new TextBox() { DisplayName = "Success", NgModel = "forms.Procedures.aaa"
+                                            new TextBox() { DisplayName = "Success", NgModel = "forms.Procedures.E19_06"
 
                                                 },
-                                            new TextBox() { DisplayName = "Attempts", NgModel = "forms.Procedures.aaa"
+                                            new TextBox() { DisplayName = "Attempts", NgModel = "forms.Procedures.E19_05"
 
                                                 },
-                                            new TextBox() { DisplayName = "Response", NgModel = "forms.Procedures.aaa"
+                                            new TextBox() { DisplayName = "Response", NgModel = "forms.Procedures.E19_08"
 
                                                 },
-                                            new TextBox() { DisplayName = "Complication", NgModel = "forms.Procedures.aaa"
+                                            new TextBox() { DisplayName = "Complication", NgModel = "forms.Procedures.E19_07"
 
                                                 },
-                                            new TextBox() { DisplayName = "Authorization", NgModel = "forms.Procedures.aaa"
+                                            new TextBox() { DisplayName = "Authorization", NgModel = "forms.Procedures.E19_10"
 
                                                 },
-                                            new TextBox() { DisplayName = "Auth Phys.", NgModel = "forms.Procedures.aaa"
+                                            new TextBox() { DisplayName = "Auth Phys.", NgModel = "forms.Procedures.E19_11"
 
                                                 },
-                                            new TextBox() { DisplayName = "Is Prior Aid", NgModel = "forms.Procedures.aaa"
+                                            new TextBox() { DisplayName = "Is Prior Aid", NgModel = "forms.Procedures.E19_02"
 
                                                 },
-                                            new TextBox() { DisplayName = "IV Success", NgModel = "forms.Procedures.aaa"
+                                            new TextBox() { DisplayName = "IV Success", NgModel = "forms.Procedures.E19_14"
 
                                                 },
-                                            new TextBox() { DisplayName = "Tube Confirmation", NgModel = "forms.Procedures.aaa"
+                                            new TextBox() { DisplayName = "Tube Confirmation", NgModel = "forms.Procedures.E19_13"
 
                                                 },
-                                            new TextBox() { DisplayName = "Tube Destination", NgModel = "forms.Procedures.aaa"
+                                            new TextBox() { DisplayName = "Tube Destination", NgModel = "forms.Procedures.E19_14"
 
                                                 },
                                             new TextBox() { DisplayName = "Notes", NgModel = "forms.Procedures.aaa"
@@ -1278,29 +1278,29 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                             new TextBox() { DisplayName = "Hidden Item Index Id", NgModel = "forms.Exams.ItemIndex",
                                                  ResponsiveWidth = 12, ContainerCustomCssClass = "hidden"
                                                 },
-                                            new DropDownList() { DisplayName = "Head", NgModel = "forms.Exams.Ex",
-                                                DropDownOptions = options.NemsisSelectOptions("E20_10"), ResponsiveWidth = 12
+                                            new DropDownList() { DisplayName = "Head", NgModel = "forms.Exams.E15_02",
+                                                DropDownOptions = options.NemsisSelectOptions("E15_02"), ResponsiveWidth = 12
                                                 },
-                                            new DropDownList() { DisplayName = "Mental", NgModel = "forms.Exams.Ex",
-                                                DropDownOptions = options.NemsisSelectOptions("E20_10"), ResponsiveWidth = 12
+                                            new DropDownList() { DisplayName = "Mental", NgModel = "forms.Exams.E16_23",
+                                                DropDownOptions = options.NemsisSelectOptions("E16_23"), ResponsiveWidth = 12
                                                 },
-                                            new DropDownList() { DisplayName = "Neuro", NgModel = "forms.Exams.Ex",
-                                                DropDownOptions = options.NemsisSelectOptions("E20_10"), ResponsiveWidth = 12
+                                            new DropDownList() { DisplayName = "Neuro", NgModel = "forms.Exams.E16_24",
+                                                DropDownOptions = options.NemsisSelectOptions("E16_24"), ResponsiveWidth = 12
                                                 },
-                                            new DropDownList() { DisplayName = "Face", NgModel = "forms.Exams.Ex",
-                                                DropDownOptions = options.NemsisSelectOptions("E20_10"), ResponsiveWidth = 12
+                                            new DropDownList() { DisplayName = "Face", NgModel = "forms.Exams.E16_05",
+                                                DropDownOptions = options.NemsisSelectOptions("E16_05"), ResponsiveWidth = 12
                                                 },
-                                            new DropDownList() { DisplayName = "Left Eye", NgModel = "forms.Exams.Ex",
-                                                DropDownOptions = options.NemsisSelectOptions("E20_10"), ResponsiveWidth = 12
+                                            new DropDownList() { DisplayName = "Left Eye", NgModel = "forms.Exams.E16_21",
+                                                DropDownOptions = options.NemsisSelectOptions("E16_21"), ResponsiveWidth = 12
                                                 },
-                                            new DropDownList() { DisplayName = "Right Eye", NgModel = "forms.Exams.Ex",
-                                                DropDownOptions = options.NemsisSelectOptions("E20_10"), ResponsiveWidth = 12
+                                            new DropDownList() { DisplayName = "Right Eye", NgModel = "forms.Exams.E16_22",
+                                                DropDownOptions = options.NemsisSelectOptions("E16_22"), ResponsiveWidth = 12
                                                 },
-                                            new DropDownList() { DisplayName = "Neck", NgModel = "forms.Exams.Ex",
-                                                DropDownOptions = options.NemsisSelectOptions("E20_10"), ResponsiveWidth = 12
+                                            new DropDownList() { DisplayName = "Neck", NgModel = "forms.Exams.E16_06",
+                                                DropDownOptions = options.NemsisSelectOptions("E16_06"), ResponsiveWidth = 12
                                                 },
-                                            new DropDownList() { DisplayName = "Skin", NgModel = "forms.Exams.Ex",
-                                                DropDownOptions = options.NemsisSelectOptions("E20_10"), ResponsiveWidth = 12
+                                            new DropDownList() { DisplayName = "Skin", NgModel = "forms.Exams.E16_04",
+                                                DropDownOptions = options.NemsisSelectOptions("E16_04"), ResponsiveWidth = 12
                                                 }
 
                                         },
@@ -1308,25 +1308,25 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 
                                         Tab2Controls = new List<Ctrl>()
                                         {
-                                             new TextBox() { DisplayName = "Chest", NgModel = "forms.Exams.aaa",
+                                             new TextBox() { DisplayName = "Chest", NgModel = "forms.Exams.E16_07",
                                                  ResponsiveWidth = 12
                                                 },
-                                             new TextBox() { DisplayName = "Heart", NgModel = "forms.Exams.aaa",
+                                             new TextBox() { DisplayName = "Heart", NgModel = "forms.Exams.E16_08",
                                                  ResponsiveWidth = 12
                                                 },
-                                             new TextBox() { DisplayName = "Abs Left Upper", NgModel = "forms.Exams.aaa",
+                                             new TextBox() { DisplayName = "Abs Left Upper", NgModel = "forms.Exams.E16_09",
                                                  ResponsiveWidth = 12
                                                 },
-                                             new TextBox() { DisplayName = "Abs Left Lower", NgModel = "forms.Exams.aaa",
+                                             new TextBox() { DisplayName = "Abs Left Lower", NgModel = "forms.Exams.E16_10",
                                                  ResponsiveWidth = 12
                                                 },
-                                             new TextBox() { DisplayName = "Abs Right Upper", NgModel = "forms.Exams.aaa",
+                                             new TextBox() { DisplayName = "Abs Right Upper", NgModel = "forms.Exams.E16_11",
                                                  ResponsiveWidth = 12
                                                 },
-                                             new TextBox() { DisplayName = "Abs Right Lower", NgModel = "forms.Exams.aaa",
+                                             new TextBox() { DisplayName = "Abs Right Lower", NgModel = "forms.Exams.E16_12",
                                                  ResponsiveWidth = 12
                                                 },
-                                             new TextBox() { DisplayName = "GU", NgModel = "forms.Exams.aaa",
+                                             new TextBox() { DisplayName = "GU", NgModel = "forms.Exams.E16_13",
                                                  ResponsiveWidth = 12
                                                 }
 
@@ -1334,16 +1334,16 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 
                                         Tab3Controls = new List<Ctrl>()
                                         {
-                                             new TextBox() { DisplayName = "Right - Upper", NgModel = "forms.Exams.aaa",
+                                             new TextBox() { DisplayName = "Right - Upper", NgModel = "forms.Exams.E16_17",
                                                  ResponsiveWidth = 12
                                                 },
-                                             new TextBox() { DisplayName = "Right Lower", NgModel = "forms.Exams.aaa",
+                                             new TextBox() { DisplayName = "Right Lower", NgModel = "forms.Exams.E16_18",
                                                  ResponsiveWidth = 12
                                                 },
-                                             new TextBox() { DisplayName = "Left Lower", NgModel = "forms.Exams.aaa",
+                                             new TextBox() { DisplayName = "Left Lower", NgModel = "forms.Exams.E16_20",
                                                  ResponsiveWidth = 12
                                                 },
-                                             new TextBox() { DisplayName = "Left Upper", NgModel = "forms.Exams.aaa",
+                                             new TextBox() { DisplayName = "Left Upper", NgModel = "forms.Exams.E16_19",
                                                  ResponsiveWidth = 12
                                                 }
 
@@ -1351,16 +1351,16 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 
                                         Tab4Controls = new List<Ctrl>()
                                         {
-                                             new TextBox() { DisplayName = "Back Cervical", NgModel = "forms.Exams.aaa",
+                                             new TextBox() { DisplayName = "Back Cervical", NgModel = "forms.Exams.E16_14",
                                                  ResponsiveWidth = 12
                                                 },
-                                             new TextBox() { DisplayName = "Back Thoracic", NgModel = "forms.Exams.aaa",
+                                             new TextBox() { DisplayName = "Back Thoracic", NgModel = "forms.Exams.E16_15",
                                                  ResponsiveWidth = 12
                                                 },
-                                             new TextBox() { DisplayName = "Back Lumbar", NgModel = "forms.Exams.aaa",
+                                             new TextBox() { DisplayName = "Back Lumbar", NgModel = "forms.Exams.E16_16",
                                                  ResponsiveWidth = 12
                                                 },
-                                             new TextBox() { DisplayName = "Unspecified", NgModel = "forms.Exams.aaa",
+                                             new TextBox() { DisplayName = "Unspecified", NgModel = "forms.Exams.E15_11",
                                                  ResponsiveWidth = 12
                                                 }
 
@@ -1374,7 +1374,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                             new TextBox() { DisplayName = "Date", NgModel = "forms.Exams.aaa",
                                                  ResponsiveWidth = 12
                                                 },
-                                            new TextBox() { DisplayName = "Notes", NgModel = "forms.Exams.aaa",
+                                            new TextBox() { DisplayName = "Notes", NgModel = "forms.Exams.CustomNotes",
                                                  ResponsiveWidth = 12
                                                 }
 
