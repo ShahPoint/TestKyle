@@ -279,3 +279,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# Asp.Zero Logging
+*/logs/logs.txt
