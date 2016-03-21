@@ -281,4 +281,4 @@ $RECYCLE.BIN/
 *.lnk
 
 # Asp.Zero Logging
-*/logs/logs.txt
+*/Logs/Logs.txt
