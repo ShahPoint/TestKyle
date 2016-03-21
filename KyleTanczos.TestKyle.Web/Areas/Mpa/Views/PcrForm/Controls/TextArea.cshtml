@@ -1,0 +1,26 @@
+﻿@using KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
+
+
+@model KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers.TextArea
+
+
+<div class="col-xs-@Model.ResponsiveWidth minimalPaddingImportant @Model.ContainerCustomCssClass">
+    <div class="form-group">
+        @if (!string.IsNullOrEmpty(Model.DisplayName))
+        {
+        <label class="control-label">@Model.DisplayName </label>
+        }
+
+        <textarea @Model.NgModel id="@Model.ClientId" class="form-control autosizeme @Model.ControlCustomCssClass" placeholder="@Model.PlaceHolder" @Model.CustomAttributes
+                  rows=@Model.HeightRows data-autosize-on="true" style="overflow: hidden; word-wrap: break-word;
+                    resize: horizontal;"></textarea>
+
+
+
+
+
+
+    </div>
+</div>
+
+

@@ -6,9 +6,13 @@
 
 <div class="col-xs-@Model.ResponsiveWidth minimalPaddingImportant">
     <div class="form-group">
-        <label class="control-label">@Model.DisplayName </label>
 
-        <select  id="@Model.ClientId" class="form-control @Model.GetSelect2Class() @Model.GetSelect2ModalClass()" @Model.NgModel @Model.RenderSelect2_OfflineList() >
+        @if (!string.IsNullOrEmpty(Model.DisplayName))
+        {
+        <label class="control-label">@Model.DisplayName </label>
+        }
+
+        <select id="@Model.ClientId" class="form-control @Model.GetSelect2Class() @Model.GetSelect2ModalClass()" @Model.NgModel @Model.RenderSelect2_OfflineList()>
             <option value="">@Model.PlaceHolder</option>
 
             @foreach (var option in Model.DropDownOptions)

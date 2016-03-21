@@ -2974,6 +2974,7 @@
     <Content Include="libs\bootstrap-touchspin\LICENSE.md" />
     <Content Include="libs\bootstrap-touchspin\README.md" />
     <Content Include="Areas\Mpa\Views\NemsisTest\Index.cshtml" />
+    <Content Include="Areas\Mpa\Views\PcrForm\Controls\TextArea.cshtml" />
     <None Include="Properties\PublishProfiles\FileSystem_Release.pubxml" />
     <Content Include="Views\Account\TenantSelection.cshtml" />
     <Content Include="Scripts\version.json" />

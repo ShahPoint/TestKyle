@@ -1,13 +1,17 @@
 ﻿@using KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 
-@model KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers.Ctrl
+    @model KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers.Ctrl
 
-<div class="col-xs-@Model.ResponsiveWidth minimalPaddingImportant @Model.ContainerCustomCssClass">
-    <div class="form-group">
-        <label class="control-label">@Model.DisplayName </label>
-        <input type="text" @Model.NgModel id="@Model.ClientId" class="form-control @Model.ControlCustomCssClass"  placeholder="@Model.PlaceHolder" @Model.CustomAttributes >
+    <div class="col-xs-@Model.ResponsiveWidth minimalPaddingImportant @Model.ContainerCustomCssClass">
+        <div class="form-group">
+            @if (!string.IsNullOrEmpty(Model.DisplayName))
+            {
+            <label class="control-label">@Model.DisplayName </label>
+            }
 
+            <input type="text" @Model.NgModel id="@Model.ClientId" class="form-control @Model.ControlCustomCssClass" placeholder="@Model.PlaceHolder" @Model.CustomAttributes>
+
+        </div>
     </div>
-</div>
 
 
