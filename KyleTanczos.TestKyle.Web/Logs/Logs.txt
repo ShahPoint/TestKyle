@@ -8195,3 +8195,941 @@ DEBUG 2016-03-21 15:57:02,279 [397  ] Abp.Logging.LogHelper                    -
 DEBUG 2016-03-21 15:57:02,279 [397  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Users.Profile.IProfileAppService' with service name 'app/profile'.
 DEBUG 2016-03-21 15:57:02,280 [397  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Roles.IRoleAppService' with service name 'app/role'.
 DEBUG 2016-03-21 15:57:02,280 [397  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Auditing.IAuditLogAppService' with service name 'app/auditLog'.
+DEBUG 2016-03-21 19:10:03,509 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2016-03-21 19:10:04,217 [1    ] Abp.Modules.AbpModuleManager             - Found 14 ABP modules in total.
+DEBUG 2016-03-21 19:10:04,219 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 19:10:04,221 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 19:10:04,221 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 19:10:04,221 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 19:10:04,221 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 19:10:04,221 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 19:10:04,221 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.Zero, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 19:10:04,221 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFramework.AbpZeroEntityFrameworkModule, Abp.Zero.EntityFramework, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 19:10:04,221 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.Ldap.AbpZeroLdapModule, Abp.Zero.Ldap, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 19:10:04,222 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleApplicationModule, KyleTanczos.TestKyle.Application, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 19:10:04,222 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleCoreModule, KyleTanczos.TestKyle.Core, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 19:10:04,222 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleDataModule, KyleTanczos.TestKyle.EntityFramework, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 19:10:04,222 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.Web.TestKyleWebModule, KyleTanczos.TestKyle.Web, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 19:10:04,222 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.WebApi.TestKyleWebApiModule, KyleTanczos.TestKyle.WebApi, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 19:10:04,226 [1    ] Abp.Modules.AbpModuleManager             - 14 modules loaded.
+DEBUG 2016-03-21 19:10:04,247 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-21 19:10:04,247 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-21 19:10:04,247 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-21 19:10:04,247 [1    ] o.Configuration.LanguageManagementConfig - Converted TestKyle (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-21 19:10:05,169 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2016-03-21 19:10:05,175 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2016-03-21 19:10:05,175 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2016-03-21 19:10:05,181 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2016-03-21 19:10:05,187 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: TestKyle
+DEBUG 2016-03-21 19:10:05,657 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 27 classes defines auto mapping attributes
+DEBUG 2016-03-21 19:10:05,657 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2016-03-21 19:10:05,667 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Sessions.Dto.UserLoginInfoDto
+DEBUG 2016-03-21 19:10:05,667 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Organizations.Dto.OrganizationUnitDto
+DEBUG 2016-03-21 19:10:05,669 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Organizations.Dto.OrganizationUnitUserListDto
+DEBUG 2016-03-21 19:10:05,670 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.MultiTenancy.Dto.TenantListDto
+DEBUG 2016-03-21 19:10:05,671 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.MultiTenancy.Dto.TenantEditDto
+DEBUG 2016-03-21 19:10:05,674 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Localization.Dto.ApplicationLanguageEditDto
+DEBUG 2016-03-21 19:10:05,675 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Localization.Dto.ApplicationLanguageListDto
+DEBUG 2016-03-21 19:10:05,676 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.EditionEditDto
+DEBUG 2016-03-21 19:10:05,677 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.FlatFeatureDto
+DEBUG 2016-03-21 19:10:05,678 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.EditionListDto
+DEBUG 2016-03-21 19:10:05,679 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Dto.UserListDto
+DEBUG 2016-03-21 19:10:05,680 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Profile.Dto.CurrentUserProfileEditDto
+DEBUG 2016-03-21 19:10:05,682 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Roles.Dto.RoleListDto
+DEBUG 2016-03-21 19:10:05,685 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Roles.Dto.RoleEditDto
+DEBUG 2016-03-21 19:10:05,686 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Dto.FlatPermissionDto
+DEBUG 2016-03-21 19:10:05,686 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Auditing.Dto.AuditLogListDto
+DEBUG 2016-03-21 19:10:05,688 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Dto.UserListDto+UserListRoleDto
+DEBUG 2016-03-21 19:10:05,689 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Users.UserPermissionsEditViewModel
+DEBUG 2016-03-21 19:10:05,690 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Users.CreateOrEditUserModalViewModel
+DEBUG 2016-03-21 19:10:05,690 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Roles.CreateOrEditRoleModalViewModel
+DEBUG 2016-03-21 19:10:05,690 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Profile.MySettingsViewModel
+DEBUG 2016-03-21 19:10:05,693 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Editions.CreateOrEditEditionModalViewModel
+DEBUG 2016-03-21 19:10:05,694 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Tenants.TenantFeaturesEditViewModel
+DEBUG 2016-03-21 19:10:05,695 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.OrganizationUnits.EditOrganizationUnitModalViewModel
+DEBUG 2016-03-21 19:10:05,695 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Languages.CreateOrEditLanguageModalViewModel
+DEBUG 2016-03-21 19:10:05,695 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Models.Account.TenantSelectionViewModel+TenantInfo
+DEBUG 2016-03-21 19:10:05,702 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Tenants.Dashboard.ITenantDashboardAppService' with service name 'app/tenantDashboard'.
+DEBUG 2016-03-21 19:10:05,704 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Sessions.ISessionAppService' with service name 'app/session'.
+DEBUG 2016-03-21 19:10:05,704 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Organizations.IOrganizationUnitAppService' with service name 'app/organizationUnit'.
+DEBUG 2016-03-21 19:10:05,705 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.MultiTenancy.ITenantAppService' with service name 'app/tenant'.
+DEBUG 2016-03-21 19:10:05,706 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Localization.ILanguageAppService' with service name 'app/language'.
+DEBUG 2016-03-21 19:10:05,706 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Editions.IEditionAppService' with service name 'app/edition'.
+DEBUG 2016-03-21 19:10:05,707 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Configuration.Host.IHostSettingsAppService' with service name 'app/hostSettings'.
+DEBUG 2016-03-21 19:10:05,708 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Configuration.Tenants.ITenantSettingsAppService' with service name 'app/tenantSettings'.
+DEBUG 2016-03-21 19:10:05,709 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Common.ICommonLookupAppService' with service name 'app/commonLookup'.
+DEBUG 2016-03-21 19:10:05,709 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Users.IUserAppService' with service name 'app/user'.
+DEBUG 2016-03-21 19:10:05,710 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Users.Profile.IProfileAppService' with service name 'app/profile'.
+DEBUG 2016-03-21 19:10:05,711 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Roles.IRoleAppService' with service name 'app/role'.
+DEBUG 2016-03-21 19:10:05,712 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Auditing.IAuditLogAppService' with service name 'app/auditLog'.
+DEBUG 2016-03-21 22:39:02,678 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2016-03-21 22:39:03,361 [1    ] Abp.Modules.AbpModuleManager             - Found 14 ABP modules in total.
+DEBUG 2016-03-21 22:39:03,365 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 22:39:03,365 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 22:39:03,365 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 22:39:03,365 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 22:39:03,365 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 22:39:03,365 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 22:39:03,365 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.Zero, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 22:39:03,365 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFramework.AbpZeroEntityFrameworkModule, Abp.Zero.EntityFramework, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 22:39:03,365 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.Ldap.AbpZeroLdapModule, Abp.Zero.Ldap, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 22:39:03,365 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleApplicationModule, KyleTanczos.TestKyle.Application, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 22:39:03,365 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleCoreModule, KyleTanczos.TestKyle.Core, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 22:39:03,365 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleDataModule, KyleTanczos.TestKyle.EntityFramework, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 22:39:03,365 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.Web.TestKyleWebModule, KyleTanczos.TestKyle.Web, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 22:39:03,365 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.WebApi.TestKyleWebApiModule, KyleTanczos.TestKyle.WebApi, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 22:39:03,369 [1    ] Abp.Modules.AbpModuleManager             - 14 modules loaded.
+DEBUG 2016-03-21 22:39:03,390 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-21 22:39:03,390 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-21 22:39:03,390 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-21 22:39:03,390 [1    ] o.Configuration.LanguageManagementConfig - Converted TestKyle (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-21 22:39:04,153 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2016-03-21 22:39:04,157 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2016-03-21 22:39:04,157 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2016-03-21 22:39:04,162 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2016-03-21 22:39:04,165 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: TestKyle
+DEBUG 2016-03-21 22:39:04,558 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 27 classes defines auto mapping attributes
+DEBUG 2016-03-21 22:39:04,558 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2016-03-21 22:39:04,562 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Sessions.Dto.UserLoginInfoDto
+DEBUG 2016-03-21 22:39:04,562 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Organizations.Dto.OrganizationUnitDto
+DEBUG 2016-03-21 22:39:04,566 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Organizations.Dto.OrganizationUnitUserListDto
+DEBUG 2016-03-21 22:39:04,566 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.MultiTenancy.Dto.TenantListDto
+DEBUG 2016-03-21 22:39:04,566 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.MultiTenancy.Dto.TenantEditDto
+DEBUG 2016-03-21 22:39:04,570 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Localization.Dto.ApplicationLanguageEditDto
+DEBUG 2016-03-21 22:39:04,570 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Localization.Dto.ApplicationLanguageListDto
+DEBUG 2016-03-21 22:39:04,570 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.EditionEditDto
+DEBUG 2016-03-21 22:39:04,570 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.FlatFeatureDto
+DEBUG 2016-03-21 22:39:04,574 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.EditionListDto
+DEBUG 2016-03-21 22:39:04,574 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Dto.UserListDto
+DEBUG 2016-03-21 22:39:04,574 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Profile.Dto.CurrentUserProfileEditDto
+DEBUG 2016-03-21 22:39:04,578 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Roles.Dto.RoleListDto
+DEBUG 2016-03-21 22:39:04,578 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Roles.Dto.RoleEditDto
+DEBUG 2016-03-21 22:39:04,582 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Dto.FlatPermissionDto
+DEBUG 2016-03-21 22:39:04,582 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Auditing.Dto.AuditLogListDto
+DEBUG 2016-03-21 22:39:04,582 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Dto.UserListDto+UserListRoleDto
+DEBUG 2016-03-21 22:39:04,582 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Users.UserPermissionsEditViewModel
+DEBUG 2016-03-21 22:39:04,582 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Users.CreateOrEditUserModalViewModel
+DEBUG 2016-03-21 22:39:04,586 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Roles.CreateOrEditRoleModalViewModel
+DEBUG 2016-03-21 22:39:04,586 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Profile.MySettingsViewModel
+DEBUG 2016-03-21 22:39:04,590 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Editions.CreateOrEditEditionModalViewModel
+DEBUG 2016-03-21 22:39:04,590 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Tenants.TenantFeaturesEditViewModel
+DEBUG 2016-03-21 22:39:04,590 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.OrganizationUnits.EditOrganizationUnitModalViewModel
+DEBUG 2016-03-21 22:39:04,590 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Languages.CreateOrEditLanguageModalViewModel
+DEBUG 2016-03-21 22:39:04,590 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Models.Account.TenantSelectionViewModel+TenantInfo
+DEBUG 2016-03-21 22:39:04,598 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Tenants.Dashboard.ITenantDashboardAppService' with service name 'app/tenantDashboard'.
+DEBUG 2016-03-21 22:39:04,602 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Sessions.ISessionAppService' with service name 'app/session'.
+DEBUG 2016-03-21 22:39:04,602 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Organizations.IOrganizationUnitAppService' with service name 'app/organizationUnit'.
+DEBUG 2016-03-21 22:39:04,602 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.MultiTenancy.ITenantAppService' with service name 'app/tenant'.
+DEBUG 2016-03-21 22:39:04,602 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Localization.ILanguageAppService' with service name 'app/language'.
+DEBUG 2016-03-21 22:39:04,606 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Editions.IEditionAppService' with service name 'app/edition'.
+DEBUG 2016-03-21 22:39:04,606 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Configuration.Host.IHostSettingsAppService' with service name 'app/hostSettings'.
+DEBUG 2016-03-21 22:39:04,606 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Configuration.Tenants.ITenantSettingsAppService' with service name 'app/tenantSettings'.
+DEBUG 2016-03-21 22:39:04,606 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Common.ICommonLookupAppService' with service name 'app/commonLookup'.
+DEBUG 2016-03-21 22:39:04,606 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Users.IUserAppService' with service name 'app/user'.
+DEBUG 2016-03-21 22:39:04,606 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Users.Profile.IProfileAppService' with service name 'app/profile'.
+DEBUG 2016-03-21 22:39:04,610 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Roles.IRoleAppService' with service name 'app/role'.
+DEBUG 2016-03-21 22:39:04,610 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Auditing.IAuditLogAppService' with service name 'app/auditLog'.
+DEBUG 2016-03-21 23:10:27,272 [110  ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2016-03-21 23:10:27,780 [110  ] Abp.Modules.AbpModuleManager             - Found 14 ABP modules in total.
+DEBUG 2016-03-21 23:10:27,780 [110  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 23:10:27,784 [110  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 23:10:27,784 [110  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 23:10:27,784 [110  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 23:10:27,784 [110  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 23:10:27,784 [110  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 23:10:27,784 [110  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.Zero, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 23:10:27,784 [110  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFramework.AbpZeroEntityFrameworkModule, Abp.Zero.EntityFramework, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 23:10:27,784 [110  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.Ldap.AbpZeroLdapModule, Abp.Zero.Ldap, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 23:10:27,784 [110  ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleApplicationModule, KyleTanczos.TestKyle.Application, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 23:10:27,784 [110  ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleCoreModule, KyleTanczos.TestKyle.Core, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 23:10:27,784 [110  ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleDataModule, KyleTanczos.TestKyle.EntityFramework, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 23:10:27,784 [110  ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.Web.TestKyleWebModule, KyleTanczos.TestKyle.Web, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 23:10:27,784 [110  ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.WebApi.TestKyleWebApiModule, KyleTanczos.TestKyle.WebApi, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 23:10:27,788 [110  ] Abp.Modules.AbpModuleManager             - 14 modules loaded.
+DEBUG 2016-03-21 23:10:27,808 [110  ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-21 23:10:27,808 [110  ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-21 23:10:27,808 [110  ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-21 23:10:27,808 [110  ] o.Configuration.LanguageManagementConfig - Converted TestKyle (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-21 23:10:28,652 [110  ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2016-03-21 23:10:28,656 [110  ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2016-03-21 23:10:28,656 [110  ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2016-03-21 23:10:28,672 [110  ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2016-03-21 23:10:28,680 [110  ] Abp.Localization.LocalizationManager     - Initialized localization source: TestKyle
+DEBUG 2016-03-21 23:10:29,076 [110  ] Abp.AutoMapper.AbpAutoMapperModule       - Found 27 classes defines auto mapping attributes
+DEBUG 2016-03-21 23:10:29,076 [110  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2016-03-21 23:10:29,080 [110  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Sessions.Dto.UserLoginInfoDto
+DEBUG 2016-03-21 23:10:29,084 [110  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Organizations.Dto.OrganizationUnitDto
+DEBUG 2016-03-21 23:10:29,084 [110  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Organizations.Dto.OrganizationUnitUserListDto
+DEBUG 2016-03-21 23:10:29,084 [110  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.MultiTenancy.Dto.TenantListDto
+DEBUG 2016-03-21 23:10:29,084 [110  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.MultiTenancy.Dto.TenantEditDto
+DEBUG 2016-03-21 23:10:29,089 [110  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Localization.Dto.ApplicationLanguageEditDto
+DEBUG 2016-03-21 23:10:29,089 [110  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Localization.Dto.ApplicationLanguageListDto
+DEBUG 2016-03-21 23:10:29,092 [110  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.EditionEditDto
+DEBUG 2016-03-21 23:10:29,092 [110  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.FlatFeatureDto
+DEBUG 2016-03-21 23:10:29,092 [110  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.EditionListDto
+DEBUG 2016-03-21 23:10:29,092 [110  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Dto.UserListDto
+DEBUG 2016-03-21 23:10:29,096 [110  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Profile.Dto.CurrentUserProfileEditDto
+DEBUG 2016-03-21 23:10:29,096 [110  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Roles.Dto.RoleListDto
+DEBUG 2016-03-21 23:10:29,100 [110  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Roles.Dto.RoleEditDto
+DEBUG 2016-03-21 23:10:29,100 [110  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Dto.FlatPermissionDto
+DEBUG 2016-03-21 23:10:29,100 [110  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Auditing.Dto.AuditLogListDto
+DEBUG 2016-03-21 23:10:29,104 [110  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Dto.UserListDto+UserListRoleDto
+DEBUG 2016-03-21 23:10:29,104 [110  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Users.UserPermissionsEditViewModel
+DEBUG 2016-03-21 23:10:29,104 [110  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Users.CreateOrEditUserModalViewModel
+DEBUG 2016-03-21 23:10:29,104 [110  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Roles.CreateOrEditRoleModalViewModel
+DEBUG 2016-03-21 23:10:29,104 [110  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Profile.MySettingsViewModel
+DEBUG 2016-03-21 23:10:29,109 [110  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Editions.CreateOrEditEditionModalViewModel
+DEBUG 2016-03-21 23:10:29,109 [110  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Tenants.TenantFeaturesEditViewModel
+DEBUG 2016-03-21 23:10:29,109 [110  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.OrganizationUnits.EditOrganizationUnitModalViewModel
+DEBUG 2016-03-21 23:10:29,112 [110  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Languages.CreateOrEditLanguageModalViewModel
+DEBUG 2016-03-21 23:10:29,112 [110  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Models.Account.TenantSelectionViewModel+TenantInfo
+DEBUG 2016-03-21 23:10:29,120 [110  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Tenants.Dashboard.ITenantDashboardAppService' with service name 'app/tenantDashboard'.
+DEBUG 2016-03-21 23:10:29,120 [110  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Sessions.ISessionAppService' with service name 'app/session'.
+DEBUG 2016-03-21 23:10:29,120 [110  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Organizations.IOrganizationUnitAppService' with service name 'app/organizationUnit'.
+DEBUG 2016-03-21 23:10:29,120 [110  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.MultiTenancy.ITenantAppService' with service name 'app/tenant'.
+DEBUG 2016-03-21 23:10:29,120 [110  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Localization.ILanguageAppService' with service name 'app/language'.
+DEBUG 2016-03-21 23:10:29,124 [110  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Editions.IEditionAppService' with service name 'app/edition'.
+DEBUG 2016-03-21 23:10:29,124 [110  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Configuration.Host.IHostSettingsAppService' with service name 'app/hostSettings'.
+DEBUG 2016-03-21 23:10:29,124 [110  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Configuration.Tenants.ITenantSettingsAppService' with service name 'app/tenantSettings'.
+DEBUG 2016-03-21 23:10:29,124 [110  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Common.ICommonLookupAppService' with service name 'app/commonLookup'.
+DEBUG 2016-03-21 23:10:29,124 [110  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Users.IUserAppService' with service name 'app/user'.
+DEBUG 2016-03-21 23:10:29,128 [110  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Users.Profile.IProfileAppService' with service name 'app/profile'.
+DEBUG 2016-03-21 23:10:29,128 [110  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Roles.IRoleAppService' with service name 'app/role'.
+DEBUG 2016-03-21 23:10:29,128 [110  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Auditing.IAuditLogAppService' with service name 'app/auditLog'.
+DEBUG 2016-03-21 23:25:39,582 [151  ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2016-03-21 23:25:40,233 [151  ] Abp.Modules.AbpModuleManager             - Found 14 ABP modules in total.
+DEBUG 2016-03-21 23:25:40,237 [151  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 23:25:40,237 [151  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 23:25:40,237 [151  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 23:25:40,237 [151  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 23:25:40,237 [151  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 23:25:40,237 [151  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 23:25:40,237 [151  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.Zero, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 23:25:40,237 [151  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFramework.AbpZeroEntityFrameworkModule, Abp.Zero.EntityFramework, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 23:25:40,237 [151  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.Ldap.AbpZeroLdapModule, Abp.Zero.Ldap, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 23:25:40,237 [151  ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleApplicationModule, KyleTanczos.TestKyle.Application, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 23:25:40,237 [151  ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleCoreModule, KyleTanczos.TestKyle.Core, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 23:25:40,237 [151  ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleDataModule, KyleTanczos.TestKyle.EntityFramework, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 23:25:40,237 [151  ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.Web.TestKyleWebModule, KyleTanczos.TestKyle.Web, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 23:25:40,237 [151  ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.WebApi.TestKyleWebApiModule, KyleTanczos.TestKyle.WebApi, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 23:25:40,241 [151  ] Abp.Modules.AbpModuleManager             - 14 modules loaded.
+DEBUG 2016-03-21 23:25:40,261 [151  ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-21 23:25:40,261 [151  ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-21 23:25:40,261 [151  ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-21 23:25:40,261 [151  ] o.Configuration.LanguageManagementConfig - Converted TestKyle (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-21 23:25:41,017 [151  ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2016-03-21 23:25:41,022 [151  ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2016-03-21 23:25:41,022 [151  ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2016-03-21 23:25:41,025 [151  ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2016-03-21 23:25:41,030 [151  ] Abp.Localization.LocalizationManager     - Initialized localization source: TestKyle
+DEBUG 2016-03-21 23:25:41,421 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - Found 27 classes defines auto mapping attributes
+DEBUG 2016-03-21 23:25:41,421 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2016-03-21 23:25:41,429 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Sessions.Dto.UserLoginInfoDto
+DEBUG 2016-03-21 23:25:41,429 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Organizations.Dto.OrganizationUnitDto
+DEBUG 2016-03-21 23:25:41,429 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Organizations.Dto.OrganizationUnitUserListDto
+DEBUG 2016-03-21 23:25:41,434 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.MultiTenancy.Dto.TenantListDto
+DEBUG 2016-03-21 23:25:41,434 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.MultiTenancy.Dto.TenantEditDto
+DEBUG 2016-03-21 23:25:41,434 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Localization.Dto.ApplicationLanguageEditDto
+DEBUG 2016-03-21 23:25:41,438 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Localization.Dto.ApplicationLanguageListDto
+DEBUG 2016-03-21 23:25:41,438 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.EditionEditDto
+DEBUG 2016-03-21 23:25:41,438 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.FlatFeatureDto
+DEBUG 2016-03-21 23:25:41,438 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.EditionListDto
+DEBUG 2016-03-21 23:25:41,438 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Dto.UserListDto
+DEBUG 2016-03-21 23:25:41,442 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Profile.Dto.CurrentUserProfileEditDto
+DEBUG 2016-03-21 23:25:41,442 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Roles.Dto.RoleListDto
+DEBUG 2016-03-21 23:25:41,446 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Roles.Dto.RoleEditDto
+DEBUG 2016-03-21 23:25:41,446 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Dto.FlatPermissionDto
+DEBUG 2016-03-21 23:25:41,446 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Auditing.Dto.AuditLogListDto
+DEBUG 2016-03-21 23:25:41,450 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Dto.UserListDto+UserListRoleDto
+DEBUG 2016-03-21 23:25:41,450 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Users.UserPermissionsEditViewModel
+DEBUG 2016-03-21 23:25:41,450 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Users.CreateOrEditUserModalViewModel
+DEBUG 2016-03-21 23:25:41,450 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Roles.CreateOrEditRoleModalViewModel
+DEBUG 2016-03-21 23:25:41,450 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Profile.MySettingsViewModel
+DEBUG 2016-03-21 23:25:41,454 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Editions.CreateOrEditEditionModalViewModel
+DEBUG 2016-03-21 23:25:41,454 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Tenants.TenantFeaturesEditViewModel
+DEBUG 2016-03-21 23:25:41,454 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.OrganizationUnits.EditOrganizationUnitModalViewModel
+DEBUG 2016-03-21 23:25:41,454 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Languages.CreateOrEditLanguageModalViewModel
+DEBUG 2016-03-21 23:25:41,458 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Models.Account.TenantSelectionViewModel+TenantInfo
+DEBUG 2016-03-21 23:25:41,466 [151  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Tenants.Dashboard.ITenantDashboardAppService' with service name 'app/tenantDashboard'.
+DEBUG 2016-03-21 23:25:41,466 [151  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Sessions.ISessionAppService' with service name 'app/session'.
+DEBUG 2016-03-21 23:25:41,466 [151  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Organizations.IOrganizationUnitAppService' with service name 'app/organizationUnit'.
+DEBUG 2016-03-21 23:25:41,466 [151  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.MultiTenancy.ITenantAppService' with service name 'app/tenant'.
+DEBUG 2016-03-21 23:25:41,466 [151  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Localization.ILanguageAppService' with service name 'app/language'.
+DEBUG 2016-03-21 23:25:41,469 [151  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Editions.IEditionAppService' with service name 'app/edition'.
+DEBUG 2016-03-21 23:25:41,469 [151  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Configuration.Host.IHostSettingsAppService' with service name 'app/hostSettings'.
+DEBUG 2016-03-21 23:25:41,469 [151  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Configuration.Tenants.ITenantSettingsAppService' with service name 'app/tenantSettings'.
+DEBUG 2016-03-21 23:25:41,469 [151  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Common.ICommonLookupAppService' with service name 'app/commonLookup'.
+DEBUG 2016-03-21 23:25:41,469 [151  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Users.IUserAppService' with service name 'app/user'.
+DEBUG 2016-03-21 23:25:41,474 [151  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Users.Profile.IProfileAppService' with service name 'app/profile'.
+DEBUG 2016-03-21 23:25:41,474 [151  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Roles.IRoleAppService' with service name 'app/role'.
+DEBUG 2016-03-21 23:25:41,474 [151  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Auditing.IAuditLogAppService' with service name 'app/auditLog'.
+DEBUG 2016-03-21 23:30:59,572 [151  ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2016-03-21 23:31:00,084 [151  ] Abp.Modules.AbpModuleManager             - Found 14 ABP modules in total.
+DEBUG 2016-03-21 23:31:00,088 [151  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 23:31:00,088 [151  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 23:31:00,088 [151  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 23:31:00,088 [151  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 23:31:00,088 [151  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 23:31:00,088 [151  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 23:31:00,088 [151  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.Zero, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 23:31:00,088 [151  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFramework.AbpZeroEntityFrameworkModule, Abp.Zero.EntityFramework, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 23:31:00,088 [151  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.Ldap.AbpZeroLdapModule, Abp.Zero.Ldap, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 23:31:00,088 [151  ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleApplicationModule, KyleTanczos.TestKyle.Application, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 23:31:00,088 [151  ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleCoreModule, KyleTanczos.TestKyle.Core, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 23:31:00,088 [151  ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleDataModule, KyleTanczos.TestKyle.EntityFramework, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 23:31:00,088 [151  ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.Web.TestKyleWebModule, KyleTanczos.TestKyle.Web, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 23:31:00,088 [151  ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.WebApi.TestKyleWebApiModule, KyleTanczos.TestKyle.WebApi, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-21 23:31:00,092 [151  ] Abp.Modules.AbpModuleManager             - 14 modules loaded.
+DEBUG 2016-03-21 23:31:00,112 [151  ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-21 23:31:00,112 [151  ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-21 23:31:00,112 [151  ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-21 23:31:00,112 [151  ] o.Configuration.LanguageManagementConfig - Converted TestKyle (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-21 23:31:00,868 [151  ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2016-03-21 23:31:00,872 [151  ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2016-03-21 23:31:00,872 [151  ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2016-03-21 23:31:00,876 [151  ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2016-03-21 23:31:00,880 [151  ] Abp.Localization.LocalizationManager     - Initialized localization source: TestKyle
+DEBUG 2016-03-21 23:31:01,280 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - Found 27 classes defines auto mapping attributes
+DEBUG 2016-03-21 23:31:01,280 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2016-03-21 23:31:01,284 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Sessions.Dto.UserLoginInfoDto
+DEBUG 2016-03-21 23:31:01,284 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Organizations.Dto.OrganizationUnitDto
+DEBUG 2016-03-21 23:31:01,288 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Organizations.Dto.OrganizationUnitUserListDto
+DEBUG 2016-03-21 23:31:01,288 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.MultiTenancy.Dto.TenantListDto
+DEBUG 2016-03-21 23:31:01,288 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.MultiTenancy.Dto.TenantEditDto
+DEBUG 2016-03-21 23:31:01,292 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Localization.Dto.ApplicationLanguageEditDto
+DEBUG 2016-03-21 23:31:01,292 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Localization.Dto.ApplicationLanguageListDto
+DEBUG 2016-03-21 23:31:01,292 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.EditionEditDto
+DEBUG 2016-03-21 23:31:01,292 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.FlatFeatureDto
+DEBUG 2016-03-21 23:31:01,292 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.EditionListDto
+DEBUG 2016-03-21 23:31:01,296 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Dto.UserListDto
+DEBUG 2016-03-21 23:31:01,296 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Profile.Dto.CurrentUserProfileEditDto
+DEBUG 2016-03-21 23:31:01,296 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Roles.Dto.RoleListDto
+DEBUG 2016-03-21 23:31:01,300 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Roles.Dto.RoleEditDto
+DEBUG 2016-03-21 23:31:01,300 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Dto.FlatPermissionDto
+DEBUG 2016-03-21 23:31:01,304 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Auditing.Dto.AuditLogListDto
+DEBUG 2016-03-21 23:31:01,304 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Dto.UserListDto+UserListRoleDto
+DEBUG 2016-03-21 23:31:01,304 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Users.UserPermissionsEditViewModel
+DEBUG 2016-03-21 23:31:01,304 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Users.CreateOrEditUserModalViewModel
+DEBUG 2016-03-21 23:31:01,304 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Roles.CreateOrEditRoleModalViewModel
+DEBUG 2016-03-21 23:31:01,304 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Profile.MySettingsViewModel
+DEBUG 2016-03-21 23:31:01,308 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Editions.CreateOrEditEditionModalViewModel
+DEBUG 2016-03-21 23:31:01,312 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Tenants.TenantFeaturesEditViewModel
+DEBUG 2016-03-21 23:31:01,312 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.OrganizationUnits.EditOrganizationUnitModalViewModel
+DEBUG 2016-03-21 23:31:01,312 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Languages.CreateOrEditLanguageModalViewModel
+DEBUG 2016-03-21 23:31:01,312 [151  ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Models.Account.TenantSelectionViewModel+TenantInfo
+DEBUG 2016-03-21 23:31:01,320 [151  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Tenants.Dashboard.ITenantDashboardAppService' with service name 'app/tenantDashboard'.
+DEBUG 2016-03-21 23:31:01,320 [151  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Sessions.ISessionAppService' with service name 'app/session'.
+DEBUG 2016-03-21 23:31:01,320 [151  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Organizations.IOrganizationUnitAppService' with service name 'app/organizationUnit'.
+DEBUG 2016-03-21 23:31:01,320 [151  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.MultiTenancy.ITenantAppService' with service name 'app/tenant'.
+DEBUG 2016-03-21 23:31:01,320 [151  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Localization.ILanguageAppService' with service name 'app/language'.
+DEBUG 2016-03-21 23:31:01,324 [151  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Editions.IEditionAppService' with service name 'app/edition'.
+DEBUG 2016-03-21 23:31:01,324 [151  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Configuration.Host.IHostSettingsAppService' with service name 'app/hostSettings'.
+DEBUG 2016-03-21 23:31:01,324 [151  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Configuration.Tenants.ITenantSettingsAppService' with service name 'app/tenantSettings'.
+DEBUG 2016-03-21 23:31:01,324 [151  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Common.ICommonLookupAppService' with service name 'app/commonLookup'.
+DEBUG 2016-03-21 23:31:01,324 [151  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Users.IUserAppService' with service name 'app/user'.
+DEBUG 2016-03-21 23:31:01,328 [151  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Users.Profile.IProfileAppService' with service name 'app/profile'.
+DEBUG 2016-03-21 23:31:01,328 [151  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Roles.IRoleAppService' with service name 'app/role'.
+DEBUG 2016-03-21 23:31:01,328 [151  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Auditing.IAuditLogAppService' with service name 'app/auditLog'.
+DEBUG 2016-03-22 18:57:45,352 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2016-03-22 18:57:46,132 [1    ] Abp.Modules.AbpModuleManager             - Found 14 ABP modules in total.
+DEBUG 2016-03-22 18:57:46,134 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.Web.TestKyleWebModule, KyleTanczos.TestKyle.Web, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 18:57:46,135 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 18:57:46,136 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 18:57:46,136 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 18:57:46,136 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleDataModule, KyleTanczos.TestKyle.EntityFramework, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 18:57:46,136 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFramework.AbpZeroEntityFrameworkModule, Abp.Zero.EntityFramework, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 18:57:46,136 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.Zero, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 18:57:46,137 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 18:57:46,137 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleCoreModule, KyleTanczos.TestKyle.Core, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 18:57:46,137 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.Ldap.AbpZeroLdapModule, Abp.Zero.Ldap, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 18:57:46,137 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleApplicationModule, KyleTanczos.TestKyle.Application, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 18:57:46,137 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 18:57:46,137 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.WebApi.TestKyleWebApiModule, KyleTanczos.TestKyle.WebApi, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 18:57:46,138 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 18:57:46,598 [1    ] Abp.Modules.AbpModuleManager             - 14 modules loaded.
+DEBUG 2016-03-22 18:57:46,619 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-22 18:57:46,619 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-22 18:57:46,619 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-22 18:57:46,619 [1    ] o.Configuration.LanguageManagementConfig - Converted TestKyle (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-22 18:57:47,775 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2016-03-22 18:57:47,779 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2016-03-22 18:57:47,780 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2016-03-22 18:57:47,784 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2016-03-22 18:57:47,790 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: TestKyle
+DEBUG 2016-03-22 18:57:48,109 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 27 classes defines auto mapping attributes
+DEBUG 2016-03-22 18:57:48,109 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Users.UserPermissionsEditViewModel
+DEBUG 2016-03-22 18:57:48,112 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Users.CreateOrEditUserModalViewModel
+DEBUG 2016-03-22 18:57:48,113 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Roles.CreateOrEditRoleModalViewModel
+DEBUG 2016-03-22 18:57:48,113 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Profile.MySettingsViewModel
+DEBUG 2016-03-22 18:57:48,117 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Editions.CreateOrEditEditionModalViewModel
+DEBUG 2016-03-22 18:57:48,118 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Tenants.TenantFeaturesEditViewModel
+DEBUG 2016-03-22 18:57:48,118 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.OrganizationUnits.EditOrganizationUnitModalViewModel
+DEBUG 2016-03-22 18:57:48,119 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Languages.CreateOrEditLanguageModalViewModel
+DEBUG 2016-03-22 18:57:48,119 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Models.Account.TenantSelectionViewModel+TenantInfo
+DEBUG 2016-03-22 18:57:48,123 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2016-03-22 18:57:48,125 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Sessions.Dto.UserLoginInfoDto
+DEBUG 2016-03-22 18:57:48,126 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Organizations.Dto.OrganizationUnitDto
+DEBUG 2016-03-22 18:57:48,127 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Organizations.Dto.OrganizationUnitUserListDto
+DEBUG 2016-03-22 18:57:48,128 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.MultiTenancy.Dto.TenantListDto
+DEBUG 2016-03-22 18:57:48,129 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.MultiTenancy.Dto.TenantEditDto
+DEBUG 2016-03-22 18:57:48,130 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Localization.Dto.ApplicationLanguageEditDto
+DEBUG 2016-03-22 18:57:48,131 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Localization.Dto.ApplicationLanguageListDto
+DEBUG 2016-03-22 18:57:48,132 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.EditionEditDto
+DEBUG 2016-03-22 18:57:48,133 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.FlatFeatureDto
+DEBUG 2016-03-22 18:57:48,134 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.EditionListDto
+DEBUG 2016-03-22 18:57:48,135 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Dto.UserListDto
+DEBUG 2016-03-22 18:57:48,136 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Profile.Dto.CurrentUserProfileEditDto
+DEBUG 2016-03-22 18:57:48,138 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Roles.Dto.RoleListDto
+DEBUG 2016-03-22 18:57:48,141 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Roles.Dto.RoleEditDto
+DEBUG 2016-03-22 18:57:48,142 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Dto.FlatPermissionDto
+DEBUG 2016-03-22 18:57:48,143 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Auditing.Dto.AuditLogListDto
+DEBUG 2016-03-22 18:57:48,145 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Dto.UserListDto+UserListRoleDto
+DEBUG 2016-03-22 18:57:48,153 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Tenants.Dashboard.ITenantDashboardAppService' with service name 'app/tenantDashboard'.
+DEBUG 2016-03-22 18:57:48,154 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Sessions.ISessionAppService' with service name 'app/session'.
+DEBUG 2016-03-22 18:57:48,155 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Organizations.IOrganizationUnitAppService' with service name 'app/organizationUnit'.
+DEBUG 2016-03-22 18:57:48,156 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.MultiTenancy.ITenantAppService' with service name 'app/tenant'.
+DEBUG 2016-03-22 18:57:48,157 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Localization.ILanguageAppService' with service name 'app/language'.
+DEBUG 2016-03-22 18:57:48,158 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Editions.IEditionAppService' with service name 'app/edition'.
+DEBUG 2016-03-22 18:57:48,158 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Configuration.Host.IHostSettingsAppService' with service name 'app/hostSettings'.
+DEBUG 2016-03-22 18:57:48,159 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Configuration.Tenants.ITenantSettingsAppService' with service name 'app/tenantSettings'.
+DEBUG 2016-03-22 18:57:48,160 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Common.ICommonLookupAppService' with service name 'app/commonLookup'.
+DEBUG 2016-03-22 18:57:48,161 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Users.IUserAppService' with service name 'app/user'.
+DEBUG 2016-03-22 18:57:48,162 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Users.Profile.IProfileAppService' with service name 'app/profile'.
+DEBUG 2016-03-22 18:57:48,162 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Roles.IRoleAppService' with service name 'app/role'.
+DEBUG 2016-03-22 18:57:48,163 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Auditing.IAuditLogAppService' with service name 'app/auditLog'.
+DEBUG 2016-03-22 18:59:19,981 [7    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2016-03-22 18:59:20,690 [7    ] Abp.Modules.AbpModuleManager             - Found 14 ABP modules in total.
+DEBUG 2016-03-22 18:59:20,693 [7    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 18:59:20,694 [7    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 18:59:20,694 [7    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 18:59:20,694 [7    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 18:59:20,694 [7    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 18:59:20,694 [7    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 18:59:20,694 [7    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.Zero, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 18:59:20,694 [7    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFramework.AbpZeroEntityFrameworkModule, Abp.Zero.EntityFramework, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 18:59:20,695 [7    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.Ldap.AbpZeroLdapModule, Abp.Zero.Ldap, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 18:59:20,695 [7    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleApplicationModule, KyleTanczos.TestKyle.Application, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 18:59:20,695 [7    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleCoreModule, KyleTanczos.TestKyle.Core, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 18:59:20,695 [7    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleDataModule, KyleTanczos.TestKyle.EntityFramework, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 18:59:20,695 [7    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.Web.TestKyleWebModule, KyleTanczos.TestKyle.Web, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 18:59:20,695 [7    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.WebApi.TestKyleWebApiModule, KyleTanczos.TestKyle.WebApi, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 18:59:20,700 [7    ] Abp.Modules.AbpModuleManager             - 14 modules loaded.
+DEBUG 2016-03-22 18:59:20,718 [7    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-22 18:59:20,718 [7    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-22 18:59:20,718 [7    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-22 18:59:20,718 [7    ] o.Configuration.LanguageManagementConfig - Converted TestKyle (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-22 18:59:21,552 [7    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2016-03-22 18:59:21,556 [7    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2016-03-22 18:59:21,557 [7    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2016-03-22 18:59:21,560 [7    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2016-03-22 18:59:21,565 [7    ] Abp.Localization.LocalizationManager     - Initialized localization source: TestKyle
+DEBUG 2016-03-22 18:59:22,028 [7    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 27 classes defines auto mapping attributes
+DEBUG 2016-03-22 18:59:22,028 [7    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2016-03-22 18:59:22,034 [7    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Sessions.Dto.UserLoginInfoDto
+DEBUG 2016-03-22 18:59:22,035 [7    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Organizations.Dto.OrganizationUnitDto
+DEBUG 2016-03-22 18:59:22,036 [7    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Organizations.Dto.OrganizationUnitUserListDto
+DEBUG 2016-03-22 18:59:22,038 [7    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.MultiTenancy.Dto.TenantListDto
+DEBUG 2016-03-22 18:59:22,038 [7    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.MultiTenancy.Dto.TenantEditDto
+DEBUG 2016-03-22 18:59:22,040 [7    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Localization.Dto.ApplicationLanguageEditDto
+DEBUG 2016-03-22 18:59:22,041 [7    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Localization.Dto.ApplicationLanguageListDto
+DEBUG 2016-03-22 18:59:22,042 [7    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.EditionEditDto
+DEBUG 2016-03-22 18:59:22,043 [7    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.FlatFeatureDto
+DEBUG 2016-03-22 18:59:22,045 [7    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.EditionListDto
+DEBUG 2016-03-22 18:59:22,045 [7    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Dto.UserListDto
+DEBUG 2016-03-22 18:59:22,047 [7    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Profile.Dto.CurrentUserProfileEditDto
+DEBUG 2016-03-22 18:59:22,047 [7    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Roles.Dto.RoleListDto
+DEBUG 2016-03-22 18:59:22,051 [7    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Roles.Dto.RoleEditDto
+DEBUG 2016-03-22 18:59:22,052 [7    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Dto.FlatPermissionDto
+DEBUG 2016-03-22 18:59:22,053 [7    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Auditing.Dto.AuditLogListDto
+DEBUG 2016-03-22 18:59:22,055 [7    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Dto.UserListDto+UserListRoleDto
+DEBUG 2016-03-22 18:59:22,056 [7    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Users.UserPermissionsEditViewModel
+DEBUG 2016-03-22 18:59:22,057 [7    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Users.CreateOrEditUserModalViewModel
+DEBUG 2016-03-22 18:59:22,057 [7    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Roles.CreateOrEditRoleModalViewModel
+DEBUG 2016-03-22 18:59:22,058 [7    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Profile.MySettingsViewModel
+DEBUG 2016-03-22 18:59:22,061 [7    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Editions.CreateOrEditEditionModalViewModel
+DEBUG 2016-03-22 18:59:22,062 [7    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Tenants.TenantFeaturesEditViewModel
+DEBUG 2016-03-22 18:59:22,062 [7    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.OrganizationUnits.EditOrganizationUnitModalViewModel
+DEBUG 2016-03-22 18:59:22,063 [7    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Languages.CreateOrEditLanguageModalViewModel
+DEBUG 2016-03-22 18:59:22,063 [7    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Models.Account.TenantSelectionViewModel+TenantInfo
+DEBUG 2016-03-22 18:59:22,072 [7    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Tenants.Dashboard.ITenantDashboardAppService' with service name 'app/tenantDashboard'.
+DEBUG 2016-03-22 18:59:22,073 [7    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Sessions.ISessionAppService' with service name 'app/session'.
+DEBUG 2016-03-22 18:59:22,074 [7    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Organizations.IOrganizationUnitAppService' with service name 'app/organizationUnit'.
+DEBUG 2016-03-22 18:59:22,075 [7    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.MultiTenancy.ITenantAppService' with service name 'app/tenant'.
+DEBUG 2016-03-22 18:59:22,075 [7    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Localization.ILanguageAppService' with service name 'app/language'.
+DEBUG 2016-03-22 18:59:22,076 [7    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Editions.IEditionAppService' with service name 'app/edition'.
+DEBUG 2016-03-22 18:59:22,078 [7    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Configuration.Host.IHostSettingsAppService' with service name 'app/hostSettings'.
+DEBUG 2016-03-22 18:59:22,080 [7    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Configuration.Tenants.ITenantSettingsAppService' with service name 'app/tenantSettings'.
+DEBUG 2016-03-22 18:59:22,081 [7    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Common.ICommonLookupAppService' with service name 'app/commonLookup'.
+DEBUG 2016-03-22 18:59:22,083 [7    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Users.IUserAppService' with service name 'app/user'.
+DEBUG 2016-03-22 18:59:22,084 [7    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Users.Profile.IProfileAppService' with service name 'app/profile'.
+DEBUG 2016-03-22 18:59:22,085 [7    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Roles.IRoleAppService' with service name 'app/role'.
+DEBUG 2016-03-22 18:59:22,086 [7    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Auditing.IAuditLogAppService' with service name 'app/auditLog'.
+DEBUG 2016-03-22 19:01:25,211 [13   ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2016-03-22 19:01:25,908 [13   ] Abp.Modules.AbpModuleManager             - Found 14 ABP modules in total.
+DEBUG 2016-03-22 19:01:25,911 [13   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:01:25,913 [13   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:01:25,913 [13   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:01:25,913 [13   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:01:25,913 [13   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:01:25,913 [13   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:01:25,913 [13   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.Zero, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:01:25,913 [13   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFramework.AbpZeroEntityFrameworkModule, Abp.Zero.EntityFramework, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:01:25,913 [13   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.Ldap.AbpZeroLdapModule, Abp.Zero.Ldap, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:01:25,913 [13   ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleApplicationModule, KyleTanczos.TestKyle.Application, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:01:25,913 [13   ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleCoreModule, KyleTanczos.TestKyle.Core, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:01:25,913 [13   ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleDataModule, KyleTanczos.TestKyle.EntityFramework, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:01:25,913 [13   ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.Web.TestKyleWebModule, KyleTanczos.TestKyle.Web, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:01:25,913 [13   ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.WebApi.TestKyleWebApiModule, KyleTanczos.TestKyle.WebApi, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:01:25,917 [13   ] Abp.Modules.AbpModuleManager             - 14 modules loaded.
+DEBUG 2016-03-22 19:01:25,938 [13   ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-22 19:01:25,938 [13   ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-22 19:01:25,938 [13   ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-22 19:01:25,938 [13   ] o.Configuration.LanguageManagementConfig - Converted TestKyle (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-22 19:01:26,717 [13   ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2016-03-22 19:01:26,721 [13   ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2016-03-22 19:01:26,722 [13   ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2016-03-22 19:01:26,726 [13   ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2016-03-22 19:01:26,730 [13   ] Abp.Localization.LocalizationManager     - Initialized localization source: TestKyle
+DEBUG 2016-03-22 19:01:27,117 [13   ] Abp.AutoMapper.AbpAutoMapperModule       - Found 27 classes defines auto mapping attributes
+DEBUG 2016-03-22 19:01:27,117 [13   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2016-03-22 19:01:27,123 [13   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Sessions.Dto.UserLoginInfoDto
+DEBUG 2016-03-22 19:01:27,124 [13   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Organizations.Dto.OrganizationUnitDto
+DEBUG 2016-03-22 19:01:27,125 [13   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Organizations.Dto.OrganizationUnitUserListDto
+DEBUG 2016-03-22 19:01:27,126 [13   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.MultiTenancy.Dto.TenantListDto
+DEBUG 2016-03-22 19:01:27,126 [13   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.MultiTenancy.Dto.TenantEditDto
+DEBUG 2016-03-22 19:01:27,129 [13   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Localization.Dto.ApplicationLanguageEditDto
+DEBUG 2016-03-22 19:01:27,130 [13   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Localization.Dto.ApplicationLanguageListDto
+DEBUG 2016-03-22 19:01:27,131 [13   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.EditionEditDto
+DEBUG 2016-03-22 19:01:27,132 [13   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.FlatFeatureDto
+DEBUG 2016-03-22 19:01:27,134 [13   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.EditionListDto
+DEBUG 2016-03-22 19:01:27,134 [13   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Dto.UserListDto
+DEBUG 2016-03-22 19:01:27,135 [13   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Profile.Dto.CurrentUserProfileEditDto
+DEBUG 2016-03-22 19:01:27,137 [13   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Roles.Dto.RoleListDto
+DEBUG 2016-03-22 19:01:27,140 [13   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Roles.Dto.RoleEditDto
+DEBUG 2016-03-22 19:01:27,141 [13   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Dto.FlatPermissionDto
+DEBUG 2016-03-22 19:01:27,141 [13   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Auditing.Dto.AuditLogListDto
+DEBUG 2016-03-22 19:01:27,144 [13   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Dto.UserListDto+UserListRoleDto
+DEBUG 2016-03-22 19:01:27,145 [13   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Users.UserPermissionsEditViewModel
+DEBUG 2016-03-22 19:01:27,145 [13   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Users.CreateOrEditUserModalViewModel
+DEBUG 2016-03-22 19:01:27,146 [13   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Roles.CreateOrEditRoleModalViewModel
+DEBUG 2016-03-22 19:01:27,146 [13   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Profile.MySettingsViewModel
+DEBUG 2016-03-22 19:01:27,149 [13   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Editions.CreateOrEditEditionModalViewModel
+DEBUG 2016-03-22 19:01:27,150 [13   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Tenants.TenantFeaturesEditViewModel
+DEBUG 2016-03-22 19:01:27,151 [13   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.OrganizationUnits.EditOrganizationUnitModalViewModel
+DEBUG 2016-03-22 19:01:27,151 [13   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Languages.CreateOrEditLanguageModalViewModel
+DEBUG 2016-03-22 19:01:27,151 [13   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Models.Account.TenantSelectionViewModel+TenantInfo
+DEBUG 2016-03-22 19:01:27,159 [13   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Tenants.Dashboard.ITenantDashboardAppService' with service name 'app/tenantDashboard'.
+DEBUG 2016-03-22 19:01:27,160 [13   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Sessions.ISessionAppService' with service name 'app/session'.
+DEBUG 2016-03-22 19:01:27,161 [13   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Organizations.IOrganizationUnitAppService' with service name 'app/organizationUnit'.
+DEBUG 2016-03-22 19:01:27,161 [13   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.MultiTenancy.ITenantAppService' with service name 'app/tenant'.
+DEBUG 2016-03-22 19:01:27,162 [13   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Localization.ILanguageAppService' with service name 'app/language'.
+DEBUG 2016-03-22 19:01:27,163 [13   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Editions.IEditionAppService' with service name 'app/edition'.
+DEBUG 2016-03-22 19:01:27,163 [13   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Configuration.Host.IHostSettingsAppService' with service name 'app/hostSettings'.
+DEBUG 2016-03-22 19:01:27,163 [13   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Configuration.Tenants.ITenantSettingsAppService' with service name 'app/tenantSettings'.
+DEBUG 2016-03-22 19:01:27,165 [13   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Common.ICommonLookupAppService' with service name 'app/commonLookup'.
+DEBUG 2016-03-22 19:01:27,166 [13   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Users.IUserAppService' with service name 'app/user'.
+DEBUG 2016-03-22 19:01:27,167 [13   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Users.Profile.IProfileAppService' with service name 'app/profile'.
+DEBUG 2016-03-22 19:01:27,167 [13   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Roles.IRoleAppService' with service name 'app/role'.
+DEBUG 2016-03-22 19:01:27,168 [13   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Auditing.IAuditLogAppService' with service name 'app/auditLog'.
+DEBUG 2016-03-22 19:03:59,468 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2016-03-22 19:04:00,240 [1    ] Abp.Modules.AbpModuleManager             - Found 14 ABP modules in total.
+DEBUG 2016-03-22 19:04:00,243 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.Web.TestKyleWebModule, KyleTanczos.TestKyle.Web, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:04:00,244 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:04:00,245 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:04:00,245 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:04:00,245 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleDataModule, KyleTanczos.TestKyle.EntityFramework, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:04:00,245 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFramework.AbpZeroEntityFrameworkModule, Abp.Zero.EntityFramework, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:04:00,245 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.Zero, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:04:00,245 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:04:00,245 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleCoreModule, KyleTanczos.TestKyle.Core, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:04:00,245 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.Ldap.AbpZeroLdapModule, Abp.Zero.Ldap, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:04:00,246 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleApplicationModule, KyleTanczos.TestKyle.Application, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:04:00,246 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:04:00,246 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.WebApi.TestKyleWebApiModule, KyleTanczos.TestKyle.WebApi, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:04:00,246 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:04:00,699 [1    ] Abp.Modules.AbpModuleManager             - 14 modules loaded.
+DEBUG 2016-03-22 19:04:00,719 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-22 19:04:00,719 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-22 19:04:00,719 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-22 19:04:00,719 [1    ] o.Configuration.LanguageManagementConfig - Converted TestKyle (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-22 19:04:01,825 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2016-03-22 19:04:01,830 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2016-03-22 19:04:01,830 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2016-03-22 19:04:01,835 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2016-03-22 19:04:01,840 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: TestKyle
+DEBUG 2016-03-22 19:04:02,146 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 27 classes defines auto mapping attributes
+DEBUG 2016-03-22 19:04:02,146 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Users.UserPermissionsEditViewModel
+DEBUG 2016-03-22 19:04:02,149 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Users.CreateOrEditUserModalViewModel
+DEBUG 2016-03-22 19:04:02,150 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Roles.CreateOrEditRoleModalViewModel
+DEBUG 2016-03-22 19:04:02,150 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Profile.MySettingsViewModel
+DEBUG 2016-03-22 19:04:02,154 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Editions.CreateOrEditEditionModalViewModel
+DEBUG 2016-03-22 19:04:02,155 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Tenants.TenantFeaturesEditViewModel
+DEBUG 2016-03-22 19:04:02,156 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.OrganizationUnits.EditOrganizationUnitModalViewModel
+DEBUG 2016-03-22 19:04:02,156 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Languages.CreateOrEditLanguageModalViewModel
+DEBUG 2016-03-22 19:04:02,157 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Models.Account.TenantSelectionViewModel+TenantInfo
+DEBUG 2016-03-22 19:04:02,161 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2016-03-22 19:04:02,162 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Sessions.Dto.UserLoginInfoDto
+DEBUG 2016-03-22 19:04:02,163 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Organizations.Dto.OrganizationUnitDto
+DEBUG 2016-03-22 19:04:02,164 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Organizations.Dto.OrganizationUnitUserListDto
+DEBUG 2016-03-22 19:04:02,165 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.MultiTenancy.Dto.TenantListDto
+DEBUG 2016-03-22 19:04:02,166 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.MultiTenancy.Dto.TenantEditDto
+DEBUG 2016-03-22 19:04:02,168 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Localization.Dto.ApplicationLanguageEditDto
+DEBUG 2016-03-22 19:04:02,169 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Localization.Dto.ApplicationLanguageListDto
+DEBUG 2016-03-22 19:04:02,170 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.EditionEditDto
+DEBUG 2016-03-22 19:04:02,171 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.FlatFeatureDto
+DEBUG 2016-03-22 19:04:02,172 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.EditionListDto
+DEBUG 2016-03-22 19:04:02,173 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Dto.UserListDto
+DEBUG 2016-03-22 19:04:02,174 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Profile.Dto.CurrentUserProfileEditDto
+DEBUG 2016-03-22 19:04:02,176 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Roles.Dto.RoleListDto
+DEBUG 2016-03-22 19:04:02,179 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Roles.Dto.RoleEditDto
+DEBUG 2016-03-22 19:04:02,180 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Dto.FlatPermissionDto
+DEBUG 2016-03-22 19:04:02,181 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Auditing.Dto.AuditLogListDto
+DEBUG 2016-03-22 19:04:02,182 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Dto.UserListDto+UserListRoleDto
+DEBUG 2016-03-22 19:04:02,190 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Tenants.Dashboard.ITenantDashboardAppService' with service name 'app/tenantDashboard'.
+DEBUG 2016-03-22 19:04:02,191 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Sessions.ISessionAppService' with service name 'app/session'.
+DEBUG 2016-03-22 19:04:02,192 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Organizations.IOrganizationUnitAppService' with service name 'app/organizationUnit'.
+DEBUG 2016-03-22 19:04:02,193 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.MultiTenancy.ITenantAppService' with service name 'app/tenant'.
+DEBUG 2016-03-22 19:04:02,193 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Localization.ILanguageAppService' with service name 'app/language'.
+DEBUG 2016-03-22 19:04:02,194 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Editions.IEditionAppService' with service name 'app/edition'.
+DEBUG 2016-03-22 19:04:02,195 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Configuration.Host.IHostSettingsAppService' with service name 'app/hostSettings'.
+DEBUG 2016-03-22 19:04:02,196 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Configuration.Tenants.ITenantSettingsAppService' with service name 'app/tenantSettings'.
+DEBUG 2016-03-22 19:04:02,197 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Common.ICommonLookupAppService' with service name 'app/commonLookup'.
+DEBUG 2016-03-22 19:04:02,198 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Users.IUserAppService' with service name 'app/user'.
+DEBUG 2016-03-22 19:04:02,199 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Users.Profile.IProfileAppService' with service name 'app/profile'.
+DEBUG 2016-03-22 19:04:02,200 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Roles.IRoleAppService' with service name 'app/role'.
+DEBUG 2016-03-22 19:04:02,200 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Auditing.IAuditLogAppService' with service name 'app/auditLog'.
+DEBUG 2016-03-22 19:06:04,787 [25   ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2016-03-22 19:06:05,475 [25   ] Abp.Modules.AbpModuleManager             - Found 14 ABP modules in total.
+DEBUG 2016-03-22 19:06:05,478 [25   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:06:05,479 [25   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:06:05,479 [25   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:06:05,480 [25   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:06:05,480 [25   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:06:05,480 [25   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:06:05,480 [25   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.Zero, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:06:05,480 [25   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFramework.AbpZeroEntityFrameworkModule, Abp.Zero.EntityFramework, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:06:05,480 [25   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.Ldap.AbpZeroLdapModule, Abp.Zero.Ldap, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:06:05,480 [25   ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleApplicationModule, KyleTanczos.TestKyle.Application, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:06:05,480 [25   ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleCoreModule, KyleTanczos.TestKyle.Core, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:06:05,480 [25   ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleDataModule, KyleTanczos.TestKyle.EntityFramework, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:06:05,480 [25   ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.Web.TestKyleWebModule, KyleTanczos.TestKyle.Web, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:06:05,480 [25   ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.WebApi.TestKyleWebApiModule, KyleTanczos.TestKyle.WebApi, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:06:05,484 [25   ] Abp.Modules.AbpModuleManager             - 14 modules loaded.
+DEBUG 2016-03-22 19:06:05,503 [25   ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-22 19:06:05,503 [25   ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-22 19:06:05,503 [25   ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-22 19:06:05,503 [25   ] o.Configuration.LanguageManagementConfig - Converted TestKyle (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-22 19:06:06,275 [25   ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2016-03-22 19:06:06,279 [25   ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2016-03-22 19:06:06,279 [25   ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2016-03-22 19:06:06,283 [25   ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2016-03-22 19:06:06,288 [25   ] Abp.Localization.LocalizationManager     - Initialized localization source: TestKyle
+DEBUG 2016-03-22 19:06:06,740 [25   ] Abp.AutoMapper.AbpAutoMapperModule       - Found 27 classes defines auto mapping attributes
+DEBUG 2016-03-22 19:06:06,740 [25   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2016-03-22 19:06:06,745 [25   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Sessions.Dto.UserLoginInfoDto
+DEBUG 2016-03-22 19:06:06,746 [25   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Organizations.Dto.OrganizationUnitDto
+DEBUG 2016-03-22 19:06:06,748 [25   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Organizations.Dto.OrganizationUnitUserListDto
+DEBUG 2016-03-22 19:06:06,749 [25   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.MultiTenancy.Dto.TenantListDto
+DEBUG 2016-03-22 19:06:06,750 [25   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.MultiTenancy.Dto.TenantEditDto
+DEBUG 2016-03-22 19:06:06,752 [25   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Localization.Dto.ApplicationLanguageEditDto
+DEBUG 2016-03-22 19:06:06,753 [25   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Localization.Dto.ApplicationLanguageListDto
+DEBUG 2016-03-22 19:06:06,754 [25   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.EditionEditDto
+DEBUG 2016-03-22 19:06:06,755 [25   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.FlatFeatureDto
+DEBUG 2016-03-22 19:06:06,756 [25   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.EditionListDto
+DEBUG 2016-03-22 19:06:06,757 [25   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Dto.UserListDto
+DEBUG 2016-03-22 19:06:06,758 [25   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Profile.Dto.CurrentUserProfileEditDto
+DEBUG 2016-03-22 19:06:06,760 [25   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Roles.Dto.RoleListDto
+DEBUG 2016-03-22 19:06:06,763 [25   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Roles.Dto.RoleEditDto
+DEBUG 2016-03-22 19:06:06,764 [25   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Dto.FlatPermissionDto
+DEBUG 2016-03-22 19:06:06,764 [25   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Auditing.Dto.AuditLogListDto
+DEBUG 2016-03-22 19:06:06,766 [25   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Dto.UserListDto+UserListRoleDto
+DEBUG 2016-03-22 19:06:06,767 [25   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Users.UserPermissionsEditViewModel
+DEBUG 2016-03-22 19:06:06,768 [25   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Users.CreateOrEditUserModalViewModel
+DEBUG 2016-03-22 19:06:06,768 [25   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Roles.CreateOrEditRoleModalViewModel
+DEBUG 2016-03-22 19:06:06,769 [25   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Profile.MySettingsViewModel
+DEBUG 2016-03-22 19:06:06,772 [25   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Editions.CreateOrEditEditionModalViewModel
+DEBUG 2016-03-22 19:06:06,773 [25   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Tenants.TenantFeaturesEditViewModel
+DEBUG 2016-03-22 19:06:06,773 [25   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.OrganizationUnits.EditOrganizationUnitModalViewModel
+DEBUG 2016-03-22 19:06:06,774 [25   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Languages.CreateOrEditLanguageModalViewModel
+DEBUG 2016-03-22 19:06:06,774 [25   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Models.Account.TenantSelectionViewModel+TenantInfo
+DEBUG 2016-03-22 19:06:06,781 [25   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Tenants.Dashboard.ITenantDashboardAppService' with service name 'app/tenantDashboard'.
+DEBUG 2016-03-22 19:06:06,783 [25   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Sessions.ISessionAppService' with service name 'app/session'.
+DEBUG 2016-03-22 19:06:06,783 [25   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Organizations.IOrganizationUnitAppService' with service name 'app/organizationUnit'.
+DEBUG 2016-03-22 19:06:06,784 [25   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.MultiTenancy.ITenantAppService' with service name 'app/tenant'.
+DEBUG 2016-03-22 19:06:06,785 [25   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Localization.ILanguageAppService' with service name 'app/language'.
+DEBUG 2016-03-22 19:06:06,786 [25   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Editions.IEditionAppService' with service name 'app/edition'.
+DEBUG 2016-03-22 19:06:06,786 [25   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Configuration.Host.IHostSettingsAppService' with service name 'app/hostSettings'.
+DEBUG 2016-03-22 19:06:06,787 [25   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Configuration.Tenants.ITenantSettingsAppService' with service name 'app/tenantSettings'.
+DEBUG 2016-03-22 19:06:06,788 [25   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Common.ICommonLookupAppService' with service name 'app/commonLookup'.
+DEBUG 2016-03-22 19:06:06,789 [25   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Users.IUserAppService' with service name 'app/user'.
+DEBUG 2016-03-22 19:06:06,789 [25   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Users.Profile.IProfileAppService' with service name 'app/profile'.
+DEBUG 2016-03-22 19:06:06,790 [25   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Roles.IRoleAppService' with service name 'app/role'.
+DEBUG 2016-03-22 19:06:06,791 [25   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Auditing.IAuditLogAppService' with service name 'app/auditLog'.
+DEBUG 2016-03-22 19:15:30,321 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2016-03-22 19:15:31,648 [1    ] Abp.Modules.AbpModuleManager             - Found 14 ABP modules in total.
+DEBUG 2016-03-22 19:15:31,652 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.Web.TestKyleWebModule, KyleTanczos.TestKyle.Web, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:15:31,653 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:15:31,653 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:15:31,653 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:15:31,654 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleDataModule, KyleTanczos.TestKyle.EntityFramework, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:15:31,654 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFramework.AbpZeroEntityFrameworkModule, Abp.Zero.EntityFramework, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:15:31,654 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.Zero, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:15:31,654 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:15:31,654 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleCoreModule, KyleTanczos.TestKyle.Core, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:15:31,654 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.Ldap.AbpZeroLdapModule, Abp.Zero.Ldap, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:15:31,654 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleApplicationModule, KyleTanczos.TestKyle.Application, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:15:31,655 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:15:31,655 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.WebApi.TestKyleWebApiModule, KyleTanczos.TestKyle.WebApi, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:15:31,655 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:15:32,430 [1    ] Abp.Modules.AbpModuleManager             - 14 modules loaded.
+DEBUG 2016-03-22 19:15:32,453 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-22 19:15:32,453 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-22 19:15:32,453 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-22 19:15:32,453 [1    ] o.Configuration.LanguageManagementConfig - Converted TestKyle (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-22 19:15:33,634 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2016-03-22 19:15:33,639 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2016-03-22 19:15:33,639 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2016-03-22 19:15:33,644 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2016-03-22 19:15:33,649 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: TestKyle
+DEBUG 2016-03-22 19:15:34,006 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 27 classes defines auto mapping attributes
+DEBUG 2016-03-22 19:15:34,006 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Users.UserPermissionsEditViewModel
+DEBUG 2016-03-22 19:15:34,009 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Users.CreateOrEditUserModalViewModel
+DEBUG 2016-03-22 19:15:34,010 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Roles.CreateOrEditRoleModalViewModel
+DEBUG 2016-03-22 19:15:34,010 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Profile.MySettingsViewModel
+DEBUG 2016-03-22 19:15:34,014 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Editions.CreateOrEditEditionModalViewModel
+DEBUG 2016-03-22 19:15:34,015 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Tenants.TenantFeaturesEditViewModel
+DEBUG 2016-03-22 19:15:34,016 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.OrganizationUnits.EditOrganizationUnitModalViewModel
+DEBUG 2016-03-22 19:15:34,016 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Languages.CreateOrEditLanguageModalViewModel
+DEBUG 2016-03-22 19:15:34,017 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Models.Account.TenantSelectionViewModel+TenantInfo
+DEBUG 2016-03-22 19:15:34,021 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2016-03-22 19:15:34,022 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Sessions.Dto.UserLoginInfoDto
+DEBUG 2016-03-22 19:15:34,023 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Organizations.Dto.OrganizationUnitDto
+DEBUG 2016-03-22 19:15:34,024 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Organizations.Dto.OrganizationUnitUserListDto
+DEBUG 2016-03-22 19:15:34,025 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.MultiTenancy.Dto.TenantListDto
+DEBUG 2016-03-22 19:15:34,025 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.MultiTenancy.Dto.TenantEditDto
+DEBUG 2016-03-22 19:15:34,027 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Localization.Dto.ApplicationLanguageEditDto
+DEBUG 2016-03-22 19:15:34,028 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Localization.Dto.ApplicationLanguageListDto
+DEBUG 2016-03-22 19:15:34,029 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.EditionEditDto
+DEBUG 2016-03-22 19:15:34,030 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.FlatFeatureDto
+DEBUG 2016-03-22 19:15:34,031 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.EditionListDto
+DEBUG 2016-03-22 19:15:34,031 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Dto.UserListDto
+DEBUG 2016-03-22 19:15:34,033 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Profile.Dto.CurrentUserProfileEditDto
+DEBUG 2016-03-22 19:15:34,035 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Roles.Dto.RoleListDto
+DEBUG 2016-03-22 19:15:34,037 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Roles.Dto.RoleEditDto
+DEBUG 2016-03-22 19:15:34,038 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Dto.FlatPermissionDto
+DEBUG 2016-03-22 19:15:34,039 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Auditing.Dto.AuditLogListDto
+DEBUG 2016-03-22 19:15:34,040 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Dto.UserListDto+UserListRoleDto
+DEBUG 2016-03-22 19:15:34,048 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Tenants.Dashboard.ITenantDashboardAppService' with service name 'app/tenantDashboard'.
+DEBUG 2016-03-22 19:15:34,048 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Sessions.ISessionAppService' with service name 'app/session'.
+DEBUG 2016-03-22 19:15:34,049 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Organizations.IOrganizationUnitAppService' with service name 'app/organizationUnit'.
+DEBUG 2016-03-22 19:15:34,050 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.MultiTenancy.ITenantAppService' with service name 'app/tenant'.
+DEBUG 2016-03-22 19:15:34,051 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Localization.ILanguageAppService' with service name 'app/language'.
+DEBUG 2016-03-22 19:15:34,051 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Editions.IEditionAppService' with service name 'app/edition'.
+DEBUG 2016-03-22 19:15:34,052 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Configuration.Host.IHostSettingsAppService' with service name 'app/hostSettings'.
+DEBUG 2016-03-22 19:15:34,053 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Configuration.Tenants.ITenantSettingsAppService' with service name 'app/tenantSettings'.
+DEBUG 2016-03-22 19:15:34,053 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Common.ICommonLookupAppService' with service name 'app/commonLookup'.
+DEBUG 2016-03-22 19:15:34,054 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Users.IUserAppService' with service name 'app/user'.
+DEBUG 2016-03-22 19:15:34,055 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Users.Profile.IProfileAppService' with service name 'app/profile'.
+DEBUG 2016-03-22 19:15:34,056 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Roles.IRoleAppService' with service name 'app/role'.
+DEBUG 2016-03-22 19:15:34,057 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Auditing.IAuditLogAppService' with service name 'app/auditLog'.
+DEBUG 2016-03-22 19:28:47,119 [33   ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2016-03-22 19:28:47,862 [33   ] Abp.Modules.AbpModuleManager             - Found 14 ABP modules in total.
+DEBUG 2016-03-22 19:28:47,862 [33   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:28:47,862 [33   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:28:47,862 [33   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:28:47,862 [33   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:28:47,862 [33   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:28:47,862 [33   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:28:47,862 [33   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.Zero, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:28:47,862 [33   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFramework.AbpZeroEntityFrameworkModule, Abp.Zero.EntityFramework, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:28:47,862 [33   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.Ldap.AbpZeroLdapModule, Abp.Zero.Ldap, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:28:47,862 [33   ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleApplicationModule, KyleTanczos.TestKyle.Application, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:28:47,862 [33   ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleCoreModule, KyleTanczos.TestKyle.Core, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:28:47,862 [33   ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleDataModule, KyleTanczos.TestKyle.EntityFramework, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:28:47,862 [33   ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.Web.TestKyleWebModule, KyleTanczos.TestKyle.Web, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:28:47,862 [33   ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.WebApi.TestKyleWebApiModule, KyleTanczos.TestKyle.WebApi, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:28:47,862 [33   ] Abp.Modules.AbpModuleManager             - 14 modules loaded.
+DEBUG 2016-03-22 19:28:47,894 [33   ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-22 19:28:47,894 [33   ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-22 19:28:47,894 [33   ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-22 19:28:47,894 [33   ] o.Configuration.LanguageManagementConfig - Converted TestKyle (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-22 19:28:48,636 [33   ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2016-03-22 19:28:48,636 [33   ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2016-03-22 19:28:48,653 [33   ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2016-03-22 19:28:48,653 [33   ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2016-03-22 19:28:48,653 [33   ] Abp.Localization.LocalizationManager     - Initialized localization source: TestKyle
+DEBUG 2016-03-22 19:28:49,187 [33   ] Abp.AutoMapper.AbpAutoMapperModule       - Found 27 classes defines auto mapping attributes
+DEBUG 2016-03-22 19:28:49,187 [33   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2016-03-22 19:28:49,187 [33   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Sessions.Dto.UserLoginInfoDto
+DEBUG 2016-03-22 19:28:49,203 [33   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Organizations.Dto.OrganizationUnitDto
+DEBUG 2016-03-22 19:28:49,203 [33   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Organizations.Dto.OrganizationUnitUserListDto
+DEBUG 2016-03-22 19:28:49,203 [33   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.MultiTenancy.Dto.TenantListDto
+DEBUG 2016-03-22 19:28:49,203 [33   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.MultiTenancy.Dto.TenantEditDto
+DEBUG 2016-03-22 19:28:49,203 [33   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Localization.Dto.ApplicationLanguageEditDto
+DEBUG 2016-03-22 19:28:49,203 [33   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Localization.Dto.ApplicationLanguageListDto
+DEBUG 2016-03-22 19:28:49,203 [33   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.EditionEditDto
+DEBUG 2016-03-22 19:28:49,203 [33   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.FlatFeatureDto
+DEBUG 2016-03-22 19:28:49,203 [33   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.EditionListDto
+DEBUG 2016-03-22 19:28:49,203 [33   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Dto.UserListDto
+DEBUG 2016-03-22 19:28:49,203 [33   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Profile.Dto.CurrentUserProfileEditDto
+DEBUG 2016-03-22 19:28:49,203 [33   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Roles.Dto.RoleListDto
+DEBUG 2016-03-22 19:28:49,203 [33   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Roles.Dto.RoleEditDto
+DEBUG 2016-03-22 19:28:49,220 [33   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Dto.FlatPermissionDto
+DEBUG 2016-03-22 19:28:49,221 [33   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Auditing.Dto.AuditLogListDto
+DEBUG 2016-03-22 19:28:49,221 [33   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Dto.UserListDto+UserListRoleDto
+DEBUG 2016-03-22 19:28:49,221 [33   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Users.UserPermissionsEditViewModel
+DEBUG 2016-03-22 19:28:49,221 [33   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Users.CreateOrEditUserModalViewModel
+DEBUG 2016-03-22 19:28:49,221 [33   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Roles.CreateOrEditRoleModalViewModel
+DEBUG 2016-03-22 19:28:49,221 [33   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Profile.MySettingsViewModel
+DEBUG 2016-03-22 19:28:49,221 [33   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Editions.CreateOrEditEditionModalViewModel
+DEBUG 2016-03-22 19:28:49,221 [33   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Tenants.TenantFeaturesEditViewModel
+DEBUG 2016-03-22 19:28:49,221 [33   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.OrganizationUnits.EditOrganizationUnitModalViewModel
+DEBUG 2016-03-22 19:28:49,221 [33   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Languages.CreateOrEditLanguageModalViewModel
+DEBUG 2016-03-22 19:28:49,221 [33   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Models.Account.TenantSelectionViewModel+TenantInfo
+DEBUG 2016-03-22 19:28:49,236 [33   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Tenants.Dashboard.ITenantDashboardAppService' with service name 'app/tenantDashboard'.
+DEBUG 2016-03-22 19:28:49,236 [33   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Sessions.ISessionAppService' with service name 'app/session'.
+DEBUG 2016-03-22 19:28:49,236 [33   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Organizations.IOrganizationUnitAppService' with service name 'app/organizationUnit'.
+DEBUG 2016-03-22 19:28:49,236 [33   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.MultiTenancy.ITenantAppService' with service name 'app/tenant'.
+DEBUG 2016-03-22 19:28:49,236 [33   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Localization.ILanguageAppService' with service name 'app/language'.
+DEBUG 2016-03-22 19:28:49,236 [33   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Editions.IEditionAppService' with service name 'app/edition'.
+DEBUG 2016-03-22 19:28:49,236 [33   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Configuration.Host.IHostSettingsAppService' with service name 'app/hostSettings'.
+DEBUG 2016-03-22 19:28:49,236 [33   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Configuration.Tenants.ITenantSettingsAppService' with service name 'app/tenantSettings'.
+DEBUG 2016-03-22 19:28:49,236 [33   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Common.ICommonLookupAppService' with service name 'app/commonLookup'.
+DEBUG 2016-03-22 19:28:49,236 [33   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Users.IUserAppService' with service name 'app/user'.
+DEBUG 2016-03-22 19:28:49,236 [33   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Users.Profile.IProfileAppService' with service name 'app/profile'.
+DEBUG 2016-03-22 19:28:49,236 [33   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Roles.IRoleAppService' with service name 'app/role'.
+DEBUG 2016-03-22 19:28:49,236 [33   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Auditing.IAuditLogAppService' with service name 'app/auditLog'.
+DEBUG 2016-03-22 19:33:57,278 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2016-03-22 19:33:57,775 [1    ] Abp.Modules.AbpModuleManager             - Found 14 ABP modules in total.
+DEBUG 2016-03-22 19:33:57,778 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:33:57,779 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:33:57,779 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:33:57,779 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:33:57,780 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:33:57,780 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:33:57,780 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.Zero, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:33:57,780 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFramework.AbpZeroEntityFrameworkModule, Abp.Zero.EntityFramework, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:33:57,780 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.Ldap.AbpZeroLdapModule, Abp.Zero.Ldap, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:33:57,780 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleApplicationModule, KyleTanczos.TestKyle.Application, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:33:57,780 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleCoreModule, KyleTanczos.TestKyle.Core, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:33:57,780 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleDataModule, KyleTanczos.TestKyle.EntityFramework, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:33:57,780 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.Web.TestKyleWebModule, KyleTanczos.TestKyle.Web, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:33:57,780 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.WebApi.TestKyleWebApiModule, KyleTanczos.TestKyle.WebApi, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:33:57,784 [1    ] Abp.Modules.AbpModuleManager             - 14 modules loaded.
+DEBUG 2016-03-22 19:33:57,803 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-22 19:33:57,803 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-22 19:33:57,803 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-22 19:33:57,803 [1    ] o.Configuration.LanguageManagementConfig - Converted TestKyle (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-22 19:33:58,567 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2016-03-22 19:33:58,571 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2016-03-22 19:33:58,571 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2016-03-22 19:33:58,575 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2016-03-22 19:33:58,580 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: TestKyle
+DEBUG 2016-03-22 19:33:58,970 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 27 classes defines auto mapping attributes
+DEBUG 2016-03-22 19:33:58,970 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2016-03-22 19:33:58,976 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Sessions.Dto.UserLoginInfoDto
+DEBUG 2016-03-22 19:33:58,976 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Organizations.Dto.OrganizationUnitDto
+DEBUG 2016-03-22 19:33:58,978 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Organizations.Dto.OrganizationUnitUserListDto
+DEBUG 2016-03-22 19:33:58,979 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.MultiTenancy.Dto.TenantListDto
+DEBUG 2016-03-22 19:33:58,980 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.MultiTenancy.Dto.TenantEditDto
+DEBUG 2016-03-22 19:33:58,982 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Localization.Dto.ApplicationLanguageEditDto
+DEBUG 2016-03-22 19:33:58,983 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Localization.Dto.ApplicationLanguageListDto
+DEBUG 2016-03-22 19:33:58,984 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.EditionEditDto
+DEBUG 2016-03-22 19:33:58,984 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.FlatFeatureDto
+DEBUG 2016-03-22 19:33:58,986 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.EditionListDto
+DEBUG 2016-03-22 19:33:58,986 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Dto.UserListDto
+DEBUG 2016-03-22 19:33:58,987 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Profile.Dto.CurrentUserProfileEditDto
+DEBUG 2016-03-22 19:33:58,990 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Roles.Dto.RoleListDto
+DEBUG 2016-03-22 19:33:58,992 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Roles.Dto.RoleEditDto
+DEBUG 2016-03-22 19:33:58,993 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Dto.FlatPermissionDto
+DEBUG 2016-03-22 19:33:58,994 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Auditing.Dto.AuditLogListDto
+DEBUG 2016-03-22 19:33:58,996 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Dto.UserListDto+UserListRoleDto
+DEBUG 2016-03-22 19:33:58,996 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Users.UserPermissionsEditViewModel
+DEBUG 2016-03-22 19:33:58,997 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Users.CreateOrEditUserModalViewModel
+DEBUG 2016-03-22 19:33:58,997 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Roles.CreateOrEditRoleModalViewModel
+DEBUG 2016-03-22 19:33:58,998 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Profile.MySettingsViewModel
+DEBUG 2016-03-22 19:33:59,034 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Editions.CreateOrEditEditionModalViewModel
+DEBUG 2016-03-22 19:33:59,035 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Tenants.TenantFeaturesEditViewModel
+DEBUG 2016-03-22 19:33:59,036 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.OrganizationUnits.EditOrganizationUnitModalViewModel
+DEBUG 2016-03-22 19:33:59,036 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Languages.CreateOrEditLanguageModalViewModel
+DEBUG 2016-03-22 19:33:59,037 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Models.Account.TenantSelectionViewModel+TenantInfo
+DEBUG 2016-03-22 19:33:59,045 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Tenants.Dashboard.ITenantDashboardAppService' with service name 'app/tenantDashboard'.
+DEBUG 2016-03-22 19:33:59,046 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Sessions.ISessionAppService' with service name 'app/session'.
+DEBUG 2016-03-22 19:33:59,046 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Organizations.IOrganizationUnitAppService' with service name 'app/organizationUnit'.
+DEBUG 2016-03-22 19:33:59,047 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.MultiTenancy.ITenantAppService' with service name 'app/tenant'.
+DEBUG 2016-03-22 19:33:59,048 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Localization.ILanguageAppService' with service name 'app/language'.
+DEBUG 2016-03-22 19:33:59,048 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Editions.IEditionAppService' with service name 'app/edition'.
+DEBUG 2016-03-22 19:33:59,049 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Configuration.Host.IHostSettingsAppService' with service name 'app/hostSettings'.
+DEBUG 2016-03-22 19:33:59,050 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Configuration.Tenants.ITenantSettingsAppService' with service name 'app/tenantSettings'.
+DEBUG 2016-03-22 19:33:59,051 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Common.ICommonLookupAppService' with service name 'app/commonLookup'.
+DEBUG 2016-03-22 19:33:59,052 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Users.IUserAppService' with service name 'app/user'.
+DEBUG 2016-03-22 19:33:59,052 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Users.Profile.IProfileAppService' with service name 'app/profile'.
+DEBUG 2016-03-22 19:33:59,053 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Roles.IRoleAppService' with service name 'app/role'.
+DEBUG 2016-03-22 19:33:59,054 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Auditing.IAuditLogAppService' with service name 'app/auditLog'.
+DEBUG 2016-03-22 19:35:33,327 [17   ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2016-03-22 19:35:33,978 [17   ] Abp.Modules.AbpModuleManager             - Found 14 ABP modules in total.
+DEBUG 2016-03-22 19:35:33,980 [17   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:35:33,982 [17   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:35:33,982 [17   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:35:33,982 [17   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:35:33,982 [17   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:35:33,982 [17   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=0.7.7.2, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:35:33,982 [17   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.Zero, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:35:33,982 [17   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFramework.AbpZeroEntityFrameworkModule, Abp.Zero.EntityFramework, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:35:33,982 [17   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.Ldap.AbpZeroLdapModule, Abp.Zero.Ldap, Version=0.7.7.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:35:33,982 [17   ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleApplicationModule, KyleTanczos.TestKyle.Application, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:35:33,983 [17   ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleCoreModule, KyleTanczos.TestKyle.Core, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:35:33,983 [17   ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.TestKyleDataModule, KyleTanczos.TestKyle.EntityFramework, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:35:33,983 [17   ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.Web.TestKyleWebModule, KyleTanczos.TestKyle.Web, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:35:33,983 [17   ] Abp.Modules.AbpModuleManager             - Loaded module: KyleTanczos.TestKyle.WebApi.TestKyleWebApiModule, KyleTanczos.TestKyle.WebApi, Version=1.7.1.1, Culture=neutral, PublicKeyToken=null
+DEBUG 2016-03-22 19:35:33,986 [17   ] Abp.Modules.AbpModuleManager             - 14 modules loaded.
+DEBUG 2016-03-22 19:35:34,006 [17   ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-22 19:35:34,006 [17   ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-22 19:35:34,006 [17   ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-22 19:35:34,006 [17   ] o.Configuration.LanguageManagementConfig - Converted TestKyle (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2016-03-22 19:35:34,756 [17   ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2016-03-22 19:35:34,760 [17   ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2016-03-22 19:35:34,760 [17   ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2016-03-22 19:35:34,764 [17   ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2016-03-22 19:35:34,769 [17   ] Abp.Localization.LocalizationManager     - Initialized localization source: TestKyle
+DEBUG 2016-03-22 19:35:35,156 [17   ] Abp.AutoMapper.AbpAutoMapperModule       - Found 27 classes defines auto mapping attributes
+DEBUG 2016-03-22 19:35:35,157 [17   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2016-03-22 19:35:35,162 [17   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Sessions.Dto.UserLoginInfoDto
+DEBUG 2016-03-22 19:35:35,163 [17   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Organizations.Dto.OrganizationUnitDto
+DEBUG 2016-03-22 19:35:35,165 [17   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Organizations.Dto.OrganizationUnitUserListDto
+DEBUG 2016-03-22 19:35:35,166 [17   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.MultiTenancy.Dto.TenantListDto
+DEBUG 2016-03-22 19:35:35,167 [17   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.MultiTenancy.Dto.TenantEditDto
+DEBUG 2016-03-22 19:35:35,169 [17   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Localization.Dto.ApplicationLanguageEditDto
+DEBUG 2016-03-22 19:35:35,170 [17   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Localization.Dto.ApplicationLanguageListDto
+DEBUG 2016-03-22 19:35:35,171 [17   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.EditionEditDto
+DEBUG 2016-03-22 19:35:35,171 [17   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.FlatFeatureDto
+DEBUG 2016-03-22 19:35:35,173 [17   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Editions.Dto.EditionListDto
+DEBUG 2016-03-22 19:35:35,173 [17   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Dto.UserListDto
+DEBUG 2016-03-22 19:35:35,174 [17   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Profile.Dto.CurrentUserProfileEditDto
+DEBUG 2016-03-22 19:35:35,176 [17   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Roles.Dto.RoleListDto
+DEBUG 2016-03-22 19:35:35,179 [17   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Roles.Dto.RoleEditDto
+DEBUG 2016-03-22 19:35:35,180 [17   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Dto.FlatPermissionDto
+DEBUG 2016-03-22 19:35:35,181 [17   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Auditing.Dto.AuditLogListDto
+DEBUG 2016-03-22 19:35:35,182 [17   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Authorization.Users.Dto.UserListDto+UserListRoleDto
+DEBUG 2016-03-22 19:35:35,183 [17   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Users.UserPermissionsEditViewModel
+DEBUG 2016-03-22 19:35:35,184 [17   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Users.CreateOrEditUserModalViewModel
+DEBUG 2016-03-22 19:35:35,184 [17   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Roles.CreateOrEditRoleModalViewModel
+DEBUG 2016-03-22 19:35:35,184 [17   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Profile.MySettingsViewModel
+DEBUG 2016-03-22 19:35:35,187 [17   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Editions.CreateOrEditEditionModalViewModel
+DEBUG 2016-03-22 19:35:35,188 [17   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Tenants.TenantFeaturesEditViewModel
+DEBUG 2016-03-22 19:35:35,189 [17   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.OrganizationUnits.EditOrganizationUnitModalViewModel
+DEBUG 2016-03-22 19:35:35,189 [17   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Areas.Mpa.Models.Languages.CreateOrEditLanguageModalViewModel
+DEBUG 2016-03-22 19:35:35,189 [17   ] Abp.AutoMapper.AbpAutoMapperModule       - KyleTanczos.TestKyle.Web.Models.Account.TenantSelectionViewModel+TenantInfo
+DEBUG 2016-03-22 19:35:35,196 [17   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Tenants.Dashboard.ITenantDashboardAppService' with service name 'app/tenantDashboard'.
+DEBUG 2016-03-22 19:35:35,197 [17   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Sessions.ISessionAppService' with service name 'app/session'.
+DEBUG 2016-03-22 19:35:35,198 [17   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Organizations.IOrganizationUnitAppService' with service name 'app/organizationUnit'.
+DEBUG 2016-03-22 19:35:35,199 [17   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.MultiTenancy.ITenantAppService' with service name 'app/tenant'.
+DEBUG 2016-03-22 19:35:35,199 [17   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Localization.ILanguageAppService' with service name 'app/language'.
+DEBUG 2016-03-22 19:35:35,200 [17   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Editions.IEditionAppService' with service name 'app/edition'.
+DEBUG 2016-03-22 19:35:35,201 [17   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Configuration.Host.IHostSettingsAppService' with service name 'app/hostSettings'.
+DEBUG 2016-03-22 19:35:35,201 [17   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Configuration.Tenants.ITenantSettingsAppService' with service name 'app/tenantSettings'.
+DEBUG 2016-03-22 19:35:35,202 [17   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Common.ICommonLookupAppService' with service name 'app/commonLookup'.
+DEBUG 2016-03-22 19:35:35,203 [17   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Users.IUserAppService' with service name 'app/user'.
+DEBUG 2016-03-22 19:35:35,204 [17   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Users.Profile.IProfileAppService' with service name 'app/profile'.
+DEBUG 2016-03-22 19:35:35,204 [17   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Authorization.Roles.IRoleAppService' with service name 'app/role'.
+DEBUG 2016-03-22 19:35:35,205 [17   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'KyleTanczos.TestKyle.Auditing.IAuditLogAppService' with service name 'app/auditLog'.

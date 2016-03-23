@@ -56,16 +56,15 @@ namespace KyleTanczos.TestKyle.Web.Models.App
     public class UploadedFile
     {
         public int Id { get; set; }
+        public OrgUnit Agency { get; set; }
+        public User UploadedBy { get; set; }
         public string CreatedBy { get; set; }
-        [Column(TypeName = "text")]
-        public string RawFile { get; set; }
-        public string RawXml { get; set; }
         public string FileName { get; set; }
         public DateTime StartDateRange { get; set; }
         public DateTime EndDateRange { get; set; }
-        public int Count { get; set; }
-        public List<UploadedPcr> Pcrs { get; set; }
-        public blobFile file { get; set; }
+        public int TripCount { get; set; }
+        public List<Pcr> Pcrs { get; set; }
+        public blobFile RawFile { get; set; }
     }
 
     public class blobFile
@@ -77,7 +76,7 @@ namespace KyleTanczos.TestKyle.Web.Models.App
         public string fileName { get; set; }
     }
 
-    public class UploadedPcr
+    public class Pcr
     {
         public int Id { get; set; }
         public DateTime IncidentDate { get; set; }
