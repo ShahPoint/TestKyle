@@ -106,6 +106,13 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 created = DateTime.Now
                             });
 
+                    db.blobFiles.First().User;
+                    db.blobFiles.First().OrganizationUnit;
+                    Organization org = (Organization ) db.OrganizationUnits.FirstOrDefault();
+                    org.blobFiles.Count();
+
+                   
+
                     var largeBlobs = db.blobFiles.Where(x => x.byteCount > 3000000).Count();
 
                     db.SaveChangesAsync();
