@@ -6,6 +6,7 @@ using KyleTanczos.TestKyle.Authorization.Users;
 using KyleTanczos.TestKyle.MultiTenancy;
 using KyleTanczos.TestKyle.Storage;
 using KyleTanczos.TestKyle.PCR;
+using System.Data.Entity.Infrastructure;
 
 namespace KyleTanczos.TestKyle.EntityFramework
 {
@@ -27,7 +28,7 @@ namespace KyleTanczos.TestKyle.EntityFramework
         public TestKyleDbContext()
             : base("KyleIsABoss")
         {
-
+            ((IObjectContextAdapter)this).ObjectContext.CommandTimeout = 1200; //20 minutes
         }
 
         /* This constructor is used by ABP to pass connection string defined in TestKyleDataModule.PreInitialize.
