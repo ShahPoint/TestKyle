@@ -5,12 +5,12 @@
 
 
                         
-    @Html.Partial("Controls/" + ControlTypeEnum.DropDownList.ToString(), new DropDownList()
+@Html.Partial("Controls/" + ControlTypeEnum.DropDownList.ToString(), new DropDownList()
 {
     DisplayName = "",
     ResponsiveWidth = 12,
     select2_OfflineListName = "PatientMedicationList",
-    PlaceHolder = "Start typing medication (Quick Add)"
+    PlaceHolder = "Start typing medication (Quick Add)", NgModel = "PatientMedSelect2"
                                 
 })
 

@@ -33,9 +33,10 @@
     @Html.IncludeStyle("~/Areas/Mpa/Views/Layout/_Layout.min.css")
 
     @RenderSection("Styles", false)
+    <link href="~/libs/select2-master/dist/css/select2.css" rel="stylesheet" />
 
-    <link href="~/libs/select2/css/select2.css" rel="stylesheet" />
-    <link href="~/libs/select2/css/select2-bootstrap.min.css" rel="stylesheet" />
+    @*<link href="~/libs/select2/css/select2.css" rel="stylesheet" />
+    <link href="~/libs/select2/css/select2-bootstrap.min.css" rel="stylesheet" />*@
 
     <script type="text/javascript">
         @* This is used to get the application's root path from javascript.
@@ -89,7 +90,9 @@
     @Scripts.Render("~/Bundles/Mpa/libs/js")
 
 
-    <script src="~/libs/select2/js/select2.min.js"></script>
+    @*<script src="~/libs/select2/js/select2.min.js"></script>*@
+    <script src="~/libs/select2-master/dist/js/select2.full.min.js"></script>
+
     <script src="~/libs/bootbox/bootbox.min.js"></script>
     @Html.IncludeScript(ScriptPaths.JQuery_Validation_Localization)
     @Html.IncludeScript(ScriptPaths.JQuery_JTable_Localization)

@@ -440,7 +440,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 {
                                     new DropDownList() { DisplayName = "Disposition/Outcome",
                                         DropDownOptions = options.NemsisSelectOptions("E20_10"), ResponsiveWidth = 12
-                                        ,NgModel = "E20_10"//, IsSelect2 = true
+                                        ,NgModel = "E20_10", IsSelect2 = true
                                         }
                                 }
                             },
@@ -980,7 +980,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                         DropDownOptions = options.NemsisSelectOptions("E07_27")
                                        ,NgModel = "E07_27" },
                                     new TextBox() { DisplayName = "Employer Address"
-                                       ,NgModel = "E07_28-E07_31" },
+                                       ,NgModel = "" },
                                     new TextBox() { DisplayName = "Employer Phone"
                                        ,NgModel = "E07_32" },
                                     new TextBox() { DisplayName = "Patient Occupation"
