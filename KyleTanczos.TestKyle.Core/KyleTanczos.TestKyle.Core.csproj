@@ -92,6 +92,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PCR\Classes.cs" />
     <Compile Include="TestKyleConsts.cs" />
     <Compile Include="TestKyleCoreModule.cs" />
     <Compile Include="TestKyleDomainServiceBase.cs" />

@@ -5,6 +5,7 @@ using KyleTanczos.TestKyle.Authorization.Roles;
 using KyleTanczos.TestKyle.Authorization.Users;
 using KyleTanczos.TestKyle.MultiTenancy;
 using KyleTanczos.TestKyle.Storage;
+using KyleTanczos.TestKyle.PCR;
 
 namespace KyleTanczos.TestKyle.EntityFramework
 {
@@ -13,6 +14,12 @@ namespace KyleTanczos.TestKyle.EntityFramework
         /* Define an IDbSet for each entity of the application */
 
         public virtual IDbSet<BinaryObject> BinaryObjects { get; set; }
+        public IDbSet<NemsisDataElement> NemsisDataElements { get; set; }
+        public IDbSet<Select2OptionsList> Select2OptionsList { get; set; }
+        public IDbSet<UploadedFile> UploadedFiles { get; set; }
+        public IDbSet<UploadedPcr> UploadedPcrs { get; set; }
+        public IDbSet<OutComeType> OutcomeTypes { get; set; }
+        public IDbSet<blobFile> blobFiles { get; set; }
 
         /* Setting "Default" to base class helps us when working migration commands on Package Manager Console.
          * But it may cause problems when working Migrate.exe of EF. ABP works either way.         * 
