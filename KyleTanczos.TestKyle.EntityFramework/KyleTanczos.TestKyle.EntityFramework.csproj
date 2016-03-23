@@ -233,6 +233,10 @@
     <Compile Include="Migrations\201603232112107_Jay Objects miration.Designer.cs">
       <DependentUpon>201603232112107_Jay Objects miration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603232119171_Add BlobFile to User and OrgUnit.cs" />
+    <Compile Include="Migrations\201603232119171_Add BlobFile to User and OrgUnit.Designer.cs">
+      <DependentUpon>201603232119171_Add BlobFile to User and OrgUnit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="TestKyleDataModule.cs" />
     <Compile Include="Migrations\Seed\DefaultEditionCreator.cs" />
@@ -339,6 +343,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603232112107_Jay Objects miration.resx">
       <DependentUpon>201603232112107_Jay Objects miration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603232119171_Add BlobFile to User and OrgUnit.resx">
+      <DependentUpon>201603232119171_Add BlobFile to User and OrgUnit.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

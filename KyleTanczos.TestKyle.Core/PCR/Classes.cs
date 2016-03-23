@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Abp.Organizations;
+using KyleTanczos.TestKyle.Authorization.Users;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -75,8 +77,17 @@ namespace KyleTanczos.TestKyle.PCR
             public int byteCount { get; set; }
             public DateTime created { get; set; }
             public string fileName { get; set; }
+            public User User { get; set; }
+            public long UserId { get; set; }
+            public Organization OrganizationUnit { get; set; }
+            public long OrganizationUnitId { get; set; }
+            
         }
-
+        
+        public class Organization: OrganizationUnit
+        {
+            public virtual ICollection<blobFile> blobFiles { get; set; }
+        }
         public class UploadedPcr
         {
             public int Id { get; set; }

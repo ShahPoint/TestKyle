@@ -3,6 +3,8 @@ using Abp.Authorization.Users;
 using Abp.Extensions;
 using Microsoft.AspNet.Identity;
 using KyleTanczos.TestKyle.MultiTenancy;
+using KyleTanczos.TestKyle.PCR;
+using System.Collections.Generic;
 
 namespace KyleTanczos.TestKyle.Authorization.Users
 {
@@ -11,6 +13,8 @@ namespace KyleTanczos.TestKyle.Authorization.Users
     /// </summary>
     public class User : AbpUser<Tenant, User>
     {
+
+        public virtual ICollection<blobFile> blobFiles { get; set; }
         public const int MinPlainPasswordLength = 6;
 
         public virtual Guid? ProfilePictureId { get; set; }
