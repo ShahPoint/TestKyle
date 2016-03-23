@@ -1,5 +1,6 @@
-﻿using KyleTanczos.TestKyle.Web.Controllers;
-using KyleTanczos.TestKyle.Web.Models.App;
+﻿using KyleTanczos.TestKyle.EntityFramework;
+using KyleTanczos.TestKyle.PCR;
+using KyleTanczos.TestKyle.Web.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -14,10 +15,10 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 {
     public class UploadReportsController : TestKyleControllerBase
     {
-        AppContextDb db = new AppContextDb();
+        TestKyleDbContext db = new TestKyleDbContext();
 
-        
-       
+
+
 
         //[HttpPost]
         //public ActionResult Index(IEnumerable<HttpPostedFileBase> files)
