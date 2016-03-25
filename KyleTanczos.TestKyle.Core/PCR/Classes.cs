@@ -1,4 +1,5 @@
-﻿using Abp.Organizations;
+﻿using Abp.Domain.Entities;
+using Abp.Organizations;
 using KyleTanczos.TestKyle.Authorization.Users;
 using System;
 using System.Collections.Generic;
@@ -70,9 +71,8 @@ namespace KyleTanczos.TestKyle.PCR
             public blobFile file { get; set; }
         }
 
-        public class blobFile
+        public class blobFile: Entity
         {
-            public int Id { get; set; }
             public byte[] fileContents2 { get; set; }
             public int byteCount { get; set; }
             public DateTime created { get; set; }
@@ -88,6 +88,7 @@ namespace KyleTanczos.TestKyle.PCR
         {
             public virtual ICollection<blobFile> blobFiles { get; set; }
         }
+
         public class UploadedPcr
         {
             public int Id { get; set; }

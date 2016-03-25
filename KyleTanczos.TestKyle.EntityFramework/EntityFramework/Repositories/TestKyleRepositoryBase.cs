@@ -1,6 +1,9 @@
 ﻿using Abp.Domain.Entities;
+using Abp.Domain.Repositories;
 using Abp.EntityFramework;
 using Abp.EntityFramework.Repositories;
+using KyleTanczos.TestKyle.PCR;
+using System.Collections.Generic;
 
 namespace KyleTanczos.TestKyle.EntityFramework.Repositories
 {
@@ -37,4 +40,18 @@ namespace KyleTanczos.TestKyle.EntityFramework.Repositories
 
         //do not add any method here, add to the class above (since this inherits it)!!!
     }
+
+    public class blobFileRepository : TestKyleRepositoryBase<blobFile>
+    {
+        protected blobFileRepository(IDbContextProvider<TestKyleDbContext> dbContextProvider) : base(dbContextProvider)
+        {
+
+        }
+
+        public List<blobFile> GetBlobFiles()
+        {
+            return this.GetAllList();
+        }
+    }
+
 }

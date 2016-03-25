@@ -115,6 +115,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BlobFile\BlobFileService.cs" />
+    <Compile Include="BlobFile\Dto\filesDto.cs" />
+    <Compile Include="BlobFile\IBlobFileService.cs" />
     <Compile Include="TestKyleApplicationModule.cs" />
     <Compile Include="TestKyleAppServiceBase.cs" />
     <Compile Include="AppConsts.cs" />

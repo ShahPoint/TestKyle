@@ -1,12 +1,18 @@
-﻿using KyleTanczos.TestKyle.EntityFramework;
+﻿using Abp.Organizations;
+using KyleTanczos.TestKyle.Authorization.Users;
+using KyleTanczos.TestKyle.BlobFile;
+using KyleTanczos.TestKyle.EntityFramework;
+using KyleTanczos.TestKyle.EntityFramework.Repositories;
 using KyleTanczos.TestKyle.PCR;
 using KyleTanczos.TestKyle.Web.Controllers;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Xml;
@@ -16,8 +22,14 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
     public class UploadReportsController : TestKyleControllerBase
     {
         TestKyleDbContext db = new TestKyleDbContext();
+        UserManager _userManager;
+        OrganizationUnitManager _organizationUnitManager;
 
-
+        public UploadReportsController(UserManager userManager, OrganizationUnitManager organizationUnitManager)
+        {
+            _userManager = userManager;
+            _organizationUnitManager = organizationUnitManager;
+        }
 
 
         //[HttpPost]
@@ -35,7 +47,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
         /// <summary>
         /// to Save DropzoneJs Uploaded Files
         /// </summary>
-        public ActionResult SaveDropzoneJsUploadedFiles()
+        public async Task<ActionResult> SaveDropzoneJsUploadedFiles()
         {
             bool isSavedSuccessfully = false;
 
@@ -96,7 +108,8 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                     //var largeFiles = db.UploadedFiles.Where(x => x.Count > 1000).ToList();
 
                     //var countBlob = db.UploadedFiles.Where(x => x.Count > 1000 && x.file != null).ToList();
-
+                    var user = await _userManager.GetUserByIdAsync((long)AbpSession.UserId);
+                    var stuff = user.blobFiles;
                     db.blobFiles.Add(
                             new blobFile()
                             {
@@ -106,10 +119,10 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 created = DateTime.Now
                             });
 
-                    db.blobFiles.First().User;
-                    db.blobFiles.First().OrganizationUnit;
-                    Organization org = (Organization ) db.OrganizationUnits.FirstOrDefault();
-                    org.blobFiles.Count();
+                    //db.blobFiles.First().User;
+                    //db.blobFiles.First().OrganizationUnit;
+                    //Organization org = (Organization ) db.OrganizationUnits.FirstOrDefault();
+                    //org.blobFiles.Count();
 
                    
 
@@ -151,6 +164,11 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
         // GET: Mpa/UploadReports
         public ActionResult Index()
         {
+           
+            //foreach (User u in users)
+            //{
+            //    string name = u.Name;
+            
             var fileInfoList = db.blobFiles.Select(x => new filesDTO() { created = x.created.ToString(), byteCount = x.byteCount, fileName = x.fileName, id = x.Id }).ToList();
 
             return View(fileInfoList);
