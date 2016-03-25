@@ -12,9 +12,9 @@ namespace KyleTanczos.TestKyle.Web.Models.App
         public DbSet<NemsisDataElement> NemsisDataElements { get; set; }
         public DbSet<Select2OptionsList> Select2OptionsList { get; set; }
         public DbSet<UploadedFile> UploadedFiles { get; set; }
-        public DbSet<PcrPaNemsis> PcrPaNemsises { get; set; }
+        public DbSet<UploadedPcr> UploadedPcrs { get; set; }
         public DbSet<OutComeType> OutcomeTypes { get; set; }
-        public DbSet<RawFile> blobFiles { get; set; }
+        public DbSet<blobFile> blobFiles { get; set; }
 
         public AppContextDb()
             : base("KyleIsABoss")

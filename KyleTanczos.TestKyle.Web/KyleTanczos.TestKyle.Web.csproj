@@ -3036,7 +3036,6 @@
     <Compile Include="Models\Account\TenantSelectionViewModel.cs" />
     <Compile Include="Models\App\AppContextDb.cs" />
     <Compile Include="Models\App\Classes.cs" />
-    <Compile Include="Models\App\PcrPaNemsis.cs" />
     <Compile Include="MultiTenancy\ITenancyNameFinder.cs" />
     <Compile Include="Controllers\LayoutController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
