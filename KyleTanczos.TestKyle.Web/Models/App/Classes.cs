@@ -65,7 +65,7 @@ namespace KyleTanczos.TestKyle.Web.Models.App
         public DateTime EndDateRange { get; set; }
         public int Count { get; set; }
         public List<UploadedPcr> Pcrs { get; set; }
-        public blobFile file { get; set; }
+        //public blobFile file { get; set; }
     }
 
     public class blobFile
