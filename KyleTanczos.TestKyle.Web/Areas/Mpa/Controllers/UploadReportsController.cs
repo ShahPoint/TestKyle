@@ -97,15 +97,15 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                     //var countBlob = db.UploadedFiles.Where(x => x.Count > 1000 && x.file != null).ToList();
 
                     db.blobFiles.Add(
-                            new blobFile()
+                            new RawFile()
                             {
-                                fileContents2 = byteArray,
-                                byteCount = len,
-                                fileName = file.FileName,
-                                created = DateTime.Now
+                                FileContents = byteArray,
+                                //byteCount = len,
+                                //fileName = file.FileName,
+                                //created = DateTime.Now
                             });
 
-                    var largeBlobs = db.blobFiles.Where(x => x.byteCount > 3000000).Count();
+                    //var largeBlobs = db.blobFiles.Where(x => x.byteCount > 3000000).Count();
 
                     db.SaveChangesAsync();
 
@@ -143,7 +143,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
         // GET: Mpa/UploadReports
         public ActionResult Index()
         {
-            var fileInfoList = db.blobFiles.Select(x => new filesDTO() { created = x.created.ToString(), byteCount = x.byteCount, fileName = x.fileName, id = x.Id }).ToList();
+            var fileInfoList = db.blobFiles.Select(x => new filesDTO() { /*created = x.created.ToString(), byteCount = x.byteCount, fileName = x.fileName,*/ id = x.Id }).ToList();
 
             return View(fileInfoList);
         }
