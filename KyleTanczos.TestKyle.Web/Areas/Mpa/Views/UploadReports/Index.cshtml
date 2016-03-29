@@ -109,18 +109,35 @@
             <td>id</td>
 
             <td>byteCount</td>
+
+            <td>CreatedBy</td>
+
+            <td>StartDate</td>
+
+            <td>EndDate</td>
+
+            <td>TripCount</td>
         </tr>
 
         @foreach (UploadReportsController.filesDTO file in Model)
         {
             <tr>
-                <td>@file.fileName</td>
+                <td>@file.FileName</td>
 
-                <td>@file.created</td>
+                <td>@file.Created</td>
 
-                <td>@file.id</td>
+                <td>@file.Id</td>
 
-                <td>@file.byteCount</td>
+                <td>@file.ByteCount</td>
+
+                <td>@file.CreatedByUserName</td>
+
+                <td>@file.StartDateRange</td>
+
+                <td>@file.EndDateRange</td>
+
+                <td>@file.TripCount</td>
+
             </tr>
         }
     </table>
