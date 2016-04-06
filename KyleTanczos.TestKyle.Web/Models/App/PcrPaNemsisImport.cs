@@ -36,15 +36,15 @@ namespace KyleTanczos.TestKyle.Web.Models.App
         [XmlElement(ElementName = "E02_05", Namespace = "http://www.nemsis.org")]
         public string E02_05 { get; set; }
         [XmlElement(ElementName = "E02_06", Namespace = "http://www.nemsis.org")]
-        public string E02_06 { get; set; }
+        public List<string> E02_06 { get; set; }
         [XmlElement(ElementName = "E02_07", Namespace = "http://www.nemsis.org")]
-        public string E02_07 { get; set; }
+        public List<string> E02_07 { get; set; }
         [XmlElement(ElementName = "E02_08", Namespace = "http://www.nemsis.org")]
         public List<string> E02_08 { get; set; }
         [XmlElement(ElementName = "E02_09", Namespace = "http://www.nemsis.org")]
-        public string E02_09 { get; set; }
+        public List<string> E02_09 { get; set; }
         [XmlElement(ElementName = "E02_10", Namespace = "http://www.nemsis.org")]
-        public string E02_10 { get; set; }
+        public List<string> E02_10 { get; set; }
         [XmlElement(ElementName = "E02_11", Namespace = "http://www.nemsis.org")]
         public string E02_11 { get; set; }
         [XmlElement(ElementName = "E02_12", Namespace = "http://www.nemsis.org")]
@@ -108,19 +108,15 @@ namespace KyleTanczos.TestKyle.Web.Models.App
         [XmlElement(ElementName = "E05_06", Namespace = "http://www.nemsis.org")]
         public string E05_06 { get; set; }
         [XmlElement(ElementName = "E05_08", Namespace = "http://www.nemsis.org")]
-        public E05_08 E05_08 { get; set; }
+        public string E05_07 { get; set; }
+        public string E05_08 { get; set; }
         [XmlElement(ElementName = "E05_11", Namespace = "http://www.nemsis.org")]
+        public string E05_09 { get; set; }
+        public string E05_10 { get; set; }
         public string E05_11 { get; set; }
-        [XmlElement(ElementName = "E05_13", Namespace = "http://www.nemsis.org")]
-        public string E05_13 { get; set; }
-        [XmlElement(ElementName = "E05_07", Namespace = "http://www.nemsis.org")]
-        public E05_07 E05_07 { get; set; }
-        [XmlElement(ElementName = "E05_09", Namespace = "http://www.nemsis.org")]
-        public E05_09 E05_09 { get; set; }
-        [XmlElement(ElementName = "E05_10", Namespace = "http://www.nemsis.org")]
-        public E05_10 E05_10 { get; set; }
-        [XmlElement(ElementName = "E05_12", Namespace = "http://www.nemsis.org")]
+
         public string E05_12 { get; set; }
+        public string E05_13 { get; set; }
     }
 
     [XmlRoot(ElementName = "E06_01_0", Namespace = "http://www.nemsis.org")]
@@ -172,7 +168,7 @@ namespace KyleTanczos.TestKyle.Web.Models.App
         [XmlElement(ElementName = "E06_13", Namespace = "http://www.nemsis.org")]
         public string E06_13 { get; set; }
         [XmlElement(ElementName = "E06_14_0", Namespace = "http://www.nemsis.org")]
-        public E06_14_0 E06_14_0 { get; set; }
+        public string E06_14 { get; set; }
         [XmlElement(ElementName = "E06_16", Namespace = "http://www.nemsis.org")]
         public string E06_16 { get; set; }
         [XmlElement(ElementName = "E06_17", Namespace = "http://www.nemsis.org")]
@@ -252,7 +248,7 @@ namespace KyleTanczos.TestKyle.Web.Models.App
         [XmlElement(ElementName = "E07_34", Namespace = "http://www.nemsis.org")]
         public string E07_34 { get; set; }
         [XmlElement(ElementName = "E07_35_0", Namespace = "http://www.nemsis.org")]
-        public E07_35_0 E07_35_0 { get; set; }
+        public List<string> E07_35 { get; set; }
     }
 
     [XmlRoot(ElementName = "E08_11_0", Namespace = "http://www.nemsis.org")]
@@ -313,7 +309,7 @@ namespace KyleTanczos.TestKyle.Web.Models.App
         [XmlElement(ElementName = "E09_13", Namespace = "http://www.nemsis.org")]
         public string E09_13 { get; set; }
         [XmlElement(ElementName = "E09_14", Namespace = "http://www.nemsis.org")]
-        public string E09_14 { get; set; }
+        public List<string> E09_14 { get; set; }
         [XmlElement(ElementName = "E09_15", Namespace = "http://www.nemsis.org")]
         public string E09_15 { get; set; }
         [XmlElement(ElementName = "E09_16", Namespace = "http://www.nemsis.org")]
@@ -328,7 +324,7 @@ namespace KyleTanczos.TestKyle.Web.Models.App
         [XmlElement(ElementName = "E10_02", Namespace = "http://www.nemsis.org")]
         public string E10_02 { get; set; }
         [XmlElement(ElementName = "E10_03", Namespace = "http://www.nemsis.org")]
-        public string E10_03 { get; set; }
+        public List<string> E10_03 { get; set; }
         [XmlElement(ElementName = "E10_10", Namespace = "http://www.nemsis.org")]
         public string E10_10 { get; set; }
     }
@@ -376,7 +372,7 @@ namespace KyleTanczos.TestKyle.Web.Models.App
     public class E12
     {
         [XmlElement(ElementName = "E12_01", Namespace = "http://www.nemsis.org")]
-        public string E12_01 { get; set; }
+        public List<string> E12_01 { get; set; }
         [XmlElement(ElementName = "E12_4_0", Namespace = "http://www.nemsis.org")]
         public E12_4_0 E12_4_0 { get; set; }
         [XmlElement(ElementName = "E12_08", Namespace = "http://www.nemsis.org")]
@@ -388,7 +384,7 @@ namespace KyleTanczos.TestKyle.Web.Models.App
         [XmlElement(ElementName = "E12_14_0", Namespace = "http://www.nemsis.org")]
         public List<E12_14_0> E12_14_0 { get; set; }
         [XmlElement(ElementName = "E12_19", Namespace = "http://www.nemsis.org")]
-        public string E12_19 { get; set; }
+        public List<string> E12_19 { get; set; }
         [XmlElement(ElementName = "E12_20", Namespace = "http://www.nemsis.org")]
         public string E12_20 { get; set; }
     }

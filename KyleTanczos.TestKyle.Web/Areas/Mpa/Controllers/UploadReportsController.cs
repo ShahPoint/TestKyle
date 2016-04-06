@@ -15,6 +15,7 @@ using System.Xml.Linq;
 using Microsoft.AspNet.Identity;
 
 using KyleTanczos.TestKyle.Web.Models.App;
+using Newtonsoft.Json.Linq;
 
 namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 {
@@ -39,6 +40,30 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
         {
             var currentError = errorArgs.ErrorContext.Error.Message;
             errorArgs.ErrorContext.Handled = true;
+        }
+
+
+
+        private List<E14> GetE14(JToken x)
+        {
+            var e14_list = new List<E14>();
+
+            foreach (var e14_json in x["E14"]) 
+            {
+
+                E14 e14 = new E14();
+
+                var something2 = "" + e14_json.Value<string>("E14_01");
+
+                var something = e14_json["E14_01"];
+
+                //var count = something.ToList().Count();
+
+                e14.E14_01 = e14_json.Value<string>("E14_01"); //e14_json.
+
+                e14_list.Add(e14);
+            }
+            return e14_list;
         }
 
         /// <summary>
@@ -84,308 +109,34 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                     var reportJsonObj2 = reportJsonObj1["Record"];
 
                     var something435 = reportJsonObj2.Select(
-                        x => 
-                        new Record()
-                        {
-                            E01 = new E01() //( x["E01"] == null ? new E01() :  new E01()
-                            {
-                                E01_01 = x["E01"].Value<string>("E01_01"),
-                                E01_02 = x["E01"].Value<string>("E01_02"),
-                                E01_03 = x["E01"].Value<string>("E01_03"),
-                                E01_04 = x["E01"].Value<string>("E01_04")
-                            } //})
-                            ,
-                            E02 = new E02()
-                            {
-                                E02_01 = x["E02"].Value<string>("E02_01"),
-                                E02_02 = x["E02"].Value<string>("E02_02"),
-                                E02_03 = x["E02"].Value<string>("E02_03"),
-                                E02_04 = x["E02"].Value<string>("E02_04"),
-                                E02_05 = x["E02"].Value<string>("E02_05"),
-                                E02_06 = x["E02"].Value<string>("E02_06"),
-                                E02_07 = x["E02"].Value<string>("E02_07"),
-                                E02_08 = x["E02"]["E02_08"].HasValues ? 
-                                                        x["E02"]["E02_08"].Values<string>().ToList()
-                                                        : new List<string>(),
-                                E02_09 = x["E02"].Value<string>("E02_09"),
-                                E02_10 = x["E02"].Value<string>("E02_10"),
-                                E02_11 = x["E02"].Value<string>("E02_11"),
-                                E02_12 = x["E02"].Value<string>("E02_12"),
-                                E02_13 = x["E02"].Value<string>("E02_13"),
-                                E02_14 = x["E02"].Value<string>("E02_14"),
-                                E02_16 = x["E02"].Value<string>("E02_16"),
-                                E02_17 = x["E02"].Value<string>("E02_17"),
-                                E02_18 = x["E02"].Value<string>("E02_18"),
-                                E02_19 = x["E02"].Value<string>("E02_19"),
-                                E02_20 = x["E02"].Value<string>("E02_20")
-                            }
-                            ,
-                            E03 = new E03()
-                            {
-                                E03_01 = x["E03"].Value<string>("E03_01"),
-                                E03_02 = x["E03"].Value<string>("E03_02")
-                            }
-                            ,
-                            E04 = (x["E04"].HasValues ?
-
-                            x["E04"].Select(y => new E04()
-                            {
-                                E04_01 = y.Value<string>("E04_01"),
-                                E04_02 = y.Value<string>("E04_02"),
-                                E04_03 = y.Value<string>("E04_03")
-                            }).ToList()
-
-                            : new List<E04>() )
-
-
-                            ,
-                            E05 = new E05()
-                            {
-                                E05_01 = x["E05"].Value<string>("E05_01"),
-                                E05_02 = x["E05"].Value<string>("E05_02"),
-                                E05_03 = x["E05"].Value<string>("E05_03"),
-                                E05_04 = x["E05"].Value<string>("E05_04"),
-                                E05_05 = x["E05"].Value<string>("E05_05"),
-                                E05_06 = x["E05"].Value<string>("E05_06"),
-                                //E05_07 = x["E05"].Value<string>("E05_01"),
-                                //E05_08 = x["E05"].Value<string>("E05_01"),
-                                //E05_09 = x["E05"].Value<string>("E05_01"),
-                                //E05_10 = x["E05"].Value<string>("E05_01"),
-                                E05_11 = x["E05"].Value<string>("E05_11"),
-                                E05_12 = x["E05"].Value<string>("E05_12"),
-                                E05_13 = x["E05"].Value<string>("E05_13")
-                            }
-                            ,
-                            E06 = new E06()
-                            {
-                                E06_01_0 = new E06_01_0(),
-                                E06_04_0 = new E06_04_0(),
-                                E06_06 = x["E06"].Value<string>("E06_01"),
-                                E06_11 = x["E06"].Value<string>("E06_01"),
-                                E06_12 = x["E06"].Value<string>("E06_01"),
-                                E06_13 = x["E06"].Value<string>("E06_01"),
-                                //E06_14_0 = x["E06"].Value<string>("E06_01"),
-                                E06_16 = x["E06"].Value<string>("E06_01"),
-                                E06_17 = x["E06"].Value<string>("E06_01")
-                            },
-                            E07 = new E07()
-                            {
-                                E07_01 = x["E07"].Value<string>("E07_01"),
-                                E07_15 = x["E07"].Value<string>("E07_15"),
-                                //E07_18_0 = x["E07"].Value<string>("E07_18"),
-                                //E07_27_0 = x["E07"].Value<string>("E07_27"),
-                                E07_32 = x["E07"].Value<string>("E07_32"),
-                                E07_34 = x["E07"].Value<string>("E07_34"),
-                                //E07_35_0 = x["E07"].Value<string>("E07_35"),
-                            }
-                            ,
-                            E08 = new E08()
-                            {
-                                E08_02 = x["E08"].Value<string>("E08_02"),
-                                E08_05 = x["E08"].Value<string>("E08_05"),
-                                E08_06 = x["E08"].Value<string>("E08_06"),
-                                E08_07 = x["E08"].Value<string>("E08_07"),
-                                E08_08 = x["E08"].Value<string>("E08_08"),
-                                E08_09 = x["E08"].Value<string>("E08_09"),
-                                //E08_10 = x["E08"].Value<string>("E08_10"),
-                                //E08_11_0 = x["E08"].Value<string>("E08_02"),
-                                E08_13 = x["E08"].Value<string>("E08_02"),
-                            },
-                            E09 = new E09()
-                            {
-                                //E09_01 = x["E09"].Value<string>("E09_01"),
-                                E09_02 = x["E09"].Value<string>("E09_02"),
-                                E09_03 = x["E09"].Value<string>("E09_03"),
-                                E09_04 = x["E09"].Value<string>("E09_04"),
-                                E09_05 = x["E09"].Value<string>("E09_05"),
-                                E09_08 = x["E09"].Value<string>("E09_08"),
-                                E09_11 = x["E09"].Value<string>("E09_11"),
-                                E09_12 = x["E09"].Value<string>("E09_12"),
-                                E09_13 = x["E09"].Value<string>("E09_13"),
-                                E09_14 = x["E09"].Value<string>("E09_14"),
-                                E09_15 = x["E09"].Value<string>("E09_15"),
-                                E09_16 = x["E09"].Value<string>("E09_16")
-
-                                }
-                                ,
-                            E10 = new E10()
-                            {
-                                E10_01 = x["E10"].Value<string>("E10_01"),
-                                E10_02 = x["E10"].Value<string>("E10_02"),
-                                E10_03 = x["E10"].Value<string>("E10_03"),
-                                E10_10 = x["E10"].Value<string>("E10_10")
-
-                            },
-                            E11 = new E11()
-                            {
-                                E11_01 = x["E11"].Value<string>("E11_01"),
-                                E11_02 = x["E11"].Value<string>("E11_02"),
-                                //E11_03 = x["E11"].Value<string>("E11_03"),
-                                E11_04 = x["E11"].Value<string>("E11_04"),
-                                E11_05 = x["E11"].Value<string>("E11_05"),
-                                E11_06 = x["E11"].Value<string>("E11_06"),
-                                E11_07 = x["E11"].Value<string>("E11_07"),
-                                E11_08 = x["E11"].Value<string>("E11_08"),
-                                E11_11 = x["E11"].Value<string>("E11_11")
-
-                            },
-                            E12 = new E12()
-                            {
-                                E12_01 = x["E12"].Value<string>("E12_01"),
-                                //E12_08 = x["E12"].Value<string>("E12_08"),
-                                //E12_09 = x["E12"].Value<string>("E12_09"),
-                                //E12_10 = x["E12"].Value<string>("E12_10"),
-                                //E12_14_0 = x["E12"].Value<string>("E12_14_0"),
-                                E12_19 = x["E12"].Value<string>("E12_19"),
-                                E12_20 = x["E12"].Value<string>("E12_20"),
-                                //E12_4_0 = x["E12"].Value<string>("E12_4_0"),
-
-                            },
-                            E13 = new E13()
-                            {
-                                E13_01 = x["E13"].Value<string>("E13_01"),
-
-                            }
-                            //,
-                            //E14 = (x["E14"].HasValues ?
-
-                            //    x["E14"].Select(y => new E14()
-                            //    {
-                            //        E14_01 = y.Value<string>("E14_01"),
-                            //        E14_02 = y.Value<string>("E14_02"),
-                            //        E14_03 = y.Value<string>("E14_03"),
-                            //        //E14_04_0 = y.Value<string>("E14_04_0"),
-                            //        E14_07 = y.Value<string>("E14_07"),
-                            //        E14_08 = y.Value<string>("E14_08"),
-                            //        E14_09 = y.Value<string>("E14_09"),
-                            //        E14_10 = y.Value<string>("E14_10"),
-                            //        E14_11 = y.Value<string>("E14_11"),
-                            //        E14_12 = y.Value<string>("E14_12"),
-                            //        //E14_13 = y.Value<string>("E14_13"),
-                            //        E14_14 = y.Value<string>("E14_14"),
-                            //        //E14_15_0 = y.Value<string>("E14_15_0"),
-                            //        E14_19 = y.Value<string>("E14_19"),
-                            //        E14_22 = y.Value<string>("E14_22"),
-                            //        E14_23 = y.Value<string>("E14_23"),
-                            //        E14_27 = y.Value<string>("E14_27")
-
-                            //    }).ToList()
-
-                            //    : new List<E14>()
-
-                            //)
-                            //, 
-                            //E15 = new E15()
-                            // {
-                            //     //E15_02 = x["E15"].Value<string>("E15_02"),
-                            //     E15_03 = x["E15"].Value<string>("E15_03"),
-                            //     E15_05 = x["E15"].Value<string>("E15_05"),
-                            //     E15_06 = x["E15"].Value<string>("E15_06"),
-                            //     E15_07 = x["E15"].Value<string>("E15_07"),
-                            //     E15_08 = x["E15"].Value<string>("E15_08"),
-                            //     E15_09 = x["E15"].Value<string>("E15_09"),
-                            //     //E15_10 = x["E15"].Value<string>("E15_10"),
-                            //     E15_11 = x["E15"].Value<string>("E15_11"),
-
-                            // }
-                            // ,
-                            //E16 = new E16()
-                            //{
-                            //    //E16_00_0 = x["E16"].Value<string>("E16_00_0"),
-                            //    E16_01 = x["E16"].Value<string>("E16_01"),
-
-                            //}
-                            ////,
-                            ////E17 = (x["E17"].HasValues ?
-
-                            ////    x["E17"].Select(y => new E17()
-                            ////    {
-                            ////         E17_01 = y.Value<string>("E17_01")
-
-                            ////    }).ToList()
-
-                            ////    : new List<E17>())
-
-                            ////, E18 = (x["E18"].HasValues ?
-
-                            ////    x["E18"].Select(y => new E18()
-                            ////    {
-                            ////         E18_01 = y.Value<string>("E18_01"),
-                            ////        E18_02 = y.Value<string>("E18_02"),
-                            ////        E18_03 = y.Value<string>("E18_03"),
-                            ////        E18_04 = y.Value<string>("E18_04"),
-                            ////        //E18_05_0 = y.Value<string>("E18_05_0"),
-                            ////        E18_08 = y.Value<string>("E18_08"),
-                            ////        E18_09 = y.Value<string>("E18_09"),
-                            ////        E18_10 = y.Value<string>("E18_10"),
-                            ////        E18_11 = y.Value<string>("E18_11"),
-
-                            ////    }).ToList()
-
-                            ////    : new List<E18>())
-
-                            //, E19 = new E19()
-                            //{
-                            //     //E19_01_0 = x["E19"].Value<string>("E19_11_0"),
-                            //     //E19_12 = x["E19"].Value<string>("E19_12"),
-                            //     E19_13 = x["E19"].Value<string>("E19_13"),
-                            //     E19_14 = x["E19"].Value<string>("E19_14"),
-
-                            //}, E20 = new E20()
-                            //{
-                            //    E20_01 = x["E20"].Value<string>("E20_01"),
-                            //    E20_02 = x["E20"].Value<string>("E20_02"),
-                            //    //E20_03_0 = x["E20"].Value<string>("E20_03"),
-                            //    E20_06 = x["E20"].Value<string>("E20_06"),
-                            //    //E20_08 = x["E20"].Value<string>("E20_08"),
-                            //    E20_09 = x["E20"].Value<string>("E20_09"),
-                            //    E20_10 = x["E20"].Value<string>("E20_10"),
-                            //    E20_14 = x["E20"].Value<string>("E20_14"),
-                            //    E20_15 = x["E20"].Value<string>("E20_15"),
-                            //    E20_16 = x["E20"].Value<string>("E20_16"),
-                            //    E20_17 = x["E20"].Value<string>("E20_17")
-                            //}
-
-                            ////, E22 = new E22()
-                            ////{
-                            ////    E22_01 = x["E22"].Value<string>("E22_01"),
-                            ////    E22_02 = x["E22"].Value<string>("E22_02"),
-                            ////    E22_06 = x["E22"].Value<string>("E22_06")
-
-                            ////}, E23 = new E23()
-                            ////{
-                            ////    E23_03 = x["E23"].Value<string>("E23_01"),
-                            ////    E23_06 = x["E23"].Value<string>("E23_06"),
-                            ////    //E23_09_0 = x["E23"].Value<string>("E23_09_0"),
-                            ////    E23_10 = x["E23"].Value<string>("E23_10")
-
-                            ////}
-                        });
+                        pcrJobj => ObjectifyPcr(pcrJobj)
+                   );
 
                     var countsomething435 = something435.Count();
 
+                    var aaa = "aaaaa";
 
-                    List<Record> recordsArray = new List<Record>();
+                    //List<Record> recordsArray = new List<Record>();
 
-                    foreach (var record in reportJsonObj2)
-                    {
-                        Record shitBeGoingDown;
+                    //foreach (var record in reportJsonObj2)
+                    //{
+                    //    Record shitBeGoingDown;
 
-                        try
-                        {
-                            shitBeGoingDown = record.ToObject<Record>();
+                    //    try
+                    //    {
+                    //        shitBeGoingDown = record.ToObject<Record>();
 
-                            recordsArray.Add(shitBeGoingDown);
+                    //        recordsArray.Add(shitBeGoingDown);
 
-                        }
-                        catch (Exception ex)
-                        {
-                            string temp = ex.Message;
-                        }
+                    //    }
+                    //    catch (Exception ex)
+                    //    {
+                    //        string temp = ex.Message;
+                    //    }
 
-                    }
+                    //}
 
-                    var asdfasdf = recordsArray.Count();
+                    //var asdfasdf = recordsArray.Count();
 
 
                     //EMSDataSet emsDataSet = Newtonsoft.Json.JsonConvert.DeserializeObject<EMSDataSet>(json, 
@@ -402,40 +153,40 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
     //public class EMSDataSet
 
 
-                    var jsonXmlDocument = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(json);
+                    //var jsonXmlDocument = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(json);
 
-                    var str22 = document.OuterXml;
+                    //var str22 = document.OuterXml;
 
-                    var byteArray22 = GetBytes(str22);
+                    //var byteArray22 = GetBytes(str22);
 
-                    var len22 = byteArray22.Length;
+                    //var len22 = byteArray22.Length;
 
 
-                    var elemTemp = xDoc.Descendants("Record");
+                    //var elemTemp = xDoc.Descendants("Record");
 
-                    IEnumerable<XElement> de =
-                            from el in xDoc.Descendants("Record")
-                            select el;
+                    //IEnumerable<XElement> de =
+                    //        from el in xDoc.Descendants("Record")
+                    //        select el;
 
-                    var cef = de.Count();
+                    //var cef = de.Count();
 
-                    var ccc = elemTemp.Count();
+                    //var ccc = elemTemp.Count();
 
-                    foreach(XElement xElem in elemTemp)
-                    {
-                        var x = xElem;
+                    //foreach(XElement xElem in elemTemp)
+                    //{
+                    //    var x = xElem;
 
                         
 
-                    }
+                    //}
 
-                    int count888 = (from p in xDoc.Descendants("Record")
+                    //int count888 = (from p in xDoc.Descendants("Record")
                                  
-                                 select p).Count();
+                    //             select p).Count();
 
 
 
-                    int count = document.GetElementsByTagName("Record").Count;
+                    //int count = document.GetElementsByTagName("Record").Count;
 
 
 
@@ -561,6 +312,348 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
             return new HttpNotFoundResult("file not valid");
         }
 
+
+        private string GetStringValue(JToken jObj, string propertyName)
+        {
+            if( jObj[propertyName] == null )
+                return "";
+
+            if (jObj[propertyName].Type == JTokenType.Object  && jObj[propertyName].Value<string>("@xsi:nil") == "true")
+                return null;
+
+            return jObj.Value<string>(propertyName);
+
+        }
+
+        private List<string> GetArrayValue(JToken jObj, string propertyName)
+        {
+            var valueList = (from item in jObj[propertyName]
+                              select (item.HasValues ? item.Value<string>() : "")
+                              ).ToList();
+
+            return valueList;
+        }
+
+
+        private Record ObjectifyPcr(JToken x)
+        {
+            var pcr = new Record();
+
+            pcr.E01 = new E01() //( x["E01"] == null ? new E01() :  new E01()
+            {
+                E01_01 = GetStringValue ( x["E01"], ("E01_01") ),
+                E01_02 = GetStringValue ( x["E01"],("E01_02") ),
+                E01_03 = GetStringValue ( x["E01"],("E01_03") ),
+                E01_04 = GetStringValue ( x["E01"],("E01_04") )
+            }; //})
+                       
+                pcr.E02 = new E02()
+                {
+                    E02_01 = GetStringValue ( x["E02"], ("E02_01") ),
+                    E02_02 = GetStringValue ( x["E02"], ("E02_02") ),
+                    E02_03 = GetStringValue ( x["E02"], ("E02_03") ),
+                    E02_04 = GetStringValue ( x["E02"], ("E02_04") ),
+                    E02_05 = GetStringValue ( x["E02"], ("E02_05") ),
+                    E02_06 = GetArrayValue ( x["E02"], ("E02_06") ),
+                    E02_07 = GetArrayValue ( x["E02"], ("E02_07") ),
+                    E02_08 = GetArrayValue( x["E02"], ("E02_08")),
+                    E02_09 = GetArrayValue ( x["E02"], ("E02_09") ),
+                    E02_10 = GetArrayValue ( x["E02"], ("E02_10") ),
+                    E02_11 = GetStringValue ( x["E02"], ("E02_11") ),
+                    E02_12 = GetStringValue ( x["E02"], ("E02_12") ),
+                    E02_13 = GetStringValue ( x["E02"], ("E02_13") ),
+                    E02_14 = GetStringValue ( x["E02"], ("E02_14") ),
+                    E02_16 = GetStringValue ( x["E02"], ("E02_16") ),
+                    E02_17 = GetStringValue ( x["E02"], ("E02_17") ),
+                    E02_18 = GetStringValue ( x["E02"], ("E02_18") ),
+                    E02_19 = GetStringValue ( x["E02"], ("E02_19") ),
+                    E02_20 = GetStringValue ( x["E02"], ("E02_20") )
+                };
+                       
+                pcr.E03 = new E03()
+                {
+                    E03_01 = x["E03"].Value<string>("E03_01"),
+                    E03_02 = x["E03"].Value<string>("E03_02")
+                };
+                       
+                pcr.E04 = (x["E04"].HasValues ?
+
+
+
+                       (
+                               x["E04"].Type == JTokenType.Array
+                                   ?
+                               x["E04"].Select(y => ObjectifyE04(y)).ToList()
+                                   : // else Type = JTokenType.Object
+                               new List<E04>() { ObjectifyE04(x["E04"]) }
+
+                           )
+
+                       :
+                       new List<E04>()
+                       );
+
+                       //x["E04"].Select(y => new E04()
+                       //{
+                       //    E04_01 = y.Value<string>("E04_01"),
+                       //    E04_02 = y.Value<string>("E04_02"),
+                       //    E04_03 = y.Value<string>("E04_03")
+                       //}).ToList()
+
+                       //: new List<E04>() )
+
+
+                       
+                pcr.E05 = new E05()
+                {
+                    E05_01 = GetStringValue( x["E05"], ("E05_01") ),
+                    E05_02 = GetStringValue( x["E05"], ("E05_02") ),
+                    E05_03 = GetStringValue( x["E05"], ("E05_03") ),
+                    E05_04 = GetStringValue( x["E05"], ("E05_04") ),
+                    E05_05 = GetStringValue( x["E05"], ("E05_05") ),
+                    E05_06 = GetStringValue( x["E05"], ("E05_06") ),
+                    E05_07 = GetStringValue( x["E05"], ("E05_07") ),
+                    E05_08 = GetStringValue( x["E05"], ("E05_08") ),
+                    E05_09 = GetStringValue( x["E05"], ("E05_09") ),
+                    E05_10 = GetStringValue( x["E05"], ("E05_10") ),
+                    E05_11 = GetStringValue( x["E05"], ("E05_11") ),
+                    E05_12 = GetStringValue( x["E05"], ("E05_12") ),
+                    E05_13 = GetStringValue( x["E05"], ("E05_13") )
+                };
+                       
+                pcr.E06 = new E06()
+                {
+                    E06_06 = GetStringValue( x["E06"], ("E06_06") ),
+          //NOTE: below patient zip needs a pattern to extract out of all the address object
+                    //E06_08 = GetStringValue(x["E06"], ("E06_08")),
+                    E06_11 = GetStringValue( x["E06"], ("E06_11") ),
+                    E06_12 = GetStringValue( x["E06"], ("E06_12") ),
+                    E06_13 = GetStringValue( x["E06"], ("E06_13") ),
+                    E06_14 = GetStringValue( x["E06"], ("E06_14") ),
+                    E06_16 = GetStringValue( x["E06"], ("E06_16") ),
+                    E06_17 = GetStringValue( x["E06"], ("E06_17") )
+                };
+
+                pcr.E07 = new E07()
+                {
+                    E07_01 = GetStringValue( x["E07"], ("E07_01") ),
+                    E07_15 = GetStringValue( x["E07"], ("E07_15") ),
+                    E07_32 = GetStringValue( x["E07"], ("E07_32") ),
+                    E07_34 = GetStringValue( x["E07"], ("E07_34") ),
+                    //E07_35 = GetArrayValue( x["E07"], ("E07_35") ),
+                };
+                       
+                pcr.E08 = new E08()
+                {
+                    E08_02 = GetStringValue( x["E08"], ("E08_02") ),
+                    E08_05 = GetStringValue( x["E08"], ("E08_05") ),
+                    E08_06 = GetStringValue( x["E08"], ("E08_06") ),
+                    E08_07 = GetStringValue( x["E08"], ("E08_07") ),
+                    E08_08 = GetStringValue( x["E08"], ("E08_08") ),
+                    E08_09 = GetStringValue( x["E08"], ("E08_09") ),
+                    //E08_12 = GetStringValue(x["E08"], ("E08_12")),
+                    E08_13 = GetStringValue( x["E08"], ("E08_13") ),
+                    //E08_14 = GetStringValue(x["E08"], ("E08_14")),
+                    //E08_15 = GetStringValue(x["E08"], ("E08_15")),
+                };
+
+            pcr.E09 = new E09()
+            {
+                //E09_01 = GetStringValue( x["E09"], ("E09_01") ),
+                E09_02 = GetStringValue( x["E09"], ("E09_02") ),
+                E09_03 = GetStringValue( x["E09"], ("E09_03") ),
+                E09_04 = GetStringValue( x["E09"], ("E09_04") ),
+                E09_05 = GetStringValue( x["E09"], ("E09_05") ),
+                E09_08 = GetStringValue( x["E09"], ("E09_08") ),
+                E09_11 = GetStringValue( x["E09"], ("E09_11") ),
+                E09_12 = GetStringValue( x["E09"], ("E09_12") ),
+                E09_13 = GetStringValue( x["E09"], ("E09_13") ),
+                E09_14 = GetArrayValue( x["E09"], ("E09_14") ),
+                E09_15 = GetStringValue( x["E09"], ("E09_15") ),
+                E09_16 = GetStringValue( x["E09"], ("E09_16") )
+
+            };
+                           
+                pcr.E10 = new E10()
+                {
+                    E10_01 = GetStringValue( x["E10"], ("E10_01") ),
+                    E10_02 = GetStringValue( x["E10"], ("E10_02") ),
+                    E10_03 = GetArrayValue( x["E10"], ("E10_03") ),
+                    E10_10 = GetStringValue( x["E10"], ("E10_10") )
+
+                };
+                pcr.E11 = new E11()
+                {
+                    E11_01 = GetStringValue( x["E11"], ("E11_01") ),
+                    E11_02 = GetStringValue( x["E11"], ("E11_02") ),
+                    //E11_03 = GetStringValue( x["E11"], ("E11_03") ),
+                    E11_04 = GetStringValue( x["E11"], ("E11_04") ),
+                    E11_05 = GetStringValue( x["E11"], ("E11_05") ),
+                    E11_06 = GetStringValue( x["E11"], ("E11_06") ),
+                    E11_07 = GetStringValue( x["E11"], ("E11_07") ),
+                    E11_08 = GetStringValue( x["E11"], ("E11_08") ),
+                    E11_11 = GetStringValue( x["E11"], ("E11_11") )
+
+                };
+
+            pcr.E12 = new E12()
+                {
+                    E12_01 = GetArrayValue( x["E12"], ("E12_01") ),
+                    //E12_08 = GetStringValue( x["E12"], ("E12_08") ),
+                    //E12_09 = GetStringValue( x["E12"], ("E12_09") ),
+                    //E12_10 = GetStringValue( x["E12"], ("E12_10") ),
+                    //E12_14_0 = GetStringValue( x["E12"], ("E12_14_0") ),
+                    E12_19 = GetArrayValue( x["E12"], ("E12_19") ),
+                    E12_20 = GetStringValue( x["E12"], ("E12_20") ),
+                    //E12_4_0 = GetStringValue( x["E12"], ("E12_4_0") ),
+
+                };
+
+                pcr.E13 = new E13()
+                {
+                    E13_01 = x["E13"].Value<string>("E13_01"),
+
+                };
+
+                pcr.E14 = (x["E14"].HasValues ?
+
+                           //GetE14(x)
+
+                           (
+                               x["E14"].Type == JTokenType.Array
+                                   ?
+                               x["E14"].Select(y => ObjectifyE14(y)).ToList()
+                                   : // else Type = JTokenType.Object
+                               new List<E14>() { ObjectifyE14(x["E14"]) }
+
+                           )
+                                   : new List<E14>()
+
+                               );
+            //, 
+            //E15 = new E15()
+            // {
+            //     //E15_02 = x["E15"].Value<string>("E15_02"),
+            //     E15_03 = x["E15"].Value<string>("E15_03"),
+            //     E15_05 = x["E15"].Value<string>("E15_05"),
+            //     E15_06 = x["E15"].Value<string>("E15_06"),
+            //     E15_07 = x["E15"].Value<string>("E15_07"),
+            //     E15_08 = x["E15"].Value<string>("E15_08"),
+            //     E15_09 = x["E15"].Value<string>("E15_09"),
+            //     //E15_10 = x["E15"].Value<string>("E15_10"),
+            //     E15_11 = x["E15"].Value<string>("E15_11"),
+
+            // }
+            // ,
+            //E16 = new E16()
+            //{
+            //    //E16_00_0 = x["E16"].Value<string>("E16_00_0"),
+            //    E16_01 = x["E16"].Value<string>("E16_01"),
+
+            //}
+            ////,
+            ////E17 = (x["E17"].HasValues ?
+
+            ////    x["E17"].Select(y => new E17()
+            ////    {
+            ////         E17_01 = y.Value<string>("E17_01")
+
+            ////    }).ToList()
+
+            ////    : new List<E17>())
+
+            ////, E18 = (x["E18"].HasValues ?
+
+            ////    x["E18"].Select(y => new E18()
+            ////    {
+            ////         E18_01 = y.Value<string>("E18_01"),
+            ////        E18_02 = y.Value<string>("E18_02"),
+            ////        E18_03 = y.Value<string>("E18_03"),
+            ////        E18_04 = y.Value<string>("E18_04"),
+            ////        //E18_05_0 = y.Value<string>("E18_05_0"),
+            ////        E18_08 = y.Value<string>("E18_08"),
+            ////        E18_09 = y.Value<string>("E18_09"),
+            ////        E18_10 = y.Value<string>("E18_10"),
+            ////        E18_11 = y.Value<string>("E18_11"),
+
+            ////    }).ToList()
+
+            ////    : new List<E18>())
+
+            //, E19 = new E19()
+            //{
+            //     //E19_01_0 = x["E19"].Value<string>("E19_11_0"),
+            //     //E19_12 = x["E19"].Value<string>("E19_12"),
+            //     E19_13 = x["E19"].Value<string>("E19_13"),
+            //     E19_14 = x["E19"].Value<string>("E19_14"),
+
+            //}, E20 = new E20()
+            //{
+            //    E20_01 = x["E20"].Value<string>("E20_01"),
+            //    E20_02 = x["E20"].Value<string>("E20_02"),
+            //    //E20_03_0 = x["E20"].Value<string>("E20_03"),
+            //    E20_06 = x["E20"].Value<string>("E20_06"),
+            //    //E20_08 = x["E20"].Value<string>("E20_08"),
+            //    E20_09 = x["E20"].Value<string>("E20_09"),
+            //    E20_10 = x["E20"].Value<string>("E20_10"),
+            //    E20_14 = x["E20"].Value<string>("E20_14"),
+            //    E20_15 = x["E20"].Value<string>("E20_15"),
+            //    E20_16 = x["E20"].Value<string>("E20_16"),
+            //    E20_17 = x["E20"].Value<string>("E20_17")
+            //}
+
+            ////, E22 = new E22()
+            ////{
+            ////    E22_01 = x["E22"].Value<string>("E22_01"),
+            ////    E22_02 = x["E22"].Value<string>("E22_02"),
+            ////    E22_06 = x["E22"].Value<string>("E22_06")
+
+            ////}, E23 = new E23()
+            ////{
+            ////    E23_03 = x["E23"].Value<string>("E23_01"),
+            ////    E23_06 = x["E23"].Value<string>("E23_06"),
+            ////    //E23_09_0 = x["E23"].Value<string>("E23_09_0"),
+            ////    E23_10 = x["E23"].Value<string>("E23_10")
+
+            ////}
+
+            return pcr;
+        }
+
+        private E04 ObjectifyE04(JToken e04jobj)
+        {
+            return new E04()
+            {
+                E04_01 = e04jobj.Value<string>("E04_01"),
+                E04_02 = e04jobj.Value<string>("E04_02"),
+                E04_03 = e04jobj.Value<string>("E04_03")
+            };
+        }
+
+        private E14 ObjectifyE14(JToken e14jobj)
+        {
+            return new E14()
+            {
+                //E14_01 = y.ToString() // .Value<string>("E14_01"),
+                E14_02 = e14jobj.Value<string>("E14_02"),
+                //        E14_03 = y.Value<string>("E14_03"),
+                //        //E14_04_0 = y.Value<string>("E14_04_0"),
+                //        E14_07 = y.Value<string>("E14_07"),
+                //        E14_08 = y.Value<string>("E14_08"),
+                //        E14_09 = y.Value<string>("E14_09"),
+                //        E14_10 = y.Value<string>("E14_10"),
+                //        E14_11 = y.Value<string>("E14_11"),
+                //        E14_12 = y.Value<string>("E14_12"),
+                //        //E14_13 = y.Value<string>("E14_13"),
+                //        E14_14 = y.Value<string>("E14_14"),
+                //        //E14_15_0 = y.Value<string>("E14_15_0"),
+                //        E14_19 = y.Value<string>("E14_19"),
+                //        E14_22 = y.Value<string>("E14_22"),
+                //        E14_23 = y.Value<string>("E14_23"),
+                //        E14_27 = y.Value<string>("E14_27")
+
+            };
+        }
 
         private byte[] GetBytes(string str)
         {
