@@ -199,9 +199,9 @@
 
                 myDropzone.on("error", function (file, responseText) {
 
-                    alert(JSON.stringify(file.JSON));
-                    alert(JSON.stringify(file.responseText));
-                    alert(JSON.stringify(file.result));
+                    //alert(JSON.stringify(file.JSON));
+                    //alert(JSON.stringify(file.responseText));
+                    //alert(JSON.stringify(file.result));
                     $("p:contains('" + file.name + "')").parent().find("div").html("ERROR in upload!");
 
                     $("p:contains('" + file.name + "')").parent().parent().find("[data-dz-uploadprogress]").removeClass("progress-bar-info");
