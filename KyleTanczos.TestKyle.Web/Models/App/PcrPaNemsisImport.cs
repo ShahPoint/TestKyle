@@ -98,7 +98,7 @@ namespace KyleTanczos.TestKyle.Web.Models.App
         
         public string E05_01 { get; set; }
         
-        public string E05_02 { get; set; }
+        public DateTime? E05_02 { get; set; }
         
         public string E05_03 { get; set; }
         
@@ -157,7 +157,7 @@ namespace KyleTanczos.TestKyle.Web.Models.App
     {
 
         public string E06_07 { get; set; }
-
+        public string E06_08 { get; set; }
         public string E06_11 { get; set; }
         
         public string E06_12 { get; set; }
@@ -430,14 +430,14 @@ namespace KyleTanczos.TestKyle.Web.Models.App
         
         public string E14_02 { get; set; }
         
-        public string E14_04 { get; set; }
-        public string E14_05 { get; set; }
+        public int? E14_04 { get; set; }
+        public int? E14_05 { get; set; }
         public string E14_06 { get; set; }
 
         
-        public string E14_07 { get; set; }
+        public int? E14_07 { get; set; }
         
-        public string E14_08 { get; set; }
+        public int? E14_08 { get; set; }
         
         public string E14_09 { get; set; }
         
@@ -566,8 +566,9 @@ namespace KyleTanczos.TestKyle.Web.Models.App
         
         public string E18_04 { get; set; }
         
-        public E18_05_0 E18_05_0 { get; set; }
-        
+        public string E18_05 { get; set; }
+        public string E18_06 { get; set; }
+
         public string E18_10 { get; set; }
         
         public string E18_11 { get; set; }
@@ -581,21 +582,8 @@ namespace KyleTanczos.TestKyle.Web.Models.App
     public class E19_01_0
     {
         
-        public string E19_01 { get; set; }
         
-        public string E19_02 { get; set; }
-        
-        public string E19_03 { get; set; }
-        
-        public string E19_05 { get; set; }
-        
-        public string E19_06 { get; set; }
-        
-        public string E19_07 { get; set; }
-        
-        public string E19_08 { get; set; }
-        
-        public string E19_09 { get; set; }
+
         
         public string E19_10 { get; set; }
         
@@ -605,7 +593,21 @@ namespace KyleTanczos.TestKyle.Web.Models.App
     
     public class E19
     {
-        
+        public string E19_02 { get; set; }
+
+        public string E19_03 { get; set; }
+
+        public List<string> E19_05 { get; set; }
+
+        public string E19_06 { get; set; }
+
+        public string E19_07 { get; set; }
+
+        public string E19_08 { get; set; }
+
+        public string E19_09 { get; set; }
+        public string E19_10 { get; set; }
+
         public List<E19_01_0> E19_01_0 { get; set; }
         
         public List<string> E19_12 { get; set; }
@@ -739,7 +741,7 @@ namespace KyleTanczos.TestKyle.Web.Models.App
         
         public List<E18> E18 { get; set; }
         
-        public E19 E19 { get; set; }
+        public List<E19> E19 { get; set; }
         
         public E20 E20 { get; set; }
         

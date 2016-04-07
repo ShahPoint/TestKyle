@@ -113,19 +113,21 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                         pcrJobj => ObjectifyPcr(pcrJobj)
                    );
 
-
-                    var JsonObject = JsonNetify(something435);
-
-                    string jsonString = JsonObject.ToString();
-
-                    XmlDocument doc = JsonConvert.DeserializeXmlNode(jsonString, "EMSDataSet");
-
-                    string xmlString = doc.OuterXml;
-
-
-                    var countsomething435 = something435.Count();
-
                     var aaa = "aaaaa";
+
+                    //var JsonObject = JsonNetify(something435);
+
+                    //string jsonString = JsonObject.ToString();
+
+                    //XmlDocument doc = JsonConvert.DeserializeXmlNode(jsonString, "EMSDataSet");
+
+                    //string xmlString = doc.OuterXml;
+
+                    //int xmlStringCount = xmlString.Count();
+
+                    //var countsomething435 = something435.Count();
+
+
 
                     //List<Record> recordsArray = new List<Record>();
 
@@ -158,10 +160,10 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                     //    );
 
                     //var yyyyy = emsDataSet.Header.Record.First();
-                    
 
 
-    //public class EMSDataSet
+
+                    //public class EMSDataSet
 
 
                     //var jsonXmlDocument = Newtonsoft.Json.JsonConvert.DeserializeXmlNode(json);
@@ -187,12 +189,12 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                     //{
                     //    var x = xElem;
 
-                        
+
 
                     //}
 
                     //int count888 = (from p in xDoc.Descendants("Record")
-                                 
+
                     //             select p).Count();
 
 
@@ -381,7 +383,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 
 
                 JObject E05 = new JObject();
-                E05.Add(CreateJsonProperty("E05_02", pcrObj.E05.E05_02));
+                //E05.Add(CreateJsonProperty("E05_02", pcrObj.E05.E05_02));
                 E05.Add(CreateJsonProperty("E05_03", pcrObj.E05.E05_03));
                 E05.Add(CreateJsonProperty("E05_04", pcrObj.E05.E05_04));
                 E05.Add(CreateJsonProperty("E05_05", pcrObj.E05.E05_05));
@@ -473,11 +475,11 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                         from item in pcrObj.E14
                         select new JObject(
                             CreateJsonProperty("E14_03", item.E14_03),
-                            CreateJsonProperty("E14_04", item.E14_04),
-                            CreateJsonProperty("E14_05", item.E14_05),
+                            //CreateJsonProperty("E14_04", item.E14_04),
+                            //CreateJsonProperty("E14_05", item.E14_05),
                             CreateJsonProperty("E14_06", item.E14_06),
-                            CreateJsonProperty("E14_07", item.E14_07),
-                            CreateJsonProperty("E14_08", item.E14_08),
+                            //CreateJsonProperty("E14_07", item.E14_07),
+                            //CreateJsonProperty("E14_08", item.E14_08),
                             CreateJsonProperty("E14_11", item.E14_11),
                             CreateJsonProperty("E14_15", item.E14_15),
                             CreateJsonProperty("E14_16", item.E14_16),
@@ -572,9 +574,33 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
             return new JProperty(nemsisId, value);
         }
 
+        private DateTime? GetDateTimeValue(JToken jObj, string propertyName)
+        {
+            string tempIntStr = GetStringValue(jObj, propertyName);
+
+            if (string.IsNullOrEmpty(tempIntStr))
+                return null;
+
+            return DateTime.Parse(tempIntStr);
+        }
+
+        private int? GetIntValue(JToken jObj, string propertyName)
+        {
+            string tempIntStr = GetStringValue(jObj, propertyName);
+
+            if (string.IsNullOrEmpty(tempIntStr))
+                return null;
+
+            return int.Parse( tempIntStr );
+        }
+
+
         private string GetStringValue(JToken jObj, string propertyName)
         {
-            if( jObj[propertyName] == null )
+            //if (! jObj.HasValues)
+            //    return "";
+
+            if (!jObj.HasValues || jObj[propertyName] == null )
                 return "";
 
             if (jObj[propertyName].Type == JTokenType.Object  && jObj[propertyName].Value<string>("@xsi:nil") == "true")
@@ -601,14 +627,13 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
         {
             var pcr = new Record();
 
-            pcr.E01 = new E01() //( x["E01"] == null ? new E01() :  new E01()
-            {
-                E01_01 = GetStringValue ( x["E01"], ("E01_01") ),
-                E01_02 = GetStringValue ( x["E01"],("E01_02") ),
-                E01_03 = GetStringValue ( x["E01"],("E01_03") ),
-                E01_04 = GetStringValue ( x["E01"],("E01_04") )
-            }; //})
-                       
+            var e01 = new E01(); //( x["E01"] == null ? new E01() :  new E01()
+            e01.E01_01 = GetStringValue(x["E01"], ("E01_01"));
+            e01.E01_02 = GetStringValue(x["E01"], ("E01_02"));
+            e01.E01_03 = GetStringValue(x["E01"], ("E01_03"));
+            e01.E01_04 = GetStringValue(x["E01"], ("E01_04"));
+            pcr.E01 = e01;
+
                 pcr.E02 = new E02()
                 {
                     E02_01 = GetStringValue ( x["E02"], ("E02_01") ),
@@ -634,8 +659,8 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                        
                 pcr.E03 = new E03()
                 {
-                    E03_01 = x["E03"].Value<string>("E03_01"),
-                    E03_02 = x["E03"].Value<string>("E03_02")
+                    E03_01 = GetStringValue( x["E03"], "E03_01"),
+                    E03_02 = GetStringValue( x["E03"], "E03_02")
                 };
                        
                 pcr.E04 = (x["E04"].HasValues ?
@@ -669,7 +694,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                 pcr.E05 = new E05()
                 {
                     E05_01 = GetStringValue( x["E05"], ("E05_01") ),
-                    E05_02 = GetStringValue( x["E05"], ("E05_02") ),
+                    E05_02 = GetDateTimeValue( x["E05"], ("E05_02") ),
                     E05_03 = GetStringValue( x["E05"], ("E05_03") ),
                     E05_04 = GetStringValue( x["E05"], ("E05_04") ),
                     E05_05 = GetStringValue( x["E05"], ("E05_05") ),
@@ -686,8 +711,9 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                 pcr.E06 = new E06()
                 {
                     E06_07 = GetStringValue( x["E06"], ("E06_07") ),
-          //NOTE: below patient zip needs a pattern to extract out of all the address object
-                    //E06_08 = GetStringValue(x["E06"], ("E06_08")),
+                    //Assumes there is always a E06 node, and that the address module is converted to a E06_04_0 by json.net which
+                    //will not be always the case possibly, might need adjusted once we get better data
+                    E06_08 = (x["E06"]["E06_04_0"].HasValues ? GetStringValue(x["E06"]["E06_04_0"], ("E06_08")) : "" ),
                     E06_11 = GetStringValue( x["E06"], ("E06_11") ),
                     E06_12 = GetStringValue( x["E06"], ("E06_12") ),
                     E06_13 = GetStringValue( x["E06"], ("E06_13") ),
@@ -780,21 +806,18 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 
                 };
 
-                pcr.E14 = (x["E14"].HasValues ?
-
-                           //GetE14(x)
-
-                           (
-                               x["E14"].Type == JTokenType.Array
-                                   ?
-                               x["E14"].Select(y => ObjectifyE14(y)).ToList()
-                                   : // else Type = JTokenType.Object
-                               new List<E14>() { ObjectifyE14(x["E14"]) }
-
-                           )
-                                   : new List<E14>()
-
-                               );
+                pcr.E14 = (x["E14"].HasValues 
+                        ?
+                            (
+                                x["E14"].Type == JTokenType.Array
+                                    ?
+                                x["E14"].Select(y => ObjectifyE14(y)).ToList()
+                                    : // else Type = JTokenType.Object
+                                new List<E14>() { ObjectifyE14(x["E14"]) }
+                            )
+                        : 
+                            new List<E14>()
+                   );
 
             if (x["E15"].Children().Count() > 0)
             {
@@ -813,32 +836,35 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                     E15_11 = GetArrayValue(x["E15"], "E15_11")
                 };
             }
-            ////, E18 = (x["E18"].HasValues ?
 
-            ////    x["E18"].Select(y => new E18()
-            ////    {
-            ////         E18_01 = y.Value<string>("E18_01"),
-            ////        E18_02 = y.Value<string>("E18_02"),
-            ////        E18_03 = y.Value<string>("E18_03"),
-            ////        E18_04 = y.Value<string>("E18_04"),
-            ////        //E18_05_0 = y.Value<string>("E18_05_0"),
-            ////        E18_08 = y.Value<string>("E18_08"),
-            ////        E18_09 = y.Value<string>("E18_09"),
-            ////        E18_10 = y.Value<string>("E18_10"),
-            ////        E18_11 = y.Value<string>("E18_11"),
+            pcr.E18 = (x["E18"].HasValues
+                    ?
+                        (
+                            x["E18"].Type == JTokenType.Array
+                                ?
+                            x["E18"].Select(y => ObjectifyE18(y)).ToList()
+                                : // else Type = JTokenType.Object
+                            new List<E18>() { ObjectifyE18(x["E18"]) }
+                        )
+                    :
+                        new List<E18>()
+               );
 
-            ////    }).ToList()
+            pcr.E19 = (x["E19"].HasValues
+                    ?
+                        (
+                            x["E19"].Type == JTokenType.Array
+                                ?
+                            x["E19"].Select(y => ObjectifyE19(y)).ToList()
+                                : // else Type = JTokenType.Object
+                            new List<E19>() { ObjectifyE19(x["E19"]) }
+                        )
+                    :
+                        new List<E19>()
+               );
 
-            ////    : new List<E18>())
 
-            //pcr.E19 = new E19()
-            //{
 
-            //    E19_02 = x["E19"].Value<string>("E19_02"),
-            //    E19_13 = x["E19"].Value<string>("E19_13"),
-            //    E19_14 = x["E19"].Value<string>("E19_14"),
-
-            //};
 
             pcr.E20 = new E20()
             {
@@ -872,6 +898,44 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
             return pcr;
         }
 
+        private E18 ObjectifyE18(JToken e18jobj)
+        {
+            var e18 = new E18();
+
+            e18.E18_03 = GetStringValue(e18jobj, "E18_03");
+
+            //Assumes there is always a E06 node, and that the address module is converted to a E06_04_0 by json.net which
+            //will not be always the case possibly, might need adjusted once we get better data
+            e18.E18_05 = (e18jobj["E18_05_0"] == null ? "" : GetStringValue(e18jobj["E18_05_0"], "E18_05") );
+
+            //Assumes there is always a E18 node, and that the address module is converted to a E18_04_0 by json.net which
+            //will not be always the case possibly, might need adjusted once we get better data
+            e18.E18_06 = (e18jobj["E18_05_0"] == null ? "" : GetStringValue(e18jobj["E18_05_0"], "E18_06") );
+
+            e18.E18_08 = GetStringValue(e18jobj, "E18_08");
+            e18.E18_09 = GetStringValue(e18jobj, "E18_09");
+
+            return e18;
+        }
+
+        private E19 ObjectifyE19(JToken e19jobj)
+        {
+            var e19 = new E19();
+
+            e19.E19_02 = GetStringValue(e19jobj, "E19_02");
+            e19.E19_03 = GetStringValue(e19jobj, "E19_03");
+            e19.E19_05 = GetArrayValue(e19jobj, "E19_05");
+            e19.E19_06 = GetStringValue(e19jobj, "E19_06");
+            e19.E19_07 = GetStringValue(e19jobj, "E19_07");
+            e19.E19_09 = GetStringValue(e19jobj, "E19_09");
+            e19.E19_10 = GetStringValue(e19jobj, "E19_10");
+            e19.E19_12 = GetArrayValue(e19jobj, "E19_12");
+
+            return e19;
+        }
+
+
+
         private E04 ObjectifyE04(JToken e04jobj)
         {
             return new E04()
@@ -889,11 +953,11 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
    
                 E14_02 = GetStringValue( e14jobj, "E14_02"),
                 E14_03 = GetStringValue( e14jobj, "E14_03"),
-                E14_04 = GetStringValue( e14jobj, "E14_04"),
-                E14_05 = GetStringValue(e14jobj, "E14_05"),
+                E14_04 = GetIntValue( e14jobj, "E14_04"),
+                E14_05 = GetIntValue(e14jobj, "E14_05"),
                 E14_06 = GetStringValue(e14jobj, "E14_06"),
-                E14_07 = GetStringValue(e14jobj, "E14_07"),
-                E14_08 = GetStringValue(e14jobj, "E14_08"),
+                E14_07 = GetIntValue(e14jobj, "E14_07"),
+                E14_08 = GetIntValue(e14jobj, "E14_08"),
 
                 E14_11 = GetStringValue(e14jobj, "E14_11"),
                 E14_15 = GetStringValue(e14jobj, "E14_15"),
