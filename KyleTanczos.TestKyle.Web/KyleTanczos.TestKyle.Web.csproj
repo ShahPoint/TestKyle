@@ -490,7 +490,6 @@
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
-    <Content Include="libs\aaaCustom\052_18_Zoll_25005_01.20.2016.xml" />
     <Content Include="libs\aaaCustom\JavaScript.js" />
     <Content Include="libs\angular-daterangepicker\angular-daterangepicker.js" />
     <Content Include="libs\angular-daterangepicker\angular-daterangepicker.min.js" />
