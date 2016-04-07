@@ -1100,6 +1100,7 @@
     <Content Include="libs\select2-master\dist\js\select2.min.js" />
     <Content Include="libs\select2-master\docs\announcements-4.0.html" />
     <Content Include="libs\select2-master\docs\community.html" />
+    <Content Include="libs\select2-master\docs\dist\.gitkeep" />
     <Content Include="libs\select2-master\docs\examples.html" />
     <Content Include="libs\select2-master\docs\images\logo.png" />
     <Content Include="libs\select2-master\docs\index.html" />
@@ -3297,7 +3298,6 @@
     <Content Include="libs\select2-master\docs\css\bootstrap.scss" />
     <Content Include="libs\select2-master\docs\css\font-awesome.scss" />
     <Content Include="libs\select2-master\docs\css\s2-docs.scss" />
-    <Content Include="libs\select2-master\docs\dist\.gitkeep" />
     <Content Include="libs\select2-master\docs\README.md" />
     <Content Include="libs\select2-master\docs\vendor\fonts\fontawesome-webfont.eot" />
     <Content Include="libs\select2-master\docs\vendor\fonts\fontawesome-webfont.ttf" />
