@@ -156,6 +156,13 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Startup
                     L("Administration"),
                     icon: "icon-wrench"
                     ).AddItem(new MenuItemDefinition(
+                        PageNames.App.Common.Stations,
+                        L("Stations"),
+                        url: "Mpa/Stations",
+                        icon: "icon-layers",
+                        requiredPermissionName: AppPermissions.Pages_Administration_OrganizationUnits
+                        )
+                    ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.OrganizationUnits,
                         L("OrganizationUnits"),
                         url: "Mpa/OrganizationUnits",
