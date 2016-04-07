@@ -488,8 +488,44 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                      );
                 pcrJson.Add(new JProperty("E14", E14));
 
+                if(pcrObj.E15 != null)
+                {
+                    JObject E15 = new JObject();
+                    E15.Add(CreateJsonArray("E15_01", pcrObj.E15.E15_01));
+                    E15.Add(CreateJsonArray("E15_02", pcrObj.E15.E15_02));
+                    E15.Add(CreateJsonArray("E15_03", pcrObj.E15.E15_03));
+                    E15.Add(CreateJsonArray("E15_04", pcrObj.E15.E15_04));
+                    E15.Add(CreateJsonArray("E15_05", pcrObj.E15.E15_05));
+                    E15.Add(CreateJsonArray("E15_06", pcrObj.E15.E15_06));
+                    E15.Add(CreateJsonArray("E15_07", pcrObj.E15.E15_07));
+                    E15.Add(CreateJsonArray("E15_08", pcrObj.E15.E15_08));
+                    E15.Add(CreateJsonArray("E15_09", pcrObj.E15.E15_09));
+                    E15.Add(CreateJsonArray("E15_10", pcrObj.E15.E15_10));
+                    E15.Add(CreateJsonArray("E15_11", pcrObj.E15.E15_11));
+                    pcrJson.Add(new JProperty("E15", E15));
+                }
+                JObject E20 = new JObject();
+                E20.Add(CreateJsonProperty("E20_02", pcrObj.E20.E20_02));
+                E20.Add(CreateJsonProperty("E20_07", pcrObj.E20.E20_07));
+                E20.Add(CreateJsonProperty("E20_10", pcrObj.E20.E20_10));
+                E20.Add(CreateJsonProperty("E20_14", pcrObj.E20.E20_14));
+                E20.Add(CreateJsonProperty("E20_15", pcrObj.E20.E20_15));
+                E20.Add(CreateJsonProperty("E20_16", pcrObj.E20.E20_16));
+                E20.Add(CreateJsonProperty("E20_17", pcrObj.E20.E20_17));
+                pcrJson.Add(new JProperty("E20", E20));
 
 
+                JObject E22 = new JObject();
+                E22.Add(CreateJsonProperty("E22_01", pcrObj.E22.E22_01));
+                E22.Add(CreateJsonProperty("E22_02", pcrObj.E22.E22_02));
+                pcrJson.Add(new JProperty("E22", E22));
+
+                JObject E23 = new JObject();
+                E23.Add(CreateJsonProperty("E23_03", pcrObj.E23.E23_03));
+                E23.Add(CreateJsonProperty("E23_09", pcrObj.E23.E23_09));
+                E23.Add(CreateJsonProperty("E23_10", pcrObj.E23.E23_10));
+                E23.Add(CreateJsonProperty("E23_11", pcrObj.E23.E23_11));
+                pcrJson.Add(new JProperty("E23", E23));
 
                 pcrs.Add(pcrJson);
 
