@@ -16,6 +16,7 @@ using Microsoft.AspNet.Identity;
 
 using KyleTanczos.TestKyle.Web.Models.App;
 using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 {
@@ -101,7 +102,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                     json = json.Replace(@"{""?xml"":{""@version"":""1.0"",""@encoding"":""UTF-8""},""EMSDataSet"":", "");
 
                     json = json.Substring(0, json.Length - 1);
-
+                    
                     Newtonsoft.Json.Linq.JObject jsonObj  = Newtonsoft.Json.Linq.JObject.Parse(json);
 
                     var reportJsonObj1 = jsonObj["Header"];
@@ -111,6 +112,16 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                     var something435 = reportJsonObj2.Select(
                         pcrJobj => ObjectifyPcr(pcrJobj)
                    );
+
+
+                    var JsonObject = JsonNetify(something435);
+
+                    string jsonString = JsonObject.ToString();
+
+                    XmlDocument doc = JsonConvert.DeserializeXmlNode(jsonString, "EMSDataSet");
+
+                    string xmlString = doc.OuterXml;
+
 
                     var countsomething435 = something435.Count();
 
@@ -312,6 +323,218 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
             return new HttpNotFoundResult("file not valid");
         }
 
+        private object JsonNetify(IEnumerable<Record> pcrObjects)
+        {
+            var rootObject = new JObject();
+
+            rootObject.Add(new JProperty("@xmlns", "http://www.nemsis.org"));
+
+            rootObject.Add(new JProperty("@xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance"));
+
+            rootObject.Add(new JProperty("@xsi:schemaLocation", "http://www.nemsis.org http://www.nemsis.org/media/XSD/EMSDataSet.xsd") );
+
+
+
+
+            var pcrs = new JArray();
+
+            foreach (var pcrObj in pcrObjects)
+            {
+                JObject pcrJson = new JObject();
+
+                JObject E01 = new JObject();
+                E01.Add(CreateJsonProperty("E01_01", pcrObj.E01.E01_01));
+                E01.Add(CreateJsonProperty("E01_02", pcrObj.E01.E01_02));
+                E01.Add(CreateJsonProperty("E01_03", pcrObj.E01.E01_03));
+                E01.Add(CreateJsonProperty("E01_04", pcrObj.E01.E01_04));
+                pcrJson.Add( new JProperty("E01", E01 ) );
+
+                JObject E02 = new JObject();
+                E02.Add(CreateJsonProperty("E02_01", pcrObj.E02.E02_01));
+                E02.Add(CreateJsonProperty("E02_02", pcrObj.E02.E02_02));
+                E02.Add(CreateJsonProperty("E02_03", pcrObj.E02.E02_04));
+                E02.Add(CreateJsonProperty("E02_05", pcrObj.E02.E02_05));
+                E02.Add(CreateJsonArray("E02_06", pcrObj.E02.E02_06));
+                E02.Add(CreateJsonArray("E02_07", pcrObj.E02.E02_07));
+                E02.Add(CreateJsonArray("E02_08", pcrObj.E02.E02_08));
+                E02.Add(CreateJsonArray("E02_09", pcrObj.E02.E02_09));
+                E02.Add(CreateJsonArray("E02_10", pcrObj.E02.E02_10));
+                E02.Add(CreateJsonProperty("E02_12", pcrObj.E02.E02_12));
+                E02.Add(CreateJsonProperty("E02_20", pcrObj.E02.E02_20));
+                pcrJson.Add(new JProperty("E02", E02));
+
+                JObject E03 = new JObject();
+                E03.Add(CreateJsonProperty("E03_01", pcrObj.E03.E03_01));
+                E03.Add(CreateJsonProperty("E03_02", pcrObj.E03.E03_02));
+                pcrJson.Add(new JProperty("E03", E03));
+
+                JArray E04 = new JArray();
+                E04 = new JArray(
+                        from item in pcrObj.E04
+                        select new JObject(
+                            CreateJsonProperty("E04_01", item.E04_01),
+                            CreateJsonProperty("E04_02", item.E04_02),
+                            CreateJsonProperty("E04_03", item.E04_03)
+                         )
+                     );
+                pcrJson.Add(new JProperty("E04", E04));
+
+
+                JObject E05 = new JObject();
+                E05.Add(CreateJsonProperty("E05_02", pcrObj.E05.E05_02));
+                E05.Add(CreateJsonProperty("E05_03", pcrObj.E05.E05_03));
+                E05.Add(CreateJsonProperty("E05_04", pcrObj.E05.E05_04));
+                E05.Add(CreateJsonProperty("E05_05", pcrObj.E05.E05_05));
+                E05.Add(CreateJsonProperty("E05_06", pcrObj.E05.E05_06));
+                E05.Add(CreateJsonProperty("E05_07", pcrObj.E05.E05_07));
+                E05.Add(CreateJsonProperty("E05_09", pcrObj.E05.E05_09));
+                E05.Add(CreateJsonProperty("E05_10", pcrObj.E05.E05_10));
+                E05.Add(CreateJsonProperty("E05_11", pcrObj.E05.E05_11));
+                E05.Add(CreateJsonProperty("E05_13", pcrObj.E05.E05_13));
+                pcrJson.Add(new JProperty("E05", E05));
+
+
+                JObject E06 = new JObject();
+                E06.Add(CreateJsonProperty("E06_07", pcrObj.E06.E06_07));
+                E06.Add(CreateJsonProperty("E06_11", pcrObj.E06.E06_11));
+                E06.Add(CreateJsonProperty("E06_12", pcrObj.E06.E06_12));
+                E06.Add(CreateJsonProperty("E06_13", pcrObj.E06.E06_13));
+                E06.Add(CreateJsonProperty("E06_14", pcrObj.E06.E06_14));
+                E06.Add(CreateJsonProperty("E06_15", pcrObj.E06.E06_15));
+                E06.Add(CreateJsonProperty("E06_16", pcrObj.E06.E06_16));
+                pcrJson.Add(new JProperty("E06", E06));
+
+                JObject E07 = new JObject();
+                E07.Add(CreateJsonProperty("E07_01", pcrObj.E07.E07_01));
+                E07.Add(CreateJsonProperty("E07_15", pcrObj.E07.E07_15));
+                E07.Add(CreateJsonProperty("E07_34", pcrObj.E07.E07_34));
+                E07.Add(CreateJsonProperty("E07_35", pcrObj.E07.E07_35));
+                pcrJson.Add(new JProperty("E07", E07));
+
+                JObject E08 = new JObject();
+                E08.Add(CreateJsonProperty("E08_05", pcrObj.E08.E08_05));
+                E08.Add(CreateJsonProperty("E08_06", pcrObj.E08.E08_06));
+                E08.Add(CreateJsonProperty("E08_07", pcrObj.E08.E08_07));
+                E08.Add(CreateJsonProperty("E08_12", pcrObj.E08.E08_12));
+                E08.Add(CreateJsonProperty("E08_13", pcrObj.E08.E08_13));
+                E08.Add(CreateJsonProperty("E08_14", pcrObj.E08.E08_14));
+                E08.Add(CreateJsonProperty("E08_15", pcrObj.E08.E08_15));
+                pcrJson.Add(new JProperty("E08", E08));
+
+
+                JObject E09 = new JObject();
+                E09.Add(CreateJsonArray("E09_01", pcrObj.E09.E09_01));
+                E09.Add(CreateJsonProperty("E09_02", pcrObj.E09.E09_02));
+                E09.Add(CreateJsonProperty("E09_03", pcrObj.E09.E09_03));
+                E09.Add(CreateJsonProperty("E09_04", pcrObj.E09.E09_04));
+                E09.Add(CreateJsonProperty("E09_05", pcrObj.E09.E09_05));
+                E09.Add(CreateJsonProperty("E09_11", pcrObj.E09.E09_11));
+                E09.Add(CreateJsonProperty("E09_12", pcrObj.E09.E09_12));
+                E09.Add(CreateJsonProperty("E09_13", pcrObj.E09.E09_13));
+                E09.Add(CreateJsonArray("E09_14", pcrObj.E09.E09_14));
+                E09.Add(CreateJsonProperty("E09_15", pcrObj.E09.E09_15));
+                E09.Add(CreateJsonProperty("E09_16", pcrObj.E09.E09_16));
+                pcrJson.Add(new JProperty("E09", E09));
+
+                JObject E10 = new JObject();
+                E10.Add(CreateJsonProperty("E10_01", pcrObj.E10.E10_01));
+                E10.Add(CreateJsonProperty("E10_02", pcrObj.E10.E10_02));
+                E10.Add(CreateJsonArray("E10_04", pcrObj.E10.E10_04));
+                E10.Add(CreateJsonArray("E10_08", pcrObj.E10.E10_08));
+                E10.Add(CreateJsonArray("E10_09", pcrObj.E10.E10_09));
+                E10.Add(CreateJsonProperty("E10_10", pcrObj.E10.E10_10));
+                pcrJson.Add(new JProperty("E10", E10));
+
+
+                JObject E11 = new JObject();
+                E11.Add(CreateJsonProperty("E11_01", pcrObj.E11.E11_01));
+                E11.Add(CreateJsonProperty("E11_02", pcrObj.E11.E11_02));
+                E11.Add(CreateJsonArray("E11_03", pcrObj.E11.E11_03));
+                E11.Add(CreateJsonProperty("E11_04", pcrObj.E11.E11_04));
+                E11.Add(CreateJsonProperty("E11_05", pcrObj.E11.E11_05));
+                E11.Add(CreateJsonProperty("E11_11", pcrObj.E11.E11_11));
+                pcrJson.Add(new JProperty("E11", E11));
+
+
+                JObject E12 = new JObject();
+                E12.Add(CreateJsonArray("E12_01", pcrObj.E12.E12_01));
+                E12.Add(CreateJsonArray("E12_08", pcrObj.E12.E12_08));
+                E12.Add(CreateJsonArray("E12_10", pcrObj.E12.E12_10));
+                E12.Add(CreateJsonArray("E12_14", pcrObj.E12.E12_14));
+                E12.Add(CreateJsonArray("E12_19", pcrObj.E12.E12_19));
+                pcrJson.Add(new JProperty("E12", E12));
+
+                JObject E13 = new JObject();
+                E13.Add(CreateJsonProperty("E13_01", pcrObj.E13.E13_01));
+                pcrJson.Add(new JProperty("E13", E13));
+
+                JArray E14 = new JArray();
+                E14 = new JArray(
+                        from item in pcrObj.E14
+                        select new JObject(
+                            CreateJsonProperty("E14_03", item.E14_03),
+                            CreateJsonProperty("E14_04", item.E14_04),
+                            CreateJsonProperty("E14_05", item.E14_05),
+                            CreateJsonProperty("E14_06", item.E14_06),
+                            CreateJsonProperty("E14_07", item.E14_07),
+                            CreateJsonProperty("E14_08", item.E14_08),
+                            CreateJsonProperty("E14_11", item.E14_11),
+                            CreateJsonProperty("E14_15", item.E14_15),
+                            CreateJsonProperty("E14_16", item.E14_16),
+                            CreateJsonProperty("E14_17", item.E14_17),
+                            CreateJsonProperty("E14_27", item.E14_27),
+                            CreateJsonProperty("E14_28", item.E14_28)
+                         )
+                     );
+                pcrJson.Add(new JProperty("E14", E14));
+
+
+
+
+                pcrs.Add(pcrJson);
+
+
+            }
+
+            var aaa = "aaa";
+
+            JObject header = GetHeaderJObject();
+
+            header.Add(new JProperty("Record", pcrs));
+
+            rootObject.Add(new JProperty("Header", header));
+
+            string jsonString = rootObject.ToString();
+
+            return jsonString ;
+        }
+
+        private JProperty CreateJsonArray(string nemsisId, List<string> Array)
+        {
+            return new JProperty(nemsisId, new JArray(Array.ToArray()) );
+        }
+
+        private JObject GetHeaderJObject()
+        {
+            var header = new JObject();
+
+            header.Add("D01_01", "25036");
+            header.Add("D01_03", "42");
+            header.Add("D01_04", "42049");
+            header.Add("D01_07", "6112");
+            header.Add("D01_08", "5810");
+            header.Add("D01_09", "5870");
+            header.Add("D01_21", "1033111554");
+            header.Add("D02_07", "16502");
+
+            return header;
+
+        }
+
+        private JProperty CreateJsonProperty(string nemsisId, string value)
+        {
+            return new JProperty(nemsisId, value);
+        }
 
         private string GetStringValue(JToken jObj, string propertyName)
         {
@@ -426,13 +649,14 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                        
                 pcr.E06 = new E06()
                 {
-                    E06_06 = GetStringValue( x["E06"], ("E06_06") ),
+                    E06_07 = GetStringValue( x["E06"], ("E06_07") ),
           //NOTE: below patient zip needs a pattern to extract out of all the address object
                     //E06_08 = GetStringValue(x["E06"], ("E06_08")),
                     E06_11 = GetStringValue( x["E06"], ("E06_11") ),
                     E06_12 = GetStringValue( x["E06"], ("E06_12") ),
                     E06_13 = GetStringValue( x["E06"], ("E06_13") ),
                     E06_14 = GetStringValue( x["E06"], ("E06_14") ),
+                    E06_15 = GetStringValue( x["E06"], ("E06_15") ),
                     E06_16 = GetStringValue( x["E06"], ("E06_16") ),
                     E06_17 = GetStringValue( x["E06"], ("E06_17") )
                 };
@@ -535,38 +759,24 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                    : new List<E14>()
 
                                );
-            //, 
-            //E15 = new E15()
-            // {
-            //     //E15_02 = x["E15"].Value<string>("E15_02"),
-            //     E15_03 = x["E15"].Value<string>("E15_03"),
-            //     E15_05 = x["E15"].Value<string>("E15_05"),
-            //     E15_06 = x["E15"].Value<string>("E15_06"),
-            //     E15_07 = x["E15"].Value<string>("E15_07"),
-            //     E15_08 = x["E15"].Value<string>("E15_08"),
-            //     E15_09 = x["E15"].Value<string>("E15_09"),
-            //     //E15_10 = x["E15"].Value<string>("E15_10"),
-            //     E15_11 = x["E15"].Value<string>("E15_11"),
 
-            // }
-            // ,
-            //E16 = new E16()
-            //{
-            //    //E16_00_0 = x["E16"].Value<string>("E16_00_0"),
-            //    E16_01 = x["E16"].Value<string>("E16_01"),
-
-            //}
-            ////,
-            ////E17 = (x["E17"].HasValues ?
-
-            ////    x["E17"].Select(y => new E17()
-            ////    {
-            ////         E17_01 = y.Value<string>("E17_01")
-
-            ////    }).ToList()
-
-            ////    : new List<E17>())
-
+            if (x["E15"].Children().Count() > 0)
+            {
+                pcr.E15 = new E15()
+                {
+                    E15_01 = GetArrayValue(x["E15"], "E15_01"),
+                    E15_02 = GetArrayValue(x["E15"], "E15_02"),
+                    E15_03 = GetArrayValue(x["E15"], "E15_03"),
+                    E15_04 = GetArrayValue(x["E15"], "E15_04"),
+                    E15_05 = GetArrayValue(x["E15"], "E15_05"),
+                    E15_06 = GetArrayValue(x["E15"], "E15_06"),
+                    E15_07 = GetArrayValue(x["E15"], "E15_07"),
+                    E15_08 = GetArrayValue(x["E15"], "E15_08"),
+                    E15_09 = GetArrayValue(x["E15"], "E15_09"),
+                    E15_10 = GetArrayValue(x["E15"], "E15_10"),
+                    E15_11 = GetArrayValue(x["E15"], "E15_11")
+                };
+            }
             ////, E18 = (x["E18"].HasValues ?
 
             ////    x["E18"].Select(y => new E18()
@@ -585,42 +795,43 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 
             ////    : new List<E18>())
 
-            //, E19 = new E19()
+            //pcr.E19 = new E19()
             //{
-            //     //E19_01_0 = x["E19"].Value<string>("E19_11_0"),
-            //     //E19_12 = x["E19"].Value<string>("E19_12"),
-            //     E19_13 = x["E19"].Value<string>("E19_13"),
-            //     E19_14 = x["E19"].Value<string>("E19_14"),
 
-            //}, E20 = new E20()
-            //{
-            //    E20_01 = x["E20"].Value<string>("E20_01"),
-            //    E20_02 = x["E20"].Value<string>("E20_02"),
-            //    //E20_03_0 = x["E20"].Value<string>("E20_03"),
-            //    E20_06 = x["E20"].Value<string>("E20_06"),
-            //    //E20_08 = x["E20"].Value<string>("E20_08"),
-            //    E20_09 = x["E20"].Value<string>("E20_09"),
-            //    E20_10 = x["E20"].Value<string>("E20_10"),
-            //    E20_14 = x["E20"].Value<string>("E20_14"),
-            //    E20_15 = x["E20"].Value<string>("E20_15"),
-            //    E20_16 = x["E20"].Value<string>("E20_16"),
-            //    E20_17 = x["E20"].Value<string>("E20_17")
-            //}
+            //    E19_02 = x["E19"].Value<string>("E19_02"),
+            //    E19_13 = x["E19"].Value<string>("E19_13"),
+            //    E19_14 = x["E19"].Value<string>("E19_14"),
 
-            ////, E22 = new E22()
-            ////{
-            ////    E22_01 = x["E22"].Value<string>("E22_01"),
-            ////    E22_02 = x["E22"].Value<string>("E22_02"),
-            ////    E22_06 = x["E22"].Value<string>("E22_06")
+            //};
 
-            ////}, E23 = new E23()
-            ////{
-            ////    E23_03 = x["E23"].Value<string>("E23_01"),
-            ////    E23_06 = x["E23"].Value<string>("E23_06"),
-            ////    //E23_09_0 = x["E23"].Value<string>("E23_09_0"),
-            ////    E23_10 = x["E23"].Value<string>("E23_10")
+            pcr.E20 = new E20()
+            {
+                E20_02 = GetStringValue( x["E20"], "E20_02"),
+                E20_07 = GetStringValue( x["E20"], "E20_07"),
+                E20_10 = GetStringValue( x["E20"], "E20_10"),
+                E20_14 = GetStringValue( x["E20"], "E20_14"),
+                E20_15 = GetStringValue( x["E20"], "E20_15"),
+                E20_16 = GetStringValue( x["E20"], "E20_16"),
+                E20_17 = GetStringValue( x["E20"], "E20_17")
+            };
 
-            ////}
+            pcr.E22 = new E22()
+            {
+                E22_01 = GetStringValue( x["E22"], "E22_01"),
+                E22_02 = GetStringValue( x["E22"], "E22_02"),
+                E22_06 = GetStringValue( x["E22"], "E22_06")
+
+            };
+
+            pcr.E23 = new E23()
+            {
+                E23_03 = GetStringValue( x["E23"], "E23_01"),
+                E23_06 = GetStringValue( x["E23"], "E23_06"),
+                E23_09 = GetStringValue( x["E23"], "E23_09"),
+                E23_10 = GetStringValue( x["E23"], "E23_10"),
+                E23_11 = GetStringValue(x["E23"], "E23_11")
+
+            };
 
             return pcr;
         }
