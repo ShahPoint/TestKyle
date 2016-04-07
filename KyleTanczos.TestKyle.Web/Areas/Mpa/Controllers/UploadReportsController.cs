@@ -327,6 +327,9 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 
         private List<string> GetArrayValue(JToken jObj, string propertyName)
         {
+            if (jObj[propertyName] == null)
+                return new List<string>();
+
             var valueList = (from item in jObj[propertyName]
                               select (item.HasValues ? item.Value<string>() : "")
                               ).ToList();
@@ -439,8 +442,8 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                     E07_01 = GetStringValue( x["E07"], ("E07_01") ),
                     E07_15 = GetStringValue( x["E07"], ("E07_15") ),
                     E07_32 = GetStringValue( x["E07"], ("E07_32") ),
-                    E07_34 = GetStringValue( x["E07"], ("E07_34") ),
-                    //E07_35 = GetArrayValue( x["E07"], ("E07_35") ),
+                    E07_34 = GetStringValue( x["E07"], ("E07_34") ),      
+                    E07_35 = GetStringValue( x["E07"], ("E07_35") ),
                 };
                        
                 pcr.E08 = new E08()
@@ -451,15 +454,15 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                     E08_07 = GetStringValue( x["E08"], ("E08_07") ),
                     E08_08 = GetStringValue( x["E08"], ("E08_08") ),
                     E08_09 = GetStringValue( x["E08"], ("E08_09") ),
-                    //E08_12 = GetStringValue(x["E08"], ("E08_12")),
+                    E08_12 = GetStringValue(x["E08"], ("E08_12")),
                     E08_13 = GetStringValue( x["E08"], ("E08_13") ),
-                    //E08_14 = GetStringValue(x["E08"], ("E08_14")),
-                    //E08_15 = GetStringValue(x["E08"], ("E08_15")),
+                    E08_14 = GetStringValue(x["E08"], ("E08_14")),
+                    E08_15 = GetStringValue(x["E08"], ("E08_15")),
                 };
 
             pcr.E09 = new E09()
             {
-                //E09_01 = GetStringValue( x["E09"], ("E09_01") ),
+                E09_01 = GetArrayValue( x["E09"], ("E09_01") ),
                 E09_02 = GetStringValue( x["E09"], ("E09_02") ),
                 E09_03 = GetStringValue( x["E09"], ("E09_03") ),
                 E09_04 = GetStringValue( x["E09"], ("E09_04") ),
@@ -479,6 +482,9 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                     E10_01 = GetStringValue( x["E10"], ("E10_01") ),
                     E10_02 = GetStringValue( x["E10"], ("E10_02") ),
                     E10_03 = GetArrayValue( x["E10"], ("E10_03") ),
+                    E10_04 = GetArrayValue(x["E10"], ("E10_04")),
+                    E10_08 = GetArrayValue(x["E10"], ("E10_08")),
+                    E10_09 = GetArrayValue(x["E10"], ("E10_09")),
                     E10_10 = GetStringValue( x["E10"], ("E10_10") )
 
                 };
@@ -486,7 +492,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                 {
                     E11_01 = GetStringValue( x["E11"], ("E11_01") ),
                     E11_02 = GetStringValue( x["E11"], ("E11_02") ),
-                    //E11_03 = GetStringValue( x["E11"], ("E11_03") ),
+                    E11_03 = GetArrayValue( x["E11"], ("E11_03") ),
                     E11_04 = GetStringValue( x["E11"], ("E11_04") ),
                     E11_05 = GetStringValue( x["E11"], ("E11_05") ),
                     E11_06 = GetStringValue( x["E11"], ("E11_06") ),
@@ -499,13 +505,12 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
             pcr.E12 = new E12()
                 {
                     E12_01 = GetArrayValue( x["E12"], ("E12_01") ),
-                    //E12_08 = GetStringValue( x["E12"], ("E12_08") ),
-                    //E12_09 = GetStringValue( x["E12"], ("E12_09") ),
-                    //E12_10 = GetStringValue( x["E12"], ("E12_10") ),
-                    //E12_14_0 = GetStringValue( x["E12"], ("E12_14_0") ),
+                    E12_08 = GetArrayValue( x["E12"], ("E12_08") ),
+                    E12_10 = GetArrayValue( x["E12"], ("E12_10") ),
+                    E12_14 = GetArrayValue( x["E12"], ("E12_14") ),
                     E12_19 = GetArrayValue( x["E12"], ("E12_19") ),
                     E12_20 = GetStringValue( x["E12"], ("E12_20") ),
-                    //E12_4_0 = GetStringValue( x["E12"], ("E12_4_0") ),
+
 
                 };
 
@@ -624,9 +629,9 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
         {
             return new E04()
             {
-                E04_01 = e04jobj.Value<string>("E04_01"),
-                E04_02 = e04jobj.Value<string>("E04_02"),
-                E04_03 = e04jobj.Value<string>("E04_03")
+                E04_01 = GetStringValue( e04jobj, "E04_01"),
+                E04_02 = GetStringValue( e04jobj, "E04_02"),
+                E04_03 = GetStringValue( e04jobj, "E04_03")
             };
         }
 
@@ -634,23 +639,21 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
         {
             return new E14()
             {
-                //E14_01 = y.ToString() // .Value<string>("E14_01"),
-                E14_02 = e14jobj.Value<string>("E14_02"),
-                //        E14_03 = y.Value<string>("E14_03"),
-                //        //E14_04_0 = y.Value<string>("E14_04_0"),
-                //        E14_07 = y.Value<string>("E14_07"),
-                //        E14_08 = y.Value<string>("E14_08"),
-                //        E14_09 = y.Value<string>("E14_09"),
-                //        E14_10 = y.Value<string>("E14_10"),
-                //        E14_11 = y.Value<string>("E14_11"),
-                //        E14_12 = y.Value<string>("E14_12"),
-                //        //E14_13 = y.Value<string>("E14_13"),
-                //        E14_14 = y.Value<string>("E14_14"),
-                //        //E14_15_0 = y.Value<string>("E14_15_0"),
-                //        E14_19 = y.Value<string>("E14_19"),
-                //        E14_22 = y.Value<string>("E14_22"),
-                //        E14_23 = y.Value<string>("E14_23"),
-                //        E14_27 = y.Value<string>("E14_27")
+   
+                E14_02 = GetStringValue( e14jobj, "E14_02"),
+                E14_03 = GetStringValue( e14jobj, "E14_03"),
+                E14_04 = GetStringValue( e14jobj, "E14_04"),
+                E14_05 = GetStringValue(e14jobj, "E14_05"),
+                E14_06 = GetStringValue(e14jobj, "E14_06"),
+                E14_07 = GetStringValue(e14jobj, "E14_07"),
+                E14_08 = GetStringValue(e14jobj, "E14_08"),
+
+                E14_11 = GetStringValue(e14jobj, "E14_11"),
+                E14_15 = GetStringValue(e14jobj, "E14_15"),
+                E14_16 = GetStringValue(e14jobj, "E14_16"),
+                E14_17 = GetStringValue(e14jobj, "E14_17"),
+                E14_27 = GetStringValue(e14jobj, "E14_27"),
+                E14_28 = GetStringValue(e14jobj, "E14_28")
 
             };
         }
