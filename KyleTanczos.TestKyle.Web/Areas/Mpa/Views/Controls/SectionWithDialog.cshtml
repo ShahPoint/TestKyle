@@ -16,7 +16,7 @@
             </div>
         </div>
 
-        @Html.Partial("Controls/Dialog", Model.Dialog )
+        @Html.Partial("~/Areas/Mpa/Views/Controls/Dialog.cshtml", Model.Dialog )
 
         
 
@@ -29,7 +29,7 @@
 
                         @foreach (Ctrl control in Model.Controls)
                         {
-                            @Html.Partial("Controls/" + control.ControlType, control);
+                            @Html.Partial("~/Areas/Mpa/Views/Controls/" + control.ControlType + ".cshtml", control);
                         }
 
                     </div>

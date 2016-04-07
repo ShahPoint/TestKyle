@@ -10,7 +10,7 @@
         {
             if (section.Side == SectionSideEnum.left)
             {
-                @Html.Partial("Controls/" + section.PartialTemplateName, section);
+                @Html.Partial("~/Areas/Mpa/Views/Controls/" + section.PartialTemplateName + ".cshtml", section);
             }
         }
     </div>
@@ -19,7 +19,7 @@
         {
             if (section.Side == SectionSideEnum.right)
             {
-                @Html.Partial("Controls/" + section.PartialTemplateName, section);
+                @Html.Partial("~/Areas/Mpa/Views/Controls/" + section.PartialTemplateName + ".cshtml", section);
             }
         }
 
