@@ -1100,7 +1100,6 @@
     <Content Include="libs\select2-master\dist\js\select2.min.js" />
     <Content Include="libs\select2-master\docs\announcements-4.0.html" />
     <Content Include="libs\select2-master\docs\community.html" />
-    <Content Include="libs\select2-master\docs\dist\.gitkeep" />
     <Content Include="libs\select2-master\docs\examples.html" />
     <Content Include="libs\select2-master\docs\images\logo.png" />
     <Content Include="libs\select2-master\docs\index.html" />
