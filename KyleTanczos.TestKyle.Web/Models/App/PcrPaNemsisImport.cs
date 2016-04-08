@@ -566,7 +566,7 @@ namespace KyleTanczos.TestKyle.Web.Models.App
         
         public string E18_04 { get; set; }
         
-        public string E18_05 { get; set; }
+        public decimal? E18_05 { get; set; }
         public string E18_06 { get; set; }
 
         public string E18_10 { get; set; }

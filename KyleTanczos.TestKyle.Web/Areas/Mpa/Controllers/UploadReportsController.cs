@@ -109,9 +109,15 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 
                     var reportJsonObj2 = reportJsonObj1["Record"];
 
+
+                    NemsisCodeTextLookup lookup = new NemsisCodeTextLookup("Default");
+
+
                     var something435 = reportJsonObj2.Select(
-                        pcrJobj => ObjectifyPcr(pcrJobj)
+                        pcrJobj => ObjectifyPcr(pcrJobj, lookup)
                    );
+
+                    var countsomething435 = something435.Count();
 
                     var aaa = "aaaaa";
 
@@ -125,7 +131,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 
                     //int xmlStringCount = xmlString.Count();
 
-                    //var countsomething435 = something435.Count();
+                    
 
 
 
@@ -574,6 +580,15 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
             return new JProperty(nemsisId, value);
         }
 
+        private decimal? GetDecimalValue(JToken jObj, string propertyName)
+        {
+            string tempIntStr = GetStringValue(jObj, propertyName);
+
+            if (string.IsNullOrEmpty(tempIntStr))
+                return null;
+
+            return decimal.Parse(tempIntStr);
+        }
         private DateTime? GetDateTimeValue(JToken jObj, string propertyName)
         {
             string tempIntStr = GetStringValue(jObj, propertyName);
@@ -623,7 +638,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
         }
 
 
-        private Record ObjectifyPcr(JToken x)
+        private Record ObjectifyPcr(JToken x, NemsisCodeTextLookup lookup)
         {
             var pcr = new Record();
 
@@ -639,8 +654,8 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                     E02_01 = GetStringValue ( x["E02"], ("E02_01") ),
                     E02_02 = GetStringValue ( x["E02"], ("E02_02") ),
                     E02_03 = GetStringValue ( x["E02"], ("E02_03") ),
-                    E02_04 = GetStringValue ( x["E02"], ("E02_04") ),
-                    E02_05 = GetStringValue ( x["E02"], ("E02_05") ),
+                    E02_04 = lookup.NemsisGetText("E02_04", GetStringValue( x["E02"], ("E02_04") ) ) ,
+                    E02_05 = lookup.NemsisGetText("E02_05", GetStringValue ( x["E02"], ("E02_05") ) ),
                     E02_06 = GetArrayValue ( x["E02"], ("E02_06") ),
                     E02_07 = GetArrayValue ( x["E02"], ("E02_07") ),
                     E02_08 = GetArrayValue( x["E02"], ("E02_08")),
@@ -659,8 +674,8 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                        
                 pcr.E03 = new E03()
                 {
-                    E03_01 = GetStringValue( x["E03"], "E03_01"),
-                    E03_02 = GetStringValue( x["E03"], "E03_02")
+                    E03_01 = lookup.NemsisGetText("E03_01", GetStringValue( x["E03"], "E03_01") ),
+                    E03_02 = lookup.NemsisGetText("E03_02", GetStringValue( x["E03"], "E03_02") )
                 };
                        
                 pcr.E04 = (x["E04"].HasValues ?
@@ -906,7 +921,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 
             //Assumes there is always a E06 node, and that the address module is converted to a E06_04_0 by json.net which
             //will not be always the case possibly, might need adjusted once we get better data
-            e18.E18_05 = (e18jobj["E18_05_0"] == null ? "" : GetStringValue(e18jobj["E18_05_0"], "E18_05") );
+            e18.E18_05 = (e18jobj["E18_05_0"] == null ? null : GetDecimalValue(e18jobj["E18_05_0"], "E18_05") );
 
             //Assumes there is always a E18 node, and that the address module is converted to a E18_04_0 by json.net which
             //will not be always the case possibly, might need adjusted once we get better data
@@ -1022,6 +1037,36 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
             public DateTime EndDateRange { get; set; }
             public int TripCount { get; set; }
             public int ByteCount { get; set; }
-        } 
+        }
+
+        public class NemsisCodeTextLookup
+        {
+            public NemsisCodeTextLookup(string state)
+            {
+                using (AppContextDb appContext = new AppContextDb())
+                {
+                    stateOptions = appContext.NemsisDataElements.Where(x => x.State == state).ToList();
+                }
+            }
+
+            private List<NemsisDataElement> stateOptions;
+
+            public string NemsisGetText(string NemsisId, string nemsisValueCode)
+            {
+                if ( string.IsNullOrEmpty( nemsisValueCode ))
+                    return null;
+
+                return stateOptions.First(x => x.FieldNumber == NemsisId && x.OptionCode == nemsisValueCode).OptionText;                
+            }
+
+            public string NemsisGetId(string NemsisId, string nemsisValueText)
+            {
+                if (string.IsNullOrEmpty(nemsisValueText))
+                    return null;
+
+                return stateOptions.First(x => x.FieldNumber == NemsisId && x.OptionCode == nemsisValueText).OptionCode;
+            }
+
+        }
     }
 }
