@@ -233,6 +233,10 @@
     <Compile Include="Migrations\201603251932301_JayTestMigration.Designer.cs">
       <DependentUpon>201603251932301_JayTestMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604110552433_AddFirstCollumnsToUserTable.cs" />
+    <Compile Include="Migrations\201604110552433_AddFirstCollumnsToUserTable.Designer.cs">
+      <DependentUpon>201604110552433_AddFirstCollumnsToUserTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="TestKyleDataModule.cs" />
     <Compile Include="Migrations\Seed\DefaultEditionCreator.cs" />
@@ -339,6 +343,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603251932301_JayTestMigration.resx">
       <DependentUpon>201603251932301_JayTestMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604110552433_AddFirstCollumnsToUserTable.resx">
+      <DependentUpon>201604110552433_AddFirstCollumnsToUserTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
