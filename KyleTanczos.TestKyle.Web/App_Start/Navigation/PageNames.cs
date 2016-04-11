@@ -13,6 +13,7 @@ namespace KyleTanczos.TestKyle.Web.Navigation
                 public const string OrganizationUnits = "Administration.OrganizationUnits";
                 public const string Languages = "Administration.Languages";
                 public const string Stations = "Administration.Stations";
+                public const string ManageUsers = "Administration.ManageUsers";
             }
 
             public static class Host

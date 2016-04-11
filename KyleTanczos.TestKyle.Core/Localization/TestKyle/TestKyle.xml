@@ -333,5 +333,6 @@
     <text name="ImpersonationTokenErrorMessage" value="Impersonation token is invalid or expired!" />
     <text name="NotImpersonatedLoginErrorMessage" value="This is not an impersonated login!" />
     <text name="Stations" value="Stations" />
+    <text name="ManageUsers" value="Manage Users" />
   </texts>
 </localizationDictionary>

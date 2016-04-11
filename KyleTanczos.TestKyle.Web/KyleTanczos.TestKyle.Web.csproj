@@ -318,6 +318,7 @@
     <Content Include="App\host\views\editions\createOrEditModal.js" />
     <Content Include="App\host\views\editions\index.js" />
     <Content Include="App\host\views\tenants\featuresModal.js" />
+    <Content Include="Areas\Mpa\Angular\Controllers\ManageUsersController.js" />
     <Content Include="Areas\Mpa\Angular\Controllers\PcrFormController - Old.js" />
     <Content Include="Areas\Mpa\Angular\Controllers\PcrFormController.js" />
     <Content Include="Areas\Mpa\Angular\Controllers\StationsController.js" />
@@ -2980,6 +2981,7 @@
     <Compile Include="Areas\Mpa\Controllers\AuditLogsController.cs" />
     <Compile Include="Areas\Mpa\Controllers\Common.cs" />
     <Compile Include="Areas\Mpa\Controllers\EditionsController.cs" />
+    <Compile Include="Areas\Mpa\Controllers\ManageUsersController.cs" />
     <Compile Include="Areas\Mpa\Controllers\NemsisTestController.cs" />
     <Compile Include="Areas\Mpa\Controllers\OrganizationUnitsController.cs" />
     <Compile Include="Areas\Mpa\Controllers\PcrFormController.cs" />
@@ -3420,6 +3422,7 @@
     <Content Include="libs\select2-master\src\scss\_multiple.scss" />
     <Content Include="libs\select2-master\src\scss\_single.scss" />
     <Content Include="Areas\Mpa\Views\Stations\Index.cshtml" />
+    <Content Include="Areas\Mpa\Views\ManageUsers\Index.cshtml" />
     <None Include="Properties\PublishProfiles\FileSystem_Release.pubxml" />
     <Content Include="Views\Account\TenantSelection.cshtml" />
     <Content Include="Scripts\version.json" />

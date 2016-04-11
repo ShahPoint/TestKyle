@@ -162,6 +162,15 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Startup
                         icon: "icon-layers",
                         requiredPermissionName: AppPermissions.Pages_Administration_OrganizationUnits
                         )
+
+                    ).AddItem(new MenuItemDefinition(
+                        PageNames.App.Common.ManageUsers,
+                        L("ManageUsers"),
+                        url: "Mpa/ManageUsers",
+                        icon: "icon-layers",
+                        requiredPermissionName: AppPermissions.Pages_Administration_OrganizationUnits
+                        )
+
                     ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.OrganizationUnits,
                         L("OrganizationUnits"),
