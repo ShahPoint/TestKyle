@@ -20,7 +20,63 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
         // GET: Mpa/ManageUsers
         public ActionResult Index()
         {
-            return View();
+            string state = "PA"; // set from user info
+            string agencyToken = "Superior"; // set from user info
+
+            GetPcrFormSelect2Options options = new GetPcrFormSelect2Options(state, agencyToken);
+            ManageUsers model = new ManageUsers();
+            model.Tab = new Tab()
+            {
+                TabTargetName = "ManageUsersTab",
+                Sections = new List<Section>()
+                         {
+                            new Section()
+                            {
+                                ResponsiveWidth = 12,
+                                PartialTemplateName = "SectionWithDialog",
+                                Dialog = new Dialog()
+                                {
+                                        DialogTargetId = "ManageUsers",
+                                        DialogTitle = "ManageUsers",
+                                        NgFormName = "ManageUsers",
+                                        Controls = new List<Ctrl>()
+                                        {
+                                            new TextBox() { DisplayName = "Hidden Item Index Id", NgModel = "forms.ManageUsers.ItemIndex",
+                                                 ResponsiveWidth = 12, ContainerCustomCssClass = "hidden"
+                                                },
+                                            new TextBox() { DisplayName = "UserName", NgModel = "forms.ManageUsers.userName"
+                                            , ResponsiveWidth = 12
+                                                },
+                                            new TextBox() { DisplayName = "State ID", NgModel = "forms.ManageUsers.stateId",
+                                                 ResponsiveWidth = 12
+                                                },
+                                            new TextBox() { DisplayName = "Agency Certification Status", NgModel = "forms.ManageUsers.agencyCertificationStatus",
+                                                 ResponsiveWidth = 12
+                                                },
+                                              new TextBox() { DisplayName = "Active Crew Member?", NgModel = "forms.ManageUsers.isEmt",
+                                                 ResponsiveWidth = 12
+                                                }
+                                        },
+                                            //OnCancelClick = "alert('cancel')",
+                                            //OnSubmitClick = "alert('submit')",
+                                        NgSubmitClick = "AddItemToDatabase('ManageUsers');",
+                                        NgCancelClick = "ClearCloseModal('#ManageUsers, 'ManageUsers');"
+                                },
+                                SectionName = "ManageUsers",
+                                Controls = new List<Ctrl>()
+                                {
+                                    new TableListView() {
+                                        ngListName = "ManageUsers",
+                                        ngFieldNames =  new List<string>() { "userName", "stateId", "agencyCertificationStatus", "isEmt" },
+                                        DisplayNames = new List<string>() { "UserName", "State ID", "Agency Certification Status", "Active Crew"},
+                                        ResponsiveWidth = 12
+                                    }
+                                }
+                            }
+                    }
+
+            };
+            return View(model);
         }
 
         // GET: Mpa/ManageUsers/Details/5

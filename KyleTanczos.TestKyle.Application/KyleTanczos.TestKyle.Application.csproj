@@ -116,9 +116,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Settings\IStationsAppService.cs" />
-    <Compile Include="Settings\IUsersAppService.cs" />
+    <Compile Include="Settings\IManageUsersAppService.cs" />
     <Compile Include="Settings\StationsAppService.cs" />
-    <Compile Include="Settings\UsersAppService.cs" />
+    <Compile Include="Settings\ManageUsersAppService.cs" />
     <Compile Include="TestKyleApplicationModule.cs" />
     <Compile Include="TestKyleAppServiceBase.cs" />
     <Compile Include="AppConsts.cs" />

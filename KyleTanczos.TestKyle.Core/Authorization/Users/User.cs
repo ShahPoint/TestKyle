@@ -11,6 +11,10 @@ namespace KyleTanczos.TestKyle.Authorization.Users
     /// </summary>
     public class User : AbpUser<Tenant, User>
     {
+        public string StateId { get; set; }
+        public string AgencyCertificationStatus { get; set; }
+        public bool IsEmt { get; set; }
+
         public const int MinPlainPasswordLength = 6;
 
         public virtual Guid? ProfilePictureId { get; set; }

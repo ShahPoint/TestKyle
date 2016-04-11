@@ -67,11 +67,27 @@ var Utils = {
     SavePcr(pcr) {
         alert(JSON.stringify(pcr));
         // var stuff = [];
-        abp.services.app.manageUsers.update(pcr.manageUsers, { //override jQuery's ajax parameters
+        abp.services.app.manageUsers.update(pcr.ManageUsers, { //override jQuery's ajax parameters
             timeout: 30000
         }).done(function (msg) {
             alert(JSON.stringify(msg));
             abp.notify.success('successfully created a task!');
+        });
+        //$.ajax({
+        //    url: "/api/services/app/stations/createorupdatestations",
+        //    method: "POST",
+        //    data: { "": stuff }
+        //})
+        // .done(function (msg) {
+        //     alert(JSON.stringify(msg));
+        //     $scope.$apply();
+        // });;
+    },
+    SaveUser(user) {
+        alert(JSON.stringify(user));
+        // var stuff = [];
+        return abp.services.app.manageUsers.update(user, { //override jQuery's ajax parameters
+            timeout: 30000
         });
         //$.ajax({
         //    url: "/api/services/app/stations/createorupdatestations",
@@ -109,11 +125,11 @@ app.controller('myCtrl', function ($scope) {
         //    alert(JSON.stringify(msg));
         //    $scope.$apply();
         //});;
-        abp.services.app.pcr.manageUsers.get({
+        abp.services.app.manageUsers.get({
         }, { //override jQuery's ajax parameters
             timeout: 30000
         }).done(function (msg) {
-            $scope.pcr.pcr.manageUsers = msg;
+            $scope.pcr.ManageUsers = msg;
             $scope.$apply();
             abp.notify.success('successfully created a task!');
         });
@@ -121,8 +137,8 @@ app.controller('myCtrl', function ($scope) {
 
     $scope.SaveCurrentPcr = function () {
 
-        Utils.SavePcr($scope.pcr);
-        $scope.LoadPcrArray();
+        //Utils.SavePcr($scope.pcr);
+        //$scope.LoadPcrArray();
     }
 
 
@@ -137,6 +153,44 @@ app.controller('myCtrl', function ($scope) {
 
 
     function logError(customObject) {
+
+    }
+
+    $scope.AddItemToDatabase = function (listName) {
+        if ($scope.pcr[listName] == null)
+            $scope.pcr[listName] = [];
+
+        var formItem = $scope.pcr.forms[listName];
+
+        var item = JSON.parse(JSON.stringify(formItem));
+
+
+        Utils.SaveUser(item).done(function (result) {
+           
+
+            var formId = formItem.ItemIndex;
+
+            if (formId >= 0) {
+                $scope.pcr[listName].splice(formId, 1, item);
+            }
+            else {
+                $scope.pcr[listName].push(item);
+            }
+
+            if ($scope.pcr.forms[listName].keepOpen != true)
+                CloseModal("#" + listName);
+
+            ClearModal(listName);
+            $scope.$apply();
+            // Code depending on result
+        }).fail(function (msg) {
+            // An error occurred
+            alert(JSON.stringify(msg));
+
+        });
+
+        
+
 
     }
 
@@ -166,6 +220,7 @@ app.controller('myCtrl', function ($scope) {
 
 
     }
+
 
 
 
