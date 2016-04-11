@@ -93,7 +93,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PcrForm\Classes.cs" />
+    <Compile Include="Settings\AgencyInfo.cs" />
+    <Compile Include="Settings\AgencyOption.cs" />
+    <Compile Include="Settings\Hospital.cs" />
+    <Compile Include="Settings\Insurance.cs" />
+    <Compile Include="Settings\Medication.cs" />
+    <Compile Include="Settings\NarrativeGenerator.cs" />
+    <Compile Include="Settings\OtherFacility.cs" />
+    <Compile Include="Settings\Procedure.cs" />
+    <Compile Include="Settings\Protocol.cs" />
     <Compile Include="Settings\Stations.cs" />
+    <Compile Include="Settings\Vehicle.cs" />
     <Compile Include="TestKyleConsts.cs" />
     <Compile Include="TestKyleCoreModule.cs" />
     <Compile Include="TestKyleDomainServiceBase.cs" />

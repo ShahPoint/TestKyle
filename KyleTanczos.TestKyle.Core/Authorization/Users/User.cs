@@ -3,6 +3,7 @@ using Abp.Authorization.Users;
 using Abp.Extensions;
 using Microsoft.AspNet.Identity;
 using KyleTanczos.TestKyle.MultiTenancy;
+using KyleTanczos.TestKyle.Settings;
 
 namespace KyleTanczos.TestKyle.Authorization.Users
 {
@@ -20,7 +21,7 @@ namespace KyleTanczos.TestKyle.Authorization.Users
         public virtual Guid? ProfilePictureId { get; set; }
 
         public virtual bool ShouldChangePasswordOnNextLogin { get; set; }
-        
+       
         /// <summary>
         /// Creates admin <see cref="User"/> for a tenant.
         /// </summary>

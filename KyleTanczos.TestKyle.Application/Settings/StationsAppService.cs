@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Abp.Application.Services.Dto;
+using System.Data.Entity;
 
 namespace KyleTanczos.TestKyle.Settings
 {

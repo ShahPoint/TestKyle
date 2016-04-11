@@ -10,12 +10,11 @@ using System.Threading.Tasks;
 
 namespace KyleTanczos.TestKyle.Settings
 {
-    public class Stations: FullAuditedEntity, IMustHaveOrganizationUnit
+    public class Medication : FullAuditedEntity, IMustHaveOrganizationUnit
     {
         public virtual string OptionsAsJson { get; set; }
         public virtual long OrganizationUnitId { get; set; }
         [JsonIgnore]
         public virtual OrganizationUnit OrganizationUnit { get; set; }
-        
     }
 }

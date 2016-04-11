@@ -237,6 +237,34 @@
     <Compile Include="Migrations\201604110552433_AddFirstCollumnsToUserTable.Designer.cs">
       <DependentUpon>201604110552433_AddFirstCollumnsToUserTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604111907202_AddUserToStations.cs" />
+    <Compile Include="Migrations\201604111907202_AddUserToStations.Designer.cs">
+      <DependentUpon>201604111907202_AddUserToStations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604112011224_Remove-AddUserToStations.cs" />
+    <Compile Include="Migrations\201604112011224_Remove-AddUserToStations.Designer.cs">
+      <DependentUpon>201604112011224_Remove-AddUserToStations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604112019465_Add-Vehicles.cs" />
+    <Compile Include="Migrations\201604112019465_Add-Vehicles.Designer.cs">
+      <DependentUpon>201604112019465_Add-Vehicles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604112021243_Add-Insurance.cs" />
+    <Compile Include="Migrations\201604112021243_Add-Insurance.Designer.cs">
+      <DependentUpon>201604112021243_Add-Insurance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604112029280_Add-AgencyInfos-AgencyOptions-Medications-Procedures-Protocols.cs" />
+    <Compile Include="Migrations\201604112029280_Add-AgencyInfos-AgencyOptions-Medications-Procedures-Protocols.Designer.cs">
+      <DependentUpon>201604112029280_Add-AgencyInfos-AgencyOptions-Medications-Procedures-Protocols.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604112033281_Add-Destinations.cs" />
+    <Compile Include="Migrations\201604112033281_Add-Destinations.Designer.cs">
+      <DependentUpon>201604112033281_Add-Destinations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604112035440_Add-NarrativeGenerators.cs" />
+    <Compile Include="Migrations\201604112035440_Add-NarrativeGenerators.Designer.cs">
+      <DependentUpon>201604112035440_Add-NarrativeGenerators.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="TestKyleDataModule.cs" />
     <Compile Include="Migrations\Seed\DefaultEditionCreator.cs" />
@@ -346,6 +374,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604110552433_AddFirstCollumnsToUserTable.resx">
       <DependentUpon>201604110552433_AddFirstCollumnsToUserTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604111907202_AddUserToStations.resx">
+      <DependentUpon>201604111907202_AddUserToStations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604112011224_Remove-AddUserToStations.resx">
+      <DependentUpon>201604112011224_Remove-AddUserToStations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604112019465_Add-Vehicles.resx">
+      <DependentUpon>201604112019465_Add-Vehicles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604112021243_Add-Insurance.resx">
+      <DependentUpon>201604112021243_Add-Insurance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604112029280_Add-AgencyInfos-AgencyOptions-Medications-Procedures-Protocols.resx">
+      <DependentUpon>201604112029280_Add-AgencyInfos-AgencyOptions-Medications-Procedures-Protocols.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604112033281_Add-Destinations.resx">
+      <DependentUpon>201604112033281_Add-Destinations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604112035440_Add-NarrativeGenerators.resx">
+      <DependentUpon>201604112035440_Add-NarrativeGenerators.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

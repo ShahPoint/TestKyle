@@ -14,7 +14,18 @@ namespace KyleTanczos.TestKyle.EntityFramework
     public class TestKyleDbContext : AbpZeroDbContext<Tenant, Role, User>
     {
         /* Define an IDbSet for each entity of the application */
+        public virtual IDbSet<AgencyInfo> AgencyInfos { get; set; }
+        public virtual IDbSet<AgencyOption> AgencyOptions { get; set; }
+        public virtual IDbSet<Medication> Medications { get; set; }
+        public virtual IDbSet<Procedure> Procedures { get; set; }
+        public virtual IDbSet<Protocol> Protocols { get; set; }
         public virtual IDbSet<Stations> Stations { get; set; }
+        public virtual IDbSet<Vehicle> Vehicles { get; set; }
+        public virtual IDbSet<Hospital> Hospitals { get; set; }
+        public virtual IDbSet<OtherFacility> OtherFacilities { get; set; }
+        public virtual IDbSet<Insurance> Insurances { get; set; }
+
+        public virtual IDbSet<NarrativeGenerator> NarrativeGenerators { get; set; }
         public virtual IDbSet<BinaryObject> BinaryObjects { get; set; }
         public IDbSet<NemsisDataElement> NemsisDataElements { get; set; }
         public IDbSet<Select2OptionsList> Select2OptionsList { get; set; }
