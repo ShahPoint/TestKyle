@@ -334,5 +334,6 @@
     <text name="NotImpersonatedLoginErrorMessage" value="This is not an impersonated login!" />
     <text name="Stations" value="Stations" />
     <text name="ManageUsers" value="Manage Users" />
+    <text name="Medications" value="Medications" />
   </texts>
 </localizationDictionary>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,19 +7,19 @@ using System.Web.Mvc;
 
 namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 {
-    public class Stations
+
+    public class Medications
     {
-        public Stations()
+        public Medications()
         {
             Tab = new Tab();
         }
 
         public Tab Tab { get; set; }
     }
-
-    public class StationsController : Controller
-    {      
-        // GET: Mpa/Stations
+    public class MedicationsController : Controller
+    {
+        // GET: Mpa/Medications
         public ActionResult Index()
         {
             //(Constructor)
@@ -27,11 +28,11 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
             string agencyToken = "Superior"; // set from user info
 
             GetPcrFormSelect2Options options = new GetPcrFormSelect2Options(state, agencyToken);
-            Stations model = new Stations();
+            Medications model = new Medications();
             model.Tab = new Tab()
             {
                 PartialTemplateName = "TabSingleColumn",
-                TabTargetName = "StationsTab",
+                TabTargetName = "MedicationsTab",
                 Sections = new List<Section>()
                          {
                             new Section()
@@ -40,34 +41,34 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                 PartialTemplateName = "SectionWithDialog",
                                 Dialog = new Dialog()
                                 {
-                                        DialogTargetId = "Stations",
-                                        DialogTitle = "Stations",
-                                        NgFormName = "Stations",
+                                        DialogTargetId = "Medications",
+                                        DialogTitle = "Medications",
+                                        NgFormName = "Medications",
                                         Controls = new List<Ctrl>()
                                         {
-                                            new TextBox() { DisplayName = "Hidden Item Index Id", NgModel = "forms.Stations.ItemIndex",
+                                            new TextBox() { DisplayName = "Hidden Item Index Id", NgModel = "forms.Medications.ItemIndex",
                                                  ResponsiveWidth = 12, ContainerCustomCssClass = "hidden"
                                                 },
-                                            new TextBox() { DisplayName = "Name", NgModel = "forms.Stations.name"
+                                            new TextBox() { DisplayName = "Name", NgModel = "forms.Medications.name"
                                             , ResponsiveWidth = 12
                                                 },
-                                            new TextBox() { DisplayName = "Number", NgModel = "forms.Stations.number",
+                                            new TextBox() { DisplayName = "Certification Level", NgModel = "forms.Medications.certificationLevel",
                                                  ResponsiveWidth = 12
                                                 }
 
                                         },
                                             //OnCancelClick = "alert('cancel')",
                                             //OnSubmitClick = "alert('submit')",
-                                        NgSubmitClick = "AddItemToList('Stations');",
-                                        NgCancelClick = "ClearCloseModal('#Stations', 'Stations');"
+                                        NgSubmitClick = "AddItemToList('Medications');",
+                                        NgCancelClick = "ClearCloseModal('#Medications', 'Medications');"
                                 },
-                                SectionName = "Stations",                            
+                                SectionName = "Medications",
                                 Controls = new List<Ctrl>()
                                 {
                                     new TableListView() {
-                                        ngListName = "Stations",
-                                        ngFieldNames =  new List<string>() { "name", "number" },
-                                        DisplayNames = new List<string>() { "Name", "Number" },
+                                        ngListName = "Medications",
+                                        ngFieldNames =  new List<string>() { "name", "certificationLevel" },
+                                        DisplayNames = new List<string>() { "Name", "Certification Level" },
                                         ResponsiveWidth = 12
                                     }
                                 }
@@ -78,19 +79,19 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
             return View(model);
         }
 
-        // GET: Mpa/Stations/Details/5
+        // GET: Mpa/Medications/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Mpa/Stations/Create
+        // GET: Mpa/Medications/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Mpa/Stations/Create
+        // POST: Mpa/Medications/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -106,13 +107,13 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
             }
         }
 
-        // GET: Mpa/Stations/Edit/5
+        // GET: Mpa/Medications/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Mpa/Stations/Edit/5
+        // POST: Mpa/Medications/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -128,13 +129,13 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
             }
         }
 
-        // GET: Mpa/Stations/Delete/5
+        // GET: Mpa/Medications/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Mpa/Stations/Delete/5
+        // POST: Mpa/Medications/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {

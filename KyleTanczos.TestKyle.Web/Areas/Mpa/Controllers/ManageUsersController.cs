@@ -27,6 +27,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
             ManageUsers model = new ManageUsers();
             model.Tab = new Tab()
             {
+                PartialTemplateName = "TabSingleColumn",
                 TabTargetName = "ManageUsersTab",
                 Sections = new List<Section>()
                          {

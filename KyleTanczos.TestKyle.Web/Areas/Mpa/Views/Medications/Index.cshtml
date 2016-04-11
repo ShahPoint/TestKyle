@@ -1,0 +1,14 @@
+﻿@using KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
+@model Medications
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+<div id="mainApp" data-ng-app="myApp" data-ng-controller="myCtrl">
+    @Html.Partial("~/Areas/Mpa/Views/Controls/" + Model.Tab.PartialTemplateName + ".cshtml", Model.Tab)
+
+    <button data-ng-click="SaveCurrentPcr()"> Save me</button>
+</div>
+
+<script src="/api/AbpServiceProxies/GetAll" type="text/javascript"></script>
+<script type="text/javascript" src="~/Areas/Mpa/Angular/Controllers/MedicationsController.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+

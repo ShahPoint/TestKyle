@@ -115,8 +115,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Settings\IMedicationsAppService.cs" />
     <Compile Include="Settings\IStationsAppService.cs" />
     <Compile Include="Settings\IManageUsersAppService.cs" />
+    <Compile Include="Settings\MedicationsAppService.cs" />
     <Compile Include="Settings\StationsAppService.cs" />
     <Compile Include="Settings\ManageUsersAppService.cs" />
     <Compile Include="TestKyleApplicationModule.cs" />

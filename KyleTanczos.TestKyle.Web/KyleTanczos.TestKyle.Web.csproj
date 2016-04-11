@@ -318,6 +318,7 @@
     <Content Include="App\host\views\editions\createOrEditModal.js" />
     <Content Include="App\host\views\editions\index.js" />
     <Content Include="App\host\views\tenants\featuresModal.js" />
+    <Content Include="Areas\Mpa\Angular\Controllers\MedicationsController.js" />
     <Content Include="Areas\Mpa\Angular\Controllers\ManageUsersController.js" />
     <Content Include="Areas\Mpa\Angular\Controllers\PcrFormController - Old.js" />
     <Content Include="Areas\Mpa\Angular\Controllers\PcrFormController.js" />
@@ -3023,6 +3024,7 @@
     <Compile Include="Areas\Mpa\Startup\MpaBundleConfig.cs" />
     <Compile Include="Areas\Mpa\Startup\MpaNavigationProvider.cs" />
     <Compile Include="Areas\Mpa\Views\Controls\Class1.cs" />
+    <Compile Include="Areas\Mpa\Controllers\MedicationsController.cs" />
     <Compile Include="Classes\PatientMedicationList.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApplicationController.cs" />
@@ -3423,6 +3425,7 @@
     <Content Include="libs\select2-master\src\scss\_single.scss" />
     <Content Include="Areas\Mpa\Views\Stations\Index.cshtml" />
     <Content Include="Areas\Mpa\Views\ManageUsers\Index.cshtml" />
+    <Content Include="Areas\Mpa\Views\Medications\Index.cshtml" />
     <None Include="Properties\PublishProfiles\FileSystem_Release.pubxml" />
     <Content Include="Views\Account\TenantSelection.cshtml" />
     <Content Include="Scripts\version.json" />

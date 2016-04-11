@@ -179,6 +179,13 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Startup
                         requiredPermissionName: AppPermissions.Pages_Administration_OrganizationUnits
                         )
                     ).AddItem(new MenuItemDefinition(
+                        PageNames.App.Common.Medications,
+                        L("Medications"),
+                        url: "Mpa/Medications",
+                        icon: "icon-layers",
+                        requiredPermissionName: AppPermissions.Pages_Administration_OrganizationUnits
+                        )
+                    ).AddItem(new MenuItemDefinition(
                         PageNames.App.Common.Roles,
                         L("Roles"),
                         url: "Mpa/Roles",
