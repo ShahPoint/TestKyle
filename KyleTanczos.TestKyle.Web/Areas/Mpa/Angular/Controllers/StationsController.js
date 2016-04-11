@@ -65,14 +65,23 @@ var Utils = {
         return pcrList[offlineId];
     },
     SavePcr(pcr) {
-        if (pcr.offlineId == null)
-            pcr.offlineId = Utils.GetGuid();
-
-        var pcrList = Utils.GetPcrList();
-
-        pcrList[pcr.offlineId] = pcr;
-
-        Utils.SavePcrList(pcrList);
+        alert(JSON.stringify(pcr));
+       // var stuff = [];
+        abp.services.app.stations.update(pcr.Stations, { //override jQuery's ajax parameters
+            timeout: 30000
+        }).done(function (msg) {
+            alert(JSON.stringify(msg));
+            abp.notify.success('successfully created a task!');
+        });
+        //$.ajax({
+        //    url: "/api/services/app/stations/createorupdatestations",
+        //    method: "POST",
+        //    data: { "": stuff }
+        //})
+        // .done(function (msg) {
+        //     alert(JSON.stringify(msg));
+        //     $scope.$apply();
+        // });;
     },
     RemovePcrByOfflineId(offlineId) {
         var pcrList = Utils.GetPcrList();
@@ -88,18 +97,27 @@ var Utils = {
 
 var app = angular.module('myApp', []);
 app.controller('myCtrl', function ($scope) {
-    $scope.firstName = "John";
-    $scope.lastName = "Doe";
+    $scope.pcr = { forms: {} };
+    $scope.pcrArray = [];
 
-    $scope.pcr = { forms: { Immunizations: {} } };
-
-
-    //var medications = GetStorageObject("PatientMedicationList");
-
-    //alert(JSON.stringify( GetStorageObject("PatientMedicationList1") ) ) ;
-    $scope.TestDefaultDispositions = function () {
-        alert(JSON.stringify($scope.pcr.E20));
-    }
+    $(document).ready(function () {
+        //$.ajax({
+        //    url: "/api/services/app/stations/getstations",
+        //    method: "POST"
+        //})
+        //.done(function (msg) {
+        //    alert(JSON.stringify(msg));
+        //    $scope.$apply();
+        //});;
+        abp.services.app.stations.get({
+        }, { //override jQuery's ajax parameters
+            timeout: 30000
+        }).done(function (msg) {
+            $scope.pcr.Stations = msg;
+            $scope.$apply();
+            abp.notify.success('successfully created a task!');
+        });
+    });
 
     $scope.SaveCurrentPcr = function () {
 
@@ -107,28 +125,7 @@ app.controller('myCtrl', function ($scope) {
         $scope.LoadPcrArray();
     }
 
-    $scope.LoadPcrArray = function () {
-
-        var pcrListObject = Utils.GetPcrList();
-
-        $scope.pcrArray = [];
-
-        $.each(pcrListObject, function (index, value) {
-            $scope.pcrArray.push(value);
-        });
-    }
-
-    $scope.LoadPcr = function (index) {
-        $scope.pcr = $scope.pcrArray[index];
-    }
-
-    $scope.DeletePcr = function (index) {
-
-        Utils.RemovePcrByOfflineId($scope.pcrArray[index].offlineId);
-        $scope.LoadPcrArray();
-    }
-
-    $scope.pcrArray = [];
+    
 
 
    

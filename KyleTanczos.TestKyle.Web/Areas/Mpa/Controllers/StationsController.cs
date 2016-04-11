@@ -17,9 +17,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
     }
 
     public class StationsController : Controller
-    {
-        
-
+    {      
         // GET: Mpa/Stations
         public ActionResult Index()
         {
@@ -32,44 +30,44 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
             Stations model = new Stations();
             model.Tab = new Tab()
             {
-                TabTargetName = "PatientTab",
+                TabTargetName = "StationsTab",
                 Sections = new List<Section>()
                          {
                             new Section()
                             {
+                                ResponsiveWidth = 12,
                                 PartialTemplateName = "SectionWithDialog",
-
                                 Dialog = new Dialog()
                                 {
-                                        DialogTargetId = "Immunizations",
-                                        DialogTitle = "Immunizations",
-                                        NgFormName = "Immunizations",
+                                        DialogTargetId = "Stations",
+                                        DialogTitle = "Stations",
+                                        NgFormName = "Stations",
                                         Controls = new List<Ctrl>()
                                         {
-                                            new TextBox() { DisplayName = "Hidden Item Index Id", NgModel = "forms.Immunizations.ItemIndex",
+                                            new TextBox() { DisplayName = "Hidden Item Index Id", NgModel = "forms.Stations.ItemIndex",
                                                  ResponsiveWidth = 12, ContainerCustomCssClass = "hidden"
                                                 },
-                                            new DropDownList() { DisplayName = "Immunization Year", NgModel = "forms.Immunizations.E12_13"
+                                            new TextBox() { DisplayName = "Name", NgModel = "forms.Stations.name"
                                             , ResponsiveWidth = 12
                                                 },
-                                            new DropDownList() { DisplayName = "Immunization Type", NgModel = "forms.Immunizations.E12_12",
-                                                DropDownOptions = options.NemsisSelectOptions("E12_12"), ResponsiveWidth = 12
+                                            new TextBox() { DisplayName = "Number", NgModel = "forms.Stations.number",
+                                                 ResponsiveWidth = 12
                                                 }
 
                                         },
                                             //OnCancelClick = "alert('cancel')",
                                             //OnSubmitClick = "alert('submit')",
-                                            NgSubmitClick = "AddItemToList('Immunizations');",
-                                            NgCancelClick = "ClearCloseModal('#Immunizations', 'Immunizations');"
+                                        NgSubmitClick = "AddItemToList('Stations');",
+                                        NgCancelClick = "ClearCloseModal('#Stations', 'Stations');"
                                 },
-
-                                SectionName = "Immunizations",
+                                SectionName = "Stations",                            
                                 Controls = new List<Ctrl>()
                                 {
                                     new TableListView() {
-                                        ngListName = "Immunizations",
-                                        ngFieldNames =  new List<string>() { "E12_13", "E12_12" },
-                                        DisplayNames = new List<string>() { "Year", "Type" }
+                                        ngListName = "Stations",
+                                        ngFieldNames =  new List<string>() { "name", "number" },
+                                        DisplayNames = new List<string>() { "Name", "Number" },
+                                        ResponsiveWidth = 12
                                     }
                                 }
                             }

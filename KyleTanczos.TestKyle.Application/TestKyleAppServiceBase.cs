@@ -7,6 +7,9 @@ using Abp.Runtime.Session;
 using Microsoft.AspNet.Identity;
 using KyleTanczos.TestKyle.Authorization.Users;
 using KyleTanczos.TestKyle.MultiTenancy;
+using Abp.Organizations;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace KyleTanczos.TestKyle
 {
@@ -19,6 +22,8 @@ namespace KyleTanczos.TestKyle
         public TenantManager TenantManager { get; set; }
 
         public UserManager UserManager { get; set; }
+
+        public OrganizationUnitManager OrganizationUnitManager { get; set; }
 
         protected TestKyleAppServiceBase()
         {
@@ -61,5 +66,21 @@ namespace KyleTanczos.TestKyle
         {
             identityResult.CheckErrors(LocalizationManager);
         }
+
+        protected virtual async Task<OrganizationUnit> GetCurrentOrganizationUnitAsync()
+        {
+            User currentUser = await GetCurrentUserAsync();
+            List<OrganizationUnit> units = await UserManager.GetOrganizationUnitsAsync(currentUser);
+            OrganizationUnit org = units.FirstOrDefault();
+            if (org == null)
+            {
+                throw new ApplicationException("There is no current organization!");
+            }
+            return org;
+        }
+        //protected virtual OrganizationUnit GetCurrentOrganizationUnit()
+        //{
+        //    return OrganizationUnitManager.
+        //}
     }
 }
