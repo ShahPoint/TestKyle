@@ -92,6 +92,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PcrForm\Classes.cs" />
+    <Compile Include="Settings\Stations.cs" />
     <Compile Include="TestKyleConsts.cs" />
     <Compile Include="TestKyleCoreModule.cs" />
     <Compile Include="TestKyleDomainServiceBase.cs" />

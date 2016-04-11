@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace KyleTanczos.TestKyle.Web.Models.App
+namespace KyleTanczos.TestKyle.PcrForm
 {
 
     // this table would be per agency and strings would be 

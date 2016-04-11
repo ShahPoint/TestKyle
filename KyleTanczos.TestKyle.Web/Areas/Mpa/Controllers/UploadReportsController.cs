@@ -1,4 +1,5 @@
 ﻿using KyleTanczos.TestKyle.Web.Controllers;
+using KyleTanczos.TestKyle.PcrForm;
 using KyleTanczos.TestKyle.Web.Models.App;
 using System;
 using System.Collections.Generic;
@@ -15,12 +16,13 @@ using System.Xml.Linq;
 using Microsoft.AspNet.Identity;
 
 using KyleTanczos.TestKyle.Web.Models.App;
+using KyleTanczos.TestKyle.EntityFramework;
 
 namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 {
     public class UploadReportsController : TestKyleControllerBase
     {
-        AppContextDb db = new AppContextDb();
+        TestKyleDbContext db = new TestKyleDbContext();
 
 
 

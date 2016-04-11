@@ -3030,15 +3030,8 @@
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\AboutController.cs" />
-    <Compile Include="Migrations\201602270016466_Initial.cs" />
-    <Compile Include="Migrations\201602270016466_Initial.Designer.cs">
-      <DependentUpon>201602270016466_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account\ImpersonateModel.cs" />
     <Compile Include="Models\Account\TenantSelectionViewModel.cs" />
-    <Compile Include="Models\App\AppContextDb.cs" />
-    <Compile Include="Models\App\Classes.cs" />
     <Compile Include="Models\App\PcrPaNemsisImport.cs" />
     <Compile Include="MultiTenancy\ITenancyNameFinder.cs" />
     <Compile Include="Controllers\LayoutController.cs" />
@@ -3448,11 +3441,6 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201602270016466_Initial.resx">
-      <DependentUpon>201602270016466_Initial.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\KyleTanczos.TestKyle.Application\KyleTanczos.TestKyle.Application.csproj">

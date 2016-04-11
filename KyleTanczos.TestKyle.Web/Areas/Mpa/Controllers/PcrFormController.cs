@@ -1,4 +1,5 @@
 ﻿using KyleTanczos.TestKyle.EntityFramework;
+using KyleTanczos.TestKyle.PcrForm;
 using KyleTanczos.TestKyle.Web.Models.App;
 using System;
 using System.Collections.Generic;
@@ -328,7 +329,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
     {
         public GetPcrFormSelect2Options(string state, string agencyToken )
         {
-            using (AppContextDb appContext = new AppContextDb())
+            using (TestKyleDbContext appContext = new TestKyleDbContext())
             {
                 defaultOptions = appContext.NemsisDataElements.Where(x => x.State == "Default").ToList();
                 stateOptions = appContext.NemsisDataElements.Where(x => x.State == state).ToList();
