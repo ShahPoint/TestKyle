@@ -21,17 +21,25 @@
         }
 
 
-    $.ajax({
-        type: "GET",
-        url: "/api/GetJsLists/PatientMedicationList"
-    }
-
-    ).done(function (PatientMedicationList) {
+        $.ajax({
+            type: "GET",
+            url: "/api/GetJsLists/PatientMedicationList"
+        }).done(function (PatientMedicationList) {
 
         //alert("set meds");
         SetStorageObject("PatientMedicationList", PatientMedicationList);
         //alert(GetStorageObject("PatientMedicationList1"));
-    });
+        });
+
+        $.ajax({
+            type: "POST",
+            url: "/api/services/app/stations/getJsList"
+        }).done(function (stationsList) {
+
+            //alert("set meds");
+            SetStorageObject("StationsList", stationsList);
+            //alert(GetStorageObject("PatientMedicationList1"));
+        });
     </script>
 
 

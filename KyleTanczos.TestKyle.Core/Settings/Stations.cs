@@ -16,6 +16,9 @@ namespace KyleTanczos.TestKyle.Settings
         public virtual long OrganizationUnitId { get; set; }
         [JsonIgnore]
         public virtual OrganizationUnit OrganizationUnit { get; set; }
-        
+        public virtual List<long> ViewedUserId { get; set; }
+        public virtual List<User> ViewedUser { get; set; }
+
+
     }
 }

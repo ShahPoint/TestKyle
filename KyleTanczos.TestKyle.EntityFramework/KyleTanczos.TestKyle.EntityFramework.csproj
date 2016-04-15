@@ -265,6 +265,18 @@
     <Compile Include="Migrations\201604112035440_Add-NarrativeGenerators.Designer.cs">
       <DependentUpon>201604112035440_Add-NarrativeGenerators.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604112242450_AddViewedUserlisttostation.cs" />
+    <Compile Include="Migrations\201604112242450_AddViewedUserlisttostation.Designer.cs">
+      <DependentUpon>201604112242450_AddViewedUserlisttostation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604112246327_remove-AddViewedUserlisttostation.cs" />
+    <Compile Include="Migrations\201604112246327_remove-AddViewedUserlisttostation.Designer.cs">
+      <DependentUpon>201604112246327_remove-AddViewedUserlisttostation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604112247203_AddViewedUserlisttostation2.cs" />
+    <Compile Include="Migrations\201604112247203_AddViewedUserlisttostation2.Designer.cs">
+      <DependentUpon>201604112247203_AddViewedUserlisttostation2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="TestKyleDataModule.cs" />
     <Compile Include="Migrations\Seed\DefaultEditionCreator.cs" />
@@ -395,6 +407,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604112035440_Add-NarrativeGenerators.resx">
       <DependentUpon>201604112035440_Add-NarrativeGenerators.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604112242450_AddViewedUserlisttostation.resx">
+      <DependentUpon>201604112242450_AddViewedUserlisttostation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604112246327_remove-AddViewedUserlisttostation.resx">
+      <DependentUpon>201604112246327_remove-AddViewedUserlisttostation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604112247203_AddViewedUserlisttostation2.resx">
+      <DependentUpon>201604112247203_AddViewedUserlisttostation2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

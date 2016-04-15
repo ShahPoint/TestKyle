@@ -57,6 +57,7 @@ namespace KyleTanczos.TestKyle.Web
 
             //Routes
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            GlobalConfiguration.Configure(WebApiConfig.Register);
 
             //Bundling
             BundleTable.Bundles.IgnoreList.Clear();

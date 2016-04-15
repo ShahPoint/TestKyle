@@ -1,4 +1,5 @@
 ﻿using eCloudPCR2.Classes;
+using KyleTanczos.TestKyle.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,11 +21,20 @@ namespace KyleTanczos.TestKyle.Web.Controllers
 
         public IHttpActionResult GetPcr(string id) // id represents the resource name to retrieve
         {
-            var returnList = new List<string[]>();
+           
+
+                var returnList = new List<string[]>();
 
             switch (id)
             {
                 case "PatientMedicationList":
+                    return Ok(new PatientMedicationList().MedicationList.Select(x => (new Select2Option() { text = x[0], id = x[1] })));
+                case "StationsList":
+                    using (TestKyleDbContext db = new TestKyleDbContext())
+                    {
+                        //db.Stations.Select(x => )
+
+                    }
                     return Ok(new PatientMedicationList().MedicationList.Select(x => (new Select2Option() { text = x[0], id = x[1] })));
             }
 
