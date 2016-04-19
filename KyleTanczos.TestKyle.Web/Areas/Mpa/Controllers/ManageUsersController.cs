@@ -54,9 +54,12 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                             new TextBox() { DisplayName = "Agency Certification Status", NgModel = "forms.ManageUsers.agencyCertificationStatus",
                                                  ResponsiveWidth = 12
                                                 },
-                                              new TextBox() { DisplayName = "Active Crew Member?", NgModel = "forms.ManageUsers.isEmt",
-                                                 ResponsiveWidth = 12
-                                                }
+                                            new CheckBox() { DisplayName = "Active Crew Member?", NgModel = "forms.ManageUsers.isEmt",
+                                                ResponsiveWidth = 12
+                                            },
+                                            new TextBox() { DisplayName = "Email Address", NgModel = "forms.ManageUsers.emailAddress",
+                                                ResponsiveWidth = 12
+                                            }
                                         },
                                             //OnCancelClick = "alert('cancel')",
                                             //OnSubmitClick = "alert('submit')",

@@ -3426,6 +3426,7 @@
     <Content Include="Areas\Mpa\Views\Stations\Index.cshtml" />
     <Content Include="Areas\Mpa\Views\ManageUsers\Index.cshtml" />
     <Content Include="Areas\Mpa\Views\Medications\Index.cshtml" />
+    <Content Include="Areas\Mpa\Views\Controls\Checkbox.cshtml" />
     <None Include="Properties\PublishProfiles\FileSystem_Release.pubxml" />
     <Content Include="Views\Account\TenantSelection.cshtml" />
     <Content Include="Scripts\version.json" />

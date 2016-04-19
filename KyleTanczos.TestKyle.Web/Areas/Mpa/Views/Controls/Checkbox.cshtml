@@ -1,0 +1,17 @@
+﻿@using KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
+
+@model KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers.Ctrl
+
+<div class="checkbox @Model.ContainerCustomCssClass col-xs-@Model.ResponsiveWidth">
+    <input id="@Model.ClientId" class="check @Model.ControlCustomCssClass" type="checkbox" value="true" @Model.CustomAttributes>
+    <label for="@Model.ClientId">
+        <span class="inc"></span>
+        <span class="check"></span>
+        <span class="box"></span>
+        @if (!string.IsNullOrEmpty(Model.DisplayName))
+            {
+            <label class="control-label">@Model.DisplayName </label>
+        }
+        @*@L("SendActivationEmail")*@
+    </label>
+</div>

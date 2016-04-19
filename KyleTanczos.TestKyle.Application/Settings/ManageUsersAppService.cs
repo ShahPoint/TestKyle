@@ -47,8 +47,8 @@ namespace KyleTanczos.TestKyle.Settings
                             IsEmt = user.IsEmt
                         };
 
-            var query = from announcements in db.announcements where announcements.id NOT IN 
-                        (select announcement_id in db.annoncemnts_users where annoncemnts_users.userid == current_id)                     
+            //var query = from announcements in db.announcements where announcements.id NOT IN 
+            //            (select announcement_id in db.annoncemnts_users where annoncemnts_users.userid == current_id)                     
 
 
             var users = await query.ToListAsync();

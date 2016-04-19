@@ -253,6 +253,14 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
         }
     }
 
+    public class CheckBox : Ctrl
+    {
+        public CheckBox()
+        {
+            ControlType = ControlTypeEnum.CheckBox;
+        }
+    }
+
     public class Select2 : Ctrl
     {
         public Select2()
@@ -323,7 +331,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
     }
 
                                  
-    public enum ControlTypeEnum { PatientMeds, MileageBox, TextBox, DropDownList, Select2, Select2Single, TextArea, Select2Many, AddressPicker, Select2TagsSingle, Select2TagsMany, TableListView, TimePicker }
+    public enum ControlTypeEnum { PatientMeds, MileageBox, TextBox, DropDownList, Select2, Select2Single, TextArea, Select2Many, AddressPicker, Select2TagsSingle, Select2TagsMany, TableListView, TimePicker, CheckBox }
 
     public class GetPcrFormSelect2Options
     {
