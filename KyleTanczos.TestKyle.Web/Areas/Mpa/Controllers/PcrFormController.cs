@@ -293,7 +293,18 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 
         public int ResponsiveWidth { get; set; }
         public string PlaceHolder { get; set; }
-        public string ClientId { get; set; }
+
+        private string _ClientId;
+        public string ClientId
+        {
+            get
+            {
+                return (!string.IsNullOrEmpty(_ClientId) ? _ClientId
+                    : (!string.IsNullOrEmpty(_NgModel) ? _NgModel.Replace(".", "") : "" ));
+            }
+            set { _ClientId = value; }
+        }
+
         private string _NgModel;
        
         public string NgModel
@@ -331,7 +342,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
     }
 
                                  
-    public enum ControlTypeEnum { PatientMeds, MileageBox, TextBox, DropDownList, Select2, Select2Single, TextArea, Select2Many, AddressPicker, Select2TagsSingle, Select2TagsMany, TableListView, TimePicker, CheckBox }
+    public enum ControlTypeEnum { PatientMeds, MileageBox, TextBox, DropDownList, Select2, Select2Single, TextArea, Select2Many, AddressPicker, Select2TagsSingle, Select2TagsMany, TableListView, TimePicker, CheckBox, Password }
 
     public class GetPcrFormSelect2Options
     {

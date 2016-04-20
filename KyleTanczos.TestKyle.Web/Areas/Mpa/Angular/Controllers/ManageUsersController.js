@@ -157,6 +157,7 @@ app.controller('myCtrl', function ($scope) {
     }
 
     $scope.AddItemToDatabase = function (listName) {
+        alert("save");
         if ($scope.pcr[listName] == null)
             $scope.pcr[listName] = [];
 

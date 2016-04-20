@@ -47,19 +47,42 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
                                                 },
                                             new TextBox() { DisplayName = "UserName", NgModel = "forms.ManageUsers.userName"
                                             , ResponsiveWidth = 12
-                                                },
+                                            },
+                                             new TextBox() { DisplayName = "First Name", NgModel = "forms.ManageUsers.firstName"
+                                            , ResponsiveWidth = 12
+                                            },
+                                              new TextBox() { DisplayName = "Last Name", NgModel = "forms.ManageUsers.lastName"
+                                            , ResponsiveWidth = 12
+                                            },
                                             new TextBox() { DisplayName = "State ID", NgModel = "forms.ManageUsers.stateId",
                                                  ResponsiveWidth = 12
                                                 },
                                             new TextBox() { DisplayName = "Agency Certification Status", NgModel = "forms.ManageUsers.agencyCertificationStatus",
                                                  ResponsiveWidth = 12
                                                 },
-                                            new CheckBox() { DisplayName = "Active Crew Member?", NgModel = "forms.ManageUsers.isEmt",
-                                                ResponsiveWidth = 12
-                                            },
+                                            new CheckBox() { DisplayName = "Active Crew Member?", NgModel = "forms.ManageUsers.isEmt", ResponsiveWidth = 12
+                                               },
                                             new TextBox() { DisplayName = "Email Address", NgModel = "forms.ManageUsers.emailAddress",
                                                 ResponsiveWidth = 12
-                                            }
+                                            },
+                                             new TextBox() { PlaceHolder = "Password", NgModel = "forms.ManageUsers.password",
+                                                 ResponsiveWidth = 12//, ControlType = ControlTypeEnum.Password
+                                                },
+                                            new TextBox() { PlaceHolder = "Password (repeat)", NgModel = "forms.ManageUsers.confimPassword",
+                                                 ResponsiveWidth = 12//, ControlType = ControlTypeEnum.Password
+                                                },
+                                            new CheckBox() { DisplayName = "Set Random Password", NgModel = "forms.ManageUsers.setRandomPassword",
+                                                ResponsiveWidth = 12
+                                            },
+                                            new CheckBox() { DisplayName = "Should Change Password Next Login", NgModel = "forms.ManageUsers.shouldChangePassword",
+                                                ResponsiveWidth = 12
+                                            },
+                                            new CheckBox() { DisplayName = "Send Activation Email.", NgModel = "forms.ManageUsers.sendActivationEmail",
+                                                ResponsiveWidth = 12
+                                            },
+                                            new CheckBox() { DisplayName = "Active", NgModel = "forms.ManageUsers.active",
+                                                ResponsiveWidth = 12
+                                            },
                                         },
                                             //OnCancelClick = "alert('cancel')",
                                             //OnSubmitClick = "alert('submit')",

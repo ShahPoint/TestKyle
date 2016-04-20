@@ -2,16 +2,20 @@
 
 @model KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers.Ctrl
 
-<div class="checkbox @Model.ContainerCustomCssClass col-xs-@Model.ResponsiveWidth">
-    <input id="@Model.ClientId" class="check @Model.ControlCustomCssClass" type="checkbox" value="true" @Model.CustomAttributes>
-    <label for="@Model.ClientId">
-        <span class="inc"></span>
-        <span class="check"></span>
-        <span class="box"></span>
-        @if (!string.IsNullOrEmpty(Model.DisplayName))
+<div class="md-checkbox-list col-xs-@Model.ResponsiveWidth">
+@*<div class="col-xs-@Model.ResponsiveWidth">*@
+        <div class="md-checkbox @Model.ContainerCustomCssClass">
+        @*<div class="@Model.ContainerCustomCssClass">*@
+            <input id="@Model.ClientId" class="md-check @Model.ControlCustomCssClass" type="checkbox" value="true" @Model.CustomAttributes @Model.NgModel>
+            <label for="@Model.ClientId">
+                <span class="inc"></span>
+                <span class="check"></span>
+                <span class="box"></span>
+                @if (!string.IsNullOrEmpty(Model.DisplayName))
             {
-            <label class="control-label">@Model.DisplayName </label>
-        }
-        @*@L("SendActivationEmail")*@
-    </label>
-</div>
+                    <label class="control-label">@Model.DisplayName </label>
+                }
+                @*@L("SendActivationEmail")*@
+            </label>
+        </div>
+    </div>
