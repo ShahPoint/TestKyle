@@ -10,9 +10,15 @@ using KyleTanczos.TestKyle.MultiTenancy;
 using Abp.Organizations;
 using System.Collections.Generic;
 using System.Linq;
+using KyleTanczos.TestKyle.PcrForm;
+using Abp.Domain.Repositories;
 
 namespace KyleTanczos.TestKyle
 {
+    //public class SettingsManager
+    //{
+    //    private readonly IRepository<Select2OptionsList> tenantRepository
+    //}
     /// <summary>
     /// All application services in this application is derived from this class.
     /// We can add common application service methods here.
@@ -25,6 +31,7 @@ namespace KyleTanczos.TestKyle
 
         public OrganizationUnitManager OrganizationUnitManager { get; set; }
 
+        //public GetConfigurationOptions GetConfigurationOptions { get; set; }
         protected TestKyleAppServiceBase()
         {
             LocalizationSourceName = TestKyleConsts.LocalizationSourceName;
@@ -78,6 +85,17 @@ namespace KyleTanczos.TestKyle
             }
             return org;
         }
+        
+        protected virtual List<T> GetConfigurationOptions<T>(string NemsisId)
+        {
+
+            //using (TestKyleDbContext db = new TestKyleDbContext())
+            //{
+
+            //}
+                return new List<T>();
+        }
+        
         //protected virtual OrganizationUnit GetCurrentOrganizationUnit()
         //{
         //    return OrganizationUnitManager.

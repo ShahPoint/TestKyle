@@ -15,6 +15,28 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 
         public Tab Tab { get; set; }
     }
+
+    public class ConfigurationPage
+    {
+        public ConfigurationPage()
+        {
+            Tab = new Tab();
+            Validations = new List<ValidationRule>();           
+        }
+
+        public Tab Tab { get; set; }
+        public List<ValidationRule> Validations { get; set; }
+    }
+
+    public class ValidationRule
+    {
+        public string ControlId { get; set; }
+        public ValidationTypeEnum Type { get; set; }
+        public string Value { get; set; }
+    }
+
+    public enum ValidationTypeEnum { Required, MaxSize, MinSize}
+
     public class ManageUsersController : Controller
     {
         // GET: Mpa/ManageUsers
@@ -24,7 +46,7 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
             string agencyToken = "Superior"; // set from user info
 
             GetPcrFormSelect2Options options = new GetPcrFormSelect2Options(state, agencyToken);
-            ManageUsers model = new ManageUsers();
+            ConfigurationPage model = new ConfigurationPage();
             model.Tab = new Tab()
             {
                 PartialTemplateName = "TabSingleColumn",

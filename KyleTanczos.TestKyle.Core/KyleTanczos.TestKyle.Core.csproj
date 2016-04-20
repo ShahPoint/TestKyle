@@ -102,6 +102,7 @@
     <Compile Include="Settings\OtherFacility.cs" />
     <Compile Include="Settings\Procedure.cs" />
     <Compile Include="Settings\Protocol.cs" />
+    <Compile Include="Settings\SettingsManager.cs" />
     <Compile Include="Settings\Stations.cs" />
     <Compile Include="Settings\Vehicle.cs" />
     <Compile Include="TestKyleConsts.cs" />

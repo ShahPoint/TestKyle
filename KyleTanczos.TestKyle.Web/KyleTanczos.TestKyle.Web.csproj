@@ -318,6 +318,7 @@
     <Content Include="App\host\views\editions\createOrEditModal.js" />
     <Content Include="App\host\views\editions\index.js" />
     <Content Include="App\host\views\tenants\featuresModal.js" />
+    <Content Include="Areas\Mpa\Angular\Controllers\ConfigurePageController.js" />
     <Content Include="Areas\Mpa\Angular\Controllers\MedicationsController.js" />
     <Content Include="Areas\Mpa\Angular\Controllers\ManageUsersController.js" />
     <Content Include="Areas\Mpa\Angular\Controllers\PcrFormController - Old.js" />

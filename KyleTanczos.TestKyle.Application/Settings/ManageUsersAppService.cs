@@ -122,8 +122,8 @@ namespace KyleTanczos.TestKyle.Settings
             //user.Roles = new Collection<UserRole>();
             //foreach (var roleName in input.AssignedRoleNames)
             //{
-                var role = await _roleManager.GetRoleByNameAsync("Admin");
-                user.Roles.Add(new UserRole { RoleId = role.Id });
+            var role = await _roleManager.GetRoleByNameAsync("Admin");
+            user.Roles.Add(new UserRole { RoleId = role.Id });
             //}
 
             var result = await UserManager.CreateAsync(user);
