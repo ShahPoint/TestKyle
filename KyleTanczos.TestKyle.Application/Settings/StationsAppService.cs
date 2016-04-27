@@ -21,48 +21,30 @@ namespace KyleTanczos.TestKyle.Settings
     }
 
     public class StationsAppService : TestKyleAppServiceBase, IStationsAppService
-    {
-        private readonly IRepository<Stations> _stationsRepository;
+    {       
+        private readonly ISettingsManager _settingsManager;
 
-        public StationsAppService(IRepository<Stations> stationsRepository)
+        public StationsAppService(ISettingsManager settingsManager)
         {
-            _stationsRepository = stationsRepository;
+            _settingsManager = settingsManager;
         }
 
-        public async Task<List<StationsDto>> Get()
+        public List<StationsDto> Get()
         {
-            OrganizationUnit org = await GetCurrentOrganizationUnitAsync();
-            Stations stations = _stationsRepository.GetAll().FirstOrDefault(x => x.OrganizationUnitId == org.Id);
-            List<StationsDto> stationsList = new List<StationsDto>() { };
-            
+            //OrganizationUnit org = await GetCurrentOrganizationUnitAsync();
+            //Stations stations = _stationsRepository.GetAll().FirstOrDefault(x => x.OrganizationUnitId == org.Id);
+            //List<StationsDto> stationsList = new List<StationsDto>() { };
 
-            if (stations != null)
-            {
-                stationsList = JsonConvert.DeserializeObject<List<StationsDto>>(stations.OptionsAsJson);
-            }
-
-            return stationsList;
+            var stations = _settingsManager.GetSettingsOptions<StationsDto>("D05");    
+            return stations;
         }
 
 
         public async Task<List<StationsDto>> Update(List<StationsDto> stationsDto)
         {
-            OrganizationUnit org = await GetCurrentOrganizationUnitAsync();
-            Stations stations = _stationsRepository.GetAll().FirstOrDefault(x => x.OrganizationUnitId == org.Id);
 
-            string stationsAsJson = JsonConvert.SerializeObject(stationsDto);
-
-            if (stations != null)
-            {
-                stations.OptionsAsJson = stationsAsJson;
-                stations = await _stationsRepository.UpdateAsync(stations);
-            }
-            else
-            {
-                stations = new Stations() { OptionsAsJson = stationsAsJson, OrganizationUnitId = org.Id };
-                stations = await _stationsRepository.InsertAsync(stations);
-            }
-            return stationsDto;
+           stationsDto =  await _settingsManager.SetSettingsOptions<List<StationsDto>>(stationsDto, "D05");
+           return stationsDto;
         }
     }
 }
