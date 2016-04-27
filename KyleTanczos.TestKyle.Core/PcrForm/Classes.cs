@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Abp.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -24,7 +25,7 @@ namespace KyleTanczos.TestKyle.PcrForm
         public string AgencyDemographic { get; set; }
     }
 
-    public class NemsisDataElement
+    public class NemsisDataElement: Entity
     {
         public NemsisDataElement()
         {
@@ -41,9 +42,8 @@ namespace KyleTanczos.TestKyle.PcrForm
         bool Active { get; set; }
     }
 
-    public class Select2OptionsList
+    public class Select2OptionsList: Entity
     {
-        public int Id { get; set; }
         public string ControlName { get; set; }
         public string oldJsListName { get; set; }
         public string Association { get; set; } // Default, 2 digit state, or orgToken
@@ -52,6 +52,11 @@ namespace KyleTanczos.TestKyle.PcrForm
         public bool Active { get; set; }
     }
 
+    public class Select2Option
+    {
+        public string id { get; set; }
+        public string text { get; set; }
+    }
 
     public class UploadedFile
     {
