@@ -323,7 +323,6 @@
     <Content Include="Areas\Mpa\Angular\Controllers\ManageUsersController.js" />
     <Content Include="Areas\Mpa\Angular\Controllers\PcrFormController - Old.js" />
     <Content Include="Areas\Mpa\Angular\Controllers\PcrFormController.js" />
-    <Content Include="Areas\Mpa\Angular\Controllers\StationsController.js" />
     <Content Include="Areas\Mpa\Common\Scripts\jquery-validation-custom.js" />
     <Content Include="Areas\Mpa\Views\AuditLogs\index.css">
       <DependentUpon>index.less</DependentUpon>
@@ -2989,6 +2988,7 @@
     <Compile Include="Areas\Mpa\Controllers\PcrFormController.cs" />
     <Compile Include="Areas\Mpa\Controllers\StationsController.cs" />
     <Compile Include="Areas\Mpa\Controllers\UploadReportsController.cs" />
+    <Compile Include="Areas\Mpa\Controllers\VehiclesController.cs" />
     <Compile Include="Areas\Mpa\Models\Languages\EditTextModalViewModel.cs" />
     <Compile Include="Areas\Mpa\Controllers\LanguagesController.cs" />
     <Compile Include="Areas\Mpa\Controllers\ProfileController.cs" />
@@ -3428,6 +3428,7 @@
     <Content Include="Areas\Mpa\Views\ManageUsers\Index.cshtml" />
     <Content Include="Areas\Mpa\Views\Medications\Index.cshtml" />
     <Content Include="Areas\Mpa\Views\Controls\Checkbox.cshtml" />
+    <Content Include="Areas\Mpa\Views\Vehicles\Index.cshtml" />
     <None Include="Properties\PublishProfiles\FileSystem_Release.pubxml" />
     <Content Include="Views\Account\TenantSelection.cshtml" />
     <Content Include="Scripts\version.json" />

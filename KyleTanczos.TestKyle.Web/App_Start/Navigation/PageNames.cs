@@ -15,6 +15,7 @@ namespace KyleTanczos.TestKyle.Web.Navigation
                 public const string Stations = "Administration.Stations";
                 public const string ManageUsers = "Administration.ManageUsers";
                 public const string Medications = "Administration.Medications";
+                public const string Vehicles = "Administration.Vehicles";
             }
 
             public static class Host
