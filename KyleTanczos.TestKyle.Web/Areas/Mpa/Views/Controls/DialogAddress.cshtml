@@ -15,7 +15,7 @@
                     <div class="form-body">
                         @foreach (Ctrl control in Model.Controls)
                         {
-                            @Html.Partial("Controls/" + control.ControlType, control);
+                            @Html.Partial("~/Areas/Mpa/Views/Controls/" + control.ControlType + ".cshtml", control);
                         }
 
                         <div class="col-xs-12 minimalPaddingImportant">
