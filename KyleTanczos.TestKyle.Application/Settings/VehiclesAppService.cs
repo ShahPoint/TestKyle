@@ -32,7 +32,7 @@ namespace KyleTanczos.TestKyle.Settings
 
         public List<VehiclesDto> Get()
         {
-            var vehicles = _settingsManager.GetSettingsOptions<VehiclesDto>("D06");
+            var vehicles = _settingsManager.GetSettingsOptions<List<VehiclesDto>>("D06");
             return vehicles;
         }
 

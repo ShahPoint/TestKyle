@@ -24,34 +24,34 @@ namespace KyleTanczos.TestKyle.Settings
             _nemsisDataElementRepository = nemsisDataElementRepository;
         }
 
-        public List<T> GetSettingsOptions<T>(string NemsisElement)
+        public T GetSettingsOptions<T>(string NemsisElement)
         {
 
             //try
             //{
                 //First check the custom options for any custom options created by the org
-                var agencyCustomOptions = _select2OptionsListRepository.GetAll().FirstOrDefault(x => x.Association == "1" && x.ControlName == NemsisElement && x.Active == true);
+                var agencyCustomOptions = _select2OptionsListRepository.GetAll().FirstOrDefault(x => x.Association == "1" && x.ControlName == NemsisElement);
                 if (agencyCustomOptions != null)
                 {
                     var optionsAsJson = agencyCustomOptions.OptionsAsJson;
-                    return JsonConvert.DeserializeObject<List<T>>(optionsAsJson);
+                    return JsonConvert.DeserializeObject<T>(optionsAsJson);
                 }
 
                 //Then check if the state has options 
-                var stateCustomOptions = _nemsisDataElementRepository.GetAll().Where(x => x.FieldNumber == NemsisElement && x.State == "PA");
-                if (stateCustomOptions != null)
-                {
-                    return stateCustomOptions.Select(x => new Select2Option() { id = x.OptionText, text = x.OptionText }).ToList() as List<T>;
-                }
+                //var stateCustomOptions = _nemsisDataElementRepository.GetAll().Where(x => x.FieldNumber == NemsisElement && x.State == "PA");
+                //if (stateCustomOptions != null)
+                //{
+                //    return stateCustomOptions.Select(x => new Select2Option() { id = x.OptionText, text = x.OptionText }).ToList() as List<T>;
+                //}
 
-                //Else return the default values
-                var defaultCustomOptions = _nemsisDataElementRepository.GetAll().Where(x => x.FieldNumber == NemsisElement && x.State == "DEFAULT");
-                if (defaultCustomOptions != null)
-                {
-                    return defaultCustomOptions.Select(x => new Select2Option() { id = x.OptionText, text = x.OptionText }).ToList() as List<T>;
-                }
+                ////Else return the default values
+                //var defaultCustomOptions = _nemsisDataElementRepository.GetAll().Where(x => x.FieldNumber == NemsisElement && x.State == "DEFAULT");
+                //if (defaultCustomOptions != null)
+                //{
+                //    return defaultCustomOptions.Select(x => new Select2Option() { id = x.OptionText, text = x.OptionText }).ToList() as List<T>;
+                //}
 
-                return new List<T>();
+                return default(T);
             //}
             //catch (Exception ex)
             //{
@@ -92,7 +92,7 @@ namespace KyleTanczos.TestKyle.Settings
 
     public interface ISettingsManager: IDomainService
     {
-        List<T> GetSettingsOptions<T>(string NemsisElement);
+        T GetSettingsOptions<T>(string NemsisElement);
         Task<T> SetSettingsOptions<T>(T SettingsOption, string NemsisElement);
     }
 }

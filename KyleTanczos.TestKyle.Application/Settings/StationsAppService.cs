@@ -35,7 +35,7 @@ namespace KyleTanczos.TestKyle.Settings
             //Stations stations = _stationsRepository.GetAll().FirstOrDefault(x => x.OrganizationUnitId == org.Id);
             //List<StationsDto> stationsList = new List<StationsDto>() { };
 
-            var stations = _settingsManager.GetSettingsOptions<StationsDto>("D05");    
+            var stations = _settingsManager.GetSettingsOptions<List<StationsDto>>("D05");    
             return stations;
         }
 
