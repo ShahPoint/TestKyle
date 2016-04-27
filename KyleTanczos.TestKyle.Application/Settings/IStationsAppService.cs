@@ -13,7 +13,7 @@ namespace KyleTanczos.TestKyle.Settings
     [DontWrapResult]
     public interface IStationsAppService: IApplicationService
     {
-        Task<List<StationsDto>> Get();
+        List<StationsDto> Get();
 
         //Task<List<StationsDto>> CreateOrUpdateStations(List<StationsDto> stationsDto);
         Task<List<StationsDto>> Update(List<StationsDto> stationsDto);
