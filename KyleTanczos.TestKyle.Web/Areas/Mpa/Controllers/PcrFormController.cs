@@ -334,13 +334,6 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
             return returnOptions;
         }
     }
-
-    public class Select2Option
-    {
-        public string id { get; set; }
-        public string text { get; set; }
-    }
-
                                  
     public enum ControlTypeEnum { PatientMeds, MileageBox, TextBox, DropDownList, Select2, Select2Single, TextArea, Select2Many, AddressPicker, Select2TagsSingle, Select2TagsMany, TableListView, TimePicker, CheckBox, Password }
 
