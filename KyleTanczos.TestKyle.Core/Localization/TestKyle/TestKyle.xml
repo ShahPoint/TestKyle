@@ -336,5 +336,6 @@
     <text name="ManageUsers" value="Manage Users" />
     <text name="Medications" value="Medications" />
     <text name="Vehicles" value="Vehicles" />
+    <text name="AgencyInfo" value="Agency Info" />
   </texts>
 </localizationDictionary>

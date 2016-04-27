@@ -115,6 +115,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Settings\AgencyInfoAppService.cs" />
+    <Compile Include="Settings\IAgencyInfoAppService.cs" />
     <Compile Include="Settings\IMedicationsAppService.cs" />
     <Compile Include="Settings\IStationsAppService.cs" />
     <Compile Include="Settings\IManageUsersAppService.cs" />

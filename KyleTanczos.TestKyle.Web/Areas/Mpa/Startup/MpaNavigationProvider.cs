@@ -170,6 +170,13 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Startup
                         requiredPermissionName: AppPermissions.Pages_Administration_OrganizationUnits
                         )
 
+                    ).AddItem(new MenuItemDefinition(
+                        PageNames.App.Common.AgencyInfo,
+                        L("AgencyInfo"),
+                        url: "Mpa/AgencyInfo",
+                        icon: "icon-layers",
+                        requiredPermissionName: AppPermissions.Pages_Administration_OrganizationUnits
+                        )
                     )
                     .AddItem(new MenuItemDefinition(
                         PageNames.App.Common.ManageUsers,

@@ -2978,6 +2978,7 @@
     <Compile Include="App_Start\Navigation\PageNames.cs" />
     <Compile Include="App_Start\Routing\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
+    <Compile Include="Areas\Mpa\Controllers\AgencyInfoController.cs" />
     <Compile Include="Areas\Mpa\Controllers\AppController.cs" />
     <Compile Include="Areas\Mpa\Controllers\AuditLogsController.cs" />
     <Compile Include="Areas\Mpa\Controllers\Common.cs" />
@@ -3429,6 +3430,7 @@
     <Content Include="Areas\Mpa\Views\Medications\Index.cshtml" />
     <Content Include="Areas\Mpa\Views\Controls\Checkbox.cshtml" />
     <Content Include="Areas\Mpa\Views\Vehicles\Index.cshtml" />
+    <Content Include="Areas\Mpa\Views\AgencyInfo\Index.cshtml" />
     <None Include="Properties\PublishProfiles\FileSystem_Release.pubxml" />
     <Content Include="Views\Account\TenantSelection.cshtml" />
     <Content Include="Scripts\version.json" />
