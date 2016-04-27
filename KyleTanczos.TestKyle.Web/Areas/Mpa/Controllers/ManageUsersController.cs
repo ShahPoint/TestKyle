@@ -23,7 +23,8 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
             Tab = new Tab();
             Validations = new List<ValidationRule>();           
         }
-
+        public string WebServiceName { get; set; }
+        public string ConfigurationName { get; set; }
         public Tab Tab { get; set; }
         public List<ValidationRule> Validations { get; set; }
     }
@@ -47,6 +48,9 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
 
             GetPcrFormSelect2Options options = new GetPcrFormSelect2Options(state, agencyToken);
             ConfigurationPage model = new ConfigurationPage();
+            model.WebServiceName = "manageUsers";
+            model.ConfigurationName = "ManageUsers";
+
             model.Tab = new Tab()
             {
                 PartialTemplateName = "TabSingleColumn",

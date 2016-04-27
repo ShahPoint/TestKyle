@@ -27,7 +27,9 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
             string agencyToken = "Superior"; // set from user info
 
             GetPcrFormSelect2Options options = new GetPcrFormSelect2Options(state, agencyToken);
-            Stations model = new Stations();
+            ConfigurationPage model = new ConfigurationPage();
+            model.WebServiceName = "stations";
+            model.ConfigurationName = "Stations";
             model.Tab = new Tab()
             {
                 PartialTemplateName = "TabSingleColumn",

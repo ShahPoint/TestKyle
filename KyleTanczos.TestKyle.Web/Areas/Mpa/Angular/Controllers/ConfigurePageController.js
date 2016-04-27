@@ -67,7 +67,7 @@ var Utils = {
     SavePcr(pcr) {
         alert(JSON.stringify(pcr));
         // var stuff = [];
-        abp.services.app.manageUsers.update(pcr.ManageUsers, { //override jQuery's ajax parameters
+        abp.services.app[webServiceName].update(pcr[configurationName], { //override jQuery's ajax parameters
             timeout: 30000
         }).done(function (msg) {
             alert(JSON.stringify(msg));
@@ -86,7 +86,7 @@ var Utils = {
     SaveUser(user) {
         alert(JSON.stringify(user));
         // var stuff = [];
-        return abp.services.app.manageUsers.update(user, { //override jQuery's ajax parameters
+        return abp.services.app[webServiceName].update(user, { //override jQuery's ajax parameters
             timeout: 30000
         });
         //$.ajax({
@@ -125,11 +125,11 @@ app.controller('myCtrl', function ($scope) {
         //    alert(JSON.stringify(msg));
         //    $scope.$apply();
         //});;
-        abp.services.app.manageUsers.get({
+        abp.services.app[webServiceName].get({
         }, { //override jQuery's ajax parameters
             timeout: 30000
         }).done(function (msg) {
-            $scope.pcr.ManageUsers = msg;
+            $scope.pcr[configurationName] = msg;
             $scope.$apply();
             abp.notify.success('successfully created a task!');
         });
@@ -137,7 +137,7 @@ app.controller('myCtrl', function ($scope) {
 
     $scope.SaveCurrentPcr = function () {
 
-        //Utils.SavePcr($scope.pcr);
+        Utils.SavePcr($scope.pcr);
         //$scope.LoadPcrArray();
     }
 
