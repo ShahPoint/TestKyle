@@ -1,0 +1,334 @@
+﻿@using KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
+
+@model NarrativeGenerator
+
+<div class="col-xs-12 minimalPaddingImportant">
+    <div class="form-group">
+        <article class="col-xs-12">
+            <div class="jarviswidget jarviswidget-color-pcrblue" id="wid-id-Narrative">
+                <!-- widget options:
+            usage: <div class="jarviswidget" id="wid-id-0" data-widget-editbutton="false">
+
+            data-widget-colorbutton="false"
+            data-widget-editbutton="false"
+            data-widget-togglebutton="false"
+            data-widget-deletebutton="false"
+            data-widget-fullscreenbutton="false"
+            data-widget-custombutton="false"
+            data-widget-collapsed="true"
+            data-widget-sortable="false"
+
+            -->
+                <header>
+                    <span class="widget-icon"><i class="fa fa-pencil"></i></span>
+                    <span class="widget-icon"><i class="speech-content-mic fa fa-microphone"></i></span>
+
+                    <h2>Narrative <button class="btn btn-default btn-xs" onclick="clearNarrGen();" data-toggle="modal" data-target="[modaltarget='NarrGenModal']">Auto-Generate</button></h2>
+                    <span id="plusMinus"></span>
+                </header>
+
+                <!-- widget div-->
+                <div>
+
+                    <!-- widget edit box -->
+                    <div class="jarviswidget-editbox">
+                        <!-- This area used as dropdown edit box -->
+
+                    </div>
+                    <!-- end widget edit box -->
+                    <!-- widget content -->
+                    <div class="widget-body no-padding">
+                        <div class="widget-body">
+                            <form class="smart-form" id="Narrative">
+                                <fieldset>
+                                    <section>
+                                        <label class="textarea">
+                                            <textarea vw-minstringconstraint="2" vw-maxstringconstraint="4000" rows="14" class="custom-scroll" name="pcr_narrative" id="speech-page-content"></textarea>
+                                        </label>
+                                    </section>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- end widget div -->
+
+            </div>
+            <!-- end widget -->
+        </article>
+
+        <div class="modal fade" modaltarget="NarrGenModal" id="Div1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4 class="modal-title">Narrative Generator</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <form>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <label style="font-size:large">Please choose a narrative snippet from the dropdown</label>
+                                    <select id="genNarrativeType" class="form-control" data-ng-model="genForm.narrativeTemplate" onchange="genTemplate()">
+                                        <option value="-1"></option>
+                                        <option value="0">Test Narrative</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                        <br />
+                        <form class="smart-form">
+                            <section>
+                                <label class="textarea">
+                                    <textarea vw-minstringconstraint="2" vw-maxstringconstraint="4000" rows="14" class="custom-scroll" name="pcr_gennarrative" id="speech-page-content" data-ng-model="genForm.gennarrative"></textarea>
+                                </label>
+                            </section>
+                        </form>
+
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                            Cancel
+                        </button>
+
+                        <button type="button" class="btn btn-primary" onclick="copyNarrative()" data-dismiss="modal">
+                            Copy
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+    var sampleData = {
+        demo2: {
+            AgencyNumber: 1,
+            AgencyName: "Agency",
+            AgencyState: "PA",
+            AgencyCounty: "Washington",
+            AgencyLevelOfService: "Massive"
+        },
+        pcr: {
+            exams: [],
+            vitals: [{
+                vitalDate: "Today!",
+                vitalTime: "Now!"
+            }, {
+                vitalDate: "Yesterday",
+                vitalTime: "Not Now"
+            }],
+            procedures: [{}],
+            treatmentMedications: [{}],
+            narrative: "Sample Narrative",
+            lutenColor: "purple",
+            delayDispatch: "abc"
+        }
+    }
+
+    var tempGenStructures = {
+        "PatientMeds": {
+            tokenString: "Patient Medication\n" +
+                         "\tMedication: {{pcr.patientMedications[{{#}}].medicationName}}\n" +
+                         "\tDosage: {{pcr.patientMedications[{{#}}].medicationDosage}} - {{pcr.patientMedications[{{#}}].medicationDosageUnits}}",
+            list: "pcr.patientMedications"
+        },
+        "Vitals": {
+            tokenString: "Vital\n" +
+                         "\tTime: {{pcr.vitals[{{#}}].vitalTime}}\n" +
+                         "\tPulse: {{pcr.vitals[{{#}}].vitalPulse}}\n" +
+                         "\tResp: {{pcr.vitals[{{#}}].vitalResp}}\n" +
+                         "\tSBP: {{pcr.vitals[{{#}}].vitalSbp}}\n" +
+                         "\tDBP: {{pcr.vitals[{{#}}].vitalDbp}}\n" +
+                         "\tOX: {{pcr.vitals[{{#}}].vitalOx}}\n" +
+                         "\tAVPU: {{pcr.vitals[{{#}}].vitalAVPU}}\n" +
+                         "\tNotes: {{pcr.vitals[{{#}}].Notes}}\n",
+            list: "pcr.vitals"
+        },
+        "Exams": {
+            tokenString: "Physical Exam\n" +
+                         "\tDate: {{pcr.exams[{{#}}].examDate}}\n" +
+                         "\tTime: {{pcr.exams[{{#}}].examTime}}\n" +
+                         "\tHead: {{pcr.exams[{{#}}].examHead}}\n" +
+                         "\tMental: {{pcr.exams[{{#}}].examMental}}\n" +
+                         "\tNeural: {{pcr.exams[{{#}}].examNeuro}}\n" +
+                         "\tFace: {{pcr.exams[{{#}}].examFace}}\n" +
+                         "\tLeft Eye: {{pcr.exams[{{#}}].examLeftEye}}\n" +
+                         "\tRight Eye: {{pcr.exams[{{#}}].examRightEye}}\n" +
+                         "\tNeck: {{pcr.exams[{{#}}].examNeck}}\n" +
+                         "\tSkin: {{pcr.exams[{{#}}].examSkin}}\n" +
+                         "\tChest: {{pcr.exams[{{#}}].examChest}}\n" +
+                         "\tHeart: {{pcr.exams[{{#}}].examHeart}}\n" +
+                         "\tAbs Left Upper: {{pcr.exams[{{#}}].examAbsLeftUpper}}\n" +
+                         "\tAbs Left Lower: {{pcr.exams[{{#}}].examAbsLeftLower}}\n" +
+                         "\tAbs Right Upper: {{pcr.exams[{{#}}].examAbsRightUpper}}\n" +
+                         "\tAbs Right Lower: {{pcr.exams[{{#}}].examAbsRightLower}}\n" +
+                         "\tGU: {{pcr.exams[{{#}}].examGU}}\n" +
+                         "\tExtremity Right Upper: {{pcr.exams[{{#}}].examExtremRightUpper}}\n" +
+                         "\tExtremity Right Lower: {{pcr.exams[{{#}}].examExtremRightLower}}\n" +
+                         "\tExtremity Left Upper: {{pcr.exams[{{#}}].examExtremLeftUpper}}\n" +
+                         "\tExtremity Left Lower: {{pcr.exams[{{#}}].examExtremLeftLower}}\n" +
+                         "\tBack Cervical: {{pcr.exams[{{#}}].examBackCervical}}\n" +
+                         "\tBack Thoracic: {{pcr.exams[{{#}}].examBackThoracic}}\n" +
+                         "\tBack Lumbar: {{pcr.exams[{{#}}].examBackLumbar}}\n" +
+                         "\tUnspecified: {{pcr.exams[{{#}}].examUnspecified}}\n" +
+                         "\tNotes: {{pcr.exams[{{#}}].examNotes}}",
+            list: "pcr.exams"
+        },
+        "Procedures": {
+            tokenString: "Procedure\n" +
+                         "\tTime: {{pcr.procedures[{{#}}].procTime}}\n" +
+                         "\tName: {{pcr.procedures[{{#}}].procProcedure}}\n" +
+                         "\tSize: {{pcr.procedures[{{#}}].procSizeOfEquipment}}\n" +
+                         "\tResponse: {{pcr.procedures[{{#}}].procResponse}}\n" +
+                         "\tSuccess: {{pcr.procedures[{{#}}].procSuccess}}\n" +
+                         "\tIV Locations: \n" +
+                         "\tSuccessful IV Site: {{pcr.procedures[{{#}}].procSuccessfulIvSite}}\n" +
+                         "\tET Tube Destination: {{pcr.procedures[{{#}}].procEtTubeDestination}}\n" +
+                         "\tET Tube Confirmation: {{pcr.procedures[{{#}}].procEtTubeConfirm}}\n" +
+                          "\tNotes: {{pcr.procedures[{{#}}].Notes}}",
+            list: "pcr.procedures"
+        },
+        "Insurances": {
+            tokenString: "Insurance\n" +
+                         "\tInsurance Company: {{pcr.insurances[{{#}}].insuranceCompany}}\n" +
+                         "\tInsurance Group: {{pcr.insurances[{{#}}].insuranceGroup}}\n" +
+                         "\tInsurance Policy: {{pcr.insurances[{{#}}].insurancePolicy}}",
+            list: "pcr.insurances"
+        },
+        "Trauma": {
+            tokenString: "\tHeight of Fall: {{pcr.injuryHeightOfFall}}\n" +
+                         "\tCause of Injury: {{pcr.causeOfInjury}}\n" +
+                         "\tIntent of Injury: {{pcr.IntentOfInjury}}\n" +
+                         "\tMechanism of Injury: {{pcr.mechanismOfInjury}}\n",
+            condition: "pcr.trauma == 'true'"
+        }
+    };
+
+    var narrGens = [
+        {
+            title: "Test2",
+            narrGen: "EMS Agency Number (demo.AgencyNumber) = {{demo2.AgencyNumber}}\n" +
+                        "EMS Agency Name (demo.AgencyName) = {{demo2.AgencyName}}\n" +
+                        "EMS Agency State (demo.AgencyState) = {{demo2.AgencyState}}\n" +
+                        "EMS Agency County (demo.AgencyCounty) = {{demo2.AgencyCounty}}\n" +
+                        "Primary Type of Service (demo.AgencyPrimaryTypeOfService) = {{demo2.AgencyPrimaryTypeOfService}}\n" +
+                        "Other Types of Service (demo.AgencyOtherTypesOfService) = {{demo2.AgencyOtherTypesOfService}}\n" +
+                        "Level of Service (demo.AgencyLevelOfService) = {{demo2.AgencyLevelOfService}}\n" +
+                        "Organizational Type (demo.AgencyOrganizationalType) = {{demo2.AgencyOrganizationalType}}\n" +
+                        "Organization Status (demo.AgencyOrganizationStatus) = {{demo2.AgencyOrganizationStatus}}\n" +
+                        "Other Agencies In Area (demo.AgencyOtherAgenciesInArea) = {{demo2.AgencyOtherAgenciesInArea}}\n" +
+                        "EMS Agency Time Zone (demo.AgencyTimeZone) = {{demo2.AgencyTimeZone}}\n" +
+                        "EMS Agency Daylight Savings Time Use (demo.AgencyDaylightSavingsTimeUse) = {{demo2.AgencyDaylightSavingsTimeUse}}\n" +
+                        "National Provider Identifier (demo.AgencyNationalProviderIdentifier) = {{demo2.AgencyNationalProviderIdentifier}}\n" +
+                        "Agency Contact Telephone Number (demo.AgencyContactTelephoneNumber) = {{demo2.AgencyContactTelephoneNumber}}\n" +
+                        "Agency Contact Fax Number (demo.AgencyContactFaxNumber) = {{demo2.AgencyContactFaxNumber}}\n" +
+                        "Agency Contact Email Address (demo.AgencyContactEmailAddress) = {{demo2.AgencyContactEmailAddress}}\n" +
+                        "Agency Contact Web Address (demo.AgencyContactWebAddress) = {{demo2.AgencyContactWebAddress}}\n" +
+                        "Agency Medical Director Telephone Number (demo.DirectorContactTelephoneNumber) = {{demo2.DirectorContactTelephoneNumber}}\n" +
+                        "Agency Medical Director Fax Number (demo.DirectorContactFaxNumber) = {{demo2.DirectorContactFaxNumber}}\n" +
+                        "Agency Medical Director's Medical Specialty (demo.DirectorContactMedicalSpecialty) = {{demo2.DirectorContactMedicalSpecialty}}\n" +
+                        "Agency Medical Director Email Address (demo.DirectorContactEmailAddress) = {{demo2.DirectorContactEmailAddress}}\n" +
+                        "State Certification Licensure Levels (demo.ConfigStateCertificationLicensureLevels) = {{demo2.ConfigStateCertificationLicensureLevels}}\n" +
+                        "EMS Unit Call Sign (demo.ConfigEMSUnitNumber) = {{demo2.ConfigEMSUnitNumber}}\n" +
+                        "Zones (demo.ConfigZoneNumber) = {{demo2.ConfigZoneNumber}}\n" +
+                        "Billing Status (demo.ConfigBillingStatus) = {{demo2.ConfigBillingStatus}}\n" +
+                        "Insurance Companies Used (demo.ConfigInsuranceCompanyName) = {{demo2.ConfigInsuranceCompanyName}}\n" +
+                        "EMD Vendor (demo.ConfigEMDVendor) = {{demo2.ConfigEMDVendor}}\n" +
+                        "\n" +
+                        "Broselow/Luten Color (pcr.lutenColor) = {{pcr.lutenColor}}\n" +
+                        "First Name of Patient's Primary Practitioner (pcr.practitionerFirst) = {{pcr.practitionerFirst}}\n" +
+                        "Middle Name of Patient's Primary Practitioner (pcr.practitionerMiddle) = {{pcr.practitionerMiddle}}\n" +
+                        "EMD Card Number (pcr.emdCardNumber) = {{pcr.emdCardNumber}}\n" +
+                        "Vehicle Dispatch Zone (pcr.vehicleDispatchZone) = {{pcr.vehicleDispatchZone}}\n" +
+                        "Type of Dispatch Delay (pcr.delayDispatch) = {{pcr.delayDispatch}}\n" +
+                        "Type of Response Delay (pcr.delayResponse) = {{pcr.delayResponse}}\n" +
+                        "Type of Scene Delay (pcr.delayScene) = {{pcr.delayScene}}\n" +
+                        "Type of Transport Delay (pcr.delayTransport) = {{pcr.delayTransport}}\n" +
+                        "Type of Turn-Around Delay (pcr.delayDispatch) = {{pcr.delayTurnAround}}\n" +
+                        "EXAMS:\n------------------------------\n{{Exams}}\n\n" +
+                        "VITALS:\n------------------------------\n{{Vitals}}\n\n"
+        }
+    ]
+    genForm = {
+        gennarrative: "",
+        narrativeTemplate: -1
+    };
+    clearNarrGen = function () {
+        $("#genNarrativeType").val(-1);
+        $("[name=pcr_gennarrative]").val("");
+        genForm.gennarrative = "";
+        genForm.narrativeTemplate = -1;
+    }
+
+    function genTemplate() {
+        var value = parseInt($("#genNarrativeType").find(":selected").attr("value"));
+        generateNarrative(value);
+    }
+
+    generateNarrative = function (index) {
+        var narrGen = narrGens[index]; // get the whole narrative string as defined in demographics
+        if (!narrGen) {
+            $("[name=pcr_gennarrative]").text("");
+            return;
+        }
+
+        var narrString = narrGen.narrGen;
+        //$("[name=pcr_gennarrative]").val(narrString); // set the narrative string to the compiled string
+        //return;
+        var counterRegex = /\{\{#\}\}/g; // number replacement regex, for adding in "i" to the gen string
+        var tokenRegex = /\{\{([^\{\}]*)\}\}/; // single-value token replacement regex
+        var counter = 0;
+        while (tokenRegex.test(narrString) && counter++ < 1000) {
+            var token = tokenRegex.exec(narrString); // get the token replacement values
+
+            if (tempGenStructures[token[1]]) { // if the token has a special case, execute it
+
+                var genStruct = tempGenStructures[token[1]]; // find the special case structure
+                var replaceString = "";
+                if (genStruct) {
+                    var tokenString = genStruct.tokenString; // get the case's token string
+                    if (genStruct.condition == undefined || $scope.$eval(genStruct.condition) == true) { // if no condition exists, or it is true, continue
+                        var list = eval("sampleData." + genStruct.list);
+                        //var list = $parse(genStruct.list)($scope); // get the associated list
+                        if (genStruct.list != undefined && list) { // if the list exists, loop through it
+                            for (var i = 0; i < list.length; i++) {
+                                var thisStr = tokenString.replace(counterRegex, i); // get the token string for each iteration
+                                replaceString += thisStr + "\n";
+                            }
+                            replaceString = replaceString.substr(0, replaceString.length - 1);
+                        } else if (genStruct.list == undefined) {
+                            replaceString = tokenString; // if the list does not exist, it is not a one-to-many case, so just use the unaltered token string
+                        }
+                    }
+                }
+                narrString = narrString.replace(token[0], replaceString); // replace the special case token with the string
+
+            } else { // if the token does not have a special case, just try to replace it with a value
+                var value = eval("sampleData." + token[1]);
+                //var value = $parse(token[1])($scope); // find the value of the token
+                narrString = narrString.replace(token[0], value != null && value != undefined ? value : ""); // replace the token with the value
+            }
+        };
+        
+        $("[name=pcr_gennarrative]").val(narrString); // set the narrative string to the compiled string
+    }
+
+    copyNarrative = function () {
+        var narrative = $("[name=pcr_narrative]");
+        var text = narrative.val();
+        if (!text) // handles "", null, and undefined
+            text = $("[name=pcr_gennarrative]").val();
+        else
+            text += "\n\n" + $("[name=pcr_gennarrative]").val();
+        narrative.val(text);
+        clearNarrGen();
+    }
+</script>

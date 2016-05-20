@@ -371,6 +371,7 @@
       <DependentUpon>_Layout.css</DependentUpon>
     </Content>
     <Content Include="Areas\Mpa\Views\Layout\_Header.js" />
+    <Content Include="Areas\Mpa\Views\OldModules\Controls\jSignature.min.js" />
     <Content Include="Areas\Mpa\Views\OrganizationUnits\Index.css">
       <DependentUpon>Index.less</DependentUpon>
     </Content>
@@ -2979,6 +2980,7 @@
     <Compile Include="Areas\Mpa\Controllers\Common.cs" />
     <Compile Include="Areas\Mpa\Controllers\EditionsController.cs" />
     <Compile Include="Areas\Mpa\Controllers\NemsisTestController.cs" />
+    <Compile Include="Areas\Mpa\Controllers\OldModulesController.cs" />
     <Compile Include="Areas\Mpa\Controllers\OrganizationUnitsController.cs" />
     <Compile Include="Areas\Mpa\Controllers\PcrFormController.cs" />
     <Compile Include="Areas\Mpa\Controllers\UploadReportsController.cs" />
@@ -3422,6 +3424,12 @@
     <Content Include="libs\select2-master\src\scss\_dropdown.scss" />
     <Content Include="libs\select2-master\src\scss\_multiple.scss" />
     <Content Include="libs\select2-master\src\scss\_single.scss" />
+    <Content Include="Areas\Mpa\Views\OldModules\Controls\BlankPlaceHolder.cshtml" />
+    <Content Include="Areas\Mpa\Views\OldModules\Index.cshtml" />
+    <Content Include="Areas\Mpa\Views\OldModules\Controls\NarrativeGenerator.cshtml" />
+    <Content Include="Areas\Mpa\Views\OldModules\Controls\CustomForms.cshtml" />
+    <Content Include="Areas\Mpa\Views\OldModules\Controls\Attachments.cshtml" />
+    <Content Include="Areas\Mpa\Views\OldModules\Controls\Signatures.cshtml" />
     <None Include="Properties\PublishProfiles\FileSystem_Release.pubxml" />
     <Content Include="Views\Account\TenantSelection.cshtml" />
     <Content Include="Scripts\version.json" />

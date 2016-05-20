@@ -143,7 +143,13 @@ namespace KyleTanczos.TestKyle.Web.Areas.Mpa.Startup
                     icon: "icon-grid"
                     )
                 )
-
+                .AddItem(new MenuItemDefinition(
+                    "Old Modules Test",
+                    L("Old Modules Test"),
+                    url: "Mpa/OldModules",
+                    icon: "icon-grid"
+                    )
+                )
                 .AddItem(new MenuItemDefinition(
                     PageNames.App.Tenant.Dashboard,
                     L("Dashboard"),

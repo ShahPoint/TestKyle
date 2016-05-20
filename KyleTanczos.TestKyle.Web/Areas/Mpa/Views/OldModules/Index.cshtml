@@ -1,0 +1,70 @@
+﻿@using KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
+
+<style type="text/css">
+    .custom-menu-nav .divider {
+        margin: 2px;
+    }
+
+    .form-group {
+        margin-bottom: 0 !important;
+    }
+
+    .portlet {
+        margin-bottom: 15px !important;
+    }
+
+    .portlet-form .form-body, .form .form-body {
+        padding: 20px;
+    }
+    /* fix right side margins */
+    .page-container {
+        padding-right: 30px !important;
+    }
+    /*get read of padding at top of page*/
+    .page-content-wrapper .page-content {
+        padding-top: 0 !important;
+    }
+
+    .time-control {
+        padding: 6px !important;
+    }
+
+    .form {
+        padding-left: 10px;
+    }
+
+    .noPaddingImportant {
+        padding: 0 !important;
+    }
+
+    .minimalPaddingImportant {
+        padding: 3px !important;
+    }
+
+    .onlyLeftPaddingImportant {
+        padding-bottom: 0 !important;
+        padding-left: 10px !important;
+        padding-right: 0 !important;
+        padding-top: 0 !important;
+    }
+
+    .pac-container {
+        z-index: 11000 !important;
+    }
+
+    .RequiredRedBorder {
+        border: 1px solid #b94a48 !important;
+    }
+     
+    .bootstrap-touchspin .btn {
+        border-width: 1px !important;
+        font-size: 10px;
+    }
+</style>
+
+<div id="mainApp" data-ng-app="myApp" data-ng-controller="myCtrl"  >
+    @Html.Partial("Controls/Attachments")
+    @Html.Partial("Controls/CustomForms")
+    @Html.Partial("Controls/NarrativeGenerator")
+    @Html.Partial("Controls/Signatures")
+</div>

@@ -1,0 +1,544 @@
+﻿@using KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
+
+@model Signatures
+
+<div class="col-xs-12 minimalPaddingImportant">
+    <div class="form-group">
+
+        <table style="width: 100%;">
+            <tbody>
+                @*<tr ng-repeat="sig in signatures track by $index" style="border-top: 1px solid silver; border-bottom: 1px solid silver; height: 70px;">
+                    <td style="width: 70px;">
+                        <button class="btn btn-primary" ng-click="sign(sig)" ng-hide="pcr.signatures[sig.nodeTitle]" style="width: 60px;">Sign</button>
+                        <button class="btn btn-warning" ng-click="clearSig(sig)" ng-show="pcr.signatures[sig.nodeTitle]" style="width: 60px;">Clear</button>
+                    </td>
+                    <td>
+                        <h4 style="display:inline-block">{{sig.title}}</h4>
+                    </td>
+                    <td>
+                        <div ng-show="pcr.signatures[sig.nodeTitle]" style="display: inline-block">
+                            <img ng-src="{{pcr.signatures[sig.nodeTitle].src}}" style="height:50px" />
+                        </div>
+                    </td>
+                    <td>
+                        <div ng-show="pcr.signatures[sig.nodeTitle]" style="display: inline-block">
+                            <div style="display: inline-block; vertical-align: middle;">
+                                <span style="display:block">Name: {{pcr.signatures[sig.nodeTitle].name}}</span>
+                                <span style="display:block">Date: {{pcr.signatures[sig.nodeTitle].date}}</span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>*@
+                <tr style="border-top: 1px solid silver; border-bottom: 1px solid silver; height: 70px;" id="sig0">
+                    <td style="width: 70px;">
+                        <button class="btn btn-primary" onclick="sign(0)" style="width: 60px;">Sign</button>
+                        <button class="btn btn-warning" onclick="clearSig(0)" style="width: 60px;">Clear</button>
+                    </td>
+                    <td>
+                        <h4 style="display:inline-block"><span id="sig-title">Crew Primary</span></h4>
+                    </td>
+                    <td>
+                        <div style="display: inline-block">
+                            <img style="height:50px" />
+                        </div>
+                    </td>
+                    <td>
+                        <div style="display: inline-block">
+                            <div style="display: inline-block; vertical-align: middle;">
+                                <span style="display:block">Name: <span id="sig-name"></span></span>
+                                <span style="display:block">Date: <span id="sig-date"></span></span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="border-top: 1px solid silver; border-bottom: 1px solid silver; height: 70px;" id="sig0">
+                    <td style="width: 70px;">
+                        <button class="btn btn-primary" onclick="sign(1)" style="width: 60px;">Sign</button>
+                        <button class="btn btn-warning" onclick="clearSig(1)" style="width: 60px;">Clear</button>
+                    </td>
+                    <td>
+                        <h4 style="display:inline-block"><span id="sig-title">Crew Secondary</span></h4>
+                    </td>
+                    <td>
+                        <div style="display: inline-block">
+                            <img style="height:50px" />
+                        </div>
+                    </td>
+                    <td>
+                        <div style="display: inline-block">
+                            <div style="display: inline-block; vertical-align: middle;">
+                                <span style="display:block">Name: <span id="sig-name"></span></span>
+                                <span style="display:block">Date: <span id="sig-date"></span></span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="border-top: 1px solid silver; border-bottom: 1px solid silver; height: 70px;" id="sig0">
+                    <td style="width: 70px;">
+                        <button class="btn btn-primary" onclick="sign(2)" style="width: 60px;">Sign</button>
+                        <button class="btn btn-warning" onclick="clearSig(2)" style="width: 60px;">Clear</button>
+                    </td>
+                    <td>
+                        <h4 style="display:inline-block"><span id="sig-title">ETT Confirmation</span></h4>
+                    </td>
+                    <td>
+                        <div style="display: inline-block">
+                            <img style="height:50px" />
+                        </div>
+                    </td>
+                    <td>
+                        <div style="display: inline-block">
+                            <div style="display: inline-block; vertical-align: middle;">
+                                <span style="display:block">Name: <span id="sig-name"></span></span>
+                                <span style="display:block">Date: <span id="sig-date"></span></span>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="~/Areas/Mpa/Views/OldModules/Controls/jSignature.min.js"></script>
+<script type="text/javascript">
+    if (jQuery().jSignature) {
+        alert("loaded jSignature");
+        //run plugin dependent code
+    }
+    var signatureList = [
+                {
+                    nodeTitle: "Crew_Primary",
+                    title: "Crew Primary",
+                    required: true,
+                    disclaimer: "",
+                    defaultValue: function () {
+                        return "";
+                        //return $scope.pcr.crewPrimary ? $scope.pcr.crewPrimary.substr(0, $scope.pcr.crewPrimary.indexOf('(')).trim() : "";
+                    }
+                },
+                {
+                    nodeTitle: "Crew_Secondary",
+                    title: "Crew Secondary",
+                    required: false,
+                    disclaimer: "",
+                    defaultValue: function () {
+                        return "";
+                        //return $scope.pcr.crewSecondary ? $scope.pcr.crewSecondary.substr(0, $scope.pcr.crewSecondary.indexOf('(')).trim() : "";
+                    }
+                },
+                {
+                    nodeTitle: "ETT_Confirmation",
+                    title: "ETT Confirmation",
+                    required: false,
+                    disclaimer: "My signature acknowledges that I have assessed the placement of the endotracheal tube upon the arrival to my facility.",
+                    defaultValue: function () {
+                        return "";
+                    }
+                },
+                {
+                    nodeTitle: "Patient_RMA",
+                    title: "Patient, Refused Medical Assistance (RMA)",
+                    required: false,
+                    disclaimer: "I hereby refuse (treatment/transport to a hospital) and I acknowledge that such treatment/transportation was advised by the ambulance crew or physician. I hereby release such persons from liability for respecting and following my express wishes."
+						+ "\n\n"
+						+ "Mediante la presente declaro que me niego a aceptar el tratamiento/traslado a un hospital y reconozco asimismo que el medical o el personal de la ambulancia recomendaron ese tratamiento/traslado. Consiguientemente, eximo a dichas personas de toda responsibilidad por haber respetado y cumplido mis deseos expresos.",
+                    //	"I understand that the EMS personnel are not physicians and are not qualified or authorized to make a diagnosis and that their care is not a substitute for that of a physician. I recognize that I may have a serious injury or illness which could get worse without medical attention even though I (or the patient on whose behalf I legally sign this document) may feel fine at the present time.\n\nI understand that I may change my mind and call 9-1-1 if treatment or assistance is needed later. I also understand that treatment is available at an emergency department 24 hours a day or from my physician. If I have insisted on being transported to a destination other than that recommended by the EMS personnel, I understand and have been informed that there may be a significant delay in receiving care at the emergency room, that the emergency room may lack the staff, equipment, beds or resources to care for me promptly, and/or that I might not be able to be admitted to that hospital.\n\nI acknowledge that this advice has been explained to me by the ambulance crew and that I have read this form completely and understand its provisions. I agree, on my own behalf (and on behalf of the patient for whom I legally sign this document), to release, indemnify and hold harmless the ambulance service and its officers, members, employees or other agents, and the medical command physician and medical command facility, from any and all claims, actions, causes of action, damages, or legal liabilities of any kind arising out of my decision, or from any act or omission of the ambulance service or its crew, or the medical command physician or medical command facility.\n\nI also acknowledge receipt of the ambulance service's Notice of Privacy Practices.",
+                    defaultValue: function () {
+                        return "";
+                        //return ($scope.pcr.patientFirstName || "") + " " + ($scope.pcr.patientLastName || "").trim();
+                    }
+                },
+                {
+                    nodeTitle: "Patient",
+                    title: "Patient",
+                    required: false,
+                    disclaimer: "I authorize the submission of a claim to Medicare, Medicaid, or any other payer for any services provided to me by EMS now, in the past, or in the future, until such time as I revoke this authorization in writing. I understand that I am financially responsible for the services and supplies provided to me by EMS, regardless of my insurance coverage, and in some cases, may be responsible for an amount in addition to that which was paid by my insurance. I agree to immediately remit to EMS any payments that I receive directly from insurance or any source whatsoever for the services provided to me and I assign all rights to such payments to EMS. I authorize EMS to appeal payment denials or other adverse decisions on my behalf. I authorize and direct any holder of medical, insurance, billing or other relevant information about me to release such information to EMS and its billing agents, the Centers for Medicare and Medicaid Services, and/or any other payers or insurers, and their respective agents or contractors, as may be necessary to determine these or other benefits payable for any services provided to me by EMS, now, in the past, or in the future.  I also authorize EMS to obtain medical, insurance, billing and other relevant information about me from any party, database or other source that maintains such information. . Privacy Practices Acknowledgement, by signing below, I acknowledge that I have received a copy of EMS' Notice of Privacy Practices.",
+                    defaultValue: function () {
+                        return "";
+                        //return ($scope.pcr.patientFirstName || "") + " " + ($scope.pcr.patientLastName || "").trim();
+                    }
+                },
+                {
+                    nodeTitle: "Student_Author",
+                    title: "Student Author",
+                    required: false,
+                    disclaimer: "Signature of the student that completed the documentation. I have written the patient care report and can attest that the content is true and accurate to the best of my knowledge.",
+                    defaultValue: function () {
+                        return "";
+                    }
+                },
+                {
+                    nodeTitle: "Peer_Review",
+                    title: "Peer Review",
+                    required: false,
+                    disclaimer: "I have reviewed the patient care report and can attest that the content is true and accurate to the best of my knowledge.",
+                    defaultValue: function () {
+                        return "";
+                    }
+                },
+                {
+                    nodeTitle: "AuthRep",
+                    title: "Patient Representative",
+                    required: false,
+                    disclaimer: "I am signing on behalf of the patient. I recognize that signing on behalf of the patient is not an acceptance of financial responsibility for the services rendered. Notice of Privacy Practices applicable only to the following: Patient's Legal Guardian or Patient's Durable Power of Attorney who arranges treatments or handles the patient's affairs. Privacy Practices Acknowledgement, by signing below, I acknowledge that I have received a copy of EMS' Notice of Privacy Practices.",
+                    defaultValue: function () {
+                        return "";
+                    }
+                },
+                {
+                    nodeTitle: "Witness",
+                    title: "Witness",
+                    required: false,
+                    disclaimer: "I acknowledge that my signature is in witness to the above person(s) signing patient care report or refusal.",
+                    defaultValue: function () {
+                        return "";
+                    }
+                },
+                {
+                    nodeTitle: "Received_By",
+                    title: "Received By",
+                    required: false,
+                    disclaimer: "I acknowledge that I have received report and patient care for the above listed patient. I understand that my signature is only that I have received the transfer of care from EMS. My signature is not acceptance of financial responsibility for the services rendered.",
+                    defaultValue: function () {
+                        return "";
+                    }
+                },
+                {
+                    nodeTitle: "Guardian",
+                    title: "Parent/Guardian",
+                    required: false,
+                    disclaimer: "",
+                    defaultValue: function () {
+                        return "";
+                    }
+                }
+    ];
+
+    var signatures = {};
+
+    sign = function (sigIndex) {
+        var sigData = signatureList[sigIndex];
+        var src = signatures[sigData.nodeTitle] ? signatures[sigData.nodeTitle].src : "";
+        var name = signatures[sigData.nodeTitle] ? signatures[sigData.nodeTitle].name : sigData.defaultValue();
+        signatureModal({
+            src: src,
+            name: name,
+            nameProvided: sigData.defaultValue(),
+            disclaimer: sigData.disclaimer || "",
+            success: function (newSrc, name) {
+                signatures[sigData.nodeTitle] = {
+                    title: sigData.title,
+                    name: name,
+                    src: newSrc,
+                    date: new Date().toDateTime()
+                };
+                $("#sig" + sigIndex).find("img").attr("src", newSrc);
+                $("#sig" + sigIndex).find("img").attr("src", newSrc);
+            }
+        });
+    }
+    clearSig = function (sigIndex) {
+        // add confirmation
+        delete signatures[sigData.nodeTitle];
+        $("#sig" + sigIndex).find("img").attr("src", "");
+        $("#sig" + sigIndex).find("img").attr("src", "");
+    }
+
+    function signatureModal(options) {
+        var $html = $("<div></div>");
+        //if (!options.nameProvided)
+        $html.append("<div class='row'><div class='col-xs-12'><h4>Printed Name</h4><input id='Name' class='form-control'/></div></div>");
+        //else if (options.name)
+        //    $html.append("<div class='row'>Printed Name<span class='form-control'>" + options.name + "</span></div>");
+        if (options.disclaimer)
+            $html.append("<br /><div class='row'><div class='col-xs-12'><h4>Agreement</h4><div style='padding: 10px; max-height: 200px; border: 1px solid silver; width: 100%; overflow-y: auto;'><span style='font-size: larger; white-space: pre-wrap;'>" + options.disclaimer + "</span></div></div></div>");
+        $html.append("<br /><div class='row'><div class='col-xs-12'><h4>Signature</h4><div id='signatureModalPad'></div></div></div>");
+
+        $modal = showDialog({
+            classes: ["fade"],
+            id: "signatureModal",
+            headerText: "Signature",
+            bodyHTML: $html.html(),
+            footerButtons: [
+                {
+                    type: "default",
+                    size: "sm",
+                    text: "Cancel",
+                    click: "close"
+                },
+                {
+                    type: "warning",
+                    size: "sm",
+                    text: "Clear",
+                    click: function () {
+                        $signaturePad.jSignature("reset") // clears the canvas and rerenders the decor on it.
+                    }
+                },
+                {
+                    type: "success",
+                    size: "sm",
+                    text: "Okay",
+                    click: function ($event, modalId) {
+                        var src = $signaturePad.jSignature("getData");
+
+                        if (options.success)
+                            options.success(src, $name.val());
+                        $modal.modal("hide");
+                        $signaturePad.jSignature("reset");
+                    }
+                }
+            ],
+            closeButton: true,
+            size: "md",
+            destroy: false
+        });
+
+        var $signaturePad = $("#signatureModalPad", $modal);
+        $signaturePad.css("border", "1px solid silver");
+        var $name = $("#Name", $modal);
+        $name.val(options.name || "");
+        $signaturePad.jSignature({
+            signatureLine: false,
+            width: 550
+        });
+        //if (options.src)
+        //    $signaturePad.jSignature("importData", options.src);
+    }
+
+    /*
+    Defines default options for dialogs created with showDialog()
+*/
+    var dialogDefaults = {
+        /*
+            compile defines a $compile object
+            scope defines a $scope object
+            One is useless without the other, but if both are present, the modal dialog is compiled
+                into the scope, giving the ability to integrate scope-specific angular constructs into the modal
+        */
+        scope: null,
+        compile: null,
+        /*
+            classes defines classes to add to the modal
+        */
+        classes: ["fade"],
+        /*
+            id defines an id to associate with the modal. Useful to know if the modal needs to be referenced
+        */
+        id: "dialogModal",
+        /*
+            headerText defines text to be placed into the header section of the modal, inside of an h4 element
+                ***NOTE: If both headerText and headerHTML are left null, a header section is not shown.
+        */
+        headerText: null,
+        /*
+            headerHTML defines arbitrary html to be placed into the header section of the modal.
+            If content is provided for headerHTML, headerText is ignored.
+                ***NOTE: If both headerText and headerHTML are left null, a header section is not shown.
+        */
+        headerHTML: null,
+        /*
+            bodyHTML defines arbitrary html to be placed into the body section of the modal.
+                ***NOTE: If bodyHTML is left null, a body section is not shown.
+        */
+        bodyHTML: null,
+        /*
+            footerButtons defines a list of buttons to be placed into the footer section of the modal.
+                ***NOTE: If both footerHTML and footerButtons are left null, a footer section is not shown.
+        */
+        footerButtons: [
+            {
+                /*
+                    type defines the color of the button, corresponding to a bootstrap .btn-* color class
+                    defaults to "default"
+                 */
+                type: "default",
+                /*
+                    size defines the size of the button, corresponding to a bootstrap .btn-* size class
+                    defaults to "sm"
+                 */
+                size: "sm",
+                /*
+                    text defines the text or html to be displayed in the button
+                 */
+                text: "Okay",
+                /*
+                    click defines an onclick function for the button. The function is passed the $event object and the jquery object of the modal
+                        ***NOTE: if click === "close", the button is assigned a default close function
+                 */
+                click: "close"
+            }
+        ],
+        /*
+            footerHTML defines arbitrary html to be placed into the footer section of the modal.
+            If content is provided for footerHTML, footerButtons is ignored.
+                ***NOTE: If both footerHTML and footerButtons are left null, a footer section is not shown.
+        */
+        footerHTML: null,
+        /*
+            Shows a close button in the top-right corner of the modal, as long as either a modal header or a modal body is shown
+        */
+        closeButton: true,
+        /*
+            size defines the size of the modal, corresponding to a bootstrap modal-* size class
+        */
+        size: "sm",
+        /*
+            destroy determines whether the modal is completely destroyed when it closes
+        */
+        destroy: true
+    };
+
+    /*
+    default showDialog options:
+    {
+        scope: null,
+        compile: null,
+        classes: ["fade"],
+        id: "dialogModal",
+        headerText: null,
+        headerHTML: null,
+        bodyHTML: null,
+        footerButtons: [
+            {
+                type: "default",
+                size: "sm",
+                text: "Okay",
+                click: "close"
+            }
+        ],
+        footerHTML: null,
+        closeButton: true,
+        size: "sm",
+        destroy: true
+    }
+    */
+
+    /*
+        Use to show a modal dialog.
+        Include an optional options object defining properties of the dialog. If options are not specified, 
+            or a particular option is not specified, they default to options defined by dialogDefaults
+        Returns the jQuery modal object
+    */
+    function showDialog(options) {
+        if (options == null) options = dialogDefaults;
+        else {
+            for (var attr in dialogDefaults) {
+                if (options[attr] == null)
+                    options[attr] = dialogDefaults[attr];
+            }
+        }
+
+        var buttonList = [];
+        if (options.footerHTML == null) {
+            if (options.footerButtons == null) options.footerButtons = [];
+            options.footerHTML = "";
+            for (var i = 0; i < options.footerButtons.length; i++) {
+                var el = document.createElement("button");
+                $(el).attr("type", "button");
+                $(el).addClass("btn btn-" + (options.footerButtons[i].type || "default"));
+                $(el).addClass("btn-" + (options.footerButtons[i].size || "sm"));
+                $(el).html(options.footerButtons[i].text);
+                if (options.footerButtons[i].click != null) {
+                    var click = options.footerButtons[i].click;
+                    var thisId = options.id;
+                    if (typeof click == "string" && /[Cc]lose/.test(click))
+                        $(el).click({ thisId: thisId }, function (event) { closeModal(event, event.data.thisId); });
+                    else
+                        $(el).click({ click: click }, function (event) { handleClick(event, event.data.click); });
+                }
+                buttonList.push($(el));
+            }
+        }
+
+        var hasHeader = options.headerHTML !== null || options.headerText !== null;
+        var hasBody = options.bodyHTML !== null;
+        var hasFooter = options.footerHTML !== null || buttonList.length > 0;
+
+        if (!hasHeader && !hasBody && !hasFooter)
+            return null;
+
+        var modalElement;
+        if (options.destroy || $("#" + options.id).length == 0)
+            modalElement = document.createElement("div");
+        else
+            modalElement = $("#" + options.id).get(0);
+
+        modalElement.className = "modal" + (options.classes ? " " + options.classes.join(" ") : "") +
+                                    (hasHeader ? "" : " no-header") +
+                                    (hasFooter ? "" : " no-footer") +
+                                    (hasBody ? "" : " no-body");
+        modalElement.id = options.id;
+        modalElement.innerHTML = "<div class='modal-dialog modal-" + options.size + "'>" +
+                                    "<div class='modal-content'>" +
+
+                                        (hasHeader ?
+
+                                        "<div class='modal-header'>" +
+                                            (options.closeButton ? "<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>" : "") +
+                                            "<div class='content'>" +
+                                                (options.headerHTML ? options.headerHTML : "<h4>" + options.headerText + "</h4>") +
+                                            "</div>" +
+                                        "</div>"
+
+                                        : "") +
+
+                                        (hasBody ?
+
+                                        "<div class='modal-body'>" +
+                                            (options.closeButton && options.headerHTML === null && options.headerText === null ? "<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>&times;</button>" : "") +
+                                            "<div class='content'>" +
+                                                options.bodyHTML +
+                                            "</div>" +
+                                        "</div>"
+
+                                        : "") +
+
+                                        (hasFooter ?
+
+                                        "<div class='modal-footer'>" +
+                                            "<div class='content'>" +
+                                                options.footerHTML +
+                                            "</div>" +
+                                        "</div>"
+
+                                        : "") +
+
+                                    "</div>" +
+                                "</div>";
+        for (var i = 0; i < buttonList.length; i++) {
+            $(".modal-footer", modalElement).append(buttonList[i]);
+        }
+
+        if (options.scope !== null && options.compile !== null) {
+            try {
+                options.compile(modalElement)(options.scope);
+            } catch (e) { }
+        }
+
+        modalElement = $(modalElement);
+
+        $("body").append(modalElement);
+        modalElement.modal("show");
+        if (options.destroy) {
+            modalElement.on("hidden.bs.modal", function (e) {
+                setTimeout(function () {
+                    if (modalElement.is(":hidden")) {
+                        modalElement.remove();
+                        modalElement = null;
+                    }
+                }, 500);
+            });
+        }
+        return modalElement;
+
+        function closeModal($event, modalId) {
+            modalElement.modal("hide");
+        }
+        function handleClick(event, func) {
+            func(event, modalElement);
+        }
+    }
+</script>
