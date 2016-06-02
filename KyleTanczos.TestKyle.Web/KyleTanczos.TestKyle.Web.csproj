@@ -3430,6 +3430,9 @@
     <Content Include="Areas\Mpa\Views\OldModules\Controls\CustomForms.cshtml" />
     <Content Include="Areas\Mpa\Views\OldModules\Controls\Attachments.cshtml" />
     <Content Include="Areas\Mpa\Views\OldModules\Controls\Signatures.cshtml" />
+    <Content Include="Areas\Mpa\Views\OldModules\Controls\Settings.cshtml" />
+    <Content Include="Areas\Mpa\Views\OldModules\Controls\OfflineLogin.cshtml" />
+    <Content Include="Areas\Mpa\Views\OldModules\Controls\PcrSaving.cshtml" />
     <None Include="Properties\PublishProfiles\FileSystem_Release.pubxml" />
     <Content Include="Views\Account\TenantSelection.cshtml" />
     <Content Include="Scripts\version.json" />

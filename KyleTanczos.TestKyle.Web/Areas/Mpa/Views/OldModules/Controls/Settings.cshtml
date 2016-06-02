@@ -1,0 +1,45 @@
+﻿@using KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
+
+@model Settings
+
+<div class="col-xs-12 minimalPaddingImportant">
+    <div class="form-group">
+        <button class="btn btn-default" onclick="SetOfflinePassword()">Set Offline Password</button>
+
+    </div>
+</div>
+
+
+<script>
+
+    function SetOfflinePassword() {
+        var $prompt = bootbox.prompt(
+            {
+                title: "Enter a password (8-20 Characters)",
+                callback: function (result) {
+                    if (result !== null) {
+                        if (result.length < 8 || result.length > 20) {
+                            bootbox.alert("Invalid password. Please create a password that contains between 8 and 20 characters.");
+                        } else {
+                            UpdateOfflineLogin(GetUsername(), result);
+                            bootbox.alert("Password updated.");
+                        }
+                    }
+                }
+            }
+        );
+        $prompt.find(".bootbox-input").attr("type", "password");
+    }
+
+    function GetUsername() {
+        return sessionStorage["currentUser"] || "testUser";
+    };
+
+    function UpdateOfflineLogin(username, password) {
+        var USER_LOGIN_TABLE = "usersTable";
+        var users = localStorage[USER_LOGIN_TABLE] ? JSON.parse(localStorage[USER_LOGIN_TABLE]) : {};
+        users[username] = password; // do some hashing stuff on password before storing it?
+        localStorage[USER_LOGIN_TABLE] = JSON.stringify(users);
+    }
+    
+</script>

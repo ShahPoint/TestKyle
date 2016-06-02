@@ -1,0 +1,183 @@
+﻿@using KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
+
+@model PcrSaving
+
+<div class="col-xs-12 minimalPaddingImportant">
+    <div class="form-group">
+        <div class="form-group">
+            <button class="btn btn-default" onclick="RefreshData();">Refresh</button>
+            <button class="btn btn-default" onclick="CreateNewPcr();">Create New PCR</button>
+            <table class="datatable" id="userPcrs">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>User</th>
+                        <th>Last Modified</th>
+                        <th>Last Server Modification</th>
+                        <th>Synced</th>
+                        <th>Force Sync</th>
+                        <th>TEST</th>
+                        <th>TEST</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<style>
+    .datatable {
+        margin: 5px;
+        text-align: center;
+    }
+    .datatable th, .datatable td {
+        text-align: center;
+    }
+    .datatable, .datatable thead, .datatable tbody {
+        width: 100%;
+    }
+    .datatable td, .datatable th {
+        border: 1px solid black;
+        padding: 5px;
+    }
+</style>
+<link href="~/libs/datatables/datatables.min.css" rel="stylesheet" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="~/Areas/Mpa/Angular/Controllers/PcrFormController.js"></script>
+<script src="~/libs/datatables/datatables.min.js"></script>
+<script type="text/javascript">
+
+    var PCR_LIST = "pcrList";
+    (function init() {
+        var $userTable = $(".datatable#userPcrs");
+        var $allTable = $userTable.clone().attr("id", "allPcrs");
+        $allTable.insertAfter($userTable);
+        RefreshData();
+    })()
+
+    function RefreshData() {
+        var pcrList = Utils.GetPcrList();
+        var $user = $("#userPcrs > tbody");
+        var $all = $("#allPcrs > tbody");
+        $user.empty();
+        $all.empty();
+        for (var hash in pcrList) {
+            var $tr = $("<tr id='" + hash + "'></tr>");
+            $tr.append("<td>" + pcrList[hash].offlineId + "</td>");
+            $tr.append("<td>" + pcrList[hash].user + "</td>");
+            $tr.append("<td>" + pcrList[hash].modified + "</td>");
+            $tr.append("<td>" + pcrList[hash].lastServerCache + "</td>");
+            $tr.append("<td><span><i class=\"fa fa-circle\" style=\"color: " + (pcrList[hash].modified === pcrList[hash].lastServerCache ? "green" : "yellow") + "\"></i></span></td>");
+            $tr.append("<td><button class=\"btn btn-default\" onclick=\"SyncPcr('" + hash + "')\">Sync</button></td>");
+            $tr.append("<td><button class=\"btn btn-default\" onclick=\"ModifyPcr('" + hash + "')\">Modify</button></td>");
+            $tr.append("<td><button class=\"btn btn-default\" onclick=\"DeletePcr('" + hash + "')\">DELETE</button></td>");
+            if (pcrList[hash].user == GetUsername()) {
+                $user.append($tr.clone());
+            }
+            $all.append($tr);
+        }
+    }
+
+    function GetUsername() {
+        return sessionStorage["currentUser"] || "testUser";
+    };
+
+    function CreateNewPcr() {
+        var $master = $("<div>");
+        var $dateSelect = $("<input type='date' class='form-control' />");
+        var $timeSelect = $("<input type='time' class='form-control' />");
+        $dateSelect.val(GetDatestamp());
+        $timeSelect.val(GetTimestamp());
+        var $userSelect = $("<select class='form-control'></select>");
+        var users = localStorage[USER_LOGIN_TABLE] ? JSON.parse(localStorage[USER_LOGIN_TABLE]) : {};
+        for (var user in users) {
+            $userSelect.append("<option value='" + user + "'>" + user + "</option>");
+        }
+        $userSelect.val(GetUsername());
+        $master.append($dateSelect).append($timeSelect).append($userSelect);
+        bootbox.confirm(
+            {
+                title: "Select a user to create a PCR under",
+                message: $master,
+                callback: function (result) {
+                    if (result === true) {
+                        CreateNewPcrBlob($dateSelect.val() + " " + $timeSelect.val(), $userSelect.val());
+                        RefreshData();
+                    }
+                }
+            }
+        );
+    }
+
+    function CreateNewPcrBlob(date, user) {
+        Utils.SavePcr({
+            "modified": date,
+            "lastServerCache": "",
+            "offlineId": Utils.GetGuid(),
+            "user": user || GetUsername(),
+        });
+    }
+
+    function SyncAllPcrs() {
+        var pcrList = Utils.GetPcrList();
+        for (var hash in pcrList) {
+            SyncPcr(hash);
+        }
+    }
+
+    function SyncPcr(hash) {
+        var pcrList = Utils.GetPcrList();
+        pcrList[hash].lastServerCache = pcrList[hash].modified; // set to server value
+        Utils.SavePcrList(pcrList);
+        RefreshData();
+        $.ajax({
+            type: "GET",
+            url: "/api/SampleData",
+            
+        }).done(RequestSuccess).fail(RequestFailure).always(RequestComplete);
+
+        /*
+            RequestSuccess() is the callback for a successful sync
+        */
+        function RequestSuccess(webResponse) {
+
+        }
+        /*
+            RequestFailure() is the callback for an unsuccessful sync
+        */
+        function RequestFailure(webResponse) {
+
+        }
+        /*
+            RequestComplete() is called regardless of the state of success of the sync
+        */
+        function RequestComplete(webResponse) {
+
+        }
+    }
+
+    function ModifyPcr(hash) {
+        var pcrList = Utils.GetPcrList();
+        pcrList[hash].modified = GetDatestamp() + " " + GetTimestamp();
+        Utils.SavePcrList(pcrList);
+        RefreshData();
+    }
+
+    function DeletePcr(hash) {
+        var pcrList = Utils.GetPcrList();
+        delete pcrList[hash];
+        Utils.SavePcrList(pcrList);
+        RefreshData();
+    }
+
+    function GetDatestamp() {
+        var today = new Date();
+        return today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2) + '-' + ('0' + today.getDate()).slice(-2);
+    }
+    function GetTimestamp() {
+        var today = new Date();
+        return ('0' + (today.getHours())).slice(-2) + ':' + ('0' + today.getMinutes()).slice(-2);
+    }
+
+</script>

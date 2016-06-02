@@ -1,0 +1,74 @@
+﻿@using KyleTanczos.TestKyle.Web.Areas.Mpa.Controllers
+
+@model OfflineLogin
+
+<div class="col-xs-12 minimalPaddingImportant">
+    <div id="loginPage">
+        <div class="form-group">
+            <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+            <select name="usernameSelection" class="form-control form-control-solid placeholder-no-fix">
+                <option value="">*** Select Username ***</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label visible-ie8 visible-ie9">Password</label>
+            <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="password" />
+        </div>
+        <div class="">
+            <button class="btn btn-success uppercase" onclick="Login()">Log In</button>
+        </div>
+    </div>
+    <div id="logoutPage" style="display: none">
+        <div class="">
+            <button class="btn btn-success uppercase" onclick="Logout()">Log Out</button>
+        </div>
+    </div>
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+    var USER_LOGIN_TABLE = "usersTable";
+    (function init() {
+        (function PopulateUsernames() {
+            var users = localStorage[USER_LOGIN_TABLE] ? JSON.parse(localStorage[USER_LOGIN_TABLE]) : {};
+            for (var user in users) {
+                $("[name=usernameSelection]").append("<option value='" + user + "'>" + user + "</option>");
+            }
+        })();
+        // AutoLogin is a convenience script for testing
+        (function AutoLogin() {
+            var user = sessionStorage["currentUser"];
+            if (user) {
+                $("[name=usernameSelection]").val(user);
+                $("[name=password]").val(JSON.parse(localStorage[USER_LOGIN_TABLE])[user]);
+                sessionStorage["currentUser"] = $("[name=usernameSelection]").val();
+                $("#loginPage").hide();
+                $("#logoutPage").show();
+            }
+        })();
+    })();
+    function Login() {
+        if (ValidatePassword($("[name=usernameSelection]").val(), $("[name=password]").val())) {
+            bootbox.alert("Login Successful!");
+            sessionStorage["currentUser"] = $("[name=usernameSelection]").val();
+            $("#loginPage").hide();
+            $("#logoutPage").show();
+        }
+        else
+            bootbox.alert("Invalid Credentials. Try again.");
+    }
+
+    // 
+    function ValidatePassword(username, password) {
+        // get either the locally stored table of offline user logins, or 
+        var users = localStorage[USER_LOGIN_TABLE] ? JSON.parse(localStorage[USER_LOGIN_TABLE]) : {};
+        return users[username] == password; // do some unhashing stuff on password?
+    }
+
+    function Logout() {
+        bootbox.alert("Logout Successful!");
+        delete sessionStorage["currentUser"];
+        $("#loginPage").show();
+        $("#logoutPage").hide();
+    }
+</script>
